@@ -6324,7 +6324,7 @@ function meleeStats(l){
   const evo = l >= EVOLVE_AT;
   return {
     cd: Math.max(0.85, 1.5 - 0.08 * (l - 1)),          // segundos entre ráfagas
-    range: 120 + 10 * (l - 1) + (evo ? 25 : 0),         // alcance del golpe
+    range: 150 + 6.5 * (l - 1) + (evo ? 25 : 0),        // alcance del golpe (más al principio; al máximo, casi igual que antes)
     arc: (evo ? 130 : 100) * Math.PI / 180,             // anchura del golpe
     dmg: match.dmg * (1.8 + 0.15 * (l - 1)) * (evo ? 1.15 : 1),
     dirs: l >= 6 ? [0, Math.PI, -Math.PI / 2, Math.PI / 2] : l >= 3 ? [0, Math.PI] : [0],
