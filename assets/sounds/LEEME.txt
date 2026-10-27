@@ -1,0 +1,31 @@
+SONIDOS PROPIOS (opcional)
+
+El juego ya trae sonidos arcade generados por código. Si quieres usar
+tus propios sonidos, pon aquí archivos con estos nombres
+(.mp3, .ogg o .wav) y el juego los usará en su lugar:
+
+  step         al andar (cada paso)
+  shoot        al disparar
+  click        al pulsar botones de los menús
+  start        al empezar un partido (fanfarria)
+  thunder      relámpago que suena junto con "start"
+  whistle      pitido del árbitro cuando aparece
+  whistle_end  pitido final (al vencer al boss o al acabar el partido)
+  upgrade      al comprar una mejora en el menú de Mejoras
+  ult_ready    cuando la R (definitiva) se carga al máximo
+  levelup      al subir de nivel (se abre el menú de mejoras)
+  menu_open    al abrirse un menú de elección (objeto, talento, Hillman)
+  select       al elegir una opción
+  reject       al rechazar un objeto / talento / fusión
+  reroll       al pulsar "Cambios" (cambiar las cartas)
+  switch       al cambiar de supertécnica (Q, E o espacio)
+  chest        al aparecer un cofre
+  ult          al lanzar la técnica definitiva (R)
+
+Ejemplo: whistle.mp3
+
+MÚSICA (también opcional, suena en bucle):
+  music_field  música tranquila de los menús y el campo
+  music_boss   música épica del duelo contra el boss
+
+Tecla M durante el juego: silenciar / activar el sonido.
