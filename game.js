@@ -42,7 +42,7 @@ function fieldW(){ return match.inArena ? ARENA_W : FIELD_W; }
 function fieldH(){ return match.inArena ? ARENA_H : FIELD_H; }
 
 /* Alcance inicial del disparo (ya no hay mejora de alcance) */
-const START_RANGE_MULT = 0.9;
+const START_RANGE_MULT = 1.0;   // (antes 0,9: un pelín más de alcance base)
 /* Radio inicial del imán que atrae las gemas de experiencia */
 const BASE_PICKUP = 80;           // radio inicial del imán de recogida (antes 60)
 
@@ -1440,9 +1440,11 @@ const COIN_DROP_CHANCE = 0.26; // 26 % (hay menos rivales): probabilidad de que 
 const TICKET_DROP = 0.0015;     // 0,15 %: ticket amarillo de un rival normal
 const TICKET_DROP_EPIC = 0.0001; // 0,01 %: ticket morado de un rival normal (rarísimo)
 /* tickets que sueltan los bosses y mini bosses: [amarillo, morado] */
-const TICKET_BOSS = [0.5, 0.06], TICKET_MINIBOSS = [0.2, 0.02];
+const TICKET_BOSS = [0.25, 0.06], TICKET_MINIBOSS = [0.2, 0.02];
 const KAPPAH_EPIC = 0.10;         // si Kappah suelta ticket, un 10% es morado
 function dropTicket(x, y, purple){ match.gems.push({ x, y, xp:0, coin:0, ticket:1, purple: !!purple, kind:'ticket', pull:true }); }
+/* boss vencido: siempre 1 ticket amarillo y, encima, una tirada extra (25% otro amarillo · 6% uno morado) */
+function bossTickets(x, y){ dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS); }
 function rollTicket(x, y, [pY, pP]){ const r = Math.random(); if (r < pP) dropTicket(x, y, true); else if (r < pP + pY) dropTicket(x, y, false); }
 const ITEM_LIFE = 25;           // segundos que dura en el suelo antes de desaparecer
 const ITEMS = {
@@ -2102,7 +2104,7 @@ function docsSections(){
       h += `</div><h4>Cuadernos</h4><p class="intro">Los cuadernos no atacan: mientras los usas se carga su círculo y, al cambiar a tu otra supertécnica, le dan su mejora un rato. El de Velocidad ya te acelera mientras se carga. Fusionados con una supertécnica, su mejora es permanente. No tienen R.</p>`;
       return h;
     }],
-    hillman: ['👴 Hillman y fusiones', () => `<h3>Hillman</h3><p class="intro">Aparece en el borde del campo después de algunos bosses (tienes ${HILLMAN.stay} s para llegar hasta él; una flecha te indica dónde está).</p><ul class="docs-list">
+    hillman: ['👴 Hillman y fusiones', () => `<h3>Hillman</h3><p class="intro">Aparece en el borde del campo en el minuto 5 y luego después de algunos bosses (tienes ${HILLMAN.stay} s para llegar hasta él; una flecha te indica dónde está).</p><ul class="docs-list">
       <li><b>Fusión:</b> junta dos supertécnicas en la misma tecla y funcionan a la vez. La R es la de la base.</li>
       <li><b>Nueva:</b> si te queda una tecla libre, te enseña una supertécnica de cualquier afinidad.</li>
       <li><b>Mezcla de 4:</b> cuando la Q y la E tienen 2 habilidades cada una, vuelve una vez más y junta las 4 en la Q. La E queda bloqueada y ya no puedes aprender más: solo subir esas 4. Eliges la base (su R será tu R) y la R pega con la mejor afinidad de las que mezcles contra cada rival.</li></ul>`],
@@ -2134,7 +2136,7 @@ function docsSections(){
       let h = `<h3>Objetos del suelo</h3><p class="intro">Los sueltan los rivales al caer (poco a menudo). Se cogen pasando por encima; el imán los atrae.</p><div class="docs-grid">`;
       for (const [k, I] of Object.entries(ITEMS)){ const u = ITEM_SPRITE_URL[k]; h += docsCard(u ? `<img src="${u}" width="30" height="30">` : I.emoji, I.name, DOCS_ITEM_DESC[k] || ''); }
       h += docsCard(pxImg('fortuna', 30), 'Monedas y saco', 'Monedas para la tienda y las mejoras permanentes.');
-      h += docsCard(pxImg('ticketY', 30), 'Tickets', 'Amarillos y morados: sirven para los sobres de la tienda.');
+      h += docsCard(pxImg('ticketY', 30), 'Tickets', 'Amarillos y morados: sirven para los sobres de la tienda. Cada boss suelta al menos uno amarillo.');
       return h + '</div>';
     }],
     pballs: ['🔴 Balones de poder', () => {
@@ -5419,6 +5421,7 @@ function onBossDefeated(b){
       isFireFx('celestial'); for (let k = 0; k < 16; k++) emitEmber(t.x + (Math.random() - 0.5) * 40, t.y - Math.random() * 80, { spread: 200, r: 3 + Math.random() * 3 });
     }
     match.enemyShots = []; match.bossMarks = [];
+    bossTickets(b.x - 30, b.y);                               // también su ticket amarillo
     showBanner('¡Has vencido a Aphrodite!', '¡Cuidado… llega Mark Evans!', '#f4e9b8', true);
     document.getElementById('boss-bar').classList.add('hidden');
     pullAllPickups();
@@ -5434,7 +5437,7 @@ function onBossDefeated(b){
   // recompensa: gema grande (casi un nivel), monedas y un objeto seguro
   match.gems.push({ x:b.x, y:b.y, xp: Math.round(match.xpNext * 0.6), coin: 15 + 6 * b.idx, big:true });
   maybeDropItem({ x:b.x + 30, y:b.y }, true);
-  rollTicket(b.x - 30, b.y, TICKET_BOSS);                // los bosses pueden soltar ticket amarillo o (rara vez) morado
+  bossTickets(b.x - 30, b.y);                            // cada boss: 1 ticket amarillo seguro (+ a veces otro amarillo o uno morado)
   showBanner(`¡Has vencido a ${b.name}!`, talentBoss ? 'Elige un talento' : match.pendingRelic ? 'Ha soltado un objeto' : null, '#f2b705');
   document.getElementById('boss-bar').classList.add('hidden');
   // las gemas vuelan hacia ti; el cuaderno también, y al cogerlo eliges talento.
@@ -5649,7 +5652,8 @@ function updateMiniBoss(dt){
    de nivel (cada parte sube por separado). La R es la de la primera parte.
    ====================================================================== */
 const HILLMAN = {
-  afterBosses: [3, 5, 7],  // tras vencer a estos bosses
+  firstAt: 300,            // la 1ª visita: en el minuto 5 exacto del reloj
+  afterBosses: [4, 6],     // las siguientes: tras vencer a estos bosses
   delay: [15, 35],         // segundos después de volver al campo
   stay: 60,                // segundos que espera antes de irse
   newLvl: 1,               // nivel con el que entra la parte nueva de una fusión
@@ -5679,6 +5683,11 @@ function updateHillman(){
     }
     if (!match.inArena && Math.hypot(h.x - match.x, h.y - match.y) < 42){ match.hillman = null; openHillman(); }
     return;
+  }
+  // 1ª visita: en cuanto el reloj marca 5:00 (el reloj está parado en los duelos y con el árbitro fuera)
+  if (!match.hillmanFirst && !match.inArena && !match.boss && !match.bossSpawn && matchClock() >= HILLMAN.firstAt && !hillmanDone()){
+    match.hillmanFirst = true;
+    if ((match.hillmanVisits || 0) < HILLMAN.maxVisits) match.nextHillmanAt = match.elapsed;
   }
   if (match.inArena || match.boss || !match.nextHillmanAt || match.elapsed < match.nextHillmanAt) return;
   match.nextHillmanAt = 0;
