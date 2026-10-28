@@ -5902,6 +5902,7 @@ function randomTechOffers(n, otherElement = false){
 }
 
 function openHillman(){
+  match.hillPrev = { t: activeTech(), i: match.activeTech };   // la supertécnica que llevabas: se mantiene tras la fusión
   match.paused = true;
   match.keys = {};
   const box = document.getElementById('hillman-options'), sub = document.getElementById('hillman-sub');
@@ -6011,7 +6012,18 @@ function openHillman(){
   document.getElementById('btn-hillman-reject').onclick = () => { SFX.closeAs = 'reject'; closeHillman(); };
   document.getElementById('hillman-overlay').classList.remove('hidden');
 }
+/* tras Hillman sigues con la supertécnica que tenías seleccionada (no salta sola a la fusionada) */
+function restoreHillmanTech(){
+  const P = match.hillPrev; match.hillPrev = null;
+  if (!P || !match.techs.length) return;
+  let i = P.t ? match.techs.indexOf(P.t) : -1;
+  if (i < 0 && P.t) i = match.techs.findIndex(t => techParts(t).some(q => q.kind === P.t.kind));   // se fusionó dentro de otra
+  if (i < 0) i = Math.min(P.i || 0, match.mixed ? 0 : 1);
+  if (match.mixed) i = 0;
+  match.activeTech = i;
+}
 function closeHillman(){
+  restoreHillmanTech();
   document.getElementById('hillman-overlay').classList.add('hidden');
   match.levelupChoices = null;
   match.paused = false;
@@ -6451,7 +6463,8 @@ function addCharge(kind){
 function selectTech(i){
   if (!match || match.paused || match.over) return;
   if (match.activeTech === i) return;
-  if (hasRelic('artefacto') && !loneNotebook()){ addFloatText(match.x, match.y - 40, '🏺 No puedes cambiar', '#f2b705'); return; }
+  const at0 = activeTech(), noAttack = !!at0 && techParts(at0).every(q => isBuffKind(q.kind));   // solo cuadernos: no ataca
+  if (hasRelic('artefacto') && !loneNotebook() && !noAttack){ addFloatText(match.x, match.y - 40, '🏺 No puedes cambiar', '#f2b705'); return; }
   // a un hueco vacío se puede cambiar para usar el disparo básico (salvo tras la mezcla de 4, que bloquea la otra tecla)
   if (!match.techs[i] && (match.mixed || !match.techs.length)) return;
   const prev = activeTech();
