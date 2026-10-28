@@ -2071,7 +2071,7 @@ function hideVsIntro(){
 const DOCS_ITEM_DESC = {
   water:   'Velocidad de movimiento +40% durante 8 s.',
   nectar:  '¡Furia! +50% de daño, +45% de velocidad de ataque y +30% de velocidad durante 10 s.',
-  whistle: 'Atrae hacia ti toda la experiencia, las monedas, los objetos y los balones de poder del campo.',
+  whistle: 'Atrae hacia ti toda la experiencia (que vale un 50% más), las monedas, los objetos y los balones de poder del campo. Si hay experiencia para varios niveles, los subes todos seguidos.',
   rice:    'Te cura al instante (25 + 15% de tu vida máxima).',
   bomb:    'Explota nada más cogerla: daña a todos los rivales en un área grande (los normales suelen caer) y quita un 6% de vida a los bosses.',
 };
@@ -4602,8 +4602,9 @@ function updateGems(dt){
 }
 
 /* recoger una gema, monedas o un ticket */
+const WHISTLE_XP = 1.5;          // la experiencia atraída con el silbato vale +50%
 function collectPickup(g){
-  match.xp += (g.xp || 0) * effXpMult();
+  match.xp += (g.xp || 0) * effXpMult() * (g.whistle ? WHISTLE_XP : 1);
   match.coinsEarned += g.coin || 0;
   if (g.kind === 'bag') addFloatText(match.x, match.y - 30, `+${g.coin} monedas`, '#f2b705');
   if (g.ticket){
@@ -4831,6 +4832,11 @@ function useItem(key){
     match.buffs[key] = match.elapsed + it.dur;          // volver a cogerlo reinicia la duración
   } else if (key === 'whistle'){
     pullAllPickups();
+    // la experiencia que trae el silbato vale un 50% más, y se avisa de cuántos niveles vas a subir (se encadenan)
+    let xp = match.xp, need = match.xpNext, lvl = match.level, n = 0;
+    for (const g of match.gems){ if (g.xp){ g.whistle = true; xp += g.xp * effXpMult() * WHISTLE_XP; } }
+    while (xp >= need && n < 50){ xp -= need; lvl++; n++; need = xpForLevel(need, lvl); }
+    if (n) addFloatText(match.x, match.y - 58, `¡+${n} nivel${n === 1 ? '' : 'es'}!`, '#7dffa8');
   } else if (key === 'bomb'){
     bombBlast(match.x, match.y);
   } else if (key === 'rice'){
