@@ -269,6 +269,9 @@ PX_ART.r_camiseta = ["................", "...KKKK..KKKK...", "..KBBBKYYKBBBK..",
 PX_ART.r_manto = ["................", ".....KKKKKK.....", "....KYYLLYYK....", "...KWWKYYKWWK...", "..KWWWWKKWWWWK..", "..KWWWWWWWWWwK..", ".KWWWWWWWWWWwK..", ".KWWwWWWWWWWwwK.", ".KWWwWWWWWWWwwK.", "KWWWwWWWwWWWwwK.", "KWWWwWWWwWWWwwwK", "KWWwwWWWwWWwwwwK", "KYYYYYYYYYYYYYYK", ".KKKKKKKKKKKKKK.", "................", "................"];
 PX_ART.vetoObj = ["................", "................", "...KKKKKKKKKK...", "..KNYNNNNNNYNK..", "..KNYNNNNNNYNK..", ".KKKKKKKKKKKKKK.", ".KYYYYYKKYYYYYK.", ".KNNNNKSSKNNNNK.", ".KNYNNKsSKNNKKKK", ".KNYNNNKKNNKRRRK", ".KNYNNNNNNKRWRWK", ".KNYNNNNNNKRRWRK", ".KYYYYYYYYKRWRWK", ".KKKKKKKKKKKRRRK", "............KKKK", "................"];
 PX_ART.m_packs = ["................", ".KKKKKK.........", ".KXXVVK.........", ".KXVVVKKKKKKKKK.", ".KVVVKWWWWWWWWK.", ".KVVVKKKKKKKKKK.", ".KVVVKYYYYYRRYK.", ".KVVVKYYYYRRYYK.", ".KvVVKYYYRRYYYK.", ".KvVVKYYRRRRRYK.", ".KvvvKYYYYRRYYK.", ".KKKKKYYYRRYYYK.", ".....KYYRRYYYYK.", ".....KyyyyyyyyK.", ".....KKKKKKKKKK.", "................"];   // icono de la Tienda de sobres
+/* icono de Intercambios: dos flechas de cambio (verde → / dorada ←) */
+PX_ART.m_trade = ["..........K.....", "..........KK....", ".KKKKKKKKKKGK...", ".KHHHHHHHHHHGK..", ".KGGGGGGGGGGGgK.", ".KgggggggggggK..", ".KKKKKKKKKKgK...", "..........KK....",
+                  ".....KK.........", "....KyK.........", "...KYKKKKKKKKKK.", "..KYLLLLLLLLLLK.", ".KyYYYYYYYYYYYK.", "..KyyyyyyyyyyyK.", "...KyKKKKKKKKKK.", "....KK.........."];
 /* tickets de sobres: amarillo (normal) y morado (épico) */
 PX_ART.ticketY = PX_ART.ticket.map(r => r.replace(/M/g, 'Y').replace(/L/g, 'W'));
 PX_ART.ticketP = PX_ART.ticket.map(r => r.replace(/M/g, 'V').replace(/L/g, 'X'));
@@ -1690,6 +1693,7 @@ let state = {
   selected: localStorage.getItem('ss_selected') || null,
   shiny: JSON.parse(localStorage.getItem('ss_shiny') || '[]'),          // cromáticos conseguidos
   shinyOn: JSON.parse(localStorage.getItem('ss_shiny_on') || '{}'),     // con qué aspecto juega cada uno
+  dupes: JSON.parse(localStorage.getItem('ss_dupes') || '{}'),          // copias repetidas de cada jugador (para Intercambios)
 };
 /* quita de la partida guardada los jugadores de prueba antiguos (c1, c2…) que ya no existen */
 state.unlocked = state.unlocked.filter(id => CHARACTERS.some(c => c.id === id));
@@ -1726,6 +1730,7 @@ function saveState(){
   localStorage.setItem('ss_selected', state.selected);
   localStorage.setItem('ss_shiny', JSON.stringify(state.shiny));
   localStorage.setItem('ss_shiny_on', JSON.stringify(state.shinyOn));
+  localStorage.setItem('ss_dupes', JSON.stringify(state.dupes));
 }
 
 /* ---------------------- NAVEGACIÓN DE PANTALLAS ---------------------- */
@@ -1736,6 +1741,7 @@ const screens = {
   roster: document.getElementById('screen-roster'),
   upgrades: document.getElementById('screen-upgrades'),
   docs: document.getElementById('screen-docs'),
+  trade: document.getElementById('screen-trade'),
   game: document.getElementById('screen-game'),
 };
 function showScreen(name){
@@ -2939,7 +2945,7 @@ function buildCard(c){
    - Sobre dorado: 5 cartas, épicos y legendarios casi imposibles.
    - Sobre épico:  7 cartas, mucha más suerte y la última carta es épica o legendaria.
    Al abrirlo se enseñan las cartas de una en una (haciendo clic) y la más rara sale la última.
-   Los jugadores repetidos se convierten en monedas. */
+   Los jugadores repetidos van a Intercambios (los cromáticos repetidos dan monedas). */
 const PACKS = {
   // de menos a más: 1 jugador (dorado) → 3 jugadores (azul) → 5 jugadores (épico), cada vez con más suerte
   yellow: { name:'Sobre dorado', ticket:'yellow', tickets:1, cards:1, coins:150,
@@ -2986,7 +2992,8 @@ function openPackCards(kind){
     const key = (shiny ? 's:' : '') + c.id;
     const dupe = shiny ? (hasShiny(c.id) || seen.has(key)) : (state.unlocked.includes(c.id) || seen.has(key));
     seen.add(key);
-    const coins = dupe ? DUPE_COINS[c.rarity] * (shiny ? SHINY_DUPE_MULT : 1) : 0;
+    const coins = dupe && shiny ? DUPE_COINS[c.rarity] * SHINY_DUPE_MULT : 0;   // cromático repetido: monedas
+    if (dupe && !shiny) addDupe(c.id);                                        // repetido normal: a Intercambios
     if (shiny && !dupe){ state.shiny.push(c.id); if (!state.unlocked.includes(c.id)) state.unlocked.push(c.id); }
     else if (!dupe) state.unlocked.push(c.id);
     state.coins += coins;
@@ -3032,7 +3039,7 @@ function packCardHtml(c, dupe, shiny, coins){
       <div class="pk-face">${charFace(lookOf(c, !!shiny), 120)}</div>
       <div class="pk-name">${c.name}</div>
       <div class="pk-meta">${elLabel(c.element, 14)} · ${c.pos}</div>
-      <div class="pk-tag ${dupe ? 'dupe' : 'new'}">${dupe ? `Repetido · +${coins ?? DUPE_COINS[c.rarity]} ${COIN_HTML}` : shiny ? '¡NUEVO CROMÁTICO!' : '¡NUEVO!'}</div>
+      <div class="pk-tag ${dupe ? 'dupe' : 'new'}">${dupe ? (coins ? `Repetido · +${coins} ${COIN_HTML}` : 'Repetido · a Intercambios') : shiny ? '¡NUEVO CROMÁTICO!' : '¡NUEVO!'}</div>
     </div>`;
 }
 /* después de pagar: eliges uno de los tres sobres (Mark, Axel o Jude). Dan lo mismo: es para elegir el que más te guste */
@@ -3162,9 +3169,9 @@ function skipSuspense(){
 function showPackSummary(){
   const ov = document.getElementById('pack-open'), v = packView;
   v.stage = 'summary';
-  const nNew = v.cards.filter(x => !x.dupe).length, coins = v.cards.reduce((a, x) => a + (x.coins || 0), 0);
+  const nNew = v.cards.filter(x => !x.dupe).length, coins = v.cards.reduce((a, x) => a + (x.coins || 0), 0), nRep = v.cards.filter(x => x.dupe && !x.coins).length;
   ov.innerHTML = `<h3 class="po-title">${PACKS[v.kind].name}</h3>
-    <p class="po-sum">${nNew} jugador${nNew === 1 ? '' : 'es'} nuevo${nNew === 1 ? '' : 's'}${coins ? ` · repetidos: +${coins} ${COIN_HTML}` : ''}</p>
+    <p class="po-sum">${nNew} jugador${nNew === 1 ? '' : 'es'} nuevo${nNew === 1 ? '' : 's'}${nRep ? ` · ${nRep} repetido${nRep === 1 ? '' : 's'} a Intercambios` : ''}${coins ? ` · +${coins} ${COIN_HTML}` : ''}</p>
     <div class="po-grid">${v.cards.map(x => packCardHtml(x.c, x.dupe, x.shiny, x.coins)).join('')}</div>
     <button class="btn btn-primary po-close">Continuar</button>`;
   ov.querySelector('.po-close').onclick = e => { e.stopPropagation(); closePack(); };
@@ -3176,6 +3183,115 @@ function closePack(){
   renderGacha();
   if (welcomeQueue) setTimeout(nextWelcomePack, 250);                 // regalo de bienvenida: el siguiente sobre
 }
+/* ======================================================================
+   INTERCAMBIOS: los jugadores repetidos se guardan aquí.
+   - Fusión: entregas 5 repetidos de la MISMA rareza y recibes 1 jugador al azar de la rareza siguiente.
+   - Venta: cambias repetidos por monedas.
+   Solo se entregan copias repetidas: el primero de cada jugador nunca se pierde.
+   ====================================================================== */
+const TRADE_NEED = 5;
+const TRADE_NEXT = { common:'uncommon', uncommon:'rare', rare:'epic', epic:'legendary' };
+const TRADE_SELL = { common:15, uncommon:30, rare:75, epic:200, legendary:500 };   // monedas por repetido
+const TRADE_TIERS = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
+function addDupe(id){ state.dupes[id] = (state.dupes[id] || 0) + 1; }
+function dupeCount(id){ return Math.max(0, state.dupes[id] || 0); }
+function dupesOfRarity(r){ return CHARACTERS.filter(c => c.rarity === r && dupeCount(c.id) > 0); }
+function dupeTotal(r){ return dupesOfRarity(r).reduce((a, c) => a + dupeCount(c.id), 0); }
+const tradeUI = { rarity: 'common', slots: [] };          // slots = ids elegidos (pueden repetirse si tienes varias copias)
+function tradeFree(id){ return dupeCount(id) - tradeUI.slots.filter(x => x === id).length; }
+function tradeMsg(txt, good){
+  const m = document.getElementById('tr-msg'); m.innerHTML = txt; m.className = 'tr-msg' + (good ? ' good' : '');
+  clearTimeout(tradeMsg.t); tradeMsg.t = setTimeout(() => m.classList.add('hidden'), 3200);
+}
+function renderTrade(){
+  const r = tradeUI.rarity, next = TRADE_NEXT[r];
+  document.getElementById('tr-coins').textContent = state.coins;
+  // pestañas de rareza (cuántos repetidos tienes de cada una)
+  document.getElementById('tr-tabs').innerHTML = TRADE_TIERS.map(k => `<button class="tr-tab${k === r ? ' on' : ''}" data-r="${k}" style="--rar:${RARITY_COLOR[k]}">
+      <span>${RARITY_LABEL[k]}</span><b>${dupeTotal(k)}</b></button>`).join('');
+  document.querySelectorAll('#tr-tabs .tr-tab').forEach(b => b.onclick = () => { if (tradeUI.rarity !== b.dataset.r){ tradeUI.rarity = b.dataset.r; tradeUI.slots = []; renderTrade(); } });
+  // tus repetidos de esa rareza
+  const list = dupesOfRarity(r);
+  document.getElementById('tr-grid').innerHTML = list.length ? list.map(c => {
+    const free = tradeFree(c.id);
+    return `<button class="tr-card${free ? '' : ' used'}" data-id="${c.id}" style="--rar:${RARITY_COLOR[c.rarity]}" ${free ? '' : 'disabled'}>
+        <span class="tr-count">x${free}</span>${charFace(c, 56)}<span class="tr-name">${c.nick || c.name}</span></button>`;
+  }).join('') : `<p class="tr-empty">No tienes jugadores ${RARITY_LABEL[r].toLowerCase()}s repetidos. Los repetidos que te salgan en los sobres llegarán aquí.</p>`;
+  document.querySelectorAll('#tr-grid .tr-card').forEach(b => b.onclick = () => {
+    if (tradeUI.slots.length >= TRADE_NEED) return tradeMsg(`Ya has puesto ${TRADE_NEED} jugadores. Quita alguno para cambiarlo.`);
+    if (tradeFree(b.dataset.id) <= 0) return;
+    tradeUI.slots.push(b.dataset.id); SFX.play('switch'); renderTrade();
+  });
+  // huecos de la fusión
+  document.getElementById('tr-slots').innerHTML = Array.from({ length: TRADE_NEED }, (_, i) => {
+    const c = CHARACTERS.find(x => x.id === tradeUI.slots[i]);
+    return c ? `<button class="tr-slot full" data-i="${i}" style="--rar:${RARITY_COLOR[c.rarity]}" title="Quitar">${charFace(c, 46)}</button>`
+             : `<div class="tr-slot" style="--rar:${RARITY_COLOR[r]}"></div>`;
+  }).join('');
+  document.querySelectorAll('#tr-slots .tr-slot.full').forEach(b => b.onclick = () => { tradeUI.slots.splice(+b.dataset.i, 1); renderTrade(); });
+  // resultado posible
+  const res = document.getElementById('tr-result');
+  if (next){
+    const pool = CHARACTERS.filter(c => c.rarity === next).length;
+    res.innerHTML = `<div class="tr-mystery" style="--rar:${RARITY_COLOR[next]}"><b>?</b></div>
+      <p>1 jugador <b style="color:${RARITY_COLOR[next]}">${RARITY_LABEL[next].toLowerCase()}</b> al azar<br><small>entre los ${pool} de esa rareza</small></p>`;
+  } else res.innerHTML = `<div class="tr-mystery max" style="--rar:${RARITY_COLOR[r]}"><b>MAX</b></div><p>Los legendarios ya son la rareza más alta:<br><small>solo se pueden vender</small></p>`;
+  const n = tradeUI.slots.length, fuse = document.getElementById('btn-tr-fuse');
+  fuse.disabled = !next || n < TRADE_NEED;
+  fuse.innerHTML = next ? `Fusionar ${n} / ${TRADE_NEED}` : 'Fusión no disponible';
+  const sellSel = document.getElementById('btn-tr-sell');
+  sellSel.disabled = !n;
+  sellSel.innerHTML = `Vender ${n || ''} elegido${n === 1 ? '' : 's'} · ${n * TRADE_SELL[r]} ${COIN_HTML}`;
+  const tot = dupeTotal(r), sellAll = document.getElementById('btn-tr-sell-all');
+  sellAll.disabled = !tot;
+  sellAll.innerHTML = `Vender todos (${tot}) · ${tot * TRADE_SELL[r]} ${COIN_HTML}`;
+  document.getElementById('tr-price').innerHTML = `Cada repetido ${RARITY_LABEL[r].toLowerCase()} se vende por <b>${TRADE_SELL[r]}</b> ${COIN_HTML}`;
+}
+function takeDupes(ids){ for (const id of ids){ state.dupes[id] = dupeCount(id) - 1; if (state.dupes[id] <= 0) delete state.dupes[id]; } }
+function tradeSell(ids){
+  if (!ids.length) return;
+  const gain = ids.reduce((a, id) => a + TRADE_SELL[CHARACTERS.find(c => c.id === id).rarity], 0);
+  takeDupes(ids); state.coins += gain; tradeUI.slots = [];
+  saveState(); refreshCoinBadges(); SFX.play('upgrade');
+  tradeMsg(`Has vendido ${ids.length} jugador${ids.length === 1 ? '' : 'es'}: +${gain} ${COIN_HTML}`, true);
+  renderTrade();
+}
+function tradeFuse(){
+  const r = tradeUI.rarity, next = TRADE_NEXT[r];
+  if (!next || tradeUI.slots.length < TRADE_NEED) return;
+  if (tradeUI.slots.some(id => CHARACTERS.find(c => c.id === id).rarity !== r)) return;
+  takeDupes(tradeUI.slots); tradeUI.slots = [];
+  const pool = CHARACTERS.filter(c => c.rarity === next), c = pool[Math.floor(Math.random() * pool.length)];
+  const dupe = state.unlocked.includes(c.id);
+  if (dupe) addDupe(c.id); else state.unlocked.push(c.id);
+  saveState(); refreshCoinBadges(); updateShowcase();
+  showTradeReveal(c, dupe);
+  renderTrade();
+}
+function showTradeReveal(c, dupe){
+  const ov = document.getElementById('tr-reveal');
+  ov.innerHTML = `<div class="tr-reveal-box"><h3 class="tr-reveal-title">¡Fusión completada!</h3>
+      <div class="tr-reveal-card${RARITY_RANK[c.rarity] >= 3 ? ' big' : ''}">${packCardHtml(c, dupe, false, 0)}</div>
+      <button class="shop-btn shop-btn-y" id="btn-tr-reveal-ok">Seguir</button></div>`;
+  ov.classList.remove('hidden');
+  SFX.play(RARITY_RANK[c.rarity] >= 3 ? 'ult_ready' : 'levelup');
+  document.getElementById('btn-tr-reveal-ok').onclick = () => { ov.classList.add('hidden'); ov.innerHTML = ''; };
+}
+(function setupTrade(){
+  const btn = document.getElementById('btn-trade'); if (!btn) return;
+  const ico = PX_ICON_URL.m_trade ? `<img class="px-ico" src="${PX_ICON_URL.m_trade}" alt="">` : '';
+  btn.querySelector('.menu-ico').innerHTML = ico;
+  document.querySelectorAll('.tr-sign-ico').forEach(i => { i.src = PX_ICON_URL.m_trade; });
+  document.querySelectorAll('#screen-trade .shop-coin-ico').forEach(i => { try { i.src = COIN_SPRITE.toDataURL(); } catch (e) {} });
+  btn.onclick = () => { tradeUI.slots = []; renderTrade(); showScreen('trade'); };
+  document.getElementById('btn-back-title-trade').onclick = () => { updateShowcase(); refreshCoinBadges(); showScreen('title'); };
+  document.getElementById('btn-tr-fuse').onclick = tradeFuse;
+  document.getElementById('btn-tr-sell').onclick = () => tradeSell(tradeUI.slots.slice());
+  document.getElementById('btn-tr-sell-all').onclick = () => {
+    const ids = dupesOfRarity(tradeUI.rarity).flatMap(c => Array(dupeCount(c.id)).fill(c.id));
+    if (ids.length && confirm(`¿Vender tus ${ids.length} repetidos ${RARITY_LABEL[tradeUI.rarity].toLowerCase()}s por ${ids.length * TRADE_SELL[tradeUI.rarity]} monedas?`)) tradeSell(ids);
+  };
+})();
 /* ---- BIENVENIDA: los jugadores nuevos reciben 3 sobres de regalo (dorado, súper y épico) ---- */
 const WELCOME_KINDS = ['yellow', 'blue', 'purple'];
 let welcomeQueue = null;
@@ -3224,7 +3340,7 @@ for (const k of PACK_KINDS){
     return `<li><i style="background:${RARITY_COLOR[r]}"></i><span>${RARITY_LABEL[r]}</span><b>${pct < 1 ? pct.toFixed(1) : Math.round(pct)}%</b></li>`;
   }).join('') + (PACK_LAST_TXT[k] ? `<li class="odds-last">${PACK_LAST_TXT[k]}</li>` : '');
 }
-document.querySelectorAll('.shop-sign-ico').forEach(i => { i.src = PX_ICON_URL.m_packs; });
+document.querySelectorAll('.shop-sign-ico:not(.tr-sign-ico)').forEach(i => { i.src = PX_ICON_URL.m_packs; });
 document.querySelectorAll('.shop-coin-ico').forEach(i => { try { i.src = COIN_SPRITE.toDataURL(); } catch (e) {} });
 document.querySelectorAll('.tk-y, #tk-ico-y').forEach(i => { i.src = PX_ICON_URL.ticketY; });
 document.querySelectorAll('.tk-p, #tk-ico-p').forEach(i => { i.src = PX_ICON_URL.ticketP; });

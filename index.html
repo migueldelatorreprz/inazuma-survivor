@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=24">
+<link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 
@@ -59,6 +59,10 @@
         <span class="menu-ico">🎴</span>
         <span class="menu-text"><b>Tienda</b><small>Sobres de fichajes</small></span>
       </button>
+      <button id="btn-trade" class="menu-item">
+        <span class="menu-ico"></span>
+        <span class="menu-text"><b>Intercambios</b><small>Fusiona o vende repetidos</small></span>
+      </button>
       <button id="btn-docs" class="menu-item">
         <span class="menu-ico">📖</span>
         <span class="menu-text"><b>Guía</b><small>Todo lo del juego explicado</small></span>
@@ -93,7 +97,7 @@
         <span title="Tickets morados"><img class="px-mini tk-p" alt=""><b id="shop-tk-p">0</b></span>
       </div>
     </header>
-    <p class="shop-sub">Los tickets los sueltan los bosses y algunos rivales. Los jugadores repetidos se convierten en monedas.</p>
+    <p class="shop-sub">Los tickets los sueltan los bosses y algunos rivales. Los jugadores repetidos van a Intercambios.</p>
     <div class="shop-shelf">
       <div class="shop-slot slot-yellow">
         <div class="shop-tag">Sobre dorado</div>
@@ -123,6 +127,36 @@
     <div id="pack-msg" class="pack-msg hidden"></div>
     <button id="btn-back-title-2" class="btn btn-ghost">Volver</button>
     <div id="pack-open" class="pack-open hidden"></div>
+  </section>
+
+  <!-- ===================== PANTALLA DE INTERCAMBIOS ===================== -->
+  <section id="screen-trade" class="screen hidden shop-screen trade-screen">
+    <header class="shop-head">
+      <div class="shop-sign tr-sign"><img class="shop-sign-ico tr-sign-ico" alt=""><h2>Intercambios</h2><img class="shop-sign-ico tr-sign-ico" alt=""></div>
+      <div class="shop-wallet"><span title="Monedas"><img class="shop-coin-ico" alt=""><b id="tr-coins">0</b></span></div>
+    </header>
+    <p class="shop-sub">Solo se entregan jugadores <b>repetidos</b>: el primero de cada jugador nunca se pierde.<br>Junta 5 de la misma rareza y fusiónalos en uno al azar de la rareza siguiente, o véndelos por monedas.</p>
+    <nav id="tr-tabs" class="tr-tabs"></nav>
+    <div class="tr-body">
+      <div class="tr-panel tr-left">
+        <div class="shop-tag tr-tag">Tus repetidos</div>
+        <div id="tr-grid" class="tr-grid"></div>
+      </div>
+      <div class="tr-panel tr-right">
+        <div class="shop-tag tr-tag">Fusión</div>
+        <div id="tr-slots" class="tr-slots"></div>
+        <div class="tr-arrow"></div>
+        <div id="tr-result" class="tr-result"></div>
+        <button id="btn-tr-fuse" class="shop-btn shop-btn-y">Fusionar</button>
+        <div class="tr-sep"></div>
+        <p id="tr-price" class="tr-price"></p>
+        <button id="btn-tr-sell" class="shop-btn shop-btn-c">Vender</button>
+        <button id="btn-tr-sell-all" class="shop-btn shop-btn-b">Vender todos</button>
+      </div>
+    </div>
+    <div id="tr-msg" class="tr-msg hidden"></div>
+    <button id="btn-back-title-trade" class="btn btn-ghost">Volver</button>
+    <div id="tr-reveal" class="tr-reveal hidden"></div>
   </section>
 
   <!-- ===================== PANTALLA DE JUGADORES ===================== -->
@@ -423,6 +457,6 @@
   </div>
 
   <script src="players.js?v=14"></script>
-  <script src="game.js?v=24"></script>
+  <script src="game.js?v=25"></script>
 </body>
 </html>
