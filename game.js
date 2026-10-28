@@ -3214,8 +3214,7 @@ function renderTrade(){
   const list = dupesOfRarity(r);
   document.getElementById('tr-grid').innerHTML = list.length ? list.map(c => {
     const free = tradeFree(c.id);
-    return `<button class="tr-card${free ? '' : ' used'}" data-id="${c.id}" style="--rar:${RARITY_COLOR[c.rarity]}" ${free ? '' : 'disabled'}>
-        <span class="tr-count">x${free}</span>${charFace(c, 56)}<span class="tr-name">${c.nick || c.name}</span></button>`;
+    return `<button class="tr-card${free ? '' : ' used'}" data-id="${c.id}" ${free ? '' : 'disabled'}>${tradeCardHtml(c, free)}</button>`;
   }).join('') : `<p class="tr-empty">No tienes jugadores ${RARITY_LABEL[r].toLowerCase()}s repetidos. Los repetidos que te salgan en los sobres llegarán aquí.</p>`;
   document.querySelectorAll('#tr-grid .tr-card').forEach(b => b.onclick = () => {
     if (tradeUI.slots.length >= TRADE_NEED) return tradeMsg(`Ya has puesto ${TRADE_NEED} jugadores. Quita alguno para cambiarlo.`);
@@ -3247,6 +3246,17 @@ function renderTrade(){
   sellAll.innerHTML = `Vender todos (${tot}) · ${tot * TRADE_SELL[r]} ${COIN_HTML}`;
   document.getElementById('tr-price').innerHTML = `Cada repetido ${RARITY_LABEL[r].toLowerCase()} se vende por <b>${TRADE_SELL[r]}</b> ${COIN_HTML}`;
 }
+/* carta pequeña de Intercambios: igual que las de los sobres, con cuántos repetidos te quedan */
+function tradeCardHtml(c, free){
+  const t = TEAM_BY_ID[c.team] || {};
+  return `<div class="pk-card tr-mini rar-${c.rarity}" style="--rar:${RARITY_COLOR[c.rarity]}">
+      <div class="pk-card-top"><span class="pk-rar">${RARITY_LABEL[c.rarity]}</span>${t.crest ? `<img class="pk-crest" src="${t.crest}" alt="">` : ''}</div>
+      <div class="pk-face">${charFace(c, 72)}</div>
+      <div class="pk-name">${c.nick || c.name}</div>
+      <div class="pk-meta">${elLabel(c.element, 12)} · ${c.pos}</div>
+      <div class="pk-tag ${free ? 'new' : 'dupe'}">x${free} repetido${free === 1 ? '' : 's'}</div>
+    </div>`;
+}
 function takeDupes(ids){ for (const id of ids){ state.dupes[id] = dupeCount(id) - 1; if (state.dupes[id] <= 0) delete state.dupes[id]; } }
 function tradeSell(ids){
   if (!ids.length) return;
@@ -3260,22 +3270,76 @@ function tradeFuse(){
   const r = tradeUI.rarity, next = TRADE_NEXT[r];
   if (!next || tradeUI.slots.length < TRADE_NEED) return;
   if (tradeUI.slots.some(id => CHARACTERS.find(c => c.id === id).rarity !== r)) return;
+  const given = tradeUI.slots.map(id => CHARACTERS.find(x => x.id === id));
   takeDupes(tradeUI.slots); tradeUI.slots = [];
   const pool = CHARACTERS.filter(c => c.rarity === next), c = pool[Math.floor(Math.random() * pool.length)];
   const dupe = state.unlocked.includes(c.id);
   if (dupe) addDupe(c.id); else state.unlocked.push(c.id);
   saveState(); refreshCoinBadges(); updateShowcase();
-  showTradeReveal(c, dupe);
   renderTrade();
+  showTradeReveal(c, dupe, given);
 }
-function showTradeReveal(c, dupe){
+/* animación de la fusión, como la última carta de los sobres:
+   las 5 cartas se juntan → carta boca abajo que tiembla y brilla del color de su rareza → estalla y aparece el jugador */
+let tradeView = null;
+function showTradeReveal(c, dupe, given){
   const ov = document.getElementById('tr-reveal');
-  ov.innerHTML = `<div class="tr-reveal-box"><h3 class="tr-reveal-title">¡Fusión completada!</h3>
-      <div class="tr-reveal-card${RARITY_RANK[c.rarity] >= 3 ? ' big' : ''}">${packCardHtml(c, dupe, false, 0)}</div>
-      <button class="shop-btn shop-btn-y" id="btn-tr-reveal-ok">Seguir</button></div>`;
-  ov.classList.remove('hidden');
-  SFX.play(RARITY_RANK[c.rarity] >= 3 ? 'ult_ready' : 'levelup');
-  document.getElementById('btn-tr-reveal-ok').onclick = () => { ov.classList.add('hidden'); ov.innerHTML = ''; };
+  const kind = RARITY_RANK[c.rarity] >= 3 ? 'purple' : c.rarity === 'rare' ? 'blue' : 'yellow';
+  const tense = RARITY_RANK[c.rarity] >= 3, col = RARITY_COLOR[c.rarity];
+  tradeView = { c, dupe, tense, stage: 'merge', timers: [] };
+  ov.className = `pack-open tr-reveal pk-${kind}`;
+  ov.innerHTML = `<div class="po-count">¡Fusión!</div>
+    <div class="tr-merge">${(given || []).map((g, i) => `<div class="tr-merge-card" style="--i:${i - 2}">${tradeCardHtml(g, 1).replace(/<div class="pk-tag[^]*?<\/div>/, '')}</div>`).join('')}</div>
+    <p class="po-hint">Juntando tus ${TRADE_NEED} repetidos…</p>`;
+  SFX.play('switch');
+  const T = tense ? [1100, 2000, 3100, 4300] : [1100, 1900, 2800, 3500];
+  const st = () => ov.querySelector('.po-suspense');
+  tradeView.timers = [
+    setTimeout(() => tradeSuspense(col), T[0]),
+    setTimeout(() => { const el = st(); el && el.classList.add('s2'); SFX.play('step'); }, T[1]),
+    setTimeout(() => { const el = st(); el && el.classList.add('s3'); SFX.play(tense ? 'ult_ready' : 'step'); }, T[2]),
+    setTimeout(tradeRevealCard, T[3]),
+  ];
+  ov.onclick = () => {
+    if (!tradeView) return;
+    if (tradeView.stage === 'merge' || tradeView.stage === 'suspense') return tradeRevealCard();   // clic: se descubre ya
+    if (tradeView.stage === 'card') closeTradeReveal();
+  };
+}
+function tradeSuspense(col){
+  const ov = document.getElementById('tr-reveal'); if (!tradeView) return;
+  tradeView.stage = 'suspense';
+  ov.innerHTML = `<div class="po-count">¡Nuevo fichaje!</div>
+    <div class="po-suspense" style="--rar:${col}"><div class="po-rays"></div><div class="pk-back"><div class="pk-back-logo"></div></div></div>
+    <p class="po-hint">Haz clic para descubrirlo ya</p>`;
+  SFX.play('chest');
+}
+function tradeRevealCard(){
+  const ov = document.getElementById('tr-reveal'), v = tradeView; if (!v || v.stage === 'card') return;
+  v.timers.forEach(clearTimeout); v.stage = 'card';
+  ov.innerHTML = `<div class="po-count">${v.dupe ? 'Repetido' : '¡Nuevo jugador!'}</div>
+    <div class="po-stage"><div class="po-flip ${v.tense ? 'big' : ''} final">${packCardHtml(v.c, v.dupe, false, 0)}</div></div>
+    <p class="po-hint">Haz clic para continuar</p>`;
+  ov.classList.add('flash', 'final-reveal'); setTimeout(() => ov.classList.remove('flash'), 600);
+  SFX.play(v.tense ? 'thunder' : 'upgrade');
+}
+function closeTradeReveal(){
+  const ov = document.getElementById('tr-reveal');
+  if (tradeView) tradeView.timers.forEach(clearTimeout);
+  tradeView = null; ov.className = 'tr-reveal hidden'; ov.innerHTML = ''; ov.onclick = null;
+}
+/* MODO PRUEBAS: rellena Intercambios con repetidos de todas las rarezas (pon DEV_DUPES en false para jugar normal) */
+const DEV_DUPES = false;
+if (DEV_DUPES){
+  for (const r of TRADE_TIERS){
+    let pool = CHARACTERS.filter(c => c.rarity === r);
+    while (dupeTotal(r) < 12 && pool.length){
+      const c = pool[Math.floor(Math.random() * pool.length)];
+      if (!state.unlocked.includes(c.id)) state.unlocked.push(c.id);
+      addDupe(c.id);
+    }
+  }
+  saveState();
 }
 (function setupTrade(){
   const btn = document.getElementById('btn-trade'); if (!btn) return;
