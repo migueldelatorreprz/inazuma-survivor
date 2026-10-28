@@ -2662,7 +2662,6 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 
 /* ===================== INTERCAMBIOS (estilo pixel, como la Tienda) ===================== */
 .trade-screen{ align-items:center; }
-.tr-sign{ background: linear-gradient(180deg, #6be07a 0 50%, #2f9e45 50% 100%); box-shadow: inset 0 0 0 4px #0b2a12, inset 0 0 0 7px #c8ffb8; }
 .tr-tabs{ display:flex; gap: 8px; flex-wrap:wrap; justify-content:center; margin-bottom: 14px; }
 .tr-tab{
   display:flex; align-items:center; gap: 8px; padding: 6px 14px; border:none; cursor:pointer;
@@ -2676,7 +2675,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .tr-tab:hover{ transform: translateY(-2px); filter: brightness(1.12); }
 .tr-body{ display:flex; gap: 20px; justify-content:center; align-items:stretch; flex-wrap:wrap; width: 100%; max-width: 1040px; margin-bottom: 14px; }
 .tr-panel{
-  --acc:#6be07a; --acc2:#2f9e45;
+  --acc:#ffe14a; --acc2:#f2a705;
   padding: 16px 18px 18px; display:flex; flex-direction:column; align-items:center; gap: 10px;
   background: var(--px-panel); clip-path: var(--px-cut);
   box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--acc), inset 0 0 0 10px var(--px-dark);
@@ -2752,3 +2751,18 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .tr-reveal .po-flip.final .pk-card{ width: 270px; }
 .tr-reveal .po-flip.final .pk-face .char-face{ width: 150px !important; height: 150px !important; }
 @media (max-width: 760px){ .tr-merge-card{ --s: .6; } .pk-card.tr-mini{ width: 112px; } .tr-grid{ grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); } }
+
+/* ===================== BARRAS DE DESPLAZAMIENTO estilo pixel (todo el juego) ===================== */
+@supports not selector(::-webkit-scrollbar){ *{ scrollbar-width: thin; scrollbar-color: #ffd84a #071233; } }   /* Firefox */
+::-webkit-scrollbar{ width: 14px; height: 14px; }
+::-webkit-scrollbar-track{ background: #071233; box-shadow: inset 0 0 0 2px #050c26, inset 0 0 0 4px #1a3a8a; }
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(90deg, #ffe27a 0 3px, #ffd84a 3px 9px, #f2a705 9px 100%);
+  box-shadow: inset 0 0 0 2px #5a3200, inset 0 3px 0 2px rgba(255,255,255,.25);
+  border: 2px solid #071233; border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover{ background: linear-gradient(90deg, #fff1a0 0 3px, #ffe14a 3px 9px, #ffb81a 9px 100%); }
+::-webkit-scrollbar-thumb:active{ background: #f2a705; }
+::-webkit-scrollbar-thumb:horizontal{ background: linear-gradient(180deg, #ffe27a 0 3px, #ffd84a 3px 9px, #f2a705 9px 100%); }
+::-webkit-scrollbar-button{ display: none; width: 0; height: 0; }
+::-webkit-scrollbar-corner{ background: #071233; }
