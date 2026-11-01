@@ -259,6 +259,7 @@ PX_ART.r_chapa = ["................", "....K.KKK.K.....", "...KSKSSSKSK....", ".
 PX_ART.r_gafas = ["................", "................", "................", "................", ".KKKKKK..KKKKKK.", "KKCCCCKKKKCCCCKK", "KKCWWCBKKKCWWCBK", "KKCWCCBKKKCWCCBK", "KKCCCBBK.KCCCBBK", ".KKBBBK...KBBBK.", "..KKKK.....KKKK.", "................", "................", "................", "................", "................"];
 PX_ART.r_pinchito = ["................", "............KK..", "...........KGHK.", "..........KGGGK.", "..........KgGgK.", ".........KTKgK..", "........KHHKK...", ".......KHGGK....", "......KNNNK.....", ".....KNwNK......", "....KGHKK.......", "...KGGGK........", "...KgGgK........", "..KTKK..........", ".KTK............", "..K............."];
 PX_ART.r_nectarDioses = ["...........K....", "..........KWK...", "...KKKKKKKKKK...", "..KYWWWWWWWWYK..", "..KYYWWWWWWYYK..", "..KLYYYYYYYYyK..", "..KYLYYYYYYyyK..", "...KYLYYYYyyK...", "....KYYYYyyK....", ".....KKYyKK.....", ".......KYK......", ".......KYK......", ".....KKYyyKK....", "....KYLYYYyyK...", "....KKKKKKKKK...", "................"];
+PX_ART.r_monedaArbitro = ["................", ".....KKKKKK.....", "...KKYYYYYYKK...", "..KYYLLLLLLyyK..", ".KYLYYYYYYYYyyK.", ".KYLYKKYYKKYYyK.", "KYLYKRRKKRRKYYyK", "KYLYKRRRRRRKYyyK", "KYYYKRRRRRRKYyyK", "KYYYYKRRRRKYYyyK", ".KYYYYKRRKYYyyK.", ".KYYYYYKKYYyyyK.", "..KyYYYYYYyyyK..", "...KKyyyyyyKK...", ".....KKKKKK.....", "................"];   // Moneda del Árbitro
 PX_ART.r_artefacto = ["................", "......KKKK......", ".....KNNNNK.....", "......KNNK......", ".....KNNNNK.....", "...KKNTNNNNKK...", "..KNTNNNNNNnnK..", "..KNYYYYYYYYnK..", "..KNTNNZZNNNnK..", "..KNNNZNNZNNnK..", "..KNNNNZZNNNnK..", "..KNYYYYYYYYnK..", "...KNNNNNNNnK...", "....KKnnnnKK....", "......KKKK......", "................"];
 PX_ART.r_tecnica = ["................", "..KKKKKKKKKKK...", "..KNNNNNNNNNTK..", "..KNnNNNNNNNTK..", "..KNnNNYYNNNTK..", "..KNnNNYNNNNTK..", "..KNnNYYYYNNTK..", "..KNnNNNYNNNTK..", "..KNnNNYYNNNTK..", "..KNnNNYNNNNTK..", "..KNnNNNNNNNTK..", "..KNnNNNNNNNTK..", "..KNnnnnnnnnTK..", "..KKKKKKKKKKKK..", "................", "................"];
 PX_ART.r_botasHalcon = ["................", ".KK.............", "KWWK..KKKKK.....", ".KWWK.KBBBBK....", "KWWWWKKBYYBK....", ".KWWWWKBBYBK....", "..KWWWKBYBBKKK..", "...KWWKBBYBCCKK.", "....KKKBBBBBBBBK", ".....KBBBBBBBBBK", ".....KbbbbbbbbbK", ".....KWWWWWWWWWK", ".....KKKKKKKKKKK", "......KsK..KsK..", "................", "................"];
@@ -272,6 +273,10 @@ PX_ART.m_packs = ["................", ".KKKKKK.........", ".KXXVVK.........", ".
 /* icono de Intercambios: dos flechas de cambio (verde → / dorada ←) */
 PX_ART.m_trade = ["..........K.....", "..........KK....", ".KKKKKKKKKKGK...", ".KHHHHHHHHHHGK..", ".KGGGGGGGGGGGgK.", ".KgggggggggggK..", ".KKKKKKKKKKgK...", "..........KK....",
                   ".....KK.........", "....KyK.........", "...KYKKKKKKKKKK.", "..KYLLLLLLLLLLK.", ".KyYYYYYYYYYYYK.", "..KyyyyyyyyyyyK.", "...KyKKKKKKKKKK.", "....KK.........."];
+/* trébol de la Suerte */
+PX_ART.trebol = ["................", "....KKK..KKK....", "...KGGGKKGGGK...", "...KGHGGKGGgK...", "...KGGGGKGGgK...", "....KGGGKGgK....", "..KKKKGGGGKKKK..", ".KGGGGKGGKGGGGK.", ".KGHGGGKKGGGGgK.", ".KGGGGGKKGGGGgK.", "..KGGgKGGKGggK..", "...KKKKGNKKKK...", ".......KNK......", "......KNNK......", "......KKK.......", "................"];
+/* calavera del contador de rivales eliminados */
+PX_ART.kills = ["................", "....KKKKKKK.....", "...KWWWWWWWK....", "..KWWWWWWWWWK...", "..KWWWWWWWWwK...", "..KWKKWWWKKwK...", "..KWKKWWWKKwK...", "..KWWWWKWWWwK...", "...KWWKKKWwK....", "....KWWWWwK.....", "....KWKWKwK.....", ".....KKKKK......", "................", "................", "................", "................"];
 /* tickets de sobres: amarillo (normal) y morado (épico) */
 PX_ART.ticketY = PX_ART.ticket.map(r => r.replace(/M/g, 'Y').replace(/L/g, 'W'));
 PX_ART.ticketP = PX_ART.ticket.map(r => r.replace(/M/g, 'V').replace(/L/g, 'X'));
@@ -497,10 +502,10 @@ function techLogo(kind, el, size = 18){
   const u = elPxURL(el !== undefined ? el : (typeof match !== 'undefined' && match ? match.element : null));
   return u ? `<img class="px-mini" src="${u}" width="${size}" height="${size}" alt="">` : '';
 }
-const UPGRADE_PX = { power:'fuerza', speed:'zancada', atkspeed:'reflejos', health:'vitalidad', dodge:'dash', xp:'sabiduria', magnet:'iman', defense:'coraza', regen:'sintesis', heal:'rice' };
+const UPGRADE_PX = { power:'fuerza', speed:'zancada', atkspeed:'reflejos', health:'vitalidad', dodge:'dash', xp:'sabiduria', magnet:'iman', defense:'coraza', regen:'sintesis', heal:'rice', luck:'trebol' };
 /* talentos con su icono arcade (reutiliza los de las mejoras) */
 const TALENT_PX = { ahorro:'fortuna', ataque:'fuerza', defensa:'coraza', rapidez:'zancada', portero:'coraza', aMuerte:'boom', ultra:'critico',
-  tiro:'boom', lance:'range', fuerzaDef:'coraza', cargaElem:'bolt', antiAfin:'cambio', piscinazo:'dash', vagueza:'sabiduria', suerte:'critico', vamos:'reflejos', vamosTodos:'m_team' };
+  tiro:'boom', lance:'range', fuerzaDef:'coraza', cargaElem:'bolt', antiAfin:'cambio', piscinazo:'dash', vagueza:'sabiduria', suerte:'trebol', vamos:'reflejos', vamosTodos:'m_team' };
 /* icono arcade de una carta de subida de nivel (si no tiene, su emoji) */
 function optionIcon(u, size = 28){
   if (u.tech) return u.emoji;                                      // supertécnicas: ya es el logo de su afinidad
@@ -1233,7 +1238,7 @@ const EMO_MAP = {
   '🍙':'item:rice', '💧':'item:water', '🥛':'item:nectar', '📣':'item:whistle', '🧰':'chest:chest',
   // reliquias
   '🥾':'relic:botasInazuma', '📿':'relic:amuleto', '🔗':'relic:pulsera', '🎖️':'relic:chapa', '🥽':'relic:gafas', '🍢':'relic:pinchito', '🧪':'relic:nectarDioses',
-  '🏺':'relic:artefacto', '📜':'relic:tecnica', '🦅':'relic:botasHalcon', '🎗️':'relic:cintaMark', '🧿':'relic:balonAlius', '🧤':'relic:guantes', '👕':'relic:camiseta',
+  '🪙':'relic:monedaArbitro', '🏺':'relic:artefacto', '📜':'relic:tecnica', '🦅':'relic:botasHalcon', '🎗️':'relic:cintaMark', '🧿':'relic:balonAlius', '🧤':'relic:guantes', '👕':'relic:camiseta',
 };
 const EMO_CANVAS = {}, EMO_URL = {};
 function emoKey(e){ return e.replace(/️/g, ''); }
@@ -1439,7 +1444,7 @@ const CHARGE_PER_HIT = { pierce:0.62, orbit:0.8, bounce:0.48, rain:1.0, melee:0.
    Al eliminar a un rival hay una pequeña probabilidad de que suelte uno.
    ====================================================================== */
 const DROP_CHANCE = 0.012;      // 1,2 % por rival eliminado (leche, agua, arroz...)
-const COIN_DROP_CHANCE = 0.26; // 26 % (hay menos rivales): probabilidad de que un rival normal suelte su moneda
+const COIN_DROP_CHANCE = 0.18; // 18 % (antes 26 %) (hay menos rivales): probabilidad de que un rival normal suelte su moneda
 const TICKET_DROP = 0.0015;     // 0,15 %: ticket amarillo de un rival normal
 const TICKET_DROP_EPIC = 0.0001; // 0,01 %: ticket morado de un rival normal (rarísimo)
 /* tickets que sueltan los bosses y mini bosses: [amarillo, morado] */
@@ -1472,8 +1477,8 @@ const TECH_ORDER = ['pierce', 'orbit', 'bounce', 'rain', 'melee', 'nbShoot', 'nb
 const TECH_KINDS = {
   pierce: { icon:'🌪️',
     desc: l => l === 1 ? 'Tu balón atraviesa a los rivales y hace +10% de daño'
-             : l === 2 ? '¡Disparas 3 balones a la vez y +12% de daño!'
-                       : '+12% de daño de los balones' + (l % 2 === 0 ? ', +1 balón' : ''),
+             : l === 2 ? '¡Disparas 2 balones a la vez y +12% de daño!'
+                       : '+12% de daño de los balones' + (l % 2 === 1 ? ', +1 balón' : ''),
     ultDesc: 'Balones más grandes y +15% de daño. Técnica definitiva (R): una bocanada de decenas de balones que lo atraviesan todo' },
   orbit:  { icon:'💫',
     desc: l => l === 1 ? '3 balones giran a tu alrededor y dañan a los rivales cercanos'
@@ -1488,7 +1493,7 @@ const TECH_KINDS = {
                        : 'Más daño, más área y recarga más rápida' + (l % 2 === 1 ? ', +1 proyectil' : ''),
     ultDesc: 'Técnica definitiva (R): una lluvia de impactos que dibuja un triángulo y remata con una gran explosión en el centro' },
   melee:  { icon:'👊',
-    desc: l => l === 1 ? 'Golpeas a ráfagas de cerca a los rivales hacia donde miras'
+    desc: l => l === 1 ? 'Golpeas a ráfagas de cerca al rival más cercano'
              : l === 3 ? '+8% de daño y la ráfaga golpea también hacia atrás'
              : l === 6 ? '+8% de daño y la ráfaga golpea también a los lados'
              : '+8% de daño, más alcance y ráfagas más seguidas',
@@ -1496,11 +1501,11 @@ const TECH_KINDS = {
   // Cuadernos: supertécnicas de apoyo, sin afinidad y sin técnica definitiva (R).
   // Mientras la usas, cada pocos segundos te da una mejora temporal. Pensadas para fusionar con Hillman.
   nbShoot:   { icon:'📕', buff:true, names:['Cuaderno de Tiro', 'Cuaderno de Tiro'], color:'#ff6b5e', label:'Tiro',
-               desc: l => `Sola: no atacas mientras se carga (${nbCd(l)} s). Al cambiar de supertécnica: +${nbPow('nbShoot', l)}% de daño durante lo que hayas cargado (hasta ${nbCd(l)} s). Fusionada: +${nbPow('nbShoot', l)}% permanente`, ultDesc:'Sin técnica definitiva' },
+               desc: l => `No ataca: carga en ${nbCd(l)} s. Al cambiar: +${nbPow('nbShoot', l)}% de daño un rato. Fusionado: +${nbPow('nbShoot', l)}% fijo`, ultDesc:'Sin técnica definitiva' },
   nbDribble: { icon:'📗', buff:true, names:['Cuaderno de Regate', 'Cuaderno de Regate'], color:'#5ec8f2', label:'Regate',
-               desc: l => `Sola: no atacas mientras se carga (${nbCd(l)} s). Al cambiar de supertécnica: +${nbPow('nbDribble', l)}% de esquivar ataques durante lo que hayas cargado (hasta ${nbCd(l)} s). Fusionada: +${nbPow('nbDribble', l)}% permanente`, ultDesc:'Sin técnica definitiva' },
+               desc: l => `No ataca: carga en ${nbCd(l)} s. Al cambiar: +${nbPow('nbDribble', l)}% de regate un rato. Fusionado: +${nbPow('nbDribble', l)}% fijo`, ultDesc:'Sin técnica definitiva' },
   nbSpeed:   { icon:'📙', buff:true, names:['Cuaderno de Velocidad', 'Cuaderno de Velocidad'], color:'#62c96c', label:'Velocidad',
-               desc: l => `Sola: no atacas y, mientras se carga (${nbCd(l)} s), tu velocidad sube hasta +${nbPow('nbSpeed', l)}%. Al cambiar de supertécnica: +${nbPow('nbSpeed', l)}% de velocidad durante lo que hayas cargado (hasta ${nbCd(l)} s). Fusionada: +${nbPow('nbSpeed', l)}% permanente`, ultDesc:'Sin técnica definitiva' },
+               desc: l => `No ataca: carga en ${nbCd(l)} s y te acelera mientras. Al cambiar: +${nbPow('nbSpeed', l)}% de velocidad un rato. Fusionado: +${nbPow('nbSpeed', l)}% fijo`, ultDesc:'Sin técnica definitiva' },
 };
 /* cuadernos: potencia [base, por nivel], recarga y duración del efecto */
 const NOTEBOOK_TECHS = { nbShoot:[25, 8], nbDribble:[15, 4], nbSpeed:[25, 6] };
@@ -1598,7 +1603,7 @@ const TALENTS = {
   antiAfin:    { emoji:'🔄', name:'Anti afinidades',  desc: l => `+${TV('antiAfin', l)}% de daño a los rivales que tienen ventaja contra ti` },
   piscinazo:   { emoji:'🤸', name:'Piscinazo',        desc: l => `Con poca vida (menos del ${LOW_HP * 100}%): +${TV('piscinazo', l)}% de probabilidad de evadir ataques` },
   vagueza:     { emoji:'😴', name:'Vagueza',          desc: l => `+${TV('vagueza', l)}% de experiencia` },
-  suerte:      { emoji:'🍀', name:'Suerte',           desc: l => `${TV('suerte', l)}% de probabilidad de subir 2 niveles de golpe` },
+  suerte:      { emoji:'🍀', name:'Suerte+',          desc: l => `+${Math.round(TALENT_VAL.suerte * l * LUCK_TALENT_K)} de suerte: las mejoras salen de mejor rareza` },
   vamos:       { emoji:'⏱️', name:'¡Vamos!',          desc: l => `Cuanta más velocidad de movimiento tengas, más daño: +${TV('vamos', l)}% de daño por cada +10% de velocidad de movimiento (hasta +150%)` },
   vamosTodos:  { emoji:'👥', name:'¡Vamos todos!',    desc: l => `+${TV('vamosTodos', l)}% a TODO: daño, vida, velocidad, velocidad de ataque, defensa, crítico, regate y experiencia` },
 };
@@ -1765,7 +1770,33 @@ function refreshCoinBadges(){
 refreshCoinBadges();
 
 /* ---------------------- ESCAPARATE DEL JUGADOR SELECCIONADO (pantalla de inicio) ---------------------- */
+/* ======================================================================
+   RÉCORDS: los mejores partidos (tiempo aguantado, rivales eliminados y jugador), en la portada
+   ====================================================================== */
+const RECORDS_KEY = 'ss_records', RECORDS_MAX = 1;
+function loadRecords(){ try { const r = JSON.parse(localStorage.getItem(RECORDS_KEY) || '[]'); return Array.isArray(r) ? r : []; } catch (e) { return []; } }
+function saveRecord(){
+  if (!match || !match.charDef) return;
+  const rec = { t: Math.floor(matchClock()), k: match.kills || 0, id: match.charDef.id,
+                b: match.bossesBeaten || 0, l: match.level || 1, d: Date.now() };
+  const list = loadRecords(); list.push(rec);
+  list.sort((a, b) => (b.t - a.t) || (b.k - a.k));
+  match.recordPos = list.indexOf(rec);
+  try { localStorage.setItem(RECORDS_KEY, JSON.stringify(list.slice(0, RECORDS_MAX))); } catch (e) {}
+}
+function fmtTime(t){ return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`; }
+function renderRecords(){
+  const box = document.getElementById('records-panel'); if (!box) return;
+  const r = loadRecords()[0];
+  const c = r && CHARACTERS.find(x => x.id === r.id);
+  box.innerHTML = `<div class="rec-head">${pxImg('critico', 18)}<span>Mejor récord</span></div>` + (r ?
+    `<div class="rec-row best"><span class="rec-face">${charFace(c, 44)}</span>
+      <span class="rec-main"><b>${c ? (c.nick || c.name) : '—'}</b><small>${r.b} boss${r.b === 1 ? '' : 'es'} · Nv. ${r.l}</small></span>
+      <span class="rec-stats"><b>${fmtTime(r.t)}</b><small>${pxImg('kills', 12)} ${r.k}</small></span></div>`
+    : '<p class="rec-empty">Juega un partido para<br>marcar tu primer récord</p>');
+}
 function updateShowcase(){
+  renderRecords();
   const c = CHARACTERS.find(ch => ch.id === state.selected) || CHARACTERS.find(ch => ch.id === state.unlocked[0]);
   if (!c) return;
   document.getElementById('showcase-emoji').innerHTML = charFace(lookOf(c), 250, 'showcase-face');
@@ -2084,7 +2115,7 @@ const DOCS_ENEMY_DESC = {
   gunner:  ['Cañonero', 'Dispara 3 balones en abanico.'],
 };
 const DOCS_BOSS_DESC = {
-  dark:     'Oscurece el campo: solo ves un círculo a tu alrededor.',
+  dark:     'Cada pocos segundos oscurece el campo de golpe: durante un rato solo ves un círculo muy pequeño a tu alrededor.',
   charge:   'Embestidas: se prepara y carga contra ti.',
   fists:    'Cohetes: marca dónde van a caer con una señal de alerta.',
   shield:   'Escudo rosa que aguanta parte de tus golpes.',
@@ -2112,6 +2143,7 @@ function docsSections(){
     }],
     hillman: ['👴 Hillman y fusiones', () => `<h3>Hillman</h3><p class="intro">Aparece en el borde del campo en el minuto 5 y luego después de algunos bosses (tienes ${HILLMAN.stay} s para llegar hasta él; una flecha te indica dónde está).</p><ul class="docs-list">
       <li><b>Fusión:</b> junta dos supertécnicas en la misma tecla y funcionan a la vez. La R es la de la base.</li>
+      <li><b>Mismo tipo:</b> puedes juntar dos del mismo tipo si son de otra afinidad (por ejemplo, Tornado de fuego + Mano celestial). Cada una dispara por su cuenta: el doble de balones, dos anillos de órbita, dos lluvias…</li>
       <li><b>Nueva:</b> si te queda una tecla libre, te enseña una supertécnica de cualquier afinidad.</li>
       <li><b>Mezcla de 4:</b> cuando la Q y la E tienen 2 habilidades cada una, vuelve una vez más y junta las 4 en la Q. La E queda bloqueada y ya no puedes aprender más: solo subir esas 4. Eliges la base (su R será tu R) y la R pega con la mejor afinidad de las que mezcles contra cada rival.</li></ul>`],
     affinity: ['🔥 Afinidades', () => {
@@ -2126,10 +2158,12 @@ function docsSections(){
     levelup: ['⬆️ Mejoras de nivel', () => {
       let h = `<h3>Mejoras al subir de nivel</h3><p class="intro">Al subir de nivel eliges 1 de 3 cartas: mejoras, supertécnicas o talentos. Las mejoras no tienen tope; algunas rinden cada vez un poco menos. La carta de evolución, cuando la tienes lista, sale siempre. Cada nivel pide más experiencia y, cuanto más avanza el partido, menos experiencia da cada gema.</p><div class="docs-grid">`;
       for (const u of UPGRADES) h += docsCard(optionIcon(u, 30), u.name, u.desc);
+      h += `</div><h4>Rareza de las cartas</h4><p class="intro">Cada carta de mejora o de supertécnica sale con una rareza (su color y sus estrellas, en la esquina de arriba a la derecha). Al principio casi siempre salen comunes y poco comunes; cuanta más <b>Suerte</b> llevas (mejora Suerte y talento Suerte+) y cuanto más avanza el partido, más salen las buenas.</p><div class="docs-grid">`;
+      for (const R of UP_RARITY) h += docsCard(`<i class="docs-rar" style="--urc:${R.color};--urd:${R.dark}"></i>`, R.name, `Mejoras: efecto ×${String(R.mult).replace('.', ',')}. Supertécnicas: ${R.tdmg ? '+' + Math.round(R.tdmg * 100) + '% de daño a esa supertécnica (se acumula)' : 'sin extra'}.`);
       return h + '</div>';
     }],
     talents: ['⭐ Talentos', () => {
-      let h = `<h3>Talentos</h3><p class="intro">Puedes llevar ${TALENT_SLOTS}. Los consigues con el cuaderno que sueltan algunos bosses: eliges 1 de ${TALENT_CHOICES}. Si ya tienes los dos, el cuaderno sube de nivel los que llevas. También salen como cartas al subir de nivel. Llegan hasta el Nv. ${TALENT_MAX}.</p><div class="docs-grid">`;
+      let h = `<h3>Talentos</h3><p class="intro">Puedes llevar ${TALENT_SLOTS}. Los consigues con el cuaderno que sueltan algunos bosses: eliges 1 de ${TALENT_CHOICES} (si lo rechazas, el siguiente boss te lo vuelve a ofrecer). Si ya tienes los dos, el cuaderno sube de nivel los que llevas. También salen como cartas al subir de nivel. Llegan hasta el Nv. ${TALENT_MAX}.</p><div class="docs-grid">`;
       for (const [k, T] of Object.entries(TALENTS)) h += docsCard(optionIcon({ talent: true, id: k, emoji: T.emoji }, 30), T.name, `Nv. 1: ${talentDesc(k, 1)}.<br>Nv. ${TALENT_MAX}: ${talentDesc(k, TALENT_MAX)}.`);
       return h + '</div>';
     }],
@@ -2770,7 +2804,7 @@ const ROSTER_STATS = [
   ['vel',   'Velocidad',     '#5ec8f2', v => Math.round(v)],
   ['dodge', 'Regate',        '#ffa94d', v => `${v.toFixed(1)} %`],
 ];
-const rosterUI = { team:'all', search:'', element:'', pos:'', filter:'all', sort:'no', pick:null };
+const rosterUI = { team:'all', search:'', element:'', pos:'', filter:'all', sort:'no', pick:null, compareA:null };
 
 function isOwned(c){ return state.unlocked.includes(c.id); }
 function teamOf(c){ return TEAM_BY_ID[c.team] || { name:c.team, color:'#4f8df0', crest:'' }; }
@@ -2836,6 +2870,11 @@ function renderRoster(){
     b.onclick = () => { rosterUI.sort = id; renderRoster(); };
     sorts.appendChild(b);
   }
+  // aviso del modo comparar
+  { const bar = document.getElementById('rs-cmp-bar'), a = rosterUI.compareA && CHARACTERS.find(x => x.id === rosterUI.compareA);
+    if (bar){ bar.classList.toggle('hidden', !a);
+      if (a){ bar.innerHTML = `<span>Elige otro jugador para comparar con <b>${a.name}</b></span><button class="btn btn-ghost rs-cmp-cancel">Cancelar</button>`;
+        bar.querySelector('.rs-cmp-cancel').onclick = () => { rosterUI.compareA = null; renderRoster(); }; } } }
   // cuadrícula
   const list = rosterList();
   document.getElementById('rs-shown').textContent = `${list.length} jugadores`;
@@ -2859,7 +2898,11 @@ function renderRoster(){
       <span class="rs-face">${charFace(lookOf(c), 56)}</span>
       <span class="rs-name">${c.name}</span>
       <span class="rs-meta"><i class="rs-dot rarity-${c.rarity}" title="${RARITY_LABEL[c.rarity]}"></i>${c.pos}</span>`;
-    card.onclick = () => { rosterUI.pick = c.id; renderRoster(); };
+    if (rosterUI.compareA && c.id === rosterUI.compareA) card.classList.add('cmp-a');
+    card.onclick = () => {
+      if (rosterUI.compareA && c.id !== rosterUI.compareA){ const a = rosterUI.compareA; rosterUI.compareA = null; renderRoster(); openCompare(a, c.id); return; }
+      rosterUI.pick = c.id; renderRoster();
+    };
     grid.appendChild(card);
   }
   renderRosterDetail();
@@ -2900,7 +2943,9 @@ function renderRosterDetail(){
           ? '<button class="btn btn-secondary rs-action" disabled>★ Titular</button>'
           : '<button id="rs-set-starter" class="btn btn-primary rs-action">Poner de titular</button>')
       : '<button class="btn btn-ghost rs-action" disabled>🔒 Sin fichar</button>'}
-    ${have ? '<button id="rs-upgrades" class="btn btn-secondary rs-action">⬆ Mejoras</button>' : ''}`;
+    ${have ? '<button id="rs-upgrades" class="btn btn-secondary rs-action">⬆ Mejoras</button>' : ''}
+    <button id="rs-compare" class="btn btn-purple rs-action">Comparar</button>`;
+  document.getElementById('rs-compare').onclick = () => { rosterUI.compareA = c.id; SFX.play('click'); renderRoster(); };
   box.querySelectorAll('.rs-look-btn').forEach(b => b.onclick = () => {
     if (b.disabled) return;
     state.shinyOn[c.id] = b.dataset.look === '1'; saveState(); updateShowcase(); renderRoster();
@@ -2911,6 +2956,41 @@ function renderRosterDetail(){
   if (b) b.onclick = () => { state.selected = c.id; saveState(); updateShowcase(); renderRoster(); };
 }
 
+/* COMPARAR dos jugadores (estilo arcade): las dos cartas frente a frente, VS en medio y las stats en barras
+   enfrentadas; gana cada fila el que tenga más (se marca en amarillo) */
+function openCompare(idA, idB){
+  const A = CHARACTERS.find(c => c.id === idA), B = CHARACTERS.find(c => c.id === idB); if (!A || !B) return;
+  const card = c => packCardHtml(c, false, shinyOn(c.id), 0).replace(/<div class="pk-tag[^]*?<\/div>/, '');
+  let wa = 0, wb = 0;
+  const rows = ROSTER_STATS.map(([k, label, color, fmt]) => {
+    const a = A[k] || 0, b = B[k] || 0, mx = STAT_MAX[k] || Math.max(a, b, 1);
+    const pa = Math.max(3, Math.min(100, a / mx * 100)), pb = Math.max(3, Math.min(100, b / mx * 100));
+    const win = a > b + 1e-9 ? 'a' : b > a + 1e-9 ? 'b' : ''; if (win === 'a') wa++; if (win === 'b') wb++;
+    return `<div class="cmp-row">
+        <b class="cmp-v${win === 'a' ? ' win' : ''}">${fmt(a)}</b>
+        <div class="cmp-bar left"><i style="width:${pa}%;--c:${color}"></i></div>
+        <span class="cmp-lbl">${label}</span>
+        <div class="cmp-bar"><i style="width:${pb}%;--c:${color}"></i></div>
+        <b class="cmp-v${win === 'b' ? ' win' : ''}">${fmt(b)}</b>
+      </div>`;
+  }).join('');
+  const ov = document.getElementById('rs-compare-ov');
+  ov.innerHTML = `<div class="cmp-box">
+      <div class="shop-sign cmp-sign"><h2>Comparar</h2></div>
+      <div class="cmp-top">
+        <div class="cmp-card${wa > wb ? ' best' : ''}">${card(A)}<div class="cmp-score">${wa}</div></div>
+        <div class="cmp-vs">VS</div>
+        <div class="cmp-card${wb > wa ? ' best' : ''}">${card(B)}<div class="cmp-score">${wb}</div></div>
+      </div>
+      <div class="cmp-rows">${rows}</div>
+      <div class="cmp-btns"><button class="btn btn-secondary" id="cmp-swap">Cambiar el de la derecha</button><button class="btn btn-primary" id="cmp-close">Volver</button></div>
+    </div>`;
+  ov.classList.remove('hidden');
+  SFX.play('thunder');
+  ov.querySelector('#cmp-close').onclick = () => ov.classList.add('hidden');
+  ov.querySelector('#cmp-swap').onclick = () => { ov.classList.add('hidden'); rosterUI.compareA = idA; rosterUI.pick = idA; renderRoster(); };
+  ov.onclick = e => { if (e.target === ov) ov.classList.add('hidden'); };
+}
 /* buscador y desplegables (se conectan una vez) */
 (function bindRosterInputs(){
   const s = document.getElementById('rs-search');
@@ -3456,6 +3536,7 @@ let match = null; // objeto con todo el estado de la partida activa
 let rafId = null;
 
 function startMatch(charDef){
+  { const ss = document.getElementById('stats-side'); if (ss) ss.classList.add('hidden'); }   // panel de estadísticas (Tab) cerrado al empezar
   canvas.classList.remove('dead-bw'); document.getElementById('screen-game').classList.remove('dead-bw');
   if (typeof hideVsIntro === 'function') hideVsIntro();
   if (rafId) cancelAnimationFrame(rafId);
@@ -3542,7 +3623,7 @@ function startMatch(charDef){
   document.getElementById('tech-bar').style.setProperty('--el', getElement(match.element).color);
   renderTechBar();
   updateHud();
-  document.getElementById('hud-portrait').innerHTML = charFace(charDef, 76);
+  document.getElementById('hud-portrait').innerHTML = charFace(charDef, 96);
   bindControls();
   lastTime = performance.now();
   rafId = requestAnimationFrame(loop);
@@ -3575,8 +3656,9 @@ function bindControls(){
       }
       return;
     }
-    // Pausa con estadísticas: Esc, Tab o P
-    if (['escape', 'tab', 'p'].includes(key)){ if (!e.repeat) togglePause(); return; }
+    // Tab: panel desplegable de estadísticas a la izquierda (el partido sigue). Pausa: Esc o P
+    if (key === 'tab'){ if (!e.repeat && !match.menuOpen) toggleStatsSide(); return; }
+    if (['escape', 'p'].includes(key)){ if (!e.repeat) togglePause(); return; }
     if (match.menuOpen) return;
     match.keys[key] = true;
     if (e.repeat) return;
@@ -3753,11 +3835,11 @@ const ENEMY_KINDS = [
    a veces, un ticket para el gacha. */
 const SPECIAL_ENEMIES = {
   // chance = probabilidad de que salga cada vez que le toca intentarlo (cada "every" segundos)
-  willy:  { name:'Willy Glass', emoji:'💀', color:'#7fe3ff', hp:160, wanderSpeed:0.55, fleeSpeed:2.7,
+  willy:  { name:'Willy Glass', emoji:'💀', color:'#7fe3ff', hp:100, wanderSpeed:0.55, fleeSpeed:2.7,
             firstAt:150, every:[100, 160], chance:0.6, max:1, wanderTime:45, fleeTime:22,
             xpLevels:0.7,          // experiencia = 70 % de la que pide el nivel actual
             coin:15 },
-  kappah: { name:'Kappah', emoji:'🐢', color:'#62c96c', hp:240, speed:0.7, dmg:10,
+  kappah: { name:'Kappah', emoji:'🐢', color:'#62c96c', hp:150, speed:0.7, dmg:10,
             fleeSpeed:2.4, fleeTime:20,   // al recibir el primer golpe deja de atacar y huye
             firstAt:120, every:[80, 130], chance:0.6, max:1,
             ticketChance:0.3,      // 30 % ticket 🎟️ · 70 % saco de monedas 💰
@@ -3948,10 +4030,13 @@ function psTier(t){
   for (let i = 0; i < w.length; i++){ if (r < w[i]) return PS.TIERS[i]; r -= w[i]; }
   return PS.TIERS[0];
 }
+/* un pelín más difícil a partir de Jude (5º boss): rivales y bosses con algo más de vida y daño */
+const LATE_DIFF = { fromBoss: 4, hp: 1.12, dmg: 1.10 };
+function lateK(stat){ return match && (match.bossIdx || 0) >= LATE_DIFF.fromBoss ? LATE_DIFF[stat] : 1; }
 /* stats de un rival normal en el segundo t (antes de su tipo y complexión) */
 function psEnemyStats(t){
-  const tr = psTier(t), hs = 1 + t / PS.hpGrow, ds = 1 + t / PS.dmgGrow;
-  return { hp: tr.hp * hs * psHpK(t) * PS.kD, dmg: tr.dmg * ds * PS.DMG_K * PS.kH * PS.nerf, shot: tr.dmg * 0.8 * ds * PS.kH * PS.nerf, xp: tr.xp * PS.XP_K };
+  const tr = psTier(t), hs = 1 + t / PS.hpGrow, ds = 1 + t / PS.dmgGrow, kh = lateK('hp'), kd = lateK('dmg');
+  return { hp: tr.hp * hs * psHpK(t) * PS.kD * kh, dmg: tr.dmg * ds * PS.DMG_K * PS.kH * PS.nerf * kd, shot: tr.dmg * 0.8 * ds * PS.kH * PS.nerf * kd, xp: tr.xp * PS.XP_K };
 }
 /* jefes: vida y daño de su franja (interpolado en el tiempo; más allá del último, sigue creciendo) */
 function psBossStats(t){
@@ -4183,10 +4268,12 @@ function loop(now){
   const dt = Math.min(0.05, (now - lastTime) / 1000);
   lastTime = now;
   // si algo falla en un fotograma, se avisa en la consola pero el juego NO se congela
-  try { if (!match.paused) update(dt); }
+  let udt = dt;
+  if (match.slowmo > 0){ match.slowmo -= dt; udt = dt * 0.3; }        // K.O. de un boss: cámara lenta un momento
+  try { if (!match.paused) update(udt); }
   catch (err){ console.error('[update]', err); }
   if (match.over) return;           // fin de partida: el bucle se detiene aquí
-  try { render(); if (match.dying) drawDeathFx(); }
+  try { render(); if (match.dying) drawDeathFx(); if (match.coinFlip) drawCoinFlip(); }
   catch (err){ console.error('[render]', err); }
   finally { ctx = ctxMain; ctx.restore && ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
   rafId = requestAnimationFrame(loop);
@@ -4208,12 +4295,98 @@ function updateDeath(dt){
   updateHud();
   if (D.t >= DEATH_TIME){ match.dying = null; endMatch(D.won, D.reason); }
 }
+/* ======================================================================
+   MONEDA DEL ÁRBITRO: al caer, el árbitro lanza la moneda. Corazón = revives; calavera = fin.
+   ====================================================================== */
+const REF_COIN = { spin: 2.3, hold: 1.1, revive: 0.5, iframes: 2.5 };
+function tryRefereeCoin(){
+  if (!hasRelic('monedaArbitro') || match.coinFlip) return false;
+  match.relic = null; renderInventory();                       // se gasta al usarla
+  match.coinFlip = { t: 0, win: Math.random() < 0.5, ding: 0 };
+  match.hp = 0; match.keys = {};
+  SFX.play('whistle');
+  return true;
+}
+function updateCoinFlip(dt){
+  const C = match.coinFlip; C.t += dt;
+  const q = Math.min(1, C.t / REF_COIN.spin), turns = Math.floor(coinAngle(q) / Math.PI);
+  if (turns > C.ding && q < 1){ C.ding = turns; if (turns % 2 === 0) SFX.play('step'); }   // tic-tic de la moneda al girar
+  if (q >= 1 && !C.landed){ C.landed = true; SFX.play(C.win ? 'ult_ready' : 'whistle_end'); }
+  if (C.t < REF_COIN.spin + REF_COIN.hold) return;
+  match.coinFlip = null;
+  if (C.win){
+    match.hp = match.maxHp * REF_COIN.revive; match.iframeUntil = match.elapsed + REF_COIN.iframes;
+    match.enemyShots = []; match.bossMarks = (match.bossMarks || []).filter(m => m.kind !== 'lob');
+    for (const e of match.enemies){ if (e.dead || e.boss) continue; const dx = e.x - match.x, dy = e.y - match.y, d = Math.hypot(dx, dy) || 1; if (d < 260){ e.x += dx / d * (260 - d); e.y += dy / d * (260 - d); } }   // aparta a los de cerca
+    match.effects.push({ x: match.x, y: match.y, fixed: true, maxR: 260, life: 0.6, dur: 0.6, color: '#ff6b8a', fill: true });
+    addPickText('¡Revives!', '#ff6b8a', 'Moneda del Árbitro');
+  } else startDeath();
+}
+/* sprite pixel de la moneda (cara corazón, cara calavera o canto oscuro) */
+const _coinSpr = {};
+function coinSprite(heart){
+  const key = heart === null ? 'edge' : heart ? 'h' : 's'; if (_coinSpr[key]) return _coinSpr[key];
+  const N = 32, c = (N - 1) / 2;
+  const cv = pixelSprite(N, (x, y) => {
+    const d = Math.hypot(x - c, y - c);
+    if (d > 15.6) return null;
+    if (d > 14.4) return '#1b1d26';                                     // contorno
+    if (heart === null) return d > 12.5 ? '#6a4a00' : '#8a6200';      // canto
+    const gold = heart ? ['#fff1a0', '#f2b705', '#b47d00', '#7a5200'] : ['#f1e8c0', '#c9b26a', '#8f7a3a', '#5e4e20'];
+    if (d > 13.2) return gold[2];                                       // borde exterior oscuro
+    if (d > 11.6) return (x + y) % 4 === 0 ? gold[0] : gold[1];        // aro con estrías
+    if (d > 10.6) return gold[3];                                       // surco
+    const l = (x - c) * -0.6 + (y - c) * -0.8;                          // luz de arriba a la izquierda
+    return l > 5 ? gold[0] : l < -6 ? gold[2] : gold[1];
+  });
+  if (heart !== null){                                                  // el dibujo de la cara, en el centro
+    const g = cv.getContext('2d'), icon = heart ? PX_ICONS.vitalidad : PX_ICONS.kills;
+    if (icon){ g.imageSmoothingEnabled = false; g.drawImage(icon, 8, heart ? 9 : 8, 16, 16); }
+    g.fillStyle = 'rgba(255,255,255,0.85)'; g.fillRect(8, 7, 3, 2); g.fillRect(7, 9, 2, 2);   // brillo
+  }
+  return (_coinSpr[key] = cv);
+}
+/* ángulo de giro: muchas vueltas que se frenan y terminan en la cara que toca (0 = corazón, π = calavera) */
+function coinAngle(q){ const C = match.coinFlip, total = Math.PI * 2 * 7 + (C && !C.win ? Math.PI : 0); return total * (1 - Math.pow(1 - q, 3)); }
+function drawCoinFlip(){
+  const C = match.coinFlip; if (!C) return;
+  const q = Math.min(1, C.t / REF_COIN.spin), a = coinAngle(q), c = Math.cos(a);
+  const heart = c >= 0, wq = Math.max(0.06, Math.abs(c));
+  const R = 78, cx = W / 2, hop = Math.sin(Math.PI * Math.min(1, q * 1.05)) * 150, cy = H / 2 - 30 - hop;
+  ctx.save();
+  ctx.fillStyle = 'rgba(3,6,22,0.72)'; ctx.fillRect(0, 0, W, H);               // fondo oscuro
+  // sombra en el suelo
+  ctx.globalAlpha = 0.35; ctx.fillStyle = '#000'; ctx.beginPath(); ctx.ellipse(cx, H / 2 + 70, R * (0.5 + 0.5 * (1 - hop / 150)) * wq, 10, 0, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+  // moneda pixel (32x32 escalada sin suavizado): canto más oscuro detrás y la cara que toca
+  const spr = coinSprite(heart), S = 5, sw = Math.max(S * 2, Math.round(32 * S * wq)), sh = 32 * S;
+  ctx.imageSmoothingEnabled = false;
+  const edge = Math.round((1 - wq) * 6) * S / 2;                       // grosor del canto al girar
+  if (edge > 0){ ctx.globalAlpha = 1; ctx.drawImage(coinSprite(null), Math.round(cx - sw / 2 + (heart ? edge : -edge)), Math.round(cy - sh / 2), sw, sh); }
+  ctx.drawImage(spr, Math.round(cx - sw / 2), Math.round(cy - sh / 2), sw, sh);
+  // textos
+  ctx.textAlign = 'center'; ctx.lineJoin = 'round';
+  ctx.font = "28px InazumaFont, Bangers, Impact, sans-serif"; ctx.lineWidth = 8; ctx.strokeStyle = '#071233';
+  ctx.strokeText('Moneda del Árbitro', W / 2, H / 2 - 230); ctx.fillStyle = '#ffe14a'; ctx.fillText('Moneda del Árbitro', W / 2, H / 2 - 230);
+  if (q >= 1){
+    const pop = Math.min(1, (C.t - REF_COIN.spin) / 0.15);
+    ctx.save(); ctx.translate(W / 2, H / 2 + 140); ctx.scale(0.6 + 0.4 * pop, 0.6 + 0.4 * pop);
+    ctx.font = "54px InazumaFont, Bangers, Impact, sans-serif"; ctx.lineWidth = 12; ctx.strokeStyle = '#071233';
+    
+    ctx.restore();
+    if (C.win){ for (let i = 0; i < 16; i++){ const an = i * 0.39 + C.t * 2, d = 90 + (C.t - REF_COIN.spin) * 220; pxBlock(cx + Math.cos(an) * d, cy + Math.sin(an) * d, 6, i % 2 ? '#ff6b8a' : '#ffe14a'); } }
+  } else {
+    ctx.font = "600 16px 'Pixelify Sans', Inter, sans-serif"; ctx.fillStyle = '#ffffff';
+    ctx.fillText('Corazón: revives · Calavera: fin del partido', W / 2, H / 2 + 140);
+  }
+  ctx.restore();
+}
 function drawDeathFx(){                                   // sencilla: solo blanco y negro (CSS), cámara lenta y un leve oscurecido al final
   const D = match.dying; if (!D) return;
   const k = Math.max(0, (D.t - DEATH_TIME * 0.55) / (DEATH_TIME * 0.45));
   if (k > 0){ ctx.save(); ctx.globalAlpha = 0.45 * k; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); ctx.restore(); }
 }
 function update(dt){
+  if (match.coinFlip){ updateCoinFlip(dt); return; }          // Moneda del Árbitro en el aire: todo parado
   if (match.dying){ updateDeath(dt); return; }
   match.elapsed += dt;
   if (match.hurtFx > 0) match.hurtFx = Math.max(0, match.hurtFx - dt * 2.2);
@@ -4256,7 +4429,7 @@ function update(dt){
   // efectos visuales en curso
   for (const f of match.effects) f.life -= dt;
   for (const b of match.bolts) b.life -= dt;
-  for (const t of match.texts){ t.life -= dt; t.y -= 32 * dt; }
+  for (const t of match.texts){ t.life -= dt; t.y -= (t.big ? 14 : 32) * dt; }
   match.texts = match.texts.filter(t => t.life > 0);
   match.effects = match.effects.filter(f => f.life > 0);
   match.bolts = match.bolts.filter(b => b.life > 0);
@@ -4302,13 +4475,16 @@ function update(dt){
     const keepAway = dashing || (e.shooter && d < 240) || (e.lobber && d < 300) || (e.boss && (e.holdUntil > match.elapsed || e.dashT > 0 || e.warnT > 0 || e.tpAt));   // los tiradores no se acercan del todo; Chicken se frena
     if (!keepAway){
       const ts = terrainSlow(e.x, e.y) * (e.slowUntil > match.elapsed ? 0.6 : 1) * (e.airSlowUntil > match.elapsed ? AFF.airSlow : 1);   // Técnica secreta / pasiva de Aire
-      e.x += (ex/d) * e.speed * ts * 60 * dt;
-      e.y += (ey/d) * e.speed * ts * 60 * dt;
+      let [ux, uy] = match.inArena ? [ex / d, ey / d] : goalSteer(e, ex / d, ey / d);   // rodean las porterías en vez de quedarse pegados
+      if (e.unstickUntil > match.elapsed){ ux = e.unstickX; uy = e.unstickY; }        // atascado: se aparta un momento
+      e.x += ux * e.speed * ts * 60 * dt;
+      e.y += uy * e.speed * ts * 60 * dt;
     }
     if (e.shooter) updateShooter(e, d, dt);
     if (e.lobber) updateLobber(e, d, dt);
     if (match.inArena) pushOutOfRocks(e, 12 + (e.size || 0));
     else pushOutOfObstacles(e, 12 + (e.size || 0));
+    if (!keepAway && !e.boss) checkStuck(e, d, dt);
     // golpe de contacto cada 0.5 s, con regate (esquiva) y defensa
     e.hitCd = (e.hitCd || 0) - dt;
     if (e.boss || e.miniBoss) updateBoss(e, dt);
@@ -4333,7 +4509,7 @@ function update(dt){
   match._lx = match.x; match._ly = match.y;
   updateWeather(dt);
 
-  if (match.hp <= 0){ startDeath(); return; }   // te eliminan: animación en blanco y negro y luego el final (contra Mark cuenta como final)   // te eliminan: pitido final (contra Mark cuenta como final)
+  if (match.hp <= 0){ if (tryRefereeCoin()) return; startDeath(); return; }   // te eliminan: animación en blanco y negro y luego el final (contra Mark cuenta como final)   // te eliminan: pitido final (contra Mark cuenta como final)
   if (!match.levelupChoices && match.xp >= match.xpNext) levelUp();
   updateHud();
 }
@@ -4347,34 +4523,37 @@ function autoAttack(dt){
   // con una supertécnica activa solo ataca ella: los disparos básicos solo salen
   // con el hueco vacío o si la técnica es de disparo (penetrante / rebote)
   const at = activeTech();
-  if (at && !techLvl('pierce') && !techLvl('bounce') && !(isBuffKind(at.kind) && (!at.fused || isBuffKind(at.fused.kind)))) return;
+  if (at && !techParts(at).some(q => q.kind === 'pierce' || q.kind === 'bounce')) return;   // las otras supertécnicas atacan por su cuenta
   const target = nearestEnemy();
   if (!target) return;
   const d = Math.hypot(target.x-match.x, target.y-match.y);
   if (d > match.range) return;
 
   const ang = Math.atan2(target.y-match.y, target.x-match.x);
-  const pl = techLvl('pierce'), bl = techLvl('bounce');
-  const n = match.multishot + (pl > 1 ? 2 + Math.floor((pl - 2) / 2) : 0);   // penetrante: 1 balón en Nv.1; x3 en Nv.2; luego +1 cada 2 niveles
-  const spread = pl ? 0.12 : 0.16;
-  // (subir de nivel las supertécnicas da menos que antes: lo más fuerte son los talentos)
-  const techDmg = (pl ? (1.1 + 0.12 * (pl - 1)) * (pl >= EVOLVE_AT ? 1.15 : 1) : 1)
-                + 0.07 * Math.max(0, bl - 1);
-  for (let i = 0; i < n; i++){
-    const a = ang + (i - (n - 1) / 2) * spread;
-    const crit = Math.random() * 100 < effCrit();
-    const proj = {
-      x:match.x, y:match.y, vx:Math.cos(a)*9, vy:Math.sin(a)*9,
-      r: pl ? (pl >= EVOLVE_AT ? 11 : 9) : bl ? 8 + 0.5 * bl + (bl >= EVOLVE_AT ? 2 : 0) : 5,     // rebote: gordo y crece con el nivel
-      dmg: match.dmg * techDmg * (crit ? effCritMult() : 1), crit, life:1.2,
-      techKind: pl ? 'pierce' : bl ? 'bounce' : null, style: pl ? 'pierce' : bl ? 'bounce' : null,
-    };
-    proj.element = techElement(pl ? 'pierce' : bl ? 'bounce' : null);
-    if (pl) proj.pierce = true;                // atraviesa a los rivales
-    if (bl) proj.bounces = 2 + Math.floor((bl - 1) / 2);   // rebota entre cercanos: 2,2,3,3,4,4,5,5
-    if (proj.pierce || proj.bounces) proj.hit = [];
-    match.projectiles.push(proj);
-  }
+  const shooters = techParts(at).filter(q => q.kind === 'pierce' || q.kind === 'bounce');
+  const fire = (q, off) => {                      // una ráfaga: la de una parte (o el disparo básico si q es null)
+    const pl = q && q.kind === 'pierce' ? q.lvl : 0, bl = q && q.kind === 'bounce' ? q.lvl : 0;
+    const n = match.multishot + (pl <= 1 ? 0 : 1 + Math.floor((pl - 1) / 2));   // penetrante: 1 balón en Nv.1; x2 en Nv.2; luego +1 en los niveles impares (3, 5, 7, 9)
+    const spread = pl ? 0.12 : 0.16;
+    const techDmg = (pl ? (1.1 + 0.12 * (pl - 1)) * (pl >= EVOLVE_AT ? 1.15 : 1) : 1) + 0.07 * Math.max(0, bl - 1);
+    const kind = pl ? 'pierce' : bl ? 'bounce' : null, el = q ? (q.element || match.element) : match.element;
+    for (let i = 0; i < n; i++){
+      const a = ang + off + (i - (n - 1) / 2) * spread;
+      const crit = Math.random() * 100 < effCrit();
+      const proj = {
+        x:match.x, y:match.y, vx:Math.cos(a)*9, vy:Math.sin(a)*9,
+        r: pl ? (pl >= EVOLVE_AT ? 11 : 9) : bl ? 8 + 0.5 * bl + (bl >= EVOLVE_AT ? 2 : 0) : 5,     // rebote: gordo y crece con el nivel
+        dmg: match.dmg * techDmg * (crit ? effCritMult() : 1), crit, life:1.2,
+        techKind: kind, style: kind, element: el, evo: (pl || bl) >= EVOLVE_AT, part: q || null,
+      };
+      if (pl) proj.pierce = true;                // atraviesa a los rivales
+      if (bl) proj.bounces = 2 + Math.floor((bl - 1) / 2);   // rebota entre cercanos: 2,2,3,3,4,4,5,5
+      if (proj.pierce || proj.bounces) proj.hit = [];
+      match.projectiles.push(proj);
+    }
+  };
+  if (!shooters.length) fire(null, 0);            // disparo básico (hueco vacío o tecla sin tiro)
+  else shooters.forEach((q, i) => fire(q, shooters.length > 1 ? (i - (shooters.length - 1) / 2) * 0.22 : 0));   // varias de tiro: una ráfaga cada una, algo abiertas
   SFX.play('shoot');
   match.kickT = KICK_TIME; match.kickFace = face8Of(Math.cos(ang), Math.sin(ang));   // pose de chutar hacia el rival
   match.atkCooldown = cdMult() / (match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? PBALL.yellow.mult : 1));
@@ -4447,7 +4626,7 @@ function updateProjectiles(dt){
       if (p.hit && p.hit.includes(e)) continue;     // ya golpeó a este rival
       if (Math.hypot(p.x-e.x, p.y-e.y) >= 14 + p.r + (e.size || 0)) continue;
 
-      damageEnemy(e, p.dmg, { crit:p.crit, chargeKind:p.techKind, ult:p.ultDmg, ultKind:p.ultKind, element:p.element, proj:true });
+      damageEnemy(e, p.dmg, { crit:p.crit, chargeKind:p.techKind, ult:p.ultDmg, ultKind:p.ultKind, element:p.element, proj:true, part:p.part });
       if (p.patch) match.patches.push({ x:e.x, y:e.y, r:p.patch.r, dmg:p.patch.dmg, life:p.patch.dur, dur:p.patch.dur, fx:p.fx, el:p.element });
       if (p.hit) p.hit.push(e);
 
@@ -4487,9 +4666,16 @@ const TECH_CORR = {
   rain:   [0.269, 0.317, 0.201, 0.237, 0.177, 0.203, 0.185, 0.178, 0.149, 0.174],
   melee:  [0.432, 0.435, 0.49, 0.538, 0.277, 0.184, 0.186, 0.197, 0.199, 0.231],
 };
-function techDmgCorr(){
-  const t = activeTech(); if (!t || !TECH_CORR[t.kind]) return 1;
-  return TECH_CORR[t.kind][Math.max(0, Math.min(9, t.lvl - 1))] * (match.spRatio || 1);
+/* según lo fácil que es acertar: las que buscan solas o atraviesan pegan algo menos;
+   las difíciles de acertar (lluvia/granadas que tardan en caer y cuerpo a cuerpo) pegan bastante más */
+const TECH_HIT_K = { pierce: 0.85, bounce: 0.85, orbit: 0.88, rain: 1.35, melee: 1.5 };
+function techHitK(opts){ const k = opts.chargeKind || opts.ultKind; return (k && TECH_HIT_K[k]) || 1; }
+function techDmgCorr(opts = {}){
+  const t = activeTech(); if (!t) return 1;
+  const hk = opts.chargeKind || opts.ultKind;
+  const q = (hk && (opts.part || techParts(t).find(x => x.kind === hk))) || (TECH_CORR[t.kind] ? t : techParts(t).find(x => TECH_CORR[x.kind]));
+  if (!q || !TECH_CORR[q.kind]) return 1;
+  return TECH_CORR[q.kind][Math.max(0, Math.min(9, q.lvl - 1))] * (match.spRatio || 1) * (1 + (q.rarDmg || 0));   // + daño ganado por rareza
 }
 /* los escudos de los bosses (Artist, Jude, Cloak, Walters) y las torres de Aphrodite salen SIEMPRE
    al 75%, 50% y 25% de vida: un golpe enorme no puede saltárselos (la vida se queda en ese %) */
@@ -4509,7 +4695,7 @@ function bossGate(e){
 }
 function damageEnemy(e, amount, opts = {}){
   if (e.dead) return;
-  if (!opts.noProc) amount *= techDmgCorr();
+  if (!opts.noProc) amount *= techDmgCorr(opts) * techHitK(opts);
   if (pbActive('red')) amount *= PBALL.red.mult;                        // balón rojo: más ataque
   if (e.boss){
     if (e.towerShield){ if (!(e.blockTxtAt > match.elapsed)){ e.blockTxtAt = match.elapsed + 0.5; addFloatText(e.x, e.y - 50, '¡Bloqueado!', '#ffd84a'); } return; }   // Aphrodite con torre activa
@@ -4549,14 +4735,16 @@ function damageEnemy(e, amount, opts = {}){
   if ((e.special === 'willy' || e.special === 'kappah') && e.hp > 0) startWillyFlee(e);
   if (e.hp <= 0){
     e.dead = true;
+    match.kills = (match.kills || 0) + 1;                // contador de rivales eliminados
     if (e.boss){
       const alive = (match.bossGroup || []).filter(o => !o.dead);
-      if (alive.length){                                                 // quedan hermanos en pie: recuperan un 30% de su vida
+      if (alive.length){                                                 // quedan hermanos en pie: recuperan un 65% de su vida
         match.boss = alive[0];
         for (const o of alive){ const h = o.maxHp * MURDOCK_REGEN; o.hp = Math.min(o.maxHp, o.hp + h); addFloatText(o.x, o.y - 50, `+${Math.round(h)}`, '#6fdc8c'); }
-        showBanner(`¡${e.name} derrotado!`, alive.length > 1 ? `Quedan ${alive.length} y se curan un 30%` : 'Queda uno: ya no se cura', getElement(e.element).color);
+        showBanner(`¡${e.name} derrotado!`, `Queda${alive.length > 1 ? 'n' : ''} ${alive.length} y se cura${alive.length > 1 ? 'n' : ''} un ${Math.round(MURDOCK_REGEN * 100)}%`, getElement(e.element).color);
         return;
       }
+      startBossKO(e);                                   // mini animación de K.O. (cámara lenta, destello, el boss sale volando)
       onBossDefeated(e); return;
     }
     dropLoot(e);
@@ -4638,11 +4826,14 @@ function talentSpeedMult(){
 function nbLoneSpeed(){
   if (!match) return 0;
   const t = activeTech();
-  if (!t || t.kind !== 'nbSpeed' || t.fused) return 0;
-  return nbPow('nbSpeed', t.lvl) * Math.min(1, t.nbCharge || 0);
+  if (!nbOnly(t)) return 0;
+  const q = techParts(t).find(x => x.kind === 'nbSpeed'); if (!q) return 0;
+  return nbPow('nbSpeed', q.lvl) * Math.min(1, t.nbCharge || 0);
 }
 /* lone = cuaderno sin fusionar en uso (mientras tanto no atacas) */
-function loneNotebook(){ const t = activeTech(); return !!t && isBuffKind(t.kind) && !t.fused; }
+function loneNotebook(){ return nbOnly(activeTech()); }
+/* la tecla solo lleva cuadernos (uno solo o varios mezclados): no ataca, se carga su círculo */
+function nbOnly(t){ return !!t && techParts(t).every(q => isBuffKind(q.kind)); }
 /* bonus activo de un cuaderno:
    - fusionado con la supertécnica que usas: permanente
    - cargado y luego cambiado a la otra supertécnica: durante el tiempo del círculo */
@@ -4676,7 +4867,7 @@ function gemTier(xp){ return xp >= 15 ? 'l' : xp >= 7 ? 'm' : 's'; }
 function buffActive(k){ return match.buffs[k] > match.elapsed; }
 
 /* ======================================================================
-   BALONES DE PODER: salen por el campo al azar (sin avisar). Se guardan (hasta 6 de cada)
+   BALONES DE PODER: salen por el campo al azar (sin avisar). Se guardan (hasta 3 de cada)
    y se activan con 1 / 2 / 3 / 4:
    1 rojo = más ataque · 2 azul = más velocidad · 3 verde = escudo total · 4 amarillo = más velocidad de ataque
    ====================================================================== */
@@ -4686,7 +4877,7 @@ const PBALL = {
   blue:   { name: 'Balón azul',     desc: '+40% de velocidad',          dur: 8, color: '#4f9dff', mult: 1.4 },
   green:  { name: 'Balón verde',    desc: 'Escudo: no recibes daño',    dur: 4, color: '#4fd05a' },
   yellow: { name: 'Balón amarillo', desc: '+60% de velocidad de ataque', dur: 8, color: '#ffd21e', mult: 1.6 },
-  maxEach: 6, maxGround: 6, life: 45, every: [11, 19], fieldSpawn: false, dropChance: 0.012,   // ya no salen solos: los suelta un rival al caer (1,2%)   // uno cada ~11-19 s y como mucho 6 en el suelo
+  maxEach: 3, maxGround: 6, life: 45, every: [11, 19], fieldSpawn: false, dropChance: 0.012,   // ya no salen solos: los suelta un rival al caer (1,2%)   // uno cada ~11-19 s y como mucho 6 en el suelo
 };
 const PBALL_IMG = { img: new Image(), ok: false }; PBALL_IMG.img.onload = () => { PBALL_IMG.ok = true; }; PBALL_IMG.img.src = 'assets/ui/pballs.png';
 function pbInit(){ if (!match.pb) match.pb = { inv: { red: 0, blue: 0, green: 0, yellow: 0 }, until: {}, ground: [], next: 6 }; return match.pb; }
@@ -4715,7 +4906,7 @@ function updatePBalls(dt){
   for (const b of P.ground){
     b.t += dt;
     const d = Math.hypot(match.x - b.x, match.y - b.y);
-    if (P.inv[b.k] >= PBALL.maxEach) continue;                    // ya llevas 6 de ese color: no lo coges
+    if (P.inv[b.k] >= PBALL.maxEach) continue;                    // ya llevas 3 de ese color: no lo coges
     if (b.pull || d < match.pickup * 0.6){ b.pull = true; b.pt = (b.pt || 0) + dt; const sp = Math.min(1500, 260 + b.pt * 700) * dt; b.x += (match.x - b.x) / (d || 1) * sp; b.y += (match.y - b.y) / (d || 1) * sp; }
     if (d < 26){ b.got = true; P.inv[b.k]++; SFX.play('select'); renderPBallBar(); }
   }
@@ -4887,7 +5078,7 @@ function spawnBoss(x, y){   // (y puede cambiar para Aphrodite, que sale en el c
   const i = match.bossIdx;
   const def = BOSSES[i];
   const PB = psBossStats(psTime());                 // vida y daño de jefe de PokéSurvivor para este minuto
-  const hp = PB.hp * (PS_BOSS_HP[i] ?? 1);
+  const hp = PB.hp * (PS_BOSS_HP[i] ?? 1) * lateK('hp');
   const parts = def.group || [def];
   match.bossGroup = [];
   parts.forEach((p, k) => {
@@ -4897,8 +5088,8 @@ function spawnBoss(x, y){   // (y puede cambiar para Aphrodite, que sale en el c
     const boss = {
       boss:true, idx:i, name:p.name, team:def.team, emoji:p.emoji, element: sheetElement(BOSS_SHEETS[p.name]) || p.element,
       x:bx, y, size:20, hp: hp / n, maxHp: hp / n, speed:0.8,
-      dmg: PB.dmg,                                // daño por contacto
-      shotDmg: PB.shot,                           // daño de cada proyectil
+      dmg: PB.dmg * lateK('dmg'),                 // daño por contacto
+      shotDmg: PB.shot * lateK('dmg'),            // daño de cada proyectil
       attacks:p.attacks, attackIdx:k, special: def.special || null,
       attackCd: 2 + k * 0.7, attackEvery: def.attackEvery || Math.max(1.8, 3 - 0.12 * i) * (n > 1 ? 1.3 : 1),
       pending: [], specialCd: 3,
@@ -4929,10 +5120,19 @@ function spawnBoss(x, y){   // (y puede cambiar para Aphrodite, que sale en el c
 
 /* ---- lo que hace único a cada boss (sección 7) ---- */
 const BOSS_DARK = { dark: 230, teleport: 330 };     // radio de visión cuando el boss oscurece el mapa
+/* Talisman: oscuridad a ratos (ciclo de 9 s: 4 s de luz, 1 s en el que se cierra, 3 s a oscuras con poca visión, 1 s que se abre) */
+const TALISMAN_DARK = { cycle: 9, light: 4, fadeIn: 1, dark: 3, r: 150 };
+function talismanDarkK(){
+  const D = TALISMAN_DARK, t = (duelTime() + D.cycle - D.light + 1) % D.cycle;   // empieza a oscurecer al segundo de duelo
+  if (t < D.fadeIn) return t / D.fadeIn;
+  if (t < D.fadeIn + D.dark) return 1;
+  if (t < D.fadeIn + D.dark + 1) return 1 - (t - D.fadeIn - D.dark);
+  return 0;
+}
 const BOSS_SHIELD = { dur: 5, every: 15, breakAt: 0.08, color: { shield:'#e45fa8', walters:'#7fd03a', royal:'#5f8cff', teleport:'#b0b6c8' } };
 const EXTRA_SHIELD = { royal: true, teleport: true };   // Jude y Cloak también se ponen escudo (aparte de su habilidad)   // breakAt = % de su vida que rompe el escudo
 const JUDE_DODGE = 0.38;                            // Jude esquiva ~35-40% de tus golpes
-const MURDOCK_REGEN = 0.30;                         // al caer un hermano, los otros recuperan un 30%
+const MURDOCK_REGEN = 0.65;                         // al caer un hermano, los otros recuperan un 65% (antes 30%)
 /* zona marcada en el suelo que, al acabar el aviso, golpea (puños de Feldt, rocas de Walters, misiles) */
 function bossMark(x, y, dur, r, dmg, kind, color, extra = {}){
   match.bossMarks.push({ x, y, t: 0, dur, r, dmg, kind, color, ...extra });
@@ -5116,7 +5316,8 @@ function updateBossMarks(dt){
     m.t += dt;
     if (m.t >= m.dur){
       m.done = true;
-      match.effects.push({ x:m.x, y:m.y, fixed:true, maxR:m.r, life:0.35, dur:0.35, color:m.color, fill:true });
+      if (m.kind === 'lob') (match.pxBooms = match.pxBooms || []).push({ x: m.x, y: m.y, r: m.r, col: m.color || '#ff4a3c', t: 0, seed: Math.random() * 6 });   // explosión arcade
+      else match.effects.push({ x:m.x, y:m.y, fixed:true, maxR:m.r, life:0.35, dur:0.35, color:m.color, fill:true });
       const dm = Math.hypot(m.x - match.x, m.y - match.y), red = 1 - Math.min(75, match.def) / 100;
       if (dm < m.r) hurtPlayer(m.dmg * ENEMY_PROJ_X3 * red, null);
       else if (m.wave && dm < m.wave){ hurtPlayer(m.dmg * 0.35 * ENEMY_PROJ_X3 * red, null);                  // onda expansiva pequeña
@@ -5125,6 +5326,7 @@ function updateBossMarks(dt){
     }
   }
   match.bossMarks = match.bossMarks.filter(m => !m.done);
+  if (match.pxBooms){ for (const b of match.pxBooms) b.t += dt; match.pxBooms = match.pxBooms.filter(b => b.t < PXBOOM_DUR); }
 }
 function bossInvisible(b){ return b && b.invisUntil > match.elapsed; }
 
@@ -5617,7 +5819,7 @@ function onBossDefeated(b){
     return;
   }
   scheduleHillman();
-  const talentBoss = TALENT_BOSSES.includes(match.bossesBeaten) && match.talents.length < TALENT_SLOTS;
+  const talentBoss = (TALENT_BOSSES.includes(match.bossesBeaten) || match.talentOwed) && match.talents.length < TALENT_SLOTS;   // si lo rechazaste, vuelve a salir
   if (!talentBoss && match.bossesBeaten >= RELIC_FROM_BOSS && !TALENT_BOSSES.includes(match.bossesBeaten)) match.pendingRelic = randomRelic();   // objeto al volver al campo
   match.enemyShots = [];
   // recompensa: gema grande (casi un nivel), monedas y un objeto seguro
@@ -5889,12 +6091,14 @@ function updateHillman(){
 
 /* supertécnicas al azar de cualquier atributo que no tengas ya */
 function randomTechOffers(n, otherElement = false){
-  const owned = match.techs.flatMap(t => techParts(t).map(q => q.kind));
+  // se puede repetir tipo con OTRA afinidad (p. ej. Tornado de fuego + Mano celestial); lo que no se repite es la misma
+  const parts = match.techs.flatMap(t => techParts(t));
+  const ownedKind = parts.map(q => q.kind), ownedPair = parts.map(q => q.kind + ':' + (q.element || match.element));
   const pool = [];
   for (const k of TECH_ORDER){
-    if (owned.includes(k) || (match.veto || []).includes(k)) continue;
-    if (isBuffKind(k)){ pool.push({ kind:k, element:null }); continue; }      // los cuadernos no tienen afinidad
-    for (const el of ELEMENT_ORDER) if (!otherElement || el !== match.element) pool.push({ kind:k, element:el });
+    if ((match.veto || []).includes(k)) continue;
+    if (isBuffKind(k)){ if (!ownedKind.includes(k)) pool.push({ kind:k, element:null }); continue; }      // los cuadernos no tienen afinidad (no se repiten)
+    for (const el of ELEMENT_ORDER) if ((!otherElement || el !== match.element) && !ownedPair.includes(k + ':' + el)) pool.push({ kind:k, element:el });
   }
   pool.sort(() => Math.random() - 0.5);
   // primero tipos distintos; si no llegan a n, se completa con el mismo tipo de otros atributos
@@ -6059,6 +6263,7 @@ const RELICS = {
   balonAlius:   { emoji:'🧿', name:'Balón Alius',          desc:'Tus golpes envenenan: durante 3 s, un 30% del golpe cada segundo' },
   guantes:      { emoji:'🧤', name:'Guantes de portero',   desc:'15% de bloquear del todo un golpe (como mucho una vez cada 2 s)' },
   camiseta:     { emoji:'👕', name:'Camiseta del Raimon',  desc:`Con poca vida (menos del ${LOW_HP * 100}%): +25% de probabilidad de crítico` },
+  monedaArbitro:{ emoji:'🪙', name:'Moneda del Árbitro',   desc:'Si te eliminan, el árbitro lanza la moneda: corazón, revives con media vida; calavera, se acaba. Se gasta al usarla' },
   manto:        { emoji:'🧥', name:'Manto del Zeus',       desc:'Con menos del 20% de vida: +40% de probabilidad de crítico. Lo que pase del 100% se convierte en daño crítico' },
 };
 const CHESTS = {
@@ -6068,7 +6273,7 @@ const CHESTS = {
   life: 75,            // segundos antes de desaparecer
   openTime: 3,         // segundos que tienes que quedarte al lado
   openRange: 60,
-  relicChance: 0.20, xpChance: 0.40,   // el resto, monedas
+  relicChance: 0.20, xpChance: 0.35, ticketChance: 0.15, purpleChance: 0.12,   // el resto, monedas (de los tickets, 12 % morados)
   coins:[15, 40],
 };
 const RELIC_FROM_BOSS = 2;           // a partir del 2º boss los bosses sueltan un objeto (menos el 3º, que da talento)
@@ -6352,6 +6557,9 @@ function openChest(c){
     offerRelic(randomRelic(), 'cofre');
   } else if (r < CHESTS.relicChance + CHESTS.xpChance){
     match.gems.push({ x:c.x, y:c.y, xp: Math.round(match.xpNext * 0.35), coin:0, big:true, pull:true, fast:true });
+  } else if (r < CHESTS.relicChance + CHESTS.xpChance + CHESTS.ticketChance){
+    dropTicket(c.x, c.y, Math.random() < CHESTS.purpleChance);               // cofre con ticket
+    addFloatText(c.x, c.y - 30, '¡Ticket en el cofre!', '#f2d21f');
   } else {
     const coins = CHESTS.coins[0] + Math.floor(Math.random() * (CHESTS.coins[1] - CHESTS.coins[0] + 1)) + 2 * match.wave;
     match.gems.push({ x:c.x, y:c.y, xp:0, coin: coins, kind:'bag', pull:true, fast:true });
@@ -6436,7 +6644,18 @@ function activeTech(){ return match.techs[match.activeTech] || null; }
 /* todas las partes de una tecla: la base, la fusionada y (mezcla de 4) las dos de la otra tecla */
 function techParts(t){ return t ? [t, t.fused, ...(t.extra || [])].filter(Boolean) : []; }
 /* nivel de una supertécnica SOLO si es la que está en uso (0 si no); cuenta también la mitad fusionada */
+/* mezclas del MISMO tipo (p. ej. Tornado de fuego + Mano celestial): cada parte funciona por su cuenta,
+   como en PokéSurvivor. Mientras se procesa una parte concreta, PART dice cuál es (nivel y afinidad). */
+let PART = null, PART_IDX = 0;
+function kindParts(kind){ return techParts(activeTech()).filter(q => q.kind === kind); }
+function forParts(kind, fn){
+  const ps = kindParts(kind);
+  if (ps.length < 2){ PART_IDX = 0; return fn(ps[0], 0); }
+  const pv = PART, pi = PART_IDX;
+  try { ps.forEach((q, i) => { PART = q; PART_IDX = i; fn(q, i); }); } finally { PART = pv; PART_IDX = pi; }
+}
 function techLvl(kind){
+  if (PART && PART.kind === kind) return PART.lvl;
   const t = activeTech();
   if (!t) return 0;
   const p = techParts(t).find(q => q.kind === kind);
@@ -6444,6 +6663,7 @@ function techLvl(kind){
 }
 /* atributo con el que golpea una supertécnica (la fusionada puede ser de otro atributo) */
 function techElement(kind){
+  if (PART && kind && PART.kind === kind) return PART.element || match.element;
   const t = activeTech();
   if (t && kind){
     if (t.kind === kind && t.element) return t.element;
@@ -6456,7 +6676,8 @@ function orbitUltDur(extra){ return 3.5 + 0.5 * extra; }   // duración de la de
 const ORBIT_ULT_SPEED = 1.2;   // la definitiva de órbita te da +20% de velocidad mientras dura
 function orbitBoosted(){ return match.orbitBoostUntil > match.elapsed; }
 function addCharge(kind){
-  const t = match.techs.find(tt => techParts(tt).some(q => q.kind === kind));
+  const at = activeTech();
+  const t = (at && techParts(at).some(q => q.kind === kind)) ? at : match.techs.find(tt => techParts(tt).some(q => q.kind === kind));
   if (!t || !canUlt(t) || !CHARGE_PER_HIT[kind]) return;
   if (match.elapsed < (match.ultCdUntil || 0)) return;             // recién usada la R: 5 s sin cargar
   const v = CHARGE_PER_HIT[kind] * (1 + 0.2 * (ultPart(t).lvl - EVOLVE_AT));
@@ -6474,17 +6695,20 @@ function selectTech(i){
   // a un hueco vacío se puede cambiar para usar el disparo básico (salvo tras la mezcla de 4, que bloquea la otra tecla)
   if (!match.techs[i] && (match.mixed || !match.techs.length)) return;
   const prev = activeTech();
-  if (prev && isBuffKind(prev.kind) && !prev.fused && (prev.nbCharge || 0) > 0.02){
-    // cuaderno (cargado del todo o a medias): su mejora pasa a la otra supertécnica.
-    // Dura lo mismo que tarda en cargarse entero × lo que hayas cargado; el círculo sigue bajando.
+  if (nbOnly(prev) && (prev.nbCharge || 0) > 0.02){
+    // tecla de cuadernos (uno o varios mezclados, cargada del todo o a medias): sus mejoras pasan a la otra supertécnica.
+    // Cada una dura lo que tarda en cargarse entera × lo que hayas cargado; el círculo sigue bajando.
     match.nbUntil = match.nbUntil || {}; match.nbLvl = match.nbLvl || {}; match.nbDurs = match.nbDurs || {};
-    const full = nbCd(prev.lvl) * cdMult(), secs = full * Math.min(1, prev.nbCharge);
-    match.nbUntil[prev.kind] = match.elapsed + secs;
-    match.nbLvl[prev.kind] = prev.lvl;
-    match.nbDurs[prev.kind] = full;               // el círculo empieza donde lo dejaste y se vacía
+    let dy = 56;
+    for (const q of techParts(prev)){
+      const full = nbCd(q.lvl) * cdMult(), secs = full * Math.min(1, prev.nbCharge);
+      match.nbUntil[q.kind] = match.elapsed + secs;
+      match.nbLvl[q.kind] = q.lvl;
+      match.nbDurs[q.kind] = full;                // el círculo empieza donde lo dejaste y se vacía
+      const K = TECH_KINDS[q.kind];
+      addFloatText(match.x, match.y - dy, `${K.icon} +${nbPow(q.kind, q.lvl)}% ${K.label} · ${secs.toFixed(1)} s`, K.color); dy += 16;
+    }
     prev.nbCharge = 0;
-    const K = TECH_KINDS[prev.kind];
-    addFloatText(match.x, match.y - 56, `${K.icon} +${nbPow(prev.kind, prev.lvl)}% ${K.label} · ${secs.toFixed(1)} s`, K.color);
   }
   match.activeTech = i;
   SFX.play('switch');
@@ -6500,13 +6724,14 @@ function orbPositions(){
   const boost = orbitBoosted();
   let count = 3 + Math.floor((l - 1) / 2);   // 3,3,4,4,5,5,6,6
   if (boost) count *= 2;
-  const R = (70 + 7 * l) * (boost ? 1.15 : 1);
+  const R = (70 + 7 * l) * (boost ? 1.15 : 1) + PART_IDX * 42;          // si hay dos órbitas mezcladas, la 2ª va por fuera
+  const ang0 = PART_IDX > 0 && PART ? (PART._ang || 0) : match.orbAngle;
   const out = [];
   for (let i = 0; i < count; i++){
-    const a = match.orbAngle + i * Math.PI * 2 / count;
+    const a = ang0 + i * Math.PI * 2 / count;
     out.push({ x: match.x + Math.cos(a) * R, y: match.y + Math.sin(a) * R });
   }
-  if (boost){
+  if (boost && PART_IDX === 0){
     // anillo exterior que gira en sentido contrario
     const n2 = 10 + 2 * match.orbitBoostExtra;
     const R2 = R * 1.9;
@@ -6520,7 +6745,7 @@ function orbPositions(){
 
 function dropBomb(x, y, o){
   match.bombs.push({
-    x, y, t:0, dur:o.dur, r:o.r, dmg:o.dmg, big:!!o.ult, ult:!!o.ult, element: o.element || match.element, fx: o.fx, pal: o.pal,
+    x, y, t:0, dur:o.dur, r:o.r, dmg:o.dmg, big:!!o.ult, ult:!!o.ult, element: o.element || match.element, fx: o.fx, pal: o.pal, part: o.part || null,
     emoji: getElement(o.element || match.element).drop,
   });
 }
@@ -6532,7 +6757,7 @@ function meleeStats(l){
   const evo = l >= EVOLVE_AT;
   return {
     cd: Math.max(0.85, 1.5 - 0.08 * (l - 1)),          // segundos entre ráfagas
-    range: 150 + 6.5 * (l - 1) + (evo ? 25 : 0),        // alcance del golpe (más al principio; al máximo, casi igual que antes)
+    range: 170 + 7 * (l - 1) + (evo ? 25 : 0),          // alcance del golpe (un pelín más que antes)
     arc: (evo ? 130 : 100) * Math.PI / 180,             // anchura del golpe
     dmg: match.dmg * (1.8 + 0.15 * (l - 1)) * (evo ? 1.15 : 1),
     dirs: l >= 6 ? [0, Math.PI, -Math.PI / 2, Math.PI / 2] : l >= 3 ? [0, Math.PI] : [0],
@@ -6551,36 +6776,40 @@ function meleeSlash(ang, range, arc, dmg, opts = {}){
     da = Math.atan2(Math.sin(da), Math.cos(da));
     if (Math.abs(da) > arc / 2 && d > 22) continue;
     const crit = !opts.ult && Math.random() * 100 < effCrit();
-    damageEnemy(e, dmg * (crit ? effCritMult() : 1), { crit, chargeKind: opts.ult ? null : 'melee', ult: opts.ult, ultKind:'melee', element: techElement('melee') });
+    damageEnemy(e, dmg * (crit ? effCritMult() : 1), { crit, chargeKind: opts.ult ? null : 'melee', ult: opts.ult, ultKind:'melee', element: opts.el || techElement('melee'), part: opts.part });
     if (!e.boss && d > 0){ const push = opts.ult ? 22 : 10; e.x += dx / d * push; e.y += dy / d * push; }
     if (hits.length < 6) hits.push([e.x - match.x, e.y - match.y]);
   }
   match.slashes.push({ ang, range, arc, life: opts.ult ? 0.18 : 0.24, dur: opts.ult ? 0.18 : 0.24, big: !!opts.ult, flurry: !!opts.ult, hits,
-                       color: getElement(techElement('melee')).color, fx: techElement('melee') });
+                       color: getElement(opts.el || techElement('melee')).color, fx: opts.el || techElement('melee') });
 }
 function updateMelee(dt){
+  forParts('melee', (q, mi) => {                      // cada cuerpo a cuerpo mezclado, a su ritmo
   const ml = techLvl('melee');
+  const cdGet = () => mi ? (q._cd ?? 0.3) : match.meleeCd, cdSet = v => { if (mi) q._cd = v; else match.meleeCd = v; };
   if (ml){
-    match.meleeCd -= dt;
-    if (match.meleeCd <= 0){
+    cdSet(cdGet() - dt);
+    if (cdGet() <= 0){
       const st = meleeStats(ml);
       const near = match.enemies.some(e => !e.dead && Math.hypot(e.x - match.x, e.y - match.y) < st.range * 1.6);
-      if (!near) match.meleeCd = 0.2;                  // nadie cerca: espera un poco
+      if (!near) cdSet(0.2);                           // nadie cerca: espera un poco
       else {
-        match.meleeCd = st.cd * cdMult();
+        cdSet(st.cd * cdMult());
         match.meleeShieldT = match.elapsed;            // escudo esfera mientras dura la ráfaga
         match.meleeShieldDur = 0.25 + st.passes * st.dirs.length * 0.09;
         let t = 0;
         for (let p = 0; p < st.passes; p++) for (const off of st.dirs){
-          match.meleeQueue.push({ t, off, range: st.range, arc: st.arc, dmg: st.dmg });
+          match.meleeQueue.push({ t: t + mi * 0.05, off: off + mi * 0.5, range: st.range, arc: st.arc, dmg: st.dmg, el: techElement('melee'), part: q });
           t += 0.09;                                   // ráfaga: un golpe detrás de otro
         }
       }
     }
   }
+  });
   for (const q of match.meleeQueue){
     q.t -= dt;
-    if (q.t <= 0){ q.done = true; meleeSlash(Math.atan2(match.aim.y, match.aim.x) + q.off, q.range, q.arc, q.dmg); }
+    if (q.t <= 0){ q.done = true; const tg = nearestEnemy(); const base = tg ? Math.atan2(tg.y - match.y, tg.x - match.x) : Math.atan2(match.aim.y, match.aim.x);
+      meleeSlash(base + q.off, q.range, q.arc, q.dmg, { el: q.el, part: q.part }); }   // golpea hacia el rival más cercano (no hacia donde miras)
   }
   match.meleeQueue = match.meleeQueue.filter(q => !q.done);
   // definitiva: torbellino de golpes en todas direcciones
@@ -6601,7 +6830,7 @@ function updateMelee(dt){
 function updateNotebookTechs(dt){
   // cuaderno SOLO (sin fusionar) en uso: no atacas y se va cargando
   const t = activeTech();
-  if (t && isBuffKind(t.kind) && !t.fused){
+  if (nbOnly(t)){
     const was = (t.nbCharge || 0) >= 1;
     t.nbCharge = Math.min(1, (t.nbCharge || 0) + dt / (nbCd(t.lvl) * cdMult()));
     if (!was && t.nbCharge >= 1){
@@ -6614,26 +6843,30 @@ function updateNotebookTechs(dt){
 function updateTechs(dt){
   updateNotebookTechs(dt);
   updateMelee(dt);
-  // Órbita: balones girando alrededor del jugador
+  // Órbita: balones girando alrededor del jugador (cada órbita mezclada, su propio anillo)
+  forParts('orbit', (q, oi) => {
   const ol = techLvl('orbit');
   if (ol){
     const boost = orbitBoosted();
     // la velocidad de ataque hace girar los balones más rápido (y golpean más a menudo)
     const spin = Math.max(0.7, Math.min(3.5, match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? PBALL.yellow.mult : 1) / cdMult()));
-    match.orbAngle += dt * (3 + 0.3 * ol) * spin * (boost ? 2.2 : 1);
-    if (boost) match.orbAngle2 += dt * (3 + 0.3 * ol) * spin * 2.6;
+    if (oi > 0) q._ang = (q._ang ?? 1.0) - dt * (3 + 0.3 * ol) * spin * (boost ? 2.2 : 1);   // la 2ª gira al revés
+    else match.orbAngle += dt * (3 + 0.3 * ol) * spin * (boost ? 2.2 : 1);
+    if (boost && oi === 0) match.orbAngle2 += dt * (3 + 0.3 * ol) * spin * 2.6;
     const dmg = match.dmg * (1.0 + 0.18 * (ol - 1)) * (boost ? 2.5 + 0.4 * match.orbitBoostExtra : 1);
     const hitR = (boost ? 34 : 26) * orbScale();
     for (const o of orbPositions()){
       for (const e of match.enemies){
-        if (e.dead || (e.orbCd || 0) > match.elapsed) continue;
+        const ck = oi ? 'orbCd' + oi : 'orbCd';
+        if (e.dead || (e[ck] || 0) > match.elapsed) continue;
         if (Math.hypot(e.x - o.x, e.y - o.y) < hitR + (e.size || 0)){
-          e.orbCd = match.elapsed + (boost ? 0.25 : 0.4) / spin;
-          damageEnemy(e, dmg, { chargeKind: boost ? null : 'orbit', ult:boost, ultKind:'orbit', element: techElement('orbit') });   // la definitiva no recarga la R
+          e[ck] = match.elapsed + (boost ? 0.25 : 0.4) / spin;
+          damageEnemy(e, dmg, { chargeKind: boost ? null : 'orbit', ult:boost, ultKind:'orbit', element: techElement('orbit'), part: q });   // la definitiva no recarga la R
         }
       }
     }
   }
+  });
 
   // Bocanada (definitiva penetrante): balones en cono hacia el rival más cercano
   if (match.breath){
@@ -6672,16 +6905,18 @@ function updateTechs(dt){
   for (const tr of match.triangles) tr.life -= dt;
   match.triangles = match.triangles.filter(tr => tr.life > 0);
 
-  // Lluvia: cada cierto tiempo caen proyectiles sobre rivales cercanos
+  // Lluvia: cada cierto tiempo caen proyectiles sobre rivales cercanos (cada lluvia mezclada, a su ritmo)
+  forParts('rain', (q, ri) => {
   const rl = techLvl('rain');
+  const cdGet = () => ri ? (q._cd ?? 0.8) : match.rainCd, cdSet = v => { if (ri) q._cd = v; else match.rainCd = v; };
   if (rl){
-    match.rainCd -= dt;
-    if (match.rainCd <= 0){
+    cdSet(cdGet() - dt);
+    if (cdGet() <= 0){
       const near = match.enemies.filter(e => !e.dead && Math.hypot(e.x-match.x, e.y-match.y) < 480);
       if (!near.length){
-        match.rainCd = 0.5;                       // sin rivales cerca: reintenta pronto
+        cdSet(0.5);                               // sin rivales cerca: reintenta pronto
       } else {
-        match.rainCd = Math.max(1.6, 2.8 - 0.17 * (rl - 1)) * cdMult();
+        cdSet(Math.max(1.6, 2.8 - 0.17 * (rl - 1)) * cdMult());
         near.sort(() => Math.random() - 0.5);
         const count = 2 + Math.floor((rl - 1) / 2);   // 2,2,3,3,4,4,5,5
         for (let i = 0; i < count; i++){
@@ -6690,19 +6925,20 @@ function updateTechs(dt){
           dropBomb(target.x + (Math.random()-0.5) * jitter, target.y + (Math.random()-0.5) * jitter, {
             dur: 0.7,
             r: 75 * (1 + 0.08 * (rl - 1)),
-            dmg: match.dmg * (3 + 0.21 * (rl - 1)), element: techElement('rain'),
+            dmg: match.dmg * (3 + 0.21 * (rl - 1)), element: techElement('rain'), part: q,
           });
         }
       }
     }
   }
+  });
   // las bombas que ya caen explotan aunque cambies de supertécnica
   for (const b of match.bombs){
     b.t += dt;
     if (b.t >= b.dur){
       b.done = true;
       for (const e of match.enemies){
-        if (!e.dead && Math.hypot(e.x-b.x, e.y-b.y) <= b.r + (e.size || 0)) damageEnemy(e, b.dmg, { chargeKind: b.ult ? null : 'rain', ult:b.ult, ultKind:'rain', element:b.element });
+        if (!e.dead && Math.hypot(e.x-b.x, e.y-b.y) <= b.r + (e.size || 0)) damageEnemy(e, b.dmg, { chargeKind: b.ult ? null : 'rain', ult:b.ult, ultKind:'rain', element:b.element, part:b.part });
       }
       match.effects.push({ x:b.x, y:b.y, fixed:true, maxR:b.r, life:0.4, dur:0.4,
                            color: getElement(b.element).color, fill:true });
@@ -6794,6 +7030,30 @@ function drawRainAura(front){
     ctx.restore();
     if (Math.random() < 0.5){ isFireFx('celestial'); emitEmber(match.x + (Math.random() - 0.5) * w, match.y - 34 - jh + Math.random() * 16, { spread: 30 }); }
   }
+}
+/* Flecha divina (R del rebote celestial): alas de ángel a la espalda y aura celestial alrededor del jugador */
+function drawDivineAura(front){
+  const D = match.divineFx; if (!D) return;
+  const t = match.elapsed - D.start; if (t > D.dur){ match.divineFx = null; return; }
+  const jh = (fenixState() || {}).h || 0, fade = t > D.dur - 0.4 ? (D.dur - t) / 0.4 : 1;
+  if (front){                                                       // aura: anillos de bloques dorados y chispas de luz
+    ctx.save(); ctx.globalAlpha = fade;
+    pxRing(W / 2, H / 2 + 8, 30 + Math.round(Math.sin(t * 10) * 2), '#fff3a0', '#a8780a', 18, 4, t * 3);
+    pxRing(W / 2, H / 2 + 8, 42, '#ffe04a', '#a8780a', 22, 3, -t * 2);
+    ctx.restore();
+    if (Math.random() < 0.6){ isFireFx('celestial'); emitEmber(match.x + (Math.random() - 0.5) * 60, match.y - Math.random() * 40, { spread: 40 }); }
+    return;
+  }
+  if (!ALAS.ok) return;
+  const open = 1 - Math.pow(1 - Math.min(1, t / 0.3), 3), fr = Math.sin(match.elapsed * 9) > 0.2 ? 1 : 0, sc = FX_PIXEL * 0.45;
+  const w = 90 * sc * (0.2 + 0.8 * open), h = 36 * sc * (0.6 + 0.4 * open), x = W / 2 - w / 2, y = H / 2 + 14 - 22 - jh - h * 0.62 + (fr ? -1 : 0);
+  ctx.save();
+  const g = ctx.createRadialGradient(W / 2, y + h / 2, 4, W / 2, y + h / 2, w * 0.6);
+  g.addColorStop(0, `rgba(255,246,200,${0.5 * fade})`); g.addColorStop(1, 'rgba(255,246,200,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(W / 2, y + h / 2, w * 0.6, 0, 6.28); ctx.fill();
+  ctx.imageSmoothingEnabled = false; ctx.globalAlpha = fade;
+  ctx.drawImage(ALAS.img, fr * 90, 0, 90, 36, Math.round(x), Math.round(y), w, h);
+  ctx.restore();
 }
 /* Pisotón de sumo: una pierna de sumo baja de golpe y pisa el centro del triángulo, agrietando el suelo */
 function drawSumoFoot(camX, camY, rr){
@@ -7068,14 +7328,14 @@ function drawFenixTornado(front, ov){
     if (front && Math.random() < 0.6){ isFireFx('dragon'); emitEmber(OX + (Math.random() - 0.5) * 50, OY - f.h * Math.random(), { spread: 80 }); }
   }
 }
-const ULT_RECHARGE_DELAY = 5;   // segundos tras usar la R antes de que empiece a cargarse otra vez
+const ULT_RECHARGE_DELAY = 8;   // segundos tras usar la R antes de que empiece a cargarse otra vez
 function triggerUltimate(){
   if (!match || match.paused || match.over) return;
   const t = activeTech();
   if (!t || !canUlt(t) || t.charge < chargeNeeded()) return;
   if (match.ultAnim) return;                          // aún está saltando
   t.charge = 0;
-  match.ultCdUntil = match.elapsed + ULT_RECHARGE_DELAY;   // durante 5 s no se vuelve a cargar
+  match.ultCdUntil = match.elapsed + ULT_RECHARGE_DELAY;   // durante 8 s no se vuelve a cargar
   match.ultInvUntil = match.elapsed + 1.5; match.ultStartAt = match.elapsed;                  // escudo invisible: al menos 1,5 s (y mientras dure la R)
   SFX.play('ult');                                    // ¡definitiva!
   const U = ultPart(t);
@@ -7109,6 +7369,7 @@ function triggerUltimate(){
       bounces: 10 + 3 * extra, bounceRange: 380, life:2, ultBounce:true, techKind:null, ultDmg:true, ultKind:'bounce', element: techElement('bounce'), fx: techElement('bounce'),
       patch: { r: 60 + 5 * extra, dur: 4, dmg: match.dmg * (1.2 + 0.3 * extra) },
     });
+    if (techElement('bounce') === 'celestial') match.divineFx = { start: match.elapsed, dur: 1.6 };   // Flecha divina: alas y aura celestial
   } else if (U.kind === 'melee'){
     // Puño vengativo / Muralla tsunami / Vendimia / Trama: torbellino de golpes
     match.flurry = { start: match.elapsed, until: match.elapsed + 2 + 0.3 * extra, acc: 0, ang: Math.atan2(match.aim.y, match.aim.x),
@@ -7162,26 +7423,59 @@ function nearestEnemy(){
 const DIM = (m, id, k = 0.9) => Math.pow(k, (m.upgrades && m.upgrades[id]) || 0);   // cuánto rinde la siguiente (baja poco a poco)
 const UPGRADES = [
   { id:'power',     emoji:'🔥', name:'Potencia',  max:Infinity, desc:'+10% de daño con todo',
-    apply:m => { m.dmg *= 1.10; } },
+    apply:(m, k = 1) => { m.dmg *= 1 + 0.10 * k; } },
   { id:'health',    emoji:'❤️', name:'Vigor',     max:Infinity, desc:'+20 de vida máxima (y la recupera)',
-    apply:m => { m.maxHp += 20; m.hp = Math.min(m.maxHp, m.hp + 20); } },
+    apply:(m, k = 1) => { m.maxHp += 20 * k; m.hp = Math.min(m.maxHp, m.hp + 20 * k); } },
   { id:'speed',     emoji:'👟', name:'Carrera',   max:Infinity, desc:'+7% de velocidad de movimiento (cada vez algo menos)',
-    apply:m => { m.speed *= 1 + 0.07 * DIM(m, 'speed'); } },
+    apply:(m, k = 1) => { m.speed *= 1 + 0.07 * k * DIM(m, 'speed'); } },
   { id:'atkspeed',  emoji:'⏱️', name:'Reflejos',  max:Infinity, desc:'+9% de velocidad de disparo y de giro de los balones',
-    apply:m => { m.atkSpeed *= 1.09; } },
+    apply:(m, k = 1) => { m.atkSpeed *= 1 + 0.09 * k; } },
   { id:'defense',   emoji:'🛡️', name:'Coraza',    max:Infinity, desc:'+6% de defensa (cada vez algo menos; hasta 75%)',
-    apply:m => { m.def = Math.min(75, m.def + 6 * (1 - Math.min(75, m.def) / 75)); } },
+    apply:(m, k = 1) => { m.def = Math.min(75, m.def + 6 * k * (1 - Math.min(75, m.def) / 75)); }, capped: m => m.def >= 74.5 },
   { id:'regen',     emoji:'🌱', name:'Síntesis',  max:Infinity, desc:'+0,9 de vida por segundo',
-    apply:m => { m.regen = (m.regen || 0) + 0.9; } },
+    apply:(m, k = 1) => { m.regen = (m.regen || 0) + 0.9 * k; } },
   { id:'magnet',    emoji:'🧲', name:'Imán',      max:Infinity, desc:'+30% de radio de recogida',
-    apply:m => { m.pickup *= 1.30; } },
+    apply:(m, k = 1) => { m.pickup *= 1 + 0.30 * k; } },
   { id:'xp',        emoji:'📘', name:'Aprendizaje', max:Infinity, desc:'+12% de experiencia ganada',
-    apply:m => { m.xpMult += 0.12; } },
+    apply:(m, k = 1) => { m.xpMult += 0.12 * k; } },
   { id:'dodge',     emoji:'💨', name:'Regate',    max:Infinity, desc:'+6% de evadir ataques (cada vez algo menos)',
-    apply:m => { m.dodge += 6 * DIM(m, 'dodge', 0.85); } },
+    apply:(m, k = 1) => { m.dodge += 6 * k * DIM(m, 'dodge', 0.85); }, capped: () => effDodge() >= 75 },
+  { id:'luck',      emoji:'🍀', name:'Suerte',    max:Infinity, desc:'+6 de suerte: las mejoras salen de mejor rareza',
+    apply:(m, k = 1) => { m.luck = (m.luck || 0) + 6 * k; } },
   { id:'heal',      emoji:'🍙', name:'Bola de arroz', max:Infinity, desc:'Recupera el 45% de tu vida ahora mismo',
-    apply:m => { m.hp = Math.min(m.maxHp, m.hp + m.maxHp * 0.45); } },
+    apply:(m, k = 1) => { m.hp = Math.min(m.maxHp, m.hp + m.maxHp * Math.min(1, 0.45 * k)); } },
 ];
+/* ======================================================================
+   RAREZA DE LAS MEJORAS (al subir de nivel)
+   Común (gris) y poco común (verde) son lo normal; rara (azul), épica (morada) y legendaria (dorada)
+   salen más cuanta más SUERTE llevas y cuanto más avanza el partido.
+   - Mejoras de stats: su efecto se multiplica (×1 … ×2,5).
+   - Supertécnicas: suben 1 nivel como siempre y además ganan daño extra permanente (+5 % … +25 %, se acumula).
+   ====================================================================== */
+const UP_RARITY = [
+  // mult = efecto de las mejoras de stats · tdmg = daño extra permanente que gana la supertécnica (se acumula)
+  { key:'common',    name:'Común',      color:'#9aa3ad', dark:'#3a3f48', mult:1,    tdmg:0,    base:72,   k:-0.035 },
+  { key:'uncommon',  name:'Poco común', color:'#5fcf7a', dark:'#1d5a2c', mult:1.25, tdmg:0.05, base:24,   k:0 },
+  { key:'rare',      name:'Rara',       color:'#4fb8e6', dark:'#14507a', mult:1.5,  tdmg:0.10, base:3.6,  k:0.03 },
+  { key:'epic',      name:'Épica',      color:'#b377e0', dark:'#4a1f7a', mult:2,    tdmg:0.16, base:0.35, k:0.05 },
+  { key:'legendary', name:'Legendaria', color:'#f2b705', dark:'#6a4a00', mult:2.5,  tdmg:0.25, base:0.03, k:0.072 },
+];
+const LUCK_TALENT_K = 1.5;          // Suerte+ (talento): 9 de suerte por nivel
+const LUCK_PER_MIN = 1.6;           // el partido también "da suerte" con el tiempo (cada minuto, como 1,6 de suerte)
+function luckStat(){ return (match.luck || 0) + TALENT_VAL.suerte * talentLvl('suerte') * LUCK_TALENT_K; }
+function luckEff(){ return luckStat() + LUCK_PER_MIN * matchClock() / 60; }
+function rarityWeights(){ const L = luckEff(); return UP_RARITY.map(r => r.base * Math.exp(r.k * L)); }
+function rollUpRarity(){
+  const w = rarityWeights(), tot = w.reduce((a, b) => a + b, 0);
+  let r = Math.random() * tot;
+  for (let i = 0; i < w.length; i++){ if (r < w[i]) return UP_RARITY[i]; r -= w[i]; }
+  return UP_RARITY[0];
+}
+/* el texto de una mejora con su efecto multiplicado por la rareza (el primer número que salga) */
+function descK(desc, k){
+  if (k === 1) return desc;
+  return desc.replace(/(\+|el )(\d+(?:,\d+)?)/, (m, pre, num) => { const v = parseFloat(num.replace(',', '.')) * k; return pre + (Math.round(v * 10) / 10).toString().replace('.', ','); });
+}
 const LEVELUP_STATS_SHOWN = 5;   // como en PokéSurvivor: en cada subida entran 5 mejoras al azar en el sorteo
 function advantageText(){
   const beats = getElement(match.element).beats;
@@ -7198,7 +7492,7 @@ function buildTechOptions(){
       if (t.lvl < TECH_MAX){
         const K = TECH_KINDS[t.kind], lvl = t.lvl + 1, evolving = !K.buff && lvl === EVOLVE_AT;
         opts.push({
-          tech:true, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
+          tech:true, part:t, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
           emoji: techLogo(t.kind, t.element || match.element), el: isBuffKind(t.kind) ? 'book' : (t.element || match.element),
           name: evolving ? `${techNameOf(t.kind, t.element, false)} ➜ ${techNameOf(t.kind, t.element, true)}` : techNameOf(t.kind, t.element, isEvolved(t)),
           desc: (evolving ? `¡Evoluciona! ${K.ultDesc}${ultDualText(t.element || match.element, t.kind) ? '. ' + ultDualText(t.element || match.element, t.kind) : ''}` : (lvl > EVOLVE_AT && !K.buff) ? `${K.desc(lvl)}; cada golpe carga más la R` : K.desc(lvl)) + ` (fusión ${SLOT_KEYS[i]})`,
@@ -7208,7 +7502,7 @@ function buildTechOptions(){
       if (f.lvl < TECH_MAX){
         const K = TECH_KINDS[f.kind], lvl = f.lvl + 1, evolving = !K.buff && lvl === EVOLVE_AT;
         opts.push({
-          tech:true, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
+          tech:true, part:f, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
           emoji: techLogo(f.kind, f.element || match.element), el: isBuffKind(f.kind) ? 'book' : (f.element || match.element),
           name: evolving ? `${techNameOf(f.kind, f.element, false)} ➜ ${techNameOf(f.kind, f.element, true)}` : techNameOf(f.kind, f.element, f.lvl >= EVOLVE_AT),
           desc: (evolving ? 'Evoluciona: más fuerte (la R sigue siendo la de la otra parte)' : K.desc(lvl)) + ` (fusión ${SLOT_KEYS[i]})`,
@@ -7219,7 +7513,7 @@ function buildTechOptions(){
         if (x.lvl >= TECH_MAX) continue;
         const K = TECH_KINDS[x.kind], lvl = x.lvl + 1;
         opts.push({
-          tech:true, slot:SLOT_KEYS[i], nextLvl:lvl,
+          tech:true, part:x, slot:SLOT_KEYS[i], nextLvl:lvl,
           emoji: techLogo(x.kind, x.element || match.element), el: isBuffKind(x.kind) ? 'book' : (x.element || match.element),
           name: techNameOf(x.kind, x.element, x.lvl >= EVOLVE_AT),
           desc: K.desc(lvl) + ` (mezcla ${SLOT_KEYS[i]})`,
@@ -7234,7 +7528,7 @@ function buildTechOptions(){
     const K = TECH_KINDS[t.kind];
     const evolving = !K.buff && lvl === EVOLVE_AT;
     opts.push({
-      tech:true, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
+      tech:true, part:t, evolve:evolving, slot:SLOT_KEYS[i], nextLvl:lvl,
       emoji: techLogo(t.kind, t.element || match.element), el: isBuffKind(t.kind) ? 'book' : (t.element || match.element),
       name: evolving ? `${names[0]} ➜ ${names[1]}` : techName(t),
       desc: evolving ? `¡Evoluciona! ${K.ultDesc}${ultDualText(t.element || match.element, t.kind) ? '. ' + ultDualText(t.element || match.element, t.kind) : ''}`
@@ -7257,9 +7551,9 @@ function buildTechOptions(){
     TECH_ORDER.filter(k => !owned.includes(k) && !(match.veto || []).includes(k)).forEach(k => {
       const name = techNames(k)[0];
       opts.push({
-        tech:true, isNew:true, slot, nextLvl:1,
+        tech:true, kind:k, part:() => match.techs[match.techs.length - 1], isNew:true, slot, nextLvl:1,
         emoji: techLogo(k), el: isBuffKind(k) ? 'book' : match.element, name,
-        desc: TECH_KINDS[k].desc(1) + advantageText(),
+        desc: TECH_KINDS[k].desc(1) + (isBuffKind(k) ? '' : advantageText()),
         apply: () => {
           match.techs.push({ kind:k, lvl:1, charge:0 });
           if (match.techs.length === 1) match.activeTech = 0;
@@ -7354,6 +7648,12 @@ function gainTalentLevel(key){
 }
 
 function closeNotebook(){
+  // si rechazas el talento (o cierras sin elegir), el siguiente boss te lo vuelve a ofrecer
+  if (match.nbStartCount !== undefined && match.nbStartCount !== null){
+    if (match.talents.length > match.nbStartCount) match.talentOwed = false;
+    else if (match.talents.length < TALENT_SLOTS) match.talentOwed = true;
+    match.nbStartCount = null;
+  }
   match.levelupChoices = null;
   document.getElementById('talent-overlay').classList.add('hidden');
   match.paused = false;
@@ -7392,6 +7692,7 @@ function openNotebook(){
     });
   } else {
     reject.classList.remove('hidden');
+    if (match.nbStartCount == null) match.nbStartCount = match.talents.length;   // para saber si al cerrar lo has rechazado
     // eliges 1 de 3 talentos que aún no tienes (con "Cambios" se sacan 3 nuevos), o lo rechazas
     const owned = match.talents.map(t => t.key);
     const pool = Object.keys(TALENTS).filter(k => !owned.includes(k)).sort(() => Math.random() - 0.5).slice(0, TALENT_CHOICES);
@@ -7445,7 +7746,7 @@ function buildTalentOptions(){
 /* free = subida extra del talento Suerte (no gasta experiencia ni puede repetirse) */
 function levelUp(free = false){
   if (!free) match.xp -= match.xpNext;
-  const lucky = !free && Math.random() < Math.min(0.6, tval('suerte'));
+  const lucky = false;                                   // (el talento Suerte+ ahora da suerte: mejoras de mejor rareza)
   match.level++;
   match.xpNext = xpForLevel(match.xpNext, match.level);
   match.paused = true;
@@ -7464,10 +7765,20 @@ function rerollLevelup(){
 /* rellena las cartas de la subida de nivel (también al usar un cambio de cartas) */
 function fillLevelup(free, lucky){
   const base = UPGRADES
-    .filter(u => (match.upgrades[u.id] || 0) < u.max && !(match.veto || []).includes(u.id))
+    .filter(u => (match.upgrades[u.id] || 0) < u.max && !(match.veto || []).includes(u.id) && !(u.capped && u.capped(match)))   // al tope (p. ej. regate al 75 %): ya no sale
     .sort(() => Math.random() - 0.5).slice(0, LEVELUP_STATS_SHOWN)
     .map(u => ({ ...u, nextLvl: (match.upgrades[u.id] || 0) + 1 }));
   let options = pickOptions(base, buildTechOptions(), 3, buildTalentOptions());
+  for (const u of options){                                      // rareza de cada carta (los talentos no tienen)
+    if (u.talent) continue;
+    const R = rollUpRarity(); u.rar = R;
+    if (u.tech){
+      if (R.tdmg && !isBuffKind(u.kind || (typeof u.part === 'object' && u.part ? u.part.kind : ''))) u.desc = `<em class="rar-gain" style="--urc:${R.color}">+${Math.round(R.tdmg * 100)}% de daño a esta supertécnica</em> · ` + u.desc;
+      else if (R.tdmg) u.rar = UP_RARITY[0];       // los cuadernos no pegan: salen siempre comunes
+    } else {
+      u.k = R.mult; u.desc = u.id === 'heal' ? `Recupera el ${Math.min(100, Math.round(45 * R.mult))}% de tu vida ahora mismo` : descK(u.desc, R.mult);
+    }
+  }
   if (!options.length){
     // todo al máximo: al menos te curas
     options = [{ id:'heal', emoji:'🍙', name:'Bola de arroz', nextLvl:1, desc:'Recupera 40 de vida',
@@ -7480,16 +7791,26 @@ function fillLevelup(free, lucky){
   match.levelupOpts = options;
   options.forEach((u, i) => {
     const btn = document.createElement('button');
-    btn.className = 'upgrade-option' + (u.tech ? ' upgrade-special' : '') + (u.evolve ? ' upgrade-evolve' : '') + (u.talent ? ' upgrade-talent' : '');
+    btn.className = 'upgrade-option' + (u.tech ? ' upgrade-special' : '') + (u.evolve ? ' upgrade-evolve' : '') + (u.talent ? ' upgrade-talent' : '') + (u.rar ? ' urar urar-' + u.rar.key : '');
+    if (u.rar){ btn.style.setProperty('--urc', u.rar.color); btn.style.setProperty('--urd', u.rar.dark); }
     if (u.tech) btn.dataset.el = u.el || 'neutral';                 // color de la carta según la afinidad
     const slotTag = u.slot ? ` <kbd class="slot-key">${u.slot}</kbd>` : '';
     const newTag = u.isNew ? ' <em class="tag-new">Nueva</em>' : '';
-    btn.innerHTML = `<b><kbd class="upgrade-key">${i + 1}</kbd> ${optionIcon(u)} ${u.name} · Nv. ${u.nextLvl}${slotTag}${newTag}</b><span>${u.desc}</span>`;
+    const lvShown = u.nextLvl;
+    const stars = u.rar ? UP_RARITY.indexOf(u.rar) + 1 : 0;
+    const rarTag = u.rar ? `<i class="urar-corner" title="${u.rar.name}">${'<u></u>'.repeat(stars)}</i>` : '';
+    btn.innerHTML = `${rarTag}<b><kbd class="upgrade-key">${i + 1}</kbd> ${optionIcon(u)} ${u.name} · Nv. ${lvShown}${slotTag}${newTag}</b><span>${u.desc}</span>`;
     const choose = () => {
       if (!match.levelupChoices) return;       // ya se eligió una
       match.levelupChoices = null;
-      u.apply(match);
+      u.apply(match, u.k || 1);
+      if (u.tech && u.rar && u.rar.tdmg){                            // rareza en supertécnicas: daño extra permanente para esa parte
+        const q = typeof u.part === 'function' ? u.part() : u.part;
+        if (q && !isBuffKind(q.kind)) q.rarDmg = (q.rarDmg || 0) + u.rar.tdmg;
+      }
       if (!u.tech && !u.talent && u.id !== 'heal') match.upgrades[u.id] = u.nextLvl;
+      const shownLv = u.nextLvl;
+      addPickText(`${u.name}${shownLv ? ' · Nv. ' + shownLv : ''}`, u.rar ? u.rar.color : u.tech ? '#7fd6ff' : u.talent ? '#d8a8ff' : '#ffe14a', u.rar && u.rar.key !== 'common' ? u.rar.name : '');   // aviso de la mejora elegida
       renderInventory();
       renderTechBar();
       document.getElementById('levelup-overlay').classList.add('hidden');
@@ -7593,6 +7914,7 @@ function renderInventory(){
 /* efectos activos de objetos con su tiempo restante */
 let lastBuffHtml = null;
 function updateBuffs(){
+  if (Math.floor(match.elapsed * 2) !== match._ssT){ match._ssT = Math.floor(match.elapsed * 2); renderStatsSide(); }
   if (match.pb && (Math.floor(match.elapsed * 4) !== match.pbHudT)){ match.pbHudT = Math.floor(match.elapsed * 4); renderPBallBar(); }
   const html = ['water', 'nectar'].filter(buffActive).map(k => {
     const it = ITEMS[k];
@@ -7620,9 +7942,27 @@ function statRows(){
     [pxImg('dash'), 'Regate',           effDodge(),  b.dodge,     pct],
     [pxImg('range'), 'Alcance',          m.range,     b.range,     v => Math.round(v)],
     [pxImg('iman'), 'Recogida',         m.pickup,    b.pickup,    v => Math.round(v)],
+    [pxImg('trebol'), 'Suerte',         luckStat(),  0,           v => Math.round(v)],
   ];
 }
 
+/* ---- panel desplegable de estadísticas (Tab): columna a la izquierda, sin pausar ---- */
+function toggleStatsSide(force){
+  const el = document.getElementById('stats-side'); if (!el) return;
+  const open = force !== undefined ? force : el.classList.contains('hidden');
+  el.classList.toggle('hidden', !open);
+  if (open){ renderStatsSide(); SFX.play('menu_open'); }
+}
+function renderStatsSide(){
+  const el = document.getElementById('stats-side'); if (!el || el.classList.contains('hidden') || !match) return;
+  const rows = statRows().map(([ico, label, cur, base, fmt]) => {
+    const up = cur > base + 1e-9;
+    return `<li><span class="ss-ico">${ico}</span><span class="ss-lbl">${label}</span><b class="ss-val${up ? ' up' : ''}">${fmt(cur)}</b></li>`;
+  }).join('');
+  const clk = matchClock();
+  el.querySelector('#ss-body').innerHTML = `<ul class="ss-list">${rows}</ul>
+    <div class="ss-foot"><span>${pxImg('kills', 16)} ${match.kills || 0} rivales</span><span>Nv. ${match.level}</span><span>${String(Math.floor(clk / 60)).padStart(2, '0')}:${String(Math.floor(clk % 60)).padStart(2, '0')}</span></div>`;
+}
 function renderElementBox(){
   const tl = document.getElementById('sp-talent-logo'); if (tl) tl.innerHTML = talentLogo(20);
   const el = getElement(match.element);
@@ -7708,7 +8048,7 @@ function updateHud(){
     const se = document.getElementById('hp-shield'); se.style.left = `${hpP}%`; se.style.width = `${sh > 0.5 ? sh / tot * 100 : 0}%`; }
   document.getElementById('xp-fill').style.width = `${Math.min(100,(match.xp/match.xpNext)*100)}%`;
   document.getElementById('hud-level').textContent = `Nv. ${match.level}`;
-  document.getElementById('hud-coins').innerHTML = `${match.coinsEarned} ${COIN_HTML}` + (match.ticketsEarned ? ` · ${pxImg('ticketY', 18)}${match.ticketsEarned}` : '') + (match.ticketsEpicEarned ? ` · ${pxImg('ticketP', 18)}${match.ticketsEpicEarned}` : '');
+  document.getElementById('hud-coins').innerHTML = `<span class="hud-kills" title="Rivales eliminados">${pxImg('kills', 18)}${match.kills || 0}</span><span class="hud-coin-n">${match.coinsEarned} ${COIN_HTML}</span>` + (match.ticketsEarned ? ` · ${pxImg('ticketY', 18)}${match.ticketsEarned}` : '') + (match.ticketsEpicEarned ? ` · ${pxImg('ticketP', 18)}${match.ticketsEpicEarned}` : '');
   const clk = matchClock();
   const m = String(Math.floor(clk/60)).padStart(2,'0');
   const s = String(Math.floor(clk%60)).padStart(2,'0');
@@ -7771,8 +8111,8 @@ function drawFieldLogo(g, O){
   const X = Math.round(cx - sw), Y = Math.round(cy - sh);
   g.save();
   g.imageSmoothingEnabled = false;
-  g.globalAlpha = 0.28; g.drawImage(sil, X + 2, Y + 2, sw * 2, sh * 2);    // sombra marcada en la tierra
-  g.globalAlpha = 0.30; g.drawImage(tone, X, Y, sw * 2, sh * 2);          // el logo en marrones, sutil
+  g.globalAlpha = 0.16; g.drawImage(sil, X + 2, Y + 2, sw * 2, sh * 2);    // sombra marcada en la tierra (más suave: integrado en el campo)
+  g.globalAlpha = 0.18; g.drawImage(tone, X, Y, sw * 2, sh * 2);          // el logo en marrones, sutil
   g.restore();
 }
 const citySheet = new Image();
@@ -8727,13 +9067,16 @@ function drawOutsideDecor(g, useTiles){
       continue;
     }
     px(g, PAL.shadow, x + 2, y + 2 * T - 3, T - 4, 3);
-    if (useTiles){ const col = CT.treeCols[v % CT.treeCols.length]; putTile(g, col, 10, x, y); putTile(g, col, 11, x, y + T); }
-    else { px(g, PAL.trunk, x + 6, y + 18, 4, 12); px(g, PAL.leaf[v % 2], x + 2, y + 2, 12, 17); }
+    // el tronco va en el fondo; la copa se dibuja aparte en cada fotograma para que se mezca con el viento
+    if (useTiles){ const col = CT.treeCols[v % CT.treeCols.length]; putTile(g, col, 11, x, y + T); PITCH_TREES.push({ x, y, col, tiles: true, ph: (v % 97) / 15 }); }
+    else { px(g, PAL.trunk, x + 6, y + 18, 4, 12); PITCH_TREES.push({ x, y, leaf: PAL.leaf[v % 2], tiles: false, ph: (v % 97) / 15 }); }
   }
 }
 
+let PITCH_TREES = [];                                 // copas de los árboles de fuera (se mecen)
 function buildPitchCanvas(){
   const C = CAMPUS, O = C.border * TILE_SRC;
+  PITCH_TREES = [];
   const cv = document.createElement('canvas');
   cv.width = (C.cols + 2 * C.border) * TILE_SRC;
   cv.height = (C.rows + 2 * C.border) * TILE_SRC;
@@ -8753,7 +9096,14 @@ function buildPitchCanvas(){
     if (k > 0.35){ g.globalAlpha = 0.18 * k; g.fillStyle = '#7cc65e'; for (let x = 0; x < C2.cols; x += 8) g.fillRect(O + x * T, O, 4 * T, H0); }   // franjas de corte
     g.restore();
   };
-  const paint = useTiles => { drawPitchGround(g, useTiles, O, TH); greenUp(); decor(useTiles); drawLowFences(g, O); drawFieldLogo(g, O); drawPitchLines(g, O); drawFieldObstacles(g, useTiles, O); };
+  const edgeShade = () => {                          // sombra suave junto a las vallas: el campo queda "metido" en su sitio
+    const T = TILE_SRC, W0 = CAMPUS.cols * T, H0 = CAMPUS.rows * T, n = 10;
+    g.save();
+    for (let i = 0; i < n; i++){ g.globalAlpha = 0.05 * (1 - i / n); g.fillStyle = '#2a1606';
+      g.fillRect(O, O + i, W0, 1); g.fillRect(O, O + H0 - 1 - i, W0, 1); g.fillRect(O + i, O, 1, H0); g.fillRect(O + W0 - 1 - i, O, 1, H0); }
+    g.restore();
+  };
+  const paint = useTiles => { drawPitchGround(g, useTiles, O, TH); greenUp(); edgeShade(); decor(useTiles); drawLowFences(g, O); drawFieldLogo(g, O); drawPitchLines(g, O); drawFieldObstacles(g, useTiles, O); };
   cv.obstacles = match && match.obstacles;
   cv.theme = fieldThemeKey() + fieldGreen();
   cv.tiles = false;
@@ -8777,7 +9127,21 @@ function drawPitch(camX, camY){
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(pitchCanvas, u0, v0, u1 - u0, v1 - v0,
                   Math.round(camX + (u0 - O) * PX), Math.round(camY + (v0 - O) * PX), (u1 - u0) * PX, (v1 - v0) * PX);
+    drawSwayTrees(camX, camY, O);
     ctx.imageSmoothingEnabled = true;
+  }
+}
+/* árboles de fuera del campo: la copa se mece con el viento (rachas que van y vienen) */
+function drawSwayTrees(camX, camY, O){
+  const T = TILE_SRC, t = (match ? match.elapsed : performance.now() / 1000), gust = 0.6 + 0.4 * Math.sin(t * 0.35);
+  for (const tr of PITCH_TREES){
+    const sx = Math.round(camX + (tr.x - O) * PX), sy = Math.round(camY + (tr.y - O) * PX), sz = T * PX;
+    if (sx < -sz * 2 || sx > W + sz || sy < -sz * 2 || sy > H + sz) continue;
+    const sk = Math.sin(t * 1.7 + tr.ph) * 0.09 * gust;              // inclinación de la copa
+    ctx.save(); ctx.translate(sx + sz / 2, sy + sz); ctx.transform(1, 0, sk, 1, 0, 0);
+    if (tr.tiles) ctx.drawImage(citySheet, tr.col * (TILE_SRC + TILE_GAP), 10 * (TILE_SRC + TILE_GAP), TILE_SRC, TILE_SRC, -sz / 2, -sz, sz, sz);
+    else { ctx.fillStyle = tr.leaf; ctx.fillRect(-sz / 2 + 2 * PX, -sz + 2 * PX, 12 * PX, 17 * PX); }
+    ctx.restore();
   }
 }
 
@@ -8804,11 +9168,11 @@ function drawFieldAmbient(camX, camY){
   const t = match.elapsed, P = PX;
   // sombras de nubes (lentas, en coordenadas del mundo)
   ctx.save();
-  for (let k = 0; k < 3; k++){
-    const wx = ((t * 18 + k * 1300) % (FIELD_W + 1200)) - 600 + camX, wy = 300 + k * 600 + camY;
+  for (let k = 0; k < 5; k++){
+    const wx = ((t * (16 + k * 3) + k * 900) % (FIELD_W + 1200)) - 600 + camX, wy = 200 + k * 420 + camY;
     if (wx < -500 || wx > W + 500 || wy < -300 || wy > H + 300) continue;
     const gr = ctx.createRadialGradient(wx, wy, 0, wx, wy, 420);
-    gr.addColorStop(0, 'rgba(40,20,0,0.10)'); gr.addColorStop(0.6, 'rgba(40,20,0,0.06)'); gr.addColorStop(1, 'rgba(40,20,0,0)');
+    gr.addColorStop(0, 'rgba(30,15,0,0.16)'); gr.addColorStop(0.6, 'rgba(30,15,0,0.09)'); gr.addColorStop(1, 'rgba(30,15,0,0)');
     ctx.setTransform(1, 0, 0, 0.55, 0, wy * 0.45);                    // sombra achatada
     ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(wx, wy, 420, 0, Math.PI * 2); ctx.fill();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -8842,6 +9206,50 @@ function drawFieldAmbient(camX, camY){
     ctx.fillStyle = d.c; ctx.fillRect(Math.round(d.x + camX), Math.round(d.y + camY), P, P);
   }
   ctx.globalAlpha = 1;
+  drawWindStreaks(t, P);
+  drawBirds(t, camX, camY, P);
+  drawSunLight();
+}
+/* rachas de viento: líneas blancas pixel que cruzan la pantalla de vez en cuando */
+function drawWindStreaks(t, P){
+  const gustK = Math.max(0, Math.sin(t * 0.9)) ** 4; if (gustK < 0.05) return;
+  ctx.save(); ctx.fillStyle = '#ffffff';
+  for (let i = 0; i < 7; i++){
+    const sp = 700 + i * 90, len = (40 + (i % 3) * 30) * P / 2;
+    const x = ((t * sp + i * 377) % (W + 400)) - 200, y = (i * 113 + Math.sin(t * 0.5 + i) * 30 + 60) % H;
+    ctx.globalAlpha = 0.22 * gustK;
+    ctx.fillRect(Math.round(x), Math.round(y), Math.round(len), P);
+    ctx.fillRect(Math.round(x + len * 0.3), Math.round(y + P), Math.round(len * 0.5), P);
+  }
+  ctx.restore();
+}
+/* bandadas de pájaros que cruzan el cielo (en pixel, aleteando) con su sombra en el suelo */
+function drawBirds(t, camX, camY, P){
+  const period = 26, k = (t % period) / period; if (k > 0.45) return;          // una bandada cada ~26 s, tarda ~12 s en cruzar
+  const n = Math.floor(t / period), dir = n % 2 ? -1 : 1, q = k / 0.45;
+  const baseX = dir > 0 ? -120 + q * (W + 240) : W + 120 - q * (W + 240), baseY = 80 + (n * 97) % (H * 0.5);
+  for (let i = 0; i < 5; i++){
+    const ox = -dir * (i % 2 ? i * 22 : i * 18), oy = (i % 2 ? 1 : -1) * Math.ceil(i / 2) * 16;
+    const x = Math.round(baseX + ox), y = Math.round(baseY + oy + Math.sin(t * 3 + i) * 4), up = Math.floor(t * 8 + i) % 2;
+    ctx.save(); ctx.globalAlpha = 0.18; ctx.fillStyle = '#000';                 // sombra en el suelo
+    ctx.fillRect(x - 3 * P / 2, y + 120, 3 * P, P); ctx.restore();
+    ctx.fillStyle = '#1b1d26';                                                 // pájaro: forma de "v" que aletea
+    const s = P / 2;
+    ctx.fillRect(x - s, y, 2 * s, s);
+    if (up){ ctx.fillRect(x - 3 * s, y - s, 2 * s, s); ctx.fillRect(x + s, y - s, 2 * s, s); ctx.fillRect(x - 4 * s, y - 2 * s, s, s); ctx.fillRect(x + 3 * s, y - 2 * s, s, s); }
+    else { ctx.fillRect(x - 3 * s, y + s, 2 * s, s); ctx.fillRect(x + s, y + s, 2 * s, s); }
+  }
+}
+/* luz de sol suave (de arriba a la izquierda) y un poco de viñeta: todo más integrado */
+function drawSunLight(){
+  ctx.save();
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, 'rgba(255,236,180,0.10)'); g.addColorStop(0.5, 'rgba(255,236,180,0)'); g.addColorStop(1, 'rgba(40,20,60,0.10)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const v = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.45, W / 2, H / 2, Math.max(W, H) * 0.75);
+  v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(10,5,0,0.22)');
+  ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
 }
 
 /* mezcla dos colores hex (t = 0 → a, t = 1 → b) */
@@ -8985,6 +9393,36 @@ function pushOutOfGoals(o, radius){
     const opts = [[o.x - r.x0, -1, 0], [r.x1 - o.x, 1, 0], [o.y - r.y0, 0, -1], [r.y1 - o.y, 0, 1]].sort((a, b) => a[0] - b[0]);
     const [, sx, sy] = opts[0];
     if (sx) o.x = (sx < 0 ? r.x0 : r.x1) + sx * radius; else o.y = (sy < 0 ? r.y0 : r.y1) + sy * radius;
+  }
+}
+/* rivales: si la portería se interpone entre ellos y tú, la rodean por el lado más corto */
+function goalSteer(e, ux, uy){
+  const rad = 14 + (e.size || 0);
+  for (const r of goalRects()){
+    const inY = e.y > r.y0 - rad && e.y < r.y1 + rad;
+    if (!inY) continue;
+    const behindL = e.x < r.x0 + 2 && match.x > r.x0 && e.x > r.x0 - rad * 3;      // detrás de la de la izquierda (o la de la derecha)
+    const behindR = e.x > r.x1 - 2 && match.x < r.x1 && e.x < r.x1 + rad * 3;
+    const inside = e.x > r.x0 - rad && e.x < r.x1 + rad;
+    if (!(behindL || behindR || inside)) continue;
+    const up = (e.y - (r.y0 - rad)) < ((r.y1 + rad) - e.y);
+    const vy = up ? -1 : 1, vx = ux * 0.3, n = Math.hypot(vx, vy) || 1;
+    return [vx / n, vy / n];
+  }
+  return [ux, uy];
+}
+/* si un rival casi no se mueve durante un rato (atascado en una esquina o una portería), se aparta de lado */
+function checkStuck(e, d, dt){
+  if (d < 70) { e._stT = 0; return; }
+  if (e._stx === undefined){ e._stx = e.x; e._sty = e.y; e._stT = 0; }
+  e._stT += dt;
+  if (e._stT >= 1.2){
+    const moved = Math.hypot(e.x - e._stx, e.y - e._sty);
+    if (moved < 10 * e.speed){
+      const a = Math.atan2(match.y - e.y, match.x - e.x) + (Math.random() < 0.5 ? 1 : -1) * Math.PI / 2;
+      e.unstickX = Math.cos(a); e.unstickY = Math.sin(a); e.unstickUntil = match.elapsed + 0.7;
+    }
+    e._stx = e.x; e._sty = e.y; e._stT = 0;
   }
 }
 function pushOutOfObstacles(o, radius){
@@ -9410,14 +9848,17 @@ function drawNotebookRings(){
     ctx.restore();
   };
   const t = activeTech();
-  if (t && isBuffKind(t.kind) && !t.fused){
+  if (nbOnly(t)){                                                  // un círculo por cada cuaderno de la tecla
     const c = t.nbCharge || 0;
-    ring(t.kind, 1, 34, 3, 0.18);                                  // fondo del círculo
-    if (c >= 1){
-      ring(t.kind, 1, 34 + Math.sin(match.elapsed * 8) * 2, 5, 0.95);
-      ctx.save(); ctx.globalAlpha = 0.12 + 0.06 * Math.sin(match.elapsed * 8);
-      ctx.fillStyle = TECH_KINDS[t.kind].color; ctx.beginPath(); ctx.arc(W/2, H/2, 34, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-    } else ring(t.kind, c, 34, 4, 0.85);
+    techParts(t).forEach((q, i) => {
+      const R = 34 + i * 7;
+      ring(q.kind, 1, R, 3, 0.18);                                 // fondo del círculo
+      if (c >= 1){
+        ring(q.kind, 1, R + Math.sin(match.elapsed * 8) * 2, 5, 0.95);
+        if (i === 0){ ctx.save(); ctx.globalAlpha = 0.12 + 0.06 * Math.sin(match.elapsed * 8);
+          ctx.fillStyle = TECH_KINDS[q.kind].color; ctx.beginPath(); ctx.arc(W/2, H/2, 34, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+      } else ring(q.kind, c, R, 4, 0.85);
+    });
   }
   // mejora en marcha: el MISMO círculo de cuando estaba cargado, que se va vaciando
   let r = 34;
@@ -9434,6 +9875,215 @@ function drawNotebookRings(){
 }
 
 
+/* granada del lanzador (estilo arcade): diana de bloques que se va llenando a saltos, aviso "!" que parpadea
+   y balón-granada pixel que cae en parábola con su sombra */
+function drawLobZone(m, k, mx, my, camX, camY){
+  const col = m.color || '#ff4a3c', dark = shadeHex(col, -0.55), steps = Math.floor(k * 6) / 6;
+  ctx.save();
+  // suelo: rombo/círculo en bloques (perspectiva) y relleno a escalones
+  ctx.globalAlpha = 0.18 + 0.32 * steps; ctx.fillStyle = col;
+  ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI * 2); ctx.fill();
+  ctx.globalAlpha = 1;
+  pxRing(mx, my, m.r, col, dark, Math.max(14, Math.round(m.r / 5)), 5, match.elapsed * 0.8);
+  pxRing(mx, my, Math.max(6, m.r * steps), '#ffffff', dark, Math.max(6, Math.round(m.r * steps / 7)), 3, -match.elapsed * 1.5);
+  // cruz central
+  ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 7, Math.round(my) - 2, 14, 4); ctx.fillRect(Math.round(mx) - 2, Math.round(my - 5), 4, 10);
+  ctx.fillStyle = col; ctx.fillRect(Math.round(mx) - 6, Math.round(my) - 1, 12, 2); ctx.fillRect(Math.round(mx) - 1, Math.round(my - 4), 2, 8);
+  // aviso "!" que parpadea más rápido al final
+  if (Math.sin(match.elapsed * (8 + 24 * k)) > -0.1){
+    const ty = Math.round(my - m.r - 16);
+    ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 7, ty - 9, 14, 20);
+    ctx.fillStyle = '#ffd21e'; ctx.fillRect(Math.round(mx) - 5, ty - 7, 10, 16);
+    ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 1, ty - 5, 3, 7); ctx.fillRect(Math.round(mx) - 1, ty + 4, 3, 3);
+  }
+  ctx.restore();
+  // el balón en el aire (parábola desde el lanzador), estilo pixel
+  const sx = (m.fromX ?? m.x) + camX, sy = (m.fromY ?? m.y) + camY;
+  const bx = sx + (mx - sx) * k, gy = sy + (my - sy) * k, h = Math.sin(Math.PI * k) * 170 + (1 - k) * 20;
+  ctx.save(); ctx.globalAlpha = 0.4; ctx.fillStyle = '#000'; const sw = Math.round(9 * (0.6 + 0.4 * k)); ctx.fillRect(Math.round(bx) - sw, Math.round(gy) - 2, sw * 2, 4); ctx.restore();
+  drawPxBall(bx, gy - h, 3, Math.floor(match.elapsed * 10) % 4, col);
+}
+/* balón de fútbol pixel (8x8 bloques), con 4 fotogramas de giro y una franja del color del rival */
+const PX_BALL_ROWS = ['..KKKK..', '.KWWKWK.', 'KWWKKKWK', 'KWWWKWWK', 'KKWWWWKK', 'KKKWWWKK', '.KWWWKK.', '..KKKK..'];
+function drawPxBall(x, y, s, fr, col){
+  const X = Math.round(x - 4 * s), Y = Math.round(y - 4 * s), fx = fr & 1, fy = fr & 2;
+  ctx.fillStyle = col ? shadeHex(col, -0.4) : '#1b1d26';                       // contorno del color del lanzador
+  ctx.fillRect(X - s / 2, Y + 2 * s, 8 * s + s, 4 * s); ctx.fillRect(X + 2 * s, Y - s / 2, 4 * s, 8 * s + s);
+  for (let r = 0; r < 8; r++){
+    const row = PX_BALL_ROWS[fy ? 7 - r : r];
+    for (let c = 0; c < 8; c++){
+      const ch = row[fx ? 7 - c : c]; if (ch === '.') continue;
+      ctx.fillStyle = ch === 'K' ? '#1b1d26' : '#ffffff'; ctx.fillRect(X + c * s, Y + r * s, s, s);
+    }
+  }
+}
+/* explosión arcade del balón del lanzador: destello blanco, anillo de bloques que se abre, cascotes y estrellitas */
+const PXBOOM_DUR = 0.55;
+function drawPxBooms(camX, camY){
+  for (const b of (match.pxBooms || [])){
+    const k = b.t / PXBOOM_DUR, x = Math.round(b.x + camX), y = Math.round(b.y + camY), dark = shadeHex(b.col, -0.55);
+    ctx.save();
+    if (k < 0.25){ const s = Math.round(b.r * (0.5 + k * 2)); ctx.globalAlpha = 1 - k * 2; ctx.fillStyle = '#ffffff'; ctx.fillRect(x - s, y - s * 0.7, s * 2, s * 1.4); }   // destello
+    ctx.globalAlpha = 1 - k;
+    pxRing(x, y, b.r * (0.4 + k * 0.8), k < 0.5 ? '#ffe14a' : b.col, dark, 20, 6, b.seed);
+    pxRing(x, y, b.r * (0.2 + k * 0.5), '#ffffff', dark, 12, 4, -b.seed);
+    for (let i = 0; i < 10; i++){                                                   // cascotes que salen volando
+      const a = b.seed + i * 0.63, d = b.r * (0.3 + k * 1.1), hh = Math.sin(Math.PI * k) * 26 * (0.5 + (i % 3) * 0.3);
+      pxBlock(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.7 - hh, 4 + (i % 2) * 2, i % 3 ? b.col : '#ffe14a');
+    }
+    ctx.restore();
+  }
+}
+/* balones de la órbita (los de una parte; con dos órbitas mezcladas se llama una vez por cada una) */
+function drawOrbitBalls(camX, camY, elColor){
+  const orbs = orbPositions();
+  if (orbs.length && orbitBoosted()){
+    // zona peligrosa mientras dura la definitiva de órbita
+    const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0);
+    ctx.beginPath();
+    ctx.arc(W/2, H/2, far + 18, 0, Math.PI*2);
+    ctx.globalAlpha = 0.1 + 0.04 * Math.sin(match.elapsed * 8);
+    ctx.fillStyle = elColor; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  if (orbs.length && isFireFx(techElement('orbit'))){         // Corte flamígero / Potenciación
+    const big = orbitBoosted();
+    if (big){                                                   // anillo de fuego mientras dura la definitiva
+      const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0);
+      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.5 + 0.2 * Math.sin(match.elapsed * 10);
+      ctx.beginPath(); ctx.arc(W/2, H/2, far + 14, 0, Math.PI*2); ctx.strokeStyle = FIRE.hot; ctx.lineWidth = 6; ctx.stroke();
+      ctx.restore();
+    }
+    if (big && PART_IDX === 0 && (match.orbitBoostEl || techElement('orbit')) === 'celestial'){               // Hora celestial: el tiempo se para y los balones dejan estela gris
+      const tr = match.orbTrail = match.orbTrail || [];
+      tr.unshift(orbs.map(o => [o.x - match.x, o.y - match.y])); if (tr.length > 24) tr.length = 24;
+      ctx.save();
+      ctx.globalAlpha = 0.3; ctx.fillStyle = '#7d828e'; ctx.fillRect(-W, -H, W * 3, H * 3);   // velo gris de pausa
+      for (let i = 0; i < orbs.length; i++){
+        for (let k = 1; k < tr.length; k++){
+          const a = tr[k - 1][i], b = tr[k][i]; if (!a || !b) continue;
+          ctx.globalAlpha = 0.75 * (1 - k / tr.length); ctx.strokeStyle = k % 2 ? '#b9bcc6' : '#8e929c'; ctx.lineWidth = (orbs[i].outer ? 10 : 14) * (1 - k / tr.length * 0.7); ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(W/2 + a[0], H/2 + a[1]); ctx.lineTo(W/2 + b[0], H/2 + b[1]); ctx.stroke();
+        }
+      }
+      // ecos grises congelados de cada balón (como si el tiempo se hubiera parado)
+      for (const k of [6, 12, 18]){ const fr = tr[k]; if (!fr) continue;
+        for (let i = 0; i < fr.length; i++){ const r = orbs[i] && orbs[i].outer ? 10 : 13;
+          ctx.globalAlpha = 0.5 * (1 - k / 24); ctx.fillStyle = '#d4d7de'; ctx.beginPath(); ctx.arc(W/2 + fr[i][0], H/2 + fr[i][1], r, 0, 6.28); ctx.fill();
+          ctx.globalAlpha *= 0.8; ctx.strokeStyle = '#6e727c'; ctx.lineWidth = 2; ctx.stroke(); } }
+      // esfera de reloj: marcas alrededor del jugador
+      const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0) + 26;
+      ctx.globalAlpha = 0.5; ctx.fillStyle = '#e8eaf0';
+      for (let k = 0; k < 12; k++){ const a = k * Math.PI / 6; ctx.fillRect(W/2 + Math.cos(a) * far - 2, H/2 + Math.sin(a) * far - 2, k % 3 ? 4 : 7, k % 3 ? 4 : 7); }
+      const hand = match.elapsed * 0.8; ctx.strokeStyle = '#e8eaf0'; ctx.lineWidth = 3; ctx.globalAlpha = 0.35;
+      ctx.beginPath(); ctx.moveTo(W/2, H/2); ctx.lineTo(W/2 + Math.cos(hand) * far * 0.8, H/2 + Math.sin(hand) * far * 0.8); ctx.stroke();
+      ctx.restore();
+    } else match.orbTrail = null;
+    for (const o of orbs){
+      const dx = o.x - match.x, dy = o.y - match.y, sgn = o.outer ? -1 : 1;
+      drawFireBall(o.x+camX, o.y+camY, (big ? 14 : 10) * orbScale() * (o.outer ? 0.8 : 1), -dy * sgn, dx * sgn, big ? 0.4 : 0.3, o.x);
+      if (Math.random() < 0.12) emitEmber(o.x, o.y, { spread: 20 });
+    }
+  } else if (orbs.length){
+    const big = orbitBoosted();
+    const orbEl = getElement(techElement('orbit')), orbEmoji = orbEl.orb;
+    for (const o of orbs){
+      ctx.beginPath();
+      ctx.arc(o.x+camX, o.y+camY, (big ? 18 : 13) * orbScale(), 0, Math.PI*2);
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = orbEl.color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      const size = Math.round((big ? 28 : 22) * orbScale());
+      ctx.font = `${size}px sans-serif`;
+      ctx.fillText(orbEmoji, o.x+camX-size/2, o.y+camY+size/3);
+    }
+  }
+
+}
+/* ======================================================================
+   K.O. DE UN BOSS: cámara lenta, destello blanco, el boss sale despedido girando,
+   estrellas y bloques que saltan y un "¡K.O.!" arcade
+   ====================================================================== */
+const BOSS_KO_DUR = 1.6;
+function startBossKO(e){
+  (match.bossKOs = match.bossKOs || []).push({ e: { ...e, jumpH: 0 }, x: e.x, y: e.y, t: 0, col: getElement(e.affEl || e.element).color, dir: Math.random() < 0.5 ? -1 : 1 });
+  match.slowmo = 0.55; match.hurtFx = 0;
+  match.effects.push({ x: e.x, y: e.y, fixed: true, maxR: 220, life: 0.5, dur: 0.5, color: '#ffffff', fill: true });
+  SFX.play('thunder');
+}
+function drawBossKOs(camX, camY){
+  if (!match.bossKOs || !match.bossKOs.length) return;
+  for (const k of match.bossKOs) k.t += 1 / 60;
+  match.bossKOs = match.bossKOs.filter(k => k.t < BOSS_KO_DUR);
+  for (const k of match.bossKOs){
+    const q = k.t / BOSS_KO_DUR, x = Math.round(k.x + camX), y = Math.round(k.y + camY);
+    ctx.save();
+    // destello blanco a pantalla completa al principio
+    if (q < 0.12){ ctx.globalAlpha = (1 - q / 0.12) * 0.7; ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H); }
+    ctx.globalAlpha = 1;
+    // rayos de color girando detrás
+    if (q < 0.7){ ctx.globalAlpha = 0.5 * (1 - q / 0.7);
+      for (let i = 0; i < 12; i++){ const a = i * Math.PI / 6 + k.t * 2, L = 60 + q * 260;
+        ctx.fillStyle = i % 2 ? k.col : '#ffe14a'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a - 0.08) * L, y + Math.sin(a - 0.08) * L); ctx.lineTo(x + Math.cos(a + 0.08) * L, y + Math.sin(a + 0.08) * L); ctx.closePath(); ctx.fill(); } }
+    // el boss sale despedido: sube en parábola, gira y se desvanece
+    const fly = Math.min(1, q / 0.75), bx = x + k.dir * fly * 140, by = y - Math.sin(Math.PI * fly) * 120 - fly * 40;
+    ctx.save(); ctx.globalAlpha = 1 - Math.max(0, (q - 0.55) / 0.45);
+    ctx.translate(bx, by); ctx.rotate(k.dir * fly * Math.PI * 3);
+    if (Math.floor(k.t * 20) % 2 === 0 || q > 0.2){ if (drawBossSprite(k.e, 0, 0) == null){ ctx.font = '44px sans-serif'; ctx.rawEmoji = true; ctx.fillText(k.e.emoji || '', -22, 15); ctx.rawEmoji = false; } }
+    ctx.restore();
+    // estrellas y bloques que saltan
+    ctx.globalAlpha = 1 - q;
+    for (let i = 0; i < 14; i++){ const a = i * 0.45 + 0.3, d = 30 + q * 220 * (0.6 + (i % 4) * 0.15), hh = Math.sin(Math.PI * Math.min(1, q * 1.4)) * 50;
+      pxBlock(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.7 - hh, i % 3 ? 6 : 8, i % 3 === 0 ? '#ffffff' : i % 3 === 1 ? '#ffe14a' : k.col); }
+    // ¡K.O.! arcade
+    if (q > 0.08){ const pop = Math.min(1, (q - 0.08) / 0.12), sc = 0.6 + 0.6 * pop - Math.max(0, q - 0.85) * 2;
+      ctx.save(); ctx.globalAlpha = Math.min(1, (1 - q) * 4);
+      ctx.translate(W / 2, H / 2 - 120); ctx.scale(sc, sc); ctx.rotate(-0.08);
+      ctx.font = "64px InazumaFont, Bangers, Impact, sans-serif"; ctx.textAlign = 'center'; ctx.lineJoin = 'round';
+      ctx.lineWidth = 14; ctx.strokeStyle = '#071233'; ctx.strokeText('¡K.O.!', 0, 0);
+      ctx.lineWidth = 6; ctx.strokeStyle = k.col; ctx.strokeText('¡K.O.!', 0, 0);
+      ctx.fillStyle = '#ffe14a'; ctx.fillText('¡K.O.!', 0, 0);
+      ctx.restore(); ctx.textAlign = 'start'; }
+    ctx.restore();
+  }
+}
+/* bloque pixel cuadrado con contorno oscuro (centrado) */
+function pxBlock(x, y, s, col){
+  const X = Math.round(x - s / 2), Y = Math.round(y - s / 2);
+  ctx.fillStyle = '#1b1d26'; ctx.fillRect(X - 1, Y - 1, s + 2, s + 2);
+  ctx.fillStyle = col; ctx.fillRect(X, Y, s, s);
+}
+/* anillo arcade: n bloques cuadrados repartidos en un círculo, con contorno, girando */
+function pxRing(cx, cy, R, col, dark, n, s, rot){
+  for (let i = 0; i < n; i++){
+    const a = rot + i * Math.PI * 2 / n, x = Math.round(cx + Math.cos(a) * R), y = Math.round(cy + Math.sin(a) * R);
+    ctx.fillStyle = dark; ctx.fillRect(x - s / 2 - 1, y - s / 2 - 1, s + 2, s + 2);
+    ctx.fillStyle = col; ctx.fillRect(x - s / 2, y - s / 2, s, s);
+    ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.fillRect(x - s / 2, y - s / 2, Math.max(1, s / 2), 1);
+  }
+}
+/* Flecha divina (rebote celestial evolucionado): un par de alas blancas y doradas que aletean a los lados del balón */
+function drawDivineWings(x, y, r, ang, ph){
+  const flap = Math.sin(match.elapsed * 20 + ph);                 // aleteo: las alas suben y bajan
+  ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+  const L = r * 3.3;
+  for (const side of [-1, 1]){
+    // tres plumas (elipses) en abanico hacia atrás y hacia fuera; el abanico se abre y se cierra
+    for (let f = 2; f >= 0; f--){
+      const a = side * (0.9 + f * 0.38 + flap * 0.35), len = L * (1 - f * 0.16);
+      const cx = -r * 0.2 + Math.cos(Math.PI - a * side * 0.2) * 0 - Math.cos(a * side) * len * 0.45;
+      const cy = side * (r * 0.55 + Math.abs(Math.sin(a)) * len * 0.45);
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(Math.PI + a);
+      ctx.beginPath(); ctx.ellipse(len * 0.1, 0, len * 0.55, Math.max(3, len * 0.16), 0, 0, Math.PI * 2);
+      ctx.fillStyle = '#1b1d26'; ctx.fill();
+      ctx.beginPath(); ctx.ellipse(len * 0.1, 0, len * 0.55 - 2, Math.max(2, len * 0.16 - 2), 0, 0, Math.PI * 2);
+      ctx.fillStyle = f === 0 ? '#ffffff' : f === 1 ? '#e6f4ff' : '#ffe680'; ctx.fill();
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+}
 /* ======================================================================
    EFECTOS VISUALES DE LAS SUPERTÉCNICAS (solo dibujo: no cambian daño ni hitbox)
    - Disparo normal: balón blanco y negro sin colores.
@@ -10218,7 +10868,7 @@ function renderWorld(){
   pxBegin();
   for (const p of match.projectiles){
     const px = p.x+camX, py = p.y+camY;
-    if (p.ultBounce && isFireFx(p.fx)){ drawFireBird(p, camX, camY); continue; }
+    if (p.ultBounce && isFireFx(p.fx)){ drawFireBird(p, camX, camY); if (p.fx === 'celestial') drawDivineWings(px, py, p.r * 1.2, Math.atan2(p.vy, p.vx), p.x * 0.05); continue; }
     if (p.style === 'breath' && isFireFx(p.fx)){                 // plumas del fénix
       drawFireBall(px, py, p.r * 0.9, p.vx, p.vy, 2.5, p.x);
       if (Math.random() < 0.15) emitEmber(p.x, p.y, { spread: 40 });
@@ -10226,6 +10876,7 @@ function renderWorld(){
     }
     if ((p.style === 'pierce' || p.style === 'bounce') && isFireFx(p.element)){   // Tornado de fuego / Ataque meteorito
       drawFireBall(px, py, p.crit ? p.r + 2 : p.r, p.vx, p.vy, p.style === 'pierce' ? 5 : 4, p.x * 0.1);
+      if (p.style === 'bounce' && p.element === 'celestial' && p.evo) drawDivineWings(px, py, Math.max(6, p.r), Math.atan2(p.vy, p.vx), p.x * 0.05);   // Flecha divina: alas que aletean
       if (Math.random() < 0.3) emitEmber(p.x, p.y, { spread: 25 });
       continue;
     }
@@ -10474,71 +11125,7 @@ function renderWorld(){
     ctx.restore();
   }
 
-  // balones orbitando
-  const orbs = orbPositions();
-  if (orbs.length && orbitBoosted()){
-    // zona peligrosa mientras dura la definitiva de órbita
-    const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0);
-    ctx.beginPath();
-    ctx.arc(W/2, H/2, far + 18, 0, Math.PI*2);
-    ctx.globalAlpha = 0.1 + 0.04 * Math.sin(match.elapsed * 8);
-    ctx.fillStyle = elColor; ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-  if (orbs.length && isFireFx(techElement('orbit'))){         // Corte flamígero / Potenciación
-    const big = orbitBoosted();
-    if (big){                                                   // anillo de fuego mientras dura la definitiva
-      const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0);
-      ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 0.5 + 0.2 * Math.sin(match.elapsed * 10);
-      ctx.beginPath(); ctx.arc(W/2, H/2, far + 14, 0, Math.PI*2); ctx.strokeStyle = FIRE.hot; ctx.lineWidth = 6; ctx.stroke();
-      ctx.restore();
-    }
-    if (big && (match.orbitBoostEl || techElement('orbit')) === 'celestial'){               // Hora celestial: el tiempo se para y los balones dejan estela gris
-      const tr = match.orbTrail = match.orbTrail || [];
-      tr.unshift(orbs.map(o => [o.x - match.x, o.y - match.y])); if (tr.length > 24) tr.length = 24;
-      ctx.save();
-      ctx.globalAlpha = 0.3; ctx.fillStyle = '#7d828e'; ctx.fillRect(-W, -H, W * 3, H * 3);   // velo gris de pausa
-      for (let i = 0; i < orbs.length; i++){
-        for (let k = 1; k < tr.length; k++){
-          const a = tr[k - 1][i], b = tr[k][i]; if (!a || !b) continue;
-          ctx.globalAlpha = 0.75 * (1 - k / tr.length); ctx.strokeStyle = k % 2 ? '#b9bcc6' : '#8e929c'; ctx.lineWidth = (orbs[i].outer ? 10 : 14) * (1 - k / tr.length * 0.7); ctx.lineCap = 'round';
-          ctx.beginPath(); ctx.moveTo(W/2 + a[0], H/2 + a[1]); ctx.lineTo(W/2 + b[0], H/2 + b[1]); ctx.stroke();
-        }
-      }
-      // ecos grises congelados de cada balón (como si el tiempo se hubiera parado)
-      for (const k of [6, 12, 18]){ const fr = tr[k]; if (!fr) continue;
-        for (let i = 0; i < fr.length; i++){ const r = orbs[i] && orbs[i].outer ? 10 : 13;
-          ctx.globalAlpha = 0.5 * (1 - k / 24); ctx.fillStyle = '#d4d7de'; ctx.beginPath(); ctx.arc(W/2 + fr[i][0], H/2 + fr[i][1], r, 0, 6.28); ctx.fill();
-          ctx.globalAlpha *= 0.8; ctx.strokeStyle = '#6e727c'; ctx.lineWidth = 2; ctx.stroke(); } }
-      // esfera de reloj: marcas alrededor del jugador
-      const far = orbs.reduce((m, o) => Math.max(m, Math.hypot(o.x - match.x, o.y - match.y)), 0) + 26;
-      ctx.globalAlpha = 0.5; ctx.fillStyle = '#e8eaf0';
-      for (let k = 0; k < 12; k++){ const a = k * Math.PI / 6; ctx.fillRect(W/2 + Math.cos(a) * far - 2, H/2 + Math.sin(a) * far - 2, k % 3 ? 4 : 7, k % 3 ? 4 : 7); }
-      const hand = match.elapsed * 0.8; ctx.strokeStyle = '#e8eaf0'; ctx.lineWidth = 3; ctx.globalAlpha = 0.35;
-      ctx.beginPath(); ctx.moveTo(W/2, H/2); ctx.lineTo(W/2 + Math.cos(hand) * far * 0.8, H/2 + Math.sin(hand) * far * 0.8); ctx.stroke();
-      ctx.restore();
-    } else match.orbTrail = null;
-    for (const o of orbs){
-      const dx = o.x - match.x, dy = o.y - match.y, sgn = o.outer ? -1 : 1;
-      drawFireBall(o.x+camX, o.y+camY, (big ? 14 : 10) * orbScale() * (o.outer ? 0.8 : 1), -dy * sgn, dx * sgn, big ? 0.4 : 0.3, o.x);
-      if (Math.random() < 0.12) emitEmber(o.x, o.y, { spread: 20 });
-    }
-  } else if (orbs.length){
-    const big = orbitBoosted();
-    const orbEl = getElement(techElement('orbit')), orbEmoji = orbEl.orb;
-    for (const o of orbs){
-      ctx.beginPath();
-      ctx.arc(o.x+camX, o.y+camY, (big ? 18 : 13) * orbScale(), 0, Math.PI*2);
-      ctx.globalAlpha = 0.5;
-      ctx.fillStyle = orbEl.color;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      const size = Math.round((big ? 28 : 22) * orbScale());
-      ctx.font = `${size}px sans-serif`;
-      ctx.fillText(orbEmoji, o.x+camX-size/2, o.y+camY+size/3);
-    }
-  }
-
+  forParts('orbit', () => drawOrbitBalls(camX, camY, elColor));   // balones orbitando (cada órbita mezclada, la suya)
   // cadena de la definitiva de rebote
   for (const b of match.bolts){
     if (b.pts.length < 2) continue;
@@ -10619,11 +11206,8 @@ function renderWorld(){
 
   // aura cuando la definitiva está lista
   const at = activeTech();
-  if (at && canUlt(at) && at.charge >= chargeNeeded()){
-    ctx.beginPath();
-    ctx.arc(W/2, H/2, 26 + Math.sin(match.elapsed * 6) * 3, 0, Math.PI*2);
-    ctx.strokeStyle = elColor; ctx.lineWidth = 3;
-    ctx.stroke();
+  if (at && canUlt(at) && at.charge >= chargeNeeded()){          // R lista: anillo de bloques que late
+    pxRing(W/2, H/2, 30 + Math.round(Math.sin(match.elapsed * 6) * 2), elColor, '#1b1d26', 16, 4, match.elapsed * 1.5);
   }
 
   pxBegin(); drawNotebookRings(); pxEnd();                                  // círculos de los cuadernos
@@ -10632,22 +11216,25 @@ function renderWorld(){
     ctx.globalAlpha = 0.2 + 0.25 * (match.shield / (match.maxHp * 0.15)); ctx.fillStyle = '#7fe3ff'; ctx.fill();
     ctx.globalAlpha = 0.9; ctx.strokeStyle = '#7fe3ff'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
   }
-  // estela del agua isotónica / brillo del néctar
-  if (buffActive('water') || buffActive('nectar')){
-    ctx.beginPath();
-    ctx.arc(W/2, H/2, 22, 0, Math.PI*2);
-    ctx.fillStyle = buffActive('nectar') ? 'rgba(255,122,46,0.3)' : 'rgba(94,200,242,0.25)';
-    ctx.fill();
-    if (buffActive('nectar')){                        // aura de Furia
-      ctx.beginPath();
-      ctx.arc(W/2, H/2, 26 + Math.sin(match.elapsed * 14) * 3, 0, Math.PI*2);
-      ctx.strokeStyle = '#ff7a2e'; ctx.lineWidth = 3; ctx.stroke();
-    }
+  // agua isotónica / leche (Furia): auras estilo arcade, anillos de bloques pixel y chispas que suben
+  if (buffActive('water')){
+    const t = match.elapsed;
+    pxRing(W/2, H/2, 24, '#5ec8f2', '#1f5aa8', 14, 4, t * 2.2);
+    for (let k = 0; k < 5; k++){ const a = k * 1.26 + t * 1.5, ph = (t * 1.6 + k * 0.37) % 1;
+      pxBlock(W/2 + Math.cos(a) * 16, H/2 + 10 - ph * 34, 3, ph < 0.7 ? '#bfe9ff' : '#5ec8f2'); }   // gotitas que suben
+  }
+  if (buffActive('nectar')){                          // Furia
+    const t = match.elapsed, fl = Math.floor(t * 12) % 2;
+    pxRing(W/2, H/2, 27 + fl, fl ? '#ffb02e' : '#ff4a1a', '#7a1a04', 18, 4, -t * 3);
+    pxRing(W/2, H/2, 19, '#ffe14a', '#a84a00', 10, 3, t * 4);
+    for (let k = 0; k < 7; k++){ const a = k * 0.9 + t * 0.7, ph = (t * 2.2 + k * 0.29) % 1;
+      pxBlock(W/2 + Math.cos(a) * (12 + 8 * ph), H/2 + 12 - ph * 44, ph < 0.4 ? 4 : 3, ph < 0.35 ? '#ffe14a' : ph < 0.7 ? '#ff8a2a' : '#c81e0c'); }   // llamitas
   }
 
   // misiles del cielo (Feldt): sombra que crece y diana
   for (const m of (match.bossMarks || [])){
     const k = m.t / m.dur, mx = m.x+camX, my = m.y+camY;
+    if (m.kind === 'lob'){ drawLobZone(m, k, mx, my, camX, camY); continue; }   // granada del lanzador: estilo arcade
     ctx.save();
     ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI*2);
     ctx.globalAlpha = 0.10 + 0.25 * k; ctx.fillStyle = m.kind === 'rock' ? '#b07a3a' : (m.kind === 'ult' || m.kind === 'lob') ? m.color : '#ff2d2d'; ctx.fill(); ctx.globalAlpha = 1;
@@ -10689,6 +11276,8 @@ function renderWorld(){
     const ico = m.kind === 'fist' ? '👊' : m.kind === 'rock' ? '🪨' : '🚀', sz = m.big ? 34 : 26;
     ctx.font = `${sz}px sans-serif`; ctx.fillText(ico, mx - sz / 2, my - 30 - (1 - k) * 220);
   }
+  drawPxBooms(camX, camY);                               // explosiones arcade de los balones de los lanzadores
+  drawBossKOs(camX, camY);                               // K.O. de los bosses
   // Talisman y Cloak oscurecen el mapa: solo ves un círculo alrededor de tu jugador
   // borde rojo de la pantalla cuando te quitan vida
   if (match.hurtFx > 0.01){
@@ -10698,10 +11287,14 @@ function renderWorld(){
   }
   const darkBoss = match.inArena && (match.bossGroup || []).find(b => !b.dead && BOSS_DARK[b.special]);
   if (darkBoss){
-    const R = BOSS_DARK[darkBoss.special];
-    const gr = ctx.createRadialGradient(W/2, H/2, R * 0.55, W/2, H/2, R);
-    gr.addColorStop(0, 'rgba(5,0,12,0)'); gr.addColorStop(1, 'rgba(5,0,12,0.94)');
-    ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+    // Talisman: la oscuridad ya no es permanente, llega a ratos y es aún más cerrada. Cloak: sigue fija.
+    const k = darkBoss.special === 'dark' ? talismanDarkK() : 1;
+    if (k > 0.01){
+      const R = darkBoss.special === 'dark' ? TALISMAN_DARK.r + (1 - k) * 500 : BOSS_DARK[darkBoss.special];
+      const gr = ctx.createRadialGradient(W/2, H/2, R * 0.5, W/2, H/2, R);
+      gr.addColorStop(0, 'rgba(5,0,12,0)'); gr.addColorStop(1, `rgba(5,0,12,${(darkBoss.special === 'dark' ? 0.985 : 0.94) * k})`);
+      ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+    }
   }
 
   // jugador
@@ -10715,10 +11308,12 @@ function renderWorld(){
   if (match.ultAnim){ pxBegin(); drawFenixTornado(false); pxEnd(); }   // auras del salto en estilo pixel (como el resto de técnicas)
   if (orbitBoosted()){ pxBegin(); drawOrbitAura(false); pxEnd(); }      // aura de la definitiva de órbita
   if (match.rainUlt){ pxBegin(); drawRainAura(false); pxEnd(); }       // aura de la definitiva de lluvia
+  if (match.divineFx){ pxBegin(); drawDivineAura(false); pxEnd(); }    // Flecha divina: alas a la espalda
   let pTop = drawPlayerSheet(W/2, H/2);
   if (match.pb){ pxBegin(); drawPBallAuras(W/2, H/2 + 14 - ((fenixState() || {}).h || 0)); pxEnd(); }   // efectos de los balones de poder
   if (orbitBoosted()){ pxBegin(); drawOrbitAura(true); pxEnd(); }
   if (match.rainUlt){ pxBegin(); drawRainAura(true); pxEnd(); }
+  if (match.divineFx){ pxBegin(); drawDivineAura(true); pxEnd(); }     // Flecha divina: aura celestial
   if (techLvl('melee')){ pxBegin(); drawMeleeShield(); pxEnd(); }      // escudo esfera de las supertécnicas cuerpo a cuerpo
   if (match.rainUlt && match.rainUlt.el === 'mountain'){ pxBegin(); drawSumoFoot(camX, camY); pxEnd(); }
   if (match.bossStomp){ if (match.elapsed - match.bossStomp.start > match.bossStomp.hit + 1) match.bossStomp = null; else { pxBegin(); drawSumoFoot(camX, camY, match.bossStomp); pxEnd(); } }   // Pisotón de sumo de Walters   // Pisotón de sumo, por encima de todo
@@ -10754,6 +11349,15 @@ function renderWorld(){
   ctx.textAlign = 'center';
   for (const t of match.texts){
     ctx.globalAlpha = Math.min(1, t.life / 0.35);
+    if (t.big){                                         // mejora elegida: cartel grande que sigue al jugador
+      const tx = W / 2, ty = H / 2 - 64 - (1.9 - t.life) * 14, pop = Math.min(1, (1.9 - t.life) / 0.15);
+      ctx.save(); ctx.translate(tx, ty); ctx.scale(0.6 + 0.4 * pop, 0.6 + 0.4 * pop);
+      ctx.font = "600 17px 'Pixelify Sans', Inter, sans-serif"; ctx.lineJoin = 'miter';   // fuente arcade (la secundaria)
+      ctx.lineWidth = 5; ctx.strokeStyle = '#071233'; ctx.strokeText(t.text, 0, 0);
+      ctx.fillStyle = t.color; ctx.fillText(t.text, 0, 0);
+      if (t.sub){ ctx.font = "400 12px 'Pixelify Sans', Inter, sans-serif"; ctx.lineWidth = 4; ctx.strokeText(t.sub, 0, 18); ctx.fillStyle = '#ffffff'; ctx.fillText(t.sub, 0, 18); }
+      ctx.restore(); continue;
+    }
     ctx.font = t.small ? '700 13px Inter, sans-serif' : '700 16px Inter, sans-serif';
     ctx.lineWidth = 3;
     ctx.strokeStyle = 'rgba(0,0,0,0.6)';
@@ -10873,6 +11477,12 @@ function addDamageText(e, hit){
   const nt = { x: e.x + (Math.random() - 0.5) * 16, y: e.y - 44, text: String(Math.round(hit)), color: '#ffffff', life: 0.7, sum: hit, small: true };
   match.texts.push(nt); e._dmgText = nt;
 }
+/* cartel grande encima del jugador con la mejora que acabas de elegir */
+function addPickText(text, color, sub){
+  text = stripEmoji(String(text)); if (!text) return;
+  match.texts = match.texts.filter(t => !t.big);          // solo uno a la vez
+  match.texts.push({ x: match.x, y: match.y, text, color: color || '#ffe14a', sub: sub ? stripEmoji(String(sub)) : '', life: 1.9, big: true });
+}
 function addFloatText(x, y, text, color){
   text = stripEmoji(String(text));
   if (!text) return;
@@ -10884,6 +11494,7 @@ function addFloatText(x, y, text, color){
 function endMatch(won = false, reason = null){
   if (match.over) return;
   match.over = true;
+  if (!match.recordSaved){ match.recordSaved = true; saveRecord(); }   // récords de la portada
   match.revivable = DEV_ULTS && match.hp <= 0;   // botón de revivir solo con las herramientas de prueba activadas
   match.coinsBefore = match.coinsEarned;
   cancelAnimationFrame(rafId);
@@ -10910,6 +11521,8 @@ function endMatch(won = false, reason = null){
     `Aguantaste ${String(Math.floor(matchClock() / 60)).padStart(2, '0')}:${String(Math.floor(matchClock() % 60)).padStart(2, '0')} · Nivel ${match.level}<br>` +
     (reason === 'mark' && match.mark ? `Contra Mark Evans: ${Math.floor((match.elapsed - match.mark.start) / 60)}:${String(Math.floor((match.elapsed - match.mark.start) % 60)).padStart(2, '0')} (poder ×${markStats().dmg.toFixed(1)}) · +${markBonus} ${COIN_HTML}<br>` : '') +
     `Bosses vencidos: ${match.bossesBeaten} / ${BOSSES.length}<br>` +
+    `Rivales eliminados: ${match.kills || 0} ${pxImg('kills', 18)}<br>` +
+    (match.recordPos === 0 ? '<b class="new-record">¡Nuevo récord!</b><br>' : '') +
     `Monedas ganadas: ${match.coinsEarned} ${COIN_HTML}` + (won ? ' (incluye 100 por terminar)' : '') + (fortune ? ` (+${fortune} por Fortuna)` : '') + (amulet ? ` (+${amulet} por el Amuleto de oro)` : '') +
     (match.ticketsEarned ? `<br>Tickets amarillos: ${match.ticketsEarned} ${pxImg('ticketY', 18)}` : '') + (match.ticketsEpicEarned ? `<br>Tickets morados: ${match.ticketsEpicEarned} ${pxImg('ticketP', 18)}` : '');
   document.getElementById('btn-revive').classList.toggle('hidden', !match.revivable);

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=31">
+<link rel="stylesheet" href="style.css?v=45">
 </head>
 <body>
 
@@ -42,6 +42,7 @@
       </div>
     </div>
 
+    <aside id="records-panel" class="records-panel"></aside>
     <nav class="side-menu">
       <button id="btn-play" class="menu-item">
         <span class="menu-ico">⚽</span>
@@ -177,11 +178,13 @@
           </div>
           <div id="rs-filters" class="rs-chips"></div>
           <div class="rs-chips"><span class="rs-label">Orden:</span><div id="rs-sort" class="rs-chips rs-inline"></div></div>
+          <div id="rs-cmp-bar" class="rs-cmp-bar hidden"></div>
           <div id="rs-grid" class="rs-grid"></div>
         </div>
         <aside id="rs-detail" class="rs-detail"></aside>
       </div>
     </div>
+    <div id="rs-compare-ov" class="cmp-ov hidden"></div>
   </section>
 
   <!-- ===================== PANTALLA DE MEJORAS ===================== -->
@@ -247,13 +250,16 @@
           </div>
           <div class="hud-right">
             <span id="hud-coins">0 <i class="coin-ico"></i></span>
-            <button id="btn-pause" class="pause-btn" aria-label="Pausa y estadísticas" title="Pausa y estadísticas (Esc / Tab)">⏸</button>
+            <button id="btn-pause" class="pause-btn" aria-label="Pausa y estadísticas" title="Pausa (Esc / P) · Estadísticas (Tab)">⏸</button>
           </div>
         </div>
         <div id="hud-inventory" class="inventory"></div>
         <div id="hud-relic" class="hud-relic empty" title="Objeto: ninguno"></div>
         <div id="hud-buffs" class="buffs"></div>
       </div>
+      <aside id="stats-side" class="stats-side hidden">
+        <div id="ss-body"></div>
+      </aside>
       <!-- Barra de vida del boss -->
       <div id="boss-bar" class="boss-bar hidden">
         <img id="boss-crest" class="boss-crest" alt="">
@@ -319,7 +325,7 @@
           </section>
         </div>
       </div>
-      <section id="sp-dev" class="sp-box sp-dev">
+      <section id="sp-dev" class="sp-box sp-dev hidden">
         <h4 class="sp-title">Pruebas · supertécnicas evolucionadas (R)</h4>
         <div id="sp-dev-ults" class="dev-ults"></div>
       </section>
@@ -457,6 +463,6 @@
   </div>
 
   <script src="players.js?v=14"></script>
-  <script src="game.js?v=31"></script>
+  <script src="game.js?v=45"></script>
 </body>
 </html>
