@@ -2873,7 +2873,7 @@ function renderRoster(){
   // aviso del modo comparar
   { const bar = document.getElementById('rs-cmp-bar'), a = rosterUI.compareA && CHARACTERS.find(x => x.id === rosterUI.compareA);
     if (bar){ bar.classList.toggle('hidden', !a);
-      if (a){ bar.innerHTML = `<span>Elige otro jugador para comparar con <b>${a.name}</b></span><button class="btn btn-ghost rs-cmp-cancel">Cancelar</button>`;
+      if (a){ bar.innerHTML = `<span>Elige otro jugador fichado para comparar con <b>${a.name}</b></span><button class="btn btn-ghost rs-cmp-cancel">Cancelar</button>`;
         bar.querySelector('.rs-cmp-cancel').onclick = () => { rosterUI.compareA = null; renderRoster(); }; } } }
   // cuadrícula
   const list = rosterList();
@@ -2900,6 +2900,7 @@ function renderRoster(){
       <span class="rs-meta"><i class="rs-dot rarity-${c.rarity}" title="${RARITY_LABEL[c.rarity]}"></i>${c.pos}</span>`;
     if (rosterUI.compareA && c.id === rosterUI.compareA) card.classList.add('cmp-a');
     card.onclick = () => {
+      if (rosterUI.compareA && c.id !== rosterUI.compareA && !have){ SFX.play('reject'); return; }   // solo se comparan jugadores fichados
       if (rosterUI.compareA && c.id !== rosterUI.compareA){ const a = rosterUI.compareA; rosterUI.compareA = null; renderRoster(); openCompare(a, c.id); return; }
       rosterUI.pick = c.id; renderRoster();
     };
@@ -2944,8 +2945,9 @@ function renderRosterDetail(){
           : '<button id="rs-set-starter" class="btn btn-primary rs-action">Poner de titular</button>')
       : '<button class="btn btn-ghost rs-action" disabled>🔒 Sin fichar</button>'}
     ${have ? '<button id="rs-upgrades" class="btn btn-secondary rs-action">⬆ Mejoras</button>' : ''}
-    <button id="rs-compare" class="btn btn-purple rs-action">Comparar</button>`;
-  document.getElementById('rs-compare').onclick = () => { rosterUI.compareA = c.id; SFX.play('click'); renderRoster(); };
+    ${have ? '<button id="rs-compare" class="btn btn-purple rs-action">Comparar</button>' : ''}`;
+  const cmpBtn = document.getElementById('rs-compare');
+  if (cmpBtn) cmpBtn.onclick = () => { rosterUI.compareA = c.id; SFX.play('click'); renderRoster(); };
   box.querySelectorAll('.rs-look-btn').forEach(b => b.onclick = () => {
     if (b.disabled) return;
     state.shinyOn[c.id] = b.dataset.look === '1'; saveState(); updateShowcase(); renderRoster();
@@ -7377,9 +7379,7 @@ function triggerUltimate(){
   } else if (U.kind === 'rain'){
     // Triángulo Z / Flecha divina / Triángulo letal / Pisotón de sumo:
     // los impactos caen siguiendo un triángulo y rematan en el centro
-    const target = nearestEnemy();
-    const cx = target ? target.x : match.x + match.aim.x * 200;
-    const cy = target ? target.y : match.y + match.aim.y * 200;
+    const cx = match.x, cy = match.y;            // el triángulo cae centrado en el jugador
     const R = 210 + 20 * extra;
     const rot = -Math.PI / 2 + (Math.random() - 0.5) * 0.6;
     const verts = [0, 1, 2].map(k => [cx + Math.cos(rot + k * Math.PI * 2 / 3) * R,
