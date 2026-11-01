@@ -7798,8 +7798,8 @@ function fillLevelup(free, lucky){
     const newTag = u.isNew ? ' <em class="tag-new">Nueva</em>' : '';
     const lvShown = u.nextLvl;
     const stars = u.rar ? UP_RARITY.indexOf(u.rar) + 1 : 0;
-    const rarTag = u.rar ? `<i class="urar-corner" title="${u.rar.name}">${'<u></u>'.repeat(stars)}</i>` : '';
-    btn.innerHTML = `${rarTag}<b><kbd class="upgrade-key">${i + 1}</kbd> ${optionIcon(u)} ${u.name} · Nv. ${lvShown}${slotTag}${newTag}</b><span>${u.desc}</span>`;
+    const rarTag = u.rar ? `<i class="urar-corner" title="${u.rar.name}"><span class="urar-stars">${'<u></u>'.repeat(stars)}</span></i>` : '';
+    btn.innerHTML = `${rarTag}<b><kbd class="upgrade-key">${i + 1}</kbd> <ins class="up-nm">${optionIcon(u)} ${u.name} · Nv. ${lvShown}</ins>${slotTag}${newTag}</b><span>${u.desc}</span>`;
     const choose = () => {
       if (!match.levelupChoices) return;       // ya se eligió una
       match.levelupChoices = null;

@@ -2876,17 +2876,20 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 
 /* ===================== RAREZA DE LAS CARTAS DE MEJORA: esquina de color con estrellas ===================== */
 #levelup-overlay .upgrade-option.urar{ position: relative; }
-.urar-corner{ position:absolute; top: -2px; right: -2px; z-index: 3; display:flex; gap: 3px; align-items:center; justify-content:center;
-  height: 34px; min-width: 104px; padding: 0 12px 0 26px; font-style: normal; pointer-events:none;
+.urar-corner{ position:absolute; top: -3px; right: -3px; z-index: 3; display:flex; align-items:center; justify-content:center;
+  height: 44px; min-width: 132px; padding: 0 12px 0 40px; box-sizing: border-box; font-style: normal; pointer-events:none;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.45) 0 3px, transparent 3px),
+    linear-gradient(180deg, rgba(255,255,255,.5) 0 4px, transparent 4px),
     linear-gradient(180deg, color-mix(in srgb, var(--urc) 70%, #fff) 0 50%, var(--urc) 50% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 26px 100%, 26px calc(100% - 6px), 20px calc(100% - 6px), 20px calc(100% - 12px), 14px calc(100% - 12px), 14px 12px, 8px 12px, 8px 6px, 0 6px);
-  box-shadow: inset 0 0 0 3px var(--urd), inset 0 -6px 0 rgba(0,0,0,.18); }
-.urar-corner::before{ content:''; position:absolute; left: 30px; top: 6px; width: 4px; height: 4px; background:#fff; box-shadow: 6px 0 0 rgba(255,255,255,.6); opacity:.8; }
-.urar-corner u{ display:block; width: 16px; height: 16px; background:#fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 36px calc(100% - 8px), 28px calc(100% - 8px), 28px calc(100% - 16px), 20px calc(100% - 16px), 20px 16px, 12px 16px, 12px 8px, 0 8px);
+  box-shadow: inset 0 0 0 4px var(--urd), inset 0 0 0 6px rgba(0,0,0,.35), inset 0 -8px 0 rgba(0,0,0,.2); }
+.urar-corner::before{ content:''; position:absolute; left: 22px; top: 9px; width: 4px; height: 4px; background:#fff; box-shadow: 6px 0 0 rgba(255,255,255,.6); opacity:.85; }
+.urar-corner u{ display:block; width: 19px; height: 19px; background:#fff;
   clip-path: polygon(50% 0, 62% 36%, 100% 36%, 70% 60%, 82% 100%, 50% 76%, 18% 100%, 30% 60%, 0 36%, 38% 36%);
-  filter: drop-shadow(0 2px 0 var(--urd)) drop-shadow(1px 0 0 var(--urd)) drop-shadow(-1px 0 0 var(--urd)); }
+}
+/* borde negro arcade alrededor de las estrellas (el filtro va en el contenedor porque el clip-path recorta las sombras) */
+.urar-stars{ display:flex; gap: 4px; align-items:center; margin-top: -2px;
+  filter: drop-shadow(2px 0 0 #000) drop-shadow(-2px 0 0 #000) drop-shadow(0 2px 0 #000) drop-shadow(0 -2px 0 #000) drop-shadow(0 3px 0 rgba(0,0,0,.45)); }
 .urar-common .urar-corner u{ background:#f2f4f7; }
 .urar-epic .urar-corner u{ background:#fff3a0; }
 .urar-legendary .urar-corner u{ background:#fffbe0; animation: urar-star 0.8s steps(2) infinite; }
@@ -2895,7 +2898,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .urar-legendary .urar-corner, .urar-epic .urar-corner{ animation: urar-tag 1.1s steps(3) infinite; }
 @keyframes urar-tag{ 50%{ filter: brightness(1.2); } }
 #levelup-overlay .upgrade-option.urar{ border-color: var(--urc) !important; }
-#levelup-overlay .upgrade-option.urar b{ padding-right: 96px; }
+#levelup-overlay .upgrade-option.urar b{ padding-right: 118px; }
 .rar-gain{ font-style: normal; font-weight: 900; color:#071233; background: var(--urc, #ffe14a); padding: 0 6px; clip-path: var(--px-cut-s); text-shadow: none; }
 .docs-rar{ display:inline-block; width: 30px; height: 30px; background: linear-gradient(180deg, color-mix(in srgb, var(--urc) 80%, #fff) 0 50%, var(--urc) 50% 100%); box-shadow: inset 0 0 0 3px var(--urd); clip-path: var(--px-cut-s); }
 
@@ -2933,3 +2936,6 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 @media (max-width: 1100px){ .records-panel{ display:none; } }
 /* contador de bajas/monedas/tickets: azul oscuro como el panel de estadísticas */
 #hud-coins{ background: var(--px-panel) !important; box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #ffe14a, inset 0 0 0 6px var(--px-dark) !important; padding: 7px 14px 7px 11px !important; }
+
+.upgrade-option b .up-nm{ text-decoration:none; white-space:nowrap; display:inline-flex; align-items:center; gap: 6px; vertical-align: middle; }
+.upgrade-option b .up-nm .px-mini{ vertical-align: 0; margin-right: 0; }
