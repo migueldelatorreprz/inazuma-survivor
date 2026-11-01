@@ -1473,8 +1473,20 @@ const TICKET_BOSS = [0.25, 0.06], TICKET_MINIBOSS = [0.2, 0.02];
 const KAPPAH_EPIC = 0.10;         // si Kappah suelta ticket, un 10% es morado
 function dropTicket(x, y, purple){ match.gems.push({ x, y, xp:0, coin:0, ticket:1, purple: !!purple, kind:'ticket', pull:true }); }
 /* boss vencido: siempre 1 ticket amarillo y, encima, una tirada extra (25% otro amarillo · 6% uno morado) */
-function bossTickets(x, y){ dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS); if (rl()){ if (Math.random() < 0.2) dropTicket(x - 24, y + 10, false); if (Math.random() < 0.05) dropTicket(x, y + 24, true); } }   // RandomLocke: más tickets
-function rollTicket(x, y, [pY, pP]){ if (rl()){ pY *= RLK.ticket; pP *= RLK.ticket; } const r = Math.random(); if (r < pP) dropTicket(x, y, true); else if (r < pP + pY) dropTicket(x, y, false); }
+function bossTickets(x, y){
+  dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS);
+  if (rl()) rlBossTickets(x, y);
+}
+/* RandomLocke: recompensas que crecen con lo que avanzas (en el 3er boss ya has recuperado el ticket morado de la entrada) */
+function rlBossTickets(x, y){
+  const n = match.bossesBeaten || 0, fin = match.bossIdx >= BOSSES.length;
+  if (fin){ dropTicket(x - 24, y + 10, true); dropTicket(x, y + 30, false); return; }   // Aphrodite: 1 morado + 1 amarillo
+  if (n === 1){ if (Math.random() < 0.1) dropTicket(x, y + 24, true); return; }
+  if (n === 2){ if (Math.random() < 0.2) dropTicket(x, y + 24, true); if (Math.random() < 0.5) dropTicket(x - 24, y + 10, false); return; }
+  dropTicket(x, y + 24, true);                                            // del 3º en adelante: 1 morado seguro
+  dropTicket(x - 24, y + 10, false);
+}
+function rollTicket(x, y, [pY, pP]){ if (rl()){ const k = RLK.ticket * (1 + 0.4 * (match.bossesBeaten || 0)); pY *= k; pP *= k; } const r = Math.random(); if (r < pP) dropTicket(x, y, true); else if (r < pP + pY) dropTicket(x, y, false); }
 const ITEM_LIFE = 25;           // segundos que dura en el suelo antes de desaparecer
 const ITEMS = {
   water:   { emoji:'💧', name:'Agua isotónica', weight:20, color:'#5ec8f2', dur:8,
@@ -3845,7 +3857,7 @@ function rlCards(ov, title, sub, faces, onPick, goText){
 function rlSetupStart(pool){
   match.rlSetup = true; match.paused = true; mCount('rlPlays');
   const ov = rlOverlay(); SFX.play('menu_open');
-  rlCards(ov, 'RandomLocke', `Elige una carta: jugarás con el <b>épico o legendario</b> que te toque. ${RLK.cost ? `Entrada pagada: ${RLK.cost} ${pxImg('ticketP', 18)}` : '<b>¡Gratis por ahora!</b>'}`,
+  rlCards(ov, 'RandomLocke', `Elige una carta: jugarás con el <b>épico o legendario</b> que te toque. ${RLK.cost ? `Entrada pagada: ${RLK.cost} ${pxImg('ticketP', 18)}` : '<b>¡Gratis por ahora!</b>'}<br>Cuanto más avances, más premios: <b>desde el 3er boss, ticket morado seguro</b> en cada boss.`,
     pool.map(c => packCardHtml(c, false, false, 0)),
     i => {
       const c = pool[i];
@@ -4192,7 +4204,7 @@ function pxEnd(){
   ctx.imageSmoothingEnabled = true;
 }
 let W, H;
-const VIEW_H = 840, VIEW_MAX_ASPECT = 2.2;   // alto fijo de la vista (en píxeles del juego) y proporción máxima
+const VIEW_H = 920, VIEW_MAX_ASPECT = 2.2;   // alto fijo de la vista (en píxeles del juego) y proporción máxima
 function resizeCanvas(){
   // la vista del campo es SIEMPRE del mismo tamaño (VIEW_H de alto): el zoom del navegador o una pantalla
   // más grande no dejan ver más campo (solo se ve más grande o más pequeño)
@@ -5193,6 +5205,7 @@ function update(dt){
   match._lx = match.x; match._ly = match.y;
   updateWeather(dt);
 
+  if (match.hp <= 0 && ultRunning()) match.hp = 1;   // durante la R no se puede morir
   if (match.hp <= 0){ if (tryRefereeCoin()) return; startDeath(); return; }   // te eliminan: animación en blanco y negro y luego el final (contra Mark cuenta como final)   // te eliminan: pitido final (contra Mark cuenta como final)
   if (!match.levelupChoices && match.xp >= match.xpNext) levelUp();
   updateHud();
@@ -5477,7 +5490,7 @@ function updateGems(dt){
 const WHISTLE_XP = 1.2;          // la experiencia atraída con el silbato vale +20%
 function collectPickup(g){
   match.xp += (g.xp || 0) * effXpMult() * (g.whistle ? WHISTLE_XP : 1);
-  match.coinsEarned += (g.coin || 0) * (rl() ? RLK.coin : 1);   // RandomLocke: monedas dobles
+  match.coinsEarned += (g.coin || 0) * (rl() ? RLK.coin + 0.3 * (match.bossesBeaten || 0) : 1);   // RandomLocke: monedas dobles (y más con cada boss)
   if (g.kind === 'bag') addFloatText(match.x, match.y - 30, `+${g.coin} monedas`, '#f2b705');
   if (g.ticket){
     if (g.purple){ match.ticketsEpicEarned = (match.ticketsEpicEarned || 0) + g.ticket; addFloatText(match.x, match.y - 40, '¡Ticket morado!', '#c48bff'); }
@@ -7218,6 +7231,22 @@ function drawMarkShield(){
   ctx.fillStyle = '#ffffff'; ctx.globalAlpha = 0.85; ctx.fillRect(Math.round(cx - R * 0.45), Math.round(cy - R * 0.55), 4, 4); ctx.fillRect(Math.round(cx - R * 0.45) + 4, Math.round(cy - R * 0.55) - 4, 4, 4);
   ctx.restore();
 }
+/* escudo hexagonal de bloques pixel (bosses de RandomLocke) */
+function drawPxShield(cx, cy, R, col){
+  const t = match.elapsed, B = 5, dark = shadeHex(col, -0.55), lightC = shadeHex(col, 0.45);
+  R += Math.floor(t * 6) % 2 * 2;
+  ctx.save();
+  ctx.globalAlpha = 0.2; ctx.fillStyle = col;
+  for (let y = -R; y <= R; y += B) for (let x = -R; x <= R; x += B){ if (Math.abs(x) * 0.87 + Math.abs(y) * 0.5 <= R * 0.87 && Math.abs(y) <= R) ctx.fillRect(Math.round(cx + x - B / 2), Math.round(cy + y - B / 2), B, B); }
+  ctx.globalAlpha = 1;
+  const pts = []; for (let k = 0; k < 6; k++){ const a = Math.PI / 6 + k * Math.PI / 3; pts.push([cx + Math.cos(a) * R, cy + Math.sin(a) * R]); }
+  for (let k = 0; k < 6; k++){ const [ax, ay] = pts[k], [bx, by] = pts[(k + 1) % 6], n = 10;
+    for (let i = 0; i < n; i++){ const f = i / n, x = ax + (bx - ax) * f, y = ay + (by - ay) * f, lit = ((i + k * 10 + Math.floor(t * 12)) % 13) < 2;
+      ctx.fillStyle = '#071233'; ctx.fillRect(Math.round(x) - 4, Math.round(y) - 4, 8, 8);
+      ctx.fillStyle = lit ? '#ffffff' : (i % 2 ? col : lightC); ctx.fillRect(Math.round(x) - 3, Math.round(y) - 3, 6, 6); } }
+  ctx.fillStyle = '#ffffff'; ctx.globalAlpha = 0.8; ctx.fillRect(Math.round(cx - R * 0.5), Math.round(cy - R * 0.55), 5, 5); ctx.fillRect(Math.round(cx - R * 0.5) + 5, Math.round(cy - R * 0.55) - 5, 5, 5);
+  ctx.restore();
+}
 /* cabeza de Hillman sacada de su hoja de sprites (para el menú de Hillman, la guía y las misiones) */
 let HILL_HEAD_URL = null;
 function hillHeadURL(){ if (HILL_HEAD_URL) return HILL_HEAD_URL; const c = sheetHead(NPC_SHEETS.hillman); if (!c) return null; try { HILL_HEAD_URL = c.toDataURL(); } catch (e) {} return HILL_HEAD_URL; }
@@ -7385,7 +7414,7 @@ function techElement(kind){
   }
   return match.element;
 }
-function orbitUltDur(extra){ return 3.5 + 0.5 * extra; }   // duración de la definitiva de órbita (antes 7 s + 1 por nivel extra)
+function orbitUltDur(extra){ return 2.5 + 0.25 * extra; }   // duración de la definitiva de órbita (antes 3,5 s + 0,5 por nivel extra)
 const ORBIT_ULT_SPEED = 1.2;   // la definitiva de órbita te da +20% de velocidad mientras dura
 function orbitBoosted(){ return match.orbitBoostUntil > match.elapsed; }
 function addCharge(kind){
@@ -8043,7 +8072,7 @@ function drawFenixTornado(front, ov){
 }
 const ULT_RECHARGE_DELAY = 8;   // segundos tras usar la R antes de que empiece a cargarse otra vez
 function triggerUltimate(){
-  if (!match || match.paused || match.over) return;
+  if (!match || match.paused || match.over || match.dying || match.coinFlip || match.hp <= 0) return;   // ya eliminado: no hay R
   const t = activeTech();
   if (!t || !canUlt(t) || t.charge < chargeNeeded()) return;
   if (match.ultAnim) return;                          // aún está saltando
@@ -11726,8 +11755,9 @@ function renderWorld(){
       }
       if (e.shieldUntil > match.elapsed){                  // escudo (Artist rosa, Walters verde)
         const sc = e.shieldColor || '#e45fa8';
+        if (rl()){ pxBegin(); drawPxShield(ex, ey - 20, 54, sc); pxEnd(); } else {
         ctx.save(); ctx.beginPath(); ctx.arc(ex, ey - 20, 52 + Math.sin(match.elapsed * 10) * 2, 0, Math.PI*2);
-        ctx.globalAlpha = 0.22; ctx.fillStyle = sc; ctx.fill(); ctx.globalAlpha = 1; ctx.strokeStyle = sc; ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
+        ctx.globalAlpha = 0.22; ctx.fillStyle = sc; ctx.fill(); ctx.globalAlpha = 1; ctx.strokeStyle = sc; ctx.lineWidth = 3; ctx.stroke(); ctx.restore(); }
       }
       drawElIcon(e.affEl || e.element, ex+22, bTop - 10, 24);
       ctx.font = '700 12px Inter, sans-serif';
