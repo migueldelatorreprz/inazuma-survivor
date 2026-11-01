@@ -546,6 +546,27 @@ const MENU_GEAR = () => outlinedSprite((x, y) => {
 });
 function pxIcon(rows){ return pixelSprite(16, (x, y) => { const ch = rows[y][x]; return ch === '.' ? null : PX_PAL[ch]; }); }
 PX_ART.m_book = PX_ART.sabiduria;   // icono de la Guía
+/* iconos pixel de las Misiones */
+PX_ART.ms_swords = ["................", ".KK..........KK.", ".KWK........KWK.", "..KWK......KWK..", "...KWK....KWK...", "....KWK..KWK....", ".....KWKKWK.....", "......KWWK......", "......KWWK......", ".....KWKKWK.....", "...KKKK..KKKK...", "..KYYK....KYYK..", ".KYyK......KyYK.", ".KyK........KyK.", "..K..........K..", "................"];
+PX_ART.ms_mirror = ["................", ".....KKKKKK.....", "....KYYYYYYK....", "...KYCCWCCCYK...", "...KYCWCCCCYK...", "...KYCCCCCCYK...", "...KYCCCCCBYK...", "...KYCCCCBBYK...", "....KYYYYYYK....", ".....KKYYKK.....", ".......KYK......", ".......KYK......", ".......KyK......", "......KYYYK.....", "......KKKKK.....", "................"];
+PX_ART.ms_target = ["................", ".....KKKKKK.....", "...KKRRRRRRKK...", "..KRRWWWWWWRRK..", "..KRWWRRRRWWRK..", ".KRWWRRWWRRWWRK.", ".KRWRRWWWWRRWRK.", ".KRWRWWRRWWRWRK.", ".KRWRWWRRWWRWRK.", ".KRWRRWWWWRRWRK.", ".KRWWRRWWRRWWRK.", "..KRWWRRRRWWRK..", "..KRRWWWWWWRRK..", "...KKRRRRRRKK...", ".....KKKKKK.....", "................"];
+PX_ART.ms_rainbow = ["................", "................", "................", "....KKKKKKKK....", "..KKRRRRRRRRKK..", ".KRROOOOOOOORRK.", ".KROOYYYYYYOORK.", "KROYYGGGGGGYYORK", "KROYGGBBBBGGYORK", "KROYGBK..KBGYORK", "KROYGBK..KBGYORK", "KROYGBK..KBGYORK", "KKKKKKK..KKKKKKK", "................", "................", "................"];
+PX_ART.ms_star = [".......KK.......", "......KLYK......", "......KLYK......", ".....KLLYYK.....", "KKKKKKLLYYKKKKKK", "KYLLLLLLYYYYYYyK", ".KYLLLLLYYYYYyK.", "..KYYLLYYYYYyK..", "...KYYYYYYYyK...", "...KYYYYYYYyK...", "..KYYYYKKYYYyK..", "..KYYYK..KYYyK..", ".KYYyK....KYyyK.", ".KYyK......KyyK.", ".KKK........KKK.", "................"];
+PX_ART.ms_clock = ["................", ".....KKKKKK.....", "...KKRRRRRRKK...", "..KRWWWKWWWWRK..", "..KRWWWKWWWWRK..", ".KRWWWWKWWWWWRK.", ".KRWWWWKWWWWWRK.", ".KRWWWWKKKKWWRK.", ".KRWWWWWWWWWWRK.", ".KRWWWWWWWWWwRK.", "..KRWWWWWWWwRK..", "..KRwWWWWWwwRK..", "...KKRRRRRRKK...", ".....KKKKKK.....", "....KK....KK....", "................"];
+PX_ART.ms_fire = [".......K........", "......KRK.......", "......KRRK......", ".....KRRRK..K...", ".....KRORRK.KK..", "....KRROORK.KRK.", "..K.KROOORRKRRK.", "..KKROOYOORRRRK.", "..KRROOYYOORRK..", ".KRROOYYYYOORRK.", ".KROOYYLLYYOORK.", ".KROYYLLLLYYORK.", ".KROYYLLLLYYORK.", "..KROYYYYYYORK..", "...KKROOOORKK...", ".....KKKKKK....."];
+PX_ART.ms_potion = ["................", "......KKKK......", "......KSSK......", ".......KK.......", "......KCCK......", "......KCCK......", ".....KCWCCK.....", "....KCCCCCCK....", "...KRRRRBBBBK...", "..KRRWRRBBBBBK..", "..KRRRRRBBBBbK..", "..KRRRRRBBBBbK..", "..KrRRRRBBBbbK..", "...KrrrrbbbbK...", "....KKKKKKKK....", "................"];
+PX_ART.ms_books = ["................", "................", "...KKKKKKKKKKK..", "..KRRRRRRRRRRK..", "..KRLLLLLLLLRK..", "..KrrrrrrrrrrK..", "..KWWWWWWWWWWK..", "...KKKKKKKKKKK..", ".KKKKKKKKKKKK...", ".KBBBBBBBBBBBK..", ".KBLLLLLLLLLBK..", ".KbbbbbbbbbbbK..", ".KWWWWWWWWWWWK..", "..KKKKKKKKKKKK..", "................", "................"];
+PX_ART.ms_up2 = ["................", "................", "................", "....K......K....", "...KYK....KYK...", "..KYLYK..KYLYK..", ".KYYLYYKKYYLYYK.", ".KKKYKKKKKKYKKK.", "...KYK....KYK...", "...KYK....KYK...", "...KYK....KYK...", "...KyK....KyK...", "...KKK....KKK...", "................", "................", "................"];
+PX_ART.ms_hillman = ["................", ".....KKKKKK.....", "....KTTTTTTK....", "...KTTTTTTTTK...", "..KSKTTTTTTKSK..", "..KSSTKTTKTSSK..", "..KSTTKTTKTTSK..", "...KTTTTTTTTK...", "...KTTFTTFTTK...", "...KTSSSSSSTK...", "...KSSSSSSSSK...", "....KSSWWSSK....", ".....KSSSSK.....", "......KKKK......", "................", "................"];
+PX_ART.ms_shiny = ["................", "....K...........", "...KLK..........", "..KLWLK.....K...", ".KLWWWLK...KLK..", "..KLWLK...KLWLK.", "...KLK.....KLK..", "....K.......K...", ".........K......", "........KLK.....", ".......KLWLK....", "......KLWWWLK...", ".......KLWLK....", "........KLK.....", ".........K......", "................"];
+PX_ART.ms_crown = ["................", "................", "..K....KK....K..", ".KYK..KYYK..KYK.", ".KYYK.KYYK.KYYK.", ".KYYYKYYYYKYYYK.", ".KYYYYYYYYYYYYK.", ".KYLYYYRRYYYLYK.", ".KYYYYRRRRYYYYK.", ".KYYYYYRRYYYYyK.", ".KyYYYYYYYYYyyK.", ".KKKKKKKKKKKKKK.", ".KyyyyyyyyyyyyK.", ".KKKKKKKKKKKKKK.", "................", "................"];
+PX_ART.ms_scout = ["................", "....KKKKK.......", "...KCCCCCK......", "..KCWWCCCCK.....", "..KCWCCCCCK.....", "..KCCCCCCCK.....", "..KCCCCCCCK.....", "...KCCCCCK......", "....KKKKKSK.....", ".........KSK....", "..........KNK...", "...........KNK..", "............KNK.", ".............KK.", "................", "................"];
+PX_ART.ms_school = ["................", "..KKKKKKKKKKKK..", "..KCBBBBBBBBBK..", "..KCBBBBKKBBBK..", "..KCBBBKYKBBBK..", "..KCBBKYKBBBBK..", "..KCBKYYKKKBBK..", "..KCBKYYYYYKBK..", "..KBBKKKYYKBBK..", "...KBBBKYKBBK...", "...KBBKYKBBBK...", "....KBKKBBBK....", ".....KBBBBK.....", "......KBBK......", ".......KK.......", "................"];
+PX_ART.ms_dumbbell = ["................", "................", "................", "................", ".KKK........KKK.", "KSSSK......KSSSK", "KSWSKKKKKKKKSWSK", "KSSSSwwwwwwSSSSK", "KSSSKKKKKKKKSSSK", "KsssK......KsssK", ".KKK........KKK.", "................", "................", "................", "................", "................"];
+PX_ART.ms_pballs = ["................", "..KKKK....KKKK..", ".KRRRRK..KBBBBK.", ".KRWRRK..KBWBBK.", ".KRRRrK..KBBBbK.", ".KRRrrK..KBBbbK.", "..KKKK....KKKK..", "................", "................", "..KKKK....KKKK..", ".KGGGGK..KYYYYK.", ".KGWGGK..KYWYYK.", ".KGGGgK..KYYYyK.", ".KGGggK..KYYyyK.", "..KKKK....KKKK..", "................"];
+PX_ART.ms_pb4 = ["......KKKK......", ".....KRRRRK.....", ".....KRWRRK.....", ".....KRRRrK.....", ".....KRRrrK.....", ".KKKK.KKKK.KKKK.", "KBBBBK.KK.KGGGGK", "KBWBBKKWWKKGWGGK", "KBBBbKKWWKKGGGgK", "KBBbbK.KK.KGGggK", ".KKKK.KKKK.KKKK.", ".....KYYYYK.....", ".....KYWYYK.....", ".....KYYYyK.....", ".....KYYyyK.....", "......KKKK......"];
+PX_ART.m_full = ["................", "................", "..KKKKK..KKKKK..", "..KWWWK..KWWWK..", "..KWKKK..KKKWK..", "..KWK......KWK..", "..KKK......KKK..", "................", "................", "..KKK......KKK..", "..KWK......KWK..", "..KWKKK..KKKWK..", "..KWWWK..KWWWK..", "..KKKKK..KKKKK..", "................", "................"];   // pantalla completa
+PX_ART.rl = ["................", "................", ".KKKKKK..KKKK...", ".KRRRRRK.KYYK...", ".KRRKKRRKKYYK...", ".KRRK.KRKKYYK...", ".KRRKKRRKKYYK...", ".KRRRRRK.KYYK...", ".KRRKRRK.KYYK...", ".KRRK.KRKKYYKKK.", ".KRRK.KRRKYYYYYK", ".KRRK..KRKYYYYYK", ".KKKK..KKKKKKKKK", "................", "................", "................"];   // sello RandomLocke (mejoras ocultas)
 const PX_ICONS = {}, PX_ICON_URL = {};
 for (const k in PX_ART){ PX_ICONS[k] = pxIcon(PX_ART[k]); try { PX_ICON_URL[k] = PX_ICONS[k].toDataURL(); } catch (e) {} }
 ITEM_SPRITES.rice = PX_ICONS.rice;
@@ -852,7 +873,7 @@ function bodySprites(key, build = 'standard', charId){
 }
 const BODY_SPRITES = bodySprites('player');
 /* equipo rival actual: el del próximo boss (Occult al principio… Zeus al final) */
-function currentKit(){ const B = BOSSES[match.bossesBeaten || 0]; return B && OUTFITS[B.team] ? B.team : 'Zeus'; }
+function currentKit(){ if (rl()) return rlRandomKit(); const B = BOSSES[match.bossesBeaten || 0]; return B && OUTFITS[B.team] ? B.team : 'Zeus'; }
 /* fotograma de un rival: mira hacia el jugador y siempre anda */
 function enemyBodyFrame(e){
   if (!e.kit) e.kit = currentKit();
@@ -1083,7 +1104,7 @@ function drawNpcSheet(o, path, x, y){
 }
 /* dibuja a un rival corriendo hacia el jugador, con los pies en feetY; devuelve la parte de arriba de la cabeza o null si no hay hoja */
 function drawEnemySheet(e, x, feetY, scaleMul){
-  const h = sheetImage(enemySheetPath(e));
+  const h = (rl() && !e.boss && !e.miniBoss) ? rlSheet(enemySheetPath(e)) : sheetImage(enemySheetPath(e));
   if (!h || !h.ok) return null;
   e._face8 = face8Of(match.x - e.x, match.y - e.y);
   e.walkPh = e.walkPh ?? Math.random() * 4;
@@ -1452,8 +1473,8 @@ const TICKET_BOSS = [0.25, 0.06], TICKET_MINIBOSS = [0.2, 0.02];
 const KAPPAH_EPIC = 0.10;         // si Kappah suelta ticket, un 10% es morado
 function dropTicket(x, y, purple){ match.gems.push({ x, y, xp:0, coin:0, ticket:1, purple: !!purple, kind:'ticket', pull:true }); }
 /* boss vencido: siempre 1 ticket amarillo y, encima, una tirada extra (25% otro amarillo · 6% uno morado) */
-function bossTickets(x, y){ dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS); }
-function rollTicket(x, y, [pY, pP]){ const r = Math.random(); if (r < pP) dropTicket(x, y, true); else if (r < pP + pY) dropTicket(x, y, false); }
+function bossTickets(x, y){ dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS); if (rl()){ if (Math.random() < 0.2) dropTicket(x - 24, y + 10, false); if (Math.random() < 0.05) dropTicket(x, y + 24, true); } }   // RandomLocke: más tickets
+function rollTicket(x, y, [pY, pP]){ if (rl()){ pY *= RLK.ticket; pP *= RLK.ticket; } const r = Math.random(); if (r < pP) dropTicket(x, y, true); else if (r < pP + pY) dropTicket(x, y, false); }
 const ITEM_LIFE = 25;           // segundos que dura en el suelo antes de desaparecer
 const ITEMS = {
   water:   { emoji:'💧', name:'Agua isotónica', weight:20, color:'#5ec8f2', dur:8,
@@ -1615,7 +1636,7 @@ function vamosMult(){
 }
 /* velocidad de movimiento real ahora mismo (con agua, néctar, talentos, cuadernos, balones, R de órbita…) */
 function moveSpeedNow(){
-  return match.speed * (buffActive('water') ? WATER_SPEED : 1) * (buffActive('nectar') ? NECTAR_SPEED : 1) * talentSpeedMult() * (inHoraCelestial() ? 1 - BYRON.slow : 1) * (pbActive('blue') ? PBALL.blue.mult : 1) * (orbitBoosted() ? ORBIT_ULT_SPEED : 1);
+  return match.speed * (buffActive('water') ? WATER_SPEED : 1) * (buffActive('nectar') ? NECTAR_SPEED : 1) * talentSpeedMult() * (inHoraCelestial() ? 1 - BYRON.slow : 1) * (pbActive('blue') ? pbMult('blue') : 1) * (orbitBoosted() ? ORBIT_ULT_SPEED : 1);
 }
 /* ¡Vamos todos!: un poco de todo */
 function allK(){ return 1 + tval('vamosTodos'); }
@@ -1736,6 +1757,7 @@ function saveState(){
   localStorage.setItem('ss_shiny', JSON.stringify(state.shiny));
   localStorage.setItem('ss_shiny_on', JSON.stringify(state.shinyOn));
   localStorage.setItem('ss_dupes', JSON.stringify(state.dupes));
+  if (missionsReady) missionEval();
 }
 
 /* ---------------------- NAVEGACIÓN DE PANTALLAS ---------------------- */
@@ -1747,6 +1769,7 @@ const screens = {
   upgrades: document.getElementById('screen-upgrades'),
   docs: document.getElementById('screen-docs'),
   trade: document.getElementById('screen-trade'),
+  missions: document.getElementById('screen-missions'),
   game: document.getElementById('screen-game'),
 };
 function showScreen(name){
@@ -2141,7 +2164,7 @@ function docsSections(){
       h += `</div><h4>Cuadernos</h4><p class="intro">Los cuadernos no atacan: mientras los usas se carga su círculo y, al cambiar a tu otra supertécnica, le dan su mejora un rato. El de Velocidad ya te acelera mientras se carga. Fusionados con una supertécnica, su mejora es permanente. No tienen R.</p>`;
       return h;
     }],
-    hillman: ['👴 Hillman y fusiones', () => `<h3>Hillman</h3><p class="intro">Aparece en el borde del campo en el minuto 5 y luego después de algunos bosses (tienes ${HILLMAN.stay} s para llegar hasta él; una flecha te indica dónde está).</p><ul class="docs-list">
+    hillman: ['👴 Hillman y fusiones', () => `<h3>${hillHeadImg(32)} Hillman</h3><p class="intro">Aparece en el borde del campo en el minuto 5 y luego después de algunos bosses (tienes ${HILLMAN.stay} s para llegar hasta él; una flecha te indica dónde está).</p><ul class="docs-list">
       <li><b>Fusión:</b> junta dos supertécnicas en la misma tecla y funcionan a la vez. La R es la de la base.</li>
       <li><b>Mismo tipo:</b> puedes juntar dos del mismo tipo si son de otra afinidad (por ejemplo, Tornado de fuego + Mano celestial). Cada una dispara por su cuenta: el doble de balones, dos anillos de órbita, dos lluvias…</li>
       <li><b>Nueva:</b> si te queda una tecla libre, te enseña una supertécnica de cualquier afinidad.</li>
@@ -2554,7 +2577,7 @@ function closeSettings(){ document.getElementById('settings-overlay').classList.
 ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, () => MUSIC.start(), { once: false, passive: true }));
 setInterval(() => {                                       // qué pista toca: épica durante el duelo contra el boss
   const boss = typeof match !== 'undefined' && match && !match.over && ((match.inArena && (bossAlive() || match.bossSpawn)) || !!match.mark);   // también contra Mark
-  MUSIC.set(!boss ? 'field' : match.mark ? 'mark' : (MUSIC.SONGS['boss' + match.bossIdx] ? 'boss' + match.bossIdx : 'boss'));   // cada boss con su canción
+  MUSIC.set(!boss ? (match && match.rl && !match.over ? 'rl' : 'field') : match.mark ? 'mark' : bossSongKey());   // cada boss con su canción
 }, 250);
 
 /* relámpago: la pantalla parpadea en blanco y el partido empieza en el destello */
@@ -2578,6 +2601,7 @@ document.getElementById('btn-back-title-1').onclick = () => showScreen('title');
 document.getElementById('btn-back-title-2').onclick = () => showScreen('title');
 document.getElementById('btn-back-title-3').onclick = () => { updateShowcase(); showScreen('title'); };
 document.getElementById('btn-gameover-title').onclick = () => {
+  document.body.classList.remove('rl-mode');
   document.getElementById('gameover-overlay').classList.add('hidden');
   updateShowcase();
   showScreen('title');
@@ -3094,6 +3118,8 @@ function buyPack(kind, withTicket){
     state.coins -= P.coins;
   }
   const cards = openPackCards(kind);
+  MS.cnt.packs = (MS.cnt.packs || 0) + 1;
+  if (cards.some(x => x.c.rarity === 'legendary')) mDone('leg', kind);
   saveState(); refreshCoinBadges(); updateShowcase();
   choosePack(kind, cards);
 }
@@ -3357,6 +3383,7 @@ function tradeFuse(){
   const pool = CHARACTERS.filter(c => c.rarity === next), c = pool[Math.floor(Math.random() * pool.length)];
   const dupe = state.unlocked.includes(c.id);
   if (dupe) addDupe(c.id); else state.unlocked.push(c.id);
+  MS.cnt.trades = (MS.cnt.trades || 0) + 1;
   saveState(); refreshCoinBadges(); updateShowcase();
   renderTrade();
   showTradeReveal(c, dupe, given);
@@ -3438,6 +3465,645 @@ if (DEV_DUPES){
     if (ids.length && confirm(`¿Vender tus ${ids.length} repetidos ${RARITY_LABEL[tradeUI.rarity].toLowerCase()}s por ${ids.length * TRADE_SELL[tradeUI.rarity]} monedas?`)) tradeSell(ids);
   };
 })();
+
+/* ======================================================================
+   MISIONES: retos con recompensa (monedas y tickets). Se guardan en el navegador.
+   Cada misión tiene uno o varios pasos; cada paso se completa una vez y se recoge a mano.
+   Pasos con "goal": se completan al llegar a ese número (progreso). Sin "goal": por un evento.
+   ====================================================================== */
+var MISSIONS_KEY = 'ss_missions';
+var missionsReady = false;
+var MS = (function(){ try { const s = JSON.parse(localStorage.getItem('ss_missions') || '{}'); return { done: s.done || {}, claimed: s.claimed || {}, cnt: s.cnt || {}, best: s.best || {} }; } catch (e) { return { done:{}, claimed:{}, cnt:{}, best:{} }; } })();
+function saveMissions(){ try { localStorage.setItem(MISSIONS_KEY, JSON.stringify(MS)); } catch (e) {} }
+const RW = (c, y, p) => ({ c: c || 0, y: y || 0, p: p || 0 });
+const BOSS_SELF = { Talisman:['ie31'], Chicken:['ie3e'], Feldt:['ie51'], Artist:['ie6e'], Jude:['ie449'], Cloak:['ie83'], Greeny:['ie8d'], 'Hermanos Murdock':['iea9', 'ieaa', 'ieab'], Aphrodite:['iebe'] };
+const BOSS_SHORT = { 'Hermanos Murdock':'Murdock' };
+const MISSION_TEAMS = TEAMS.filter(t => t.id !== 'secundarios' && CHARACTERS.some(c => c.team === t.id));
+const RL_MODS_NAMES = { furioso:'Furioso', blindado:'Blindado', gemelo:'Gemelo', invisible:'Invisible' };
+const MISSION_CATS = [
+  { id:'boss',   name:'Bosses' },
+  { id:'final',  name:'Aphrodite y Mark' },
+  { id:'match',  name:'Partido' },
+  { id:'col',    name:'Colección' },
+  { id:'rl',     name:'RandomLocke' },
+];
+const MISSIONS = [
+  // ---------- BOSSES ----------
+  { id:'boss', cat:'boss', ico:'ms_swords', title:'Caza de bosses', desc:'Vence a cada boss por primera vez.',
+    steps: BOSSES.map((b, i) => ({ id: b.name, label: BOSS_SHORT[b.name] || b.name, rw: b.final ? RW(900, 0, 1) : RW(100 * (i + 1)) })) },
+  { id:'fast', cat:'boss', ico:'bolt', title:'Relámpago', desc:'Vence al boss en menos de 5 segundos desde que aparece.',
+    steps: BOSSES.slice(0, 7).map((b, i) => ({ id: b.name, label: b.name, rw: [RW(0,1), RW(0,1), RW(0,2), RW(0,2), RW(0,3), RW(0,3), RW(0,0,1)][i] })) },
+  { id:'mirror', cat:'boss', ico:'ms_mirror', title:'Frente al espejo', desc:'Vence a cada boss jugando con ese mismo jugador.',
+    steps: BOSSES.map((b, i) => ({ id: b.name, label: `${BOSS_SHORT[b.name] || b.name} con ${BOSS_SHORT[b.name] || b.name}`, rw: b.final ? RW(0, 0, 1) : i >= 7 ? RW(0, 2) : i >= 3 ? RW(0, 2) : RW(0, 1) })) },
+  { id:'aff', cat:'boss', ico:'ms_target', title:'Contra la afinidad', desc:'Vence a un boss cuya afinidad gana a la tuya.', steps:[{ id:'x', label:'Boss con ventaja sobre ti', rw: RW(0, 2) }] },
+  { id:'notech', cat:'boss', ico:'r_botasInazuma', title:'A pelo', desc:'Vence a Talisman sin ninguna supertécnica, solo con el disparo básico.', steps:[{ id:'x', label:'Talisman sin supertécnicas', rw: RW(0, 2) }] },
+  // ---------- APHRODITE Y MARK ----------
+  { id:'aphEl', cat:'final', ico:'ms_rainbow', title:'Todas las afinidades', desc:'Vence a Aphrodite con un jugador de cada afinidad.',
+    steps: ELEMENT_ORDER.map(k => ({ id: k, label: ELEMENTS[k].name, rw: RW(300, 1) })) },
+  { id:'aphTeam', cat:'final', ico:'m_team', title:'Escuelas campeonas', desc:'Vence a Aphrodite con un jugador de cada equipo.',
+    steps: MISSION_TEAMS.map(t => t.id === 'kidsfc' ? { id: t.id, label: `${t.name} · ¡Joven promesa!`, rw: RW(0, 0, 2) } : { id: t.id, label: t.name, rw: RW(0, 2) }) },
+  { id:'markAph', cat:'final', ico:'r_guantes', title:'El capitán', desc:'Vence a Aphrodite jugando con Mark Evans.', steps:[{ id:'x', label:'Aphrodite con Mark Evans', rw: RW(0, 3) }] },
+  { id:'t25', cat:'final', ico:'ms_clock', title:'Partido completo', desc:'Aguanta 25 minutos en un partido (hasta llegar a Aphrodite).', steps:[{ id:'x', label:'25:00 en el reloj', goal: 1500, rw: RW(1000, 1) }], best:true, fmt: fmtTime },
+  { id:'mark', cat:'final', ico:'ms_fire', title:'Contra Mark Evans', desc:'Aguanta contra Mark Evans tras vencer a Aphrodite.', best:true, fmt: fmtTime,
+    steps:[{ id:'1', label:'1 minuto', goal: 60, rw: RW(500) }, { id:'5', label:'5 minutos', goal: 300, rw: RW(0, 0, 1) }, { id:'10', label:'10 minutos', goal: 600, rw: RW(0, 0, 3) }] },
+  // ---------- PARTIDO ----------
+  { id:'kills', cat:'match', ico:'kills', title:'Arrasa', desc:'Elimina rivales en un mismo partido.', best:true,
+    steps:[{ id:'250', label:'250 rivales', goal: 250, rw: RW(300) }, { id:'500', label:'500 rivales', goal: 500, rw: RW(600) }, { id:'750', label:'750 rivales', goal: 750, rw: RW(0, 1) },
+           { id:'1000', label:'1000 rivales', goal: 1000, rw: RW(0, 2) }, { id:'2000', label:'2000 rivales', goal: 2000, rw: RW(0, 0, 1) }] },
+  { id:'pb3', cat:'match', ico:'ms_pballs', title:'Balones de poder', desc:'Activa 3 veces cada uno de los 4 balones de poder en un partido.', steps:[{ id:'x', label:'3 veces cada balón', rw: RW(0, 2) }] },
+  { id:'pb4', cat:'match', ico:'ms_pb4', title:'Poder total', desc:'Ten los 4 balones de poder activos a la vez.', steps:[{ id:'x', label:'4 balones a la vez', rw: RW(0, 1) }] },
+  { id:'mixEl', cat:'match', ico:'ms_potion', title:'Mezcla de afinidades', desc:'Fusiona con Hillman dos supertécnicas de distinta afinidad.', steps:[{ id:'x', label:'Fusión de 2 afinidades', rw: RW(400) }] },
+  { id:'mixNb', cat:'match', ico:'ms_books', title:'Doble cuaderno', desc:'Fusiona con Hillman dos cuadernos entre ellos.', steps:[{ id:'x', label:'Cuaderno + cuaderno', rw: RW(400) }] },
+  { id:'evo', cat:'match', ico:'m_up', title:'Al máximo', desc:`Sube una supertécnica a Nv. ${TECH_MAX}.`, steps:[{ id:'x', label:`Supertécnica Nv. ${TECH_MAX}`, rw: RW(500) }] },
+  { id:'evo2', cat:'match', ico:'ms_up2', title:'Fusión perfecta', desc:`Ten una supertécnica fusionada con sus dos partes a Nv. ${TECH_MAX}.`, steps:[{ id:'x', label:`Fusión Nv. ${TECH_MAX} + Nv. ${TECH_MAX}`, rw: RW(0, 2) }] },
+  { id:'coin', cat:'match', ico:'r_monedaArbitro', title:'Cara o cruz', desc:'Revive gracias a la Moneda del Árbitro.', steps:[{ id:'x', label:'Revivir con la moneda', rw: RW(0, 1) }] },
+  { id:'tkp', cat:'match', ico:'ticketP', title:'Cazatickets', desc:'Consigue 3 tickets morados en un mismo partido.', best:true, steps:[{ id:'x', label:'3 tickets morados', goal: 3, rw: RW(1000) }] },
+  { id:'hill', cat:'match', ico:'ms_hillman', title:'Hillman y Hillman', desc:'Juega con Seymour Hillman y habla con Hillman en el partido.', steps:[{ id:'x', label:'Hillman habla con Hillman', rw: RW(0, 2) }] },
+  { id:'zeus', cat:'match', ico:'r_manto', title:'Manto divino', desc:'Consigue el Manto del Zeus jugando con un jugador del Zeus.', steps:[{ id:'x', label:'Manto con un jugador del Zeus', rw: RW(0, 2) }] },
+  // ---------- COLECCIÓN ----------
+  { id:'col', cat:'col', ico:'ms_scout', title:'Ojeador', desc:'Consigue jugadores distintos.', val: () => state.unlocked.length,
+    steps:[{ id:'10', label:'10 jugadores', goal: 10, rw: RW(200) }, { id:'50', label:'50 jugadores', goal: 50, rw: RW(0, 1) }, { id:'100', label:'100 jugadores', goal: 100, rw: RW(0, 3) },
+           { id:'150', label:'150 jugadores', goal: 150, rw: RW(0, 0, 1) }, { id:'200', label:'200 jugadores', goal: 200, rw: RW(0, 0, 2) }, { id:'all', label:'¡Todos!', goal: CHARACTERS.length, rw: RW(0, 0, 3) }] },
+  { id:'team', cat:'col', ico:'ms_school', title:'Plantilla completa', desc:'Ficha a todos los jugadores de un equipo.',
+    steps: MISSION_TEAMS.map(t => ({ id: t.id, label: t.name, rw: RW(0, 2), val: () => CHARACTERS.filter(c => c.team === t.id && state.unlocked.includes(c.id)).length, goal: CHARACTERS.filter(c => c.team === t.id).length })) },
+  { id:'shiny', cat:'col', ico:'ms_shiny', title:'Brillo especial', desc:'Consigue un jugador cromático.', val: () => state.shiny.length, steps:[{ id:'x', label:'Un cromático', goal: 1, rw: RW(0, 1) }] },
+  { id:'leg', cat:'col', ico:'ms_crown', title:'Suerte de campeón', desc:'Consigue un jugador legendario en cada tipo de sobre.',
+    steps:[{ id:'purple', label:'En un sobre épico', rw: RW(0, 2) }, { id:'blue', label:'En un sobre azul', rw: RW(0, 0, 1) }, { id:'yellow', label:'En un sobre dorado (1 jugador)', rw: RW(0, 0, 2) }] },
+  { id:'shop', cat:'col', ico:'m_packs', title:'Cliente habitual', desc:'Abre sobres en la tienda.', val: () => MS.cnt.packs || 0, steps:[{ id:'3', label:'3 sobres', goal: 3, rw: RW(200) }] },
+  { id:'trade', cat:'col', ico:'m_trade', title:'Negociante', desc:'Haz intercambios (fusiones) de futbolistas.', val: () => MS.cnt.trades || 0, steps:[{ id:'3', label:'3 intercambios', goal: 3, rw: RW(300) }] },
+  { id:'maxed', cat:'col', ico:'ms_dumbbell', title:'Entrenamiento total', desc:'Ten jugadores con todas las mejoras compradas.', val: () => missionMaxedCount(),
+    steps:[{ id:'1', label:'1 jugador', goal: 1, rw: RW(500) }, { id:'5', label:'5 jugadores', goal: 5, rw: RW(0, 2) }] },
+  // ---------- RANDOMLOCKE ----------
+  { id:'rlPlay', cat:'rl', ico:'rl', title:'Adicto al caos', desc:'Juega partidas de RandomLocke.', val: () => MS.cnt.rlPlays || 0,
+    steps:[{ id:'1', label:'1 partida', goal: 1, rw: RW(200) }, { id:'5', label:'5 partidas', goal: 5, rw: RW(0, 1) }, { id:'20', label:'20 partidas', goal: 20, rw: RW(0, 2) }] },
+  { id:'rlBosses', cat:'rl', ico:'ms_swords', title:'Superviviente', desc:'Vence bosses en una misma partida de RandomLocke.', best:true,
+    steps:[{ id:'1', label:'1 boss', goal: 1, rw: RW(400) }, { id:'3', label:'3 bosses', goal: 3, rw: RW(0, 2) }, { id:'5', label:'5 bosses', goal: 5, rw: RW(0, 0, 1) }, { id:'8', label:'8 bosses', goal: 8, rw: RW(0, 0, 2) }] },
+  { id:'rlWin', cat:'rl', ico:'ms_crown', title:'Rey del caos', desc:'Vence a Aphrodite en RandomLocke.', steps:[{ id:'x', label:'Aphrodite en RandomLocke', rw: RW(0, 0, 3) }] },
+  { id:'rlLeg', cat:'rl', ico:'ms_star', title:'Leyenda aleatoria', desc:'Vence a Aphrodite en RandomLocke con un jugador legendario.', steps:[{ id:'x', label:'Aphrodite con un legendario', rw: RW(0, 0, 2) }] },
+  { id:'rlMark', cat:'rl', ico:'ms_fire', title:'Mark en llamas', desc:'Aguanta contra Mark Evans en RandomLocke.', best:true, fmt: fmtTime,
+    steps:[{ id:'1', label:'1 minuto', goal: 60, rw: RW(0, 2) }, { id:'3', label:'3 minutos', goal: 180, rw: RW(0, 0, 3) }] },
+  { id:'rlMods', cat:'rl', ico:'ms_target', title:'Bosses mutantes', desc:'Vence a un boss con cada modificador.',
+    steps: Object.keys(RL_MODS_NAMES).map(k => ({ id: k, label: RL_MODS_NAMES[k], rw: RW(0, 1) })) },
+  { id:'rlEvents', cat:'rl', ico:'ms_pballs', title:'A prueba de todo', desc:'Sobrevive a cada evento de RandomLocke.',
+    steps:[{ id:'balls', label:'Lluvia de balones', rw: RW(400) }, { id:'stampede', label:'Estampida', rw: RW(400) }, { id:'dark', label:'Apagón', rw: RW(400) }] },
+  { id:'rlElite', cat:'rl', ico:'kills', title:'Cazador de élites', desc:'Elimina rivales élite (aura roja) en RandomLocke.', val: () => MS.cnt.rlElites || 0,
+    steps:[{ id:'10', label:'10 élites', goal: 10, rw: RW(500) }, { id:'50', label:'50 élites', goal: 50, rw: RW(0, 2) }, { id:'150', label:'150 élites', goal: 150, rw: RW(0, 0, 1) }] },
+  { id:'rlKills', cat:'rl', ico:'kills', title:'Carnicería', desc:'Elimina rivales en una misma partida de RandomLocke.', best:true,
+    steps:[{ id:'1000', label:'1000 rivales', goal: 1000, rw: RW(0, 1) }, { id:'2500', label:'2500 rivales', goal: 2500, rw: RW(0, 0, 1) }] },
+];
+const MISSION_BY_ID = Object.fromEntries(MISSIONS.map(m => [m.id, m]));
+function missionMaxedCount(){
+  const maxAll = META_UPGRADES.reduce((a, u) => a + u.max, 0);
+  return state.unlocked.filter(id => metaTotal(id) >= maxAll).length;
+}
+function stepKey(m, s){ return m.id + '.' + s.id; }
+function stepVal(m, s){ return s.val ? s.val() : m.val ? m.val() : m.best ? (MS.best[m.id] || 0) : null; }
+/* marca un paso como completado (avisa si es nuevo) */
+function mDone(mid, sid){
+  const m = MISSION_BY_ID[mid]; if (!m) return;
+  const s = m.steps.find(x => x.id === sid); if (!s) return;
+  const k = stepKey(m, s); if (MS.done[k]) return;
+  MS.done[k] = Date.now(); saveMissions(); missionToast(m, s); renderMissionBadge();
+}
+/* progreso dentro del partido (se queda el mejor valor) */
+function mBest(mid, v){
+  if (!(v > (MS.best[mid] || 0))) return;
+  MS.best[mid] = v; missionEvalOne(MISSION_BY_ID[mid]); saveMissions();
+}
+function missionEvalOne(m){
+  for (const s of m.steps){
+    if (s.goal == null) continue;
+    const v = stepVal(m, s);
+    if (v != null && v >= s.goal) mDone(m.id, s.id);
+  }
+}
+function missionEval(){ if (!missionsReady) return; for (const m of MISSIONS) missionEvalOne(m); }
+function mCount(key, n = 1){ MS.cnt[key] = (MS.cnt[key] || 0) + n; saveMissions(); missionEval(); }
+function claimableCount(){ let n = 0; for (const m of MISSIONS) for (const s of m.steps){ const k = stepKey(m, s); if (MS.done[k] && !MS.claimed[k]) n++; } return n; }
+/* aviso arriba de la pantalla (en el partido o en los menús) */
+const msToastQ = [];
+function missionToast(m, s){ msToastQ.push({ m, s }); if (msToastQ.length === 1) setTimeout(nextMissionToast, 0); }
+function nextMissionToast(){
+  if (!msToastQ.length) return;
+  let box = document.getElementById('mission-toasts');
+  if (!box){ box = document.createElement('div'); box.id = 'mission-toasts'; document.body.appendChild(box); }
+  // varias a la vez: una sola tarjeta que las resume
+  const batch = msToastQ.length > 2 ? msToastQ.splice(0) : [msToastQ[0]];
+  const el = document.createElement('div'); el.className = 'ms-toast';
+  el.innerHTML = batch.length > 1
+    ? `${pxImg('m_medal', 28)}<span><small>¡${batch.length} misiones completadas!</small><b>${batch[0].m.title}</b><em>y ${batch.length - 1} más · recógelas en Misiones</em></span>`
+    : `${pxImg('m_medal', 28)}<span><small>¡Misión completada!</small><b>${batch[0].m.title}</b><em>${batch[0].s.label}</em></span>`;
+  box.appendChild(el); try { SFX.play('ult_ready'); } catch (e) {}
+  setTimeout(() => el.classList.add('out'), 2600);
+  setTimeout(() => { el.remove(); if (batch.length === 1) msToastQ.shift(); nextMissionToast(); }, 3100);
+}
+function rewardHtml(r, size = 18){
+  const out = [];
+  if (r.c) out.push(`<span class="ms-rw-c">${r.c} ${COIN_HTML}</span>`);
+  if (r.y) out.push(`<span class="ms-rw-y">${r.y}× ${pxImg('ticketY', size)}</span>`);
+  if (r.p) out.push(`<span class="ms-rw-p">${r.p}× ${pxImg('ticketP', size)}</span>`);
+  return out.join('');
+}
+function claimStep(mid, sid){
+  const m = MISSION_BY_ID[mid], s = m && m.steps.find(x => x.id === sid); if (!s) return;
+  const k = stepKey(m, s); if (!MS.done[k] || MS.claimed[k]) return;
+  MS.claimed[k] = Date.now(); saveMissions();
+  state.coins += s.rw.c; state.tickets += s.rw.y; state.ticketsEpic += s.rw.p;
+  saveState(); refreshCoinBadges(); updateShowcase();
+  SFX.play('upgrade'); renderMissions(); renderMissionBadge();
+}
+function claimAll(){
+  let any = false;
+  for (const m of MISSIONS) for (const s of m.steps){ const k = stepKey(m, s); if (MS.done[k] && !MS.claimed[k]){ MS.claimed[k] = Date.now(); state.coins += s.rw.c; state.tickets += s.rw.y; state.ticketsEpic += s.rw.p; any = true; } }
+  if (!any) return;
+  saveMissions(); saveState(); refreshCoinBadges(); updateShowcase(); SFX.play('upgrade'); renderMissions(); renderMissionBadge();
+}
+const missionUI = { cat: 'boss' };
+function renderMissions(){
+  missionEval();
+  document.getElementById('ms-wallet').innerHTML = `<span>${state.coins} ${COIN_HTML}</span><span>${pxImg('ticketY', 20)} ${state.tickets}</span><span>${pxImg('ticketP', 20)} ${state.ticketsEpic}</span>`;
+  const catCount = c => { let d = 0, t = 0, r = 0; for (const m of MISSIONS) if (m.cat === c) for (const s of m.steps){ t++; const k = stepKey(m, s); if (MS.done[k]) d++; if (MS.done[k] && !MS.claimed[k]) r++; } return { d, t, r }; };
+  document.getElementById('ms-tabs').innerHTML = MISSION_CATS.map(c => { const n = catCount(c.id);
+    return `<button class="tr-tab ms-tab${c.id === missionUI.cat ? ' on' : ''}" data-c="${c.id}" style="--rar:#ffe14a"><span>${c.name}</span><b>${n.d}/${n.t}</b>${n.r ? `<i class="ms-dot">${n.r}</i>` : ''}</button>`; }).join('');
+  document.querySelectorAll('#ms-tabs .ms-tab').forEach(b => b.onclick = () => { missionUI.cat = b.dataset.c; renderMissions(); });
+  const total = claimableCount(), all = document.getElementById('btn-ms-all');
+  all.disabled = !total; all.textContent = total ? `Recoger todo (${total})` : 'Nada por recoger';
+  const list = MISSIONS.filter(m => m.cat === missionUI.cat);
+  document.getElementById('ms-grid').innerHTML = list.map(m => {
+    const doneN = m.steps.filter(s => MS.done[stepKey(m, s)]).length;
+    const rows = m.steps.map(s => {
+      const k = stepKey(m, s), done = !!MS.done[k], got = !!MS.claimed[k];
+      let prog = '';
+      if (!done && s.goal != null){ const v = Math.min(s.goal, stepVal(m, s) || 0), f = m.fmt || (x => x);
+        prog = `<span class="ms-bar"><i style="width:${v / s.goal * 100}%"></i></span><small class="ms-num">${f(v)} / ${f(s.goal)}</small>`; }
+      const btn = got ? '<span class="ms-got">✓ Recogida</span>'
+        : done ? `<button class="shop-btn shop-btn-y ms-claim" data-m="${m.id}" data-s="${s.id}">Recoger</button>`
+        : '<span class="ms-lock">Pendiente</span>';
+      return `<div class="ms-row${done ? ' done' : ''}${got ? ' got' : ''}"><span class="ms-lbl"><b>${s.label}</b>${prog}</span><span class="ms-rw">${rewardHtml(s.rw)}</span>${btn}</div>`;
+    }).join('');
+    return `<article class="ms-card${doneN === m.steps.length ? ' full' : ''}"><header class="ms-head"><span class="ms-ico">${m.ico === 'ms_hillman' ? hillHeadImg(28) : pxImg(m.ico, 28)}</span><span class="ms-ttl"><b>${m.title}</b><small>${m.desc}</small></span>${m.steps.length > 1 ? `<em class="ms-cnt">${doneN}/${m.steps.length}</em>` : ''}</header><div class="ms-rows">${rows}</div></article>`;
+  }).join('');
+  document.querySelectorAll('#ms-grid .ms-claim').forEach(b => b.onclick = () => claimStep(b.dataset.m, b.dataset.s));
+}
+function renderMissionBadge(){
+  const b = document.getElementById('btn-missions'); if (!b) return;
+  const n = claimableCount(), sm = b.querySelector('small');
+  if (sm) sm.textContent = n ? `¡${n} recompensa${n > 1 ? 's' : ''} por recoger!` : 'Retos con recompensa';
+  b.classList.toggle('has-claim', n > 0);
+}
+(function setupMissions(){
+  const b = document.getElementById('btn-missions'); if (!b) return;
+  b.disabled = false; b.classList.remove('menu-disabled');
+  try { sheetImage(NPC_SHEETS.hillman); } catch (e) {}   // cabeza de Hillman para menús
+  document.querySelectorAll('.ms-sign-ico').forEach(i => { i.src = PX_ICON_URL.m_medal; });
+  b.onclick = () => { renderMissions(); showScreen('missions'); };
+  document.getElementById('btn-back-title-ms').onclick = () => { updateShowcase(); refreshCoinBadges(); renderMissionBadge(); showScreen('title'); };
+  document.getElementById('btn-ms-all').onclick = claimAll;
+  missionsReady = true;
+  missionEval(); renderMissionBadge();
+})();
+
+
+/* ======================================================================
+   MODO RANDOMLOCKE: jugador al azar (de TODOS), bosses en orden aleatorio, rivales de
+   cualquier equipo con camiseta roja y negra, mejoras y talentos ocultos (???), temporal
+   siempre activo, más dificultad y mucho mejores recompensas. Final: Aphrodite y Mark.
+   ====================================================================== */
+const RLK = {
+  cost: 1,                 // tickets morados para jugar
+  hp: 1.35, hpMin: 0.21,   // vida de los rivales: +35 % al empezar y +21 % por minuto
+  dmg: 1.3, dmgMin: 0.13,  // daño de los rivales: +30 % al empezar y +13 % por minuto
+  bossHp: 1.3, bossDmg: 1.25, spawn: 1.6,
+  coin: 2, coinDrop: 1.8, ticket: 0.8, drop: 2.5, pball: 1.5, pbPow: 1.3,
+  hillFirst: 120, weatherDur: 50,
+};
+var RL_NEXT = false;
+function rl(){ return !!(typeof match !== 'undefined' && match && match.rl); }
+function rlCurve(base, perMin){ return base * (1 + perMin * (typeof matchClock === 'function' ? matchClock() : 0) / 60); }
+/* potencia de un balón de poder (×1,3 en RandomLocke) */
+function pbMult(k){ const m = PBALL[k].mult || 1; return rl() ? 1 + (m - 1) * RLK.pbPow : m; }
+/* orden de los bosses: normal o barajado (Aphrodite siempre la última; cada puesto conserva su minuto) */
+const BOSSES_BASE = BOSSES.map(b => ({ ...b }));
+function applyBossOrder(random){
+  const list = BOSSES_BASE.map(b => ({ ...b }));
+  if (random){
+    const fin = list.pop();
+    for (let i = list.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [list[i], list[j]] = [list[j], list[i]]; }
+    list.push(fin);
+    list.forEach((b, i) => { b.minute = BOSSES_BASE[i].minute; });
+  }
+  BOSSES.splice(0, BOSSES.length, ...list);
+}
+/* canción de cada boss por su nombre (con el orden barajado sigue sonando la suya) */
+function bossSongKey(){
+  const B = BOSSES[match.bossIdx], i = B ? BOSSES_BASE.findIndex(x => x.name === B.name) : -1;
+  return i >= 0 && MUSIC.SONGS['boss' + i] ? 'boss' + i : 'boss';
+}
+/* música del campo en RandomLocke: rápida, en menor y con batería a tope */
+MUSIC.SONGS.rl = (() => {
+  const chords = [[45, 48, 52], [41, 45, 48], [43, 47, 50], [44, 47, 52]], pat = [0, 2, 1, 2, 0, 3, 2, 1], melody = [];
+  for (let i = 0; i < 32; i++){ const ch = chords[Math.floor(i / 8) % 4], d = pat[i % 8]; melody.push([5, 13].includes(i % 16) ? null : ch[d % 3] + 12 + (d >= 3 ? 12 : 0) + (i >= 16 && i % 8 > 4 ? 12 : 0)); }
+  return { bpm: 186, chords, melody, lead: 'sawtooth', bass: 'square', arp: 'trill', kick: [0, 3, 6, 8, 11, 14], snare: [4, 12] };
+})();
+
+/* ---- rivales con camiseta roja y negra: se repinta su hoja de sprites ---- */
+const RL_SHEETS = {};
+const RL_SKIN = ['#413120', '#ffb473', '#d57b41', '#9c5231', '#f6cd9c', '#ac6a39', '#5a2918'];
+function hexRgb(h){ return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+function rlSheet(path){
+  if (!path) return null;
+  if (RL_SHEETS[path]) return RL_SHEETS[path];
+  const base = sheetImage(path); if (!base || !base.ok) return base;
+  const img = base.img, cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+  const g = cv.getContext('2d'); g.drawImage(img, 0, 0);
+  try {
+    const D = g.getImageData(0, 0, cv.width, cv.height), d = D.data, W = cv.width, skin = RL_SKIN.map(hexRgb);
+    const isSkin = (r, gg, b) => skin.some(s => Math.abs(s[0] - r) + Math.abs(s[1] - gg) + Math.abs(s[2] - b) < 24);
+    // colores del torso (filas 24-40) de los primeros fotogramas: el más común es la camiseta, el siguiente el pantalón
+    const cnt = new Map();
+    for (let fr = 0; fr < 6; fr++) for (let y = 24; y < 40; y++) for (let x = fr * 48 + 12; x < fr * 48 + 36; x++){
+      const i = (y * W + x) * 4; if (d[i + 3] < 200 || isSkin(d[i], d[i + 1], d[i + 2])) continue;
+      const k = (d[i] << 16) | (d[i + 1] << 8) | d[i + 2]; cnt.set(k, (cnt.get(k) || 0) + 1);
+    }
+    const top = [...cnt.entries()].sort((a, b) => b[1] - a[1]).map(e => [e[0] >> 16, (e[0] >> 8) & 255, e[0] & 255]);
+    const shirt = top[0], pants = top.find(c => shirt && Math.abs(c[0] - shirt[0]) + Math.abs(c[1] - shirt[1]) + Math.abs(c[2] - shirt[2]) > 90);
+    const lum = c => 0.3 * c[0] + 0.59 * c[1] + 0.11 * c[2];
+    if (shirt){
+      const L0 = Math.max(20, lum(shirt));
+      for (let y = 20; y < cv.height; y++) for (let x = 0; x < W; x++){
+        const i = (y * W + x) * 4; if (d[i + 3] < 200) continue;
+        const c = [d[i], d[i + 1], d[i + 2]]; if (isSkin(c[0], c[1], c[2])) continue;
+        const ds = Math.abs(c[0] - shirt[0]) + Math.abs(c[1] - shirt[1]) + Math.abs(c[2] - shirt[2]);
+        const dp = pants ? Math.abs(c[0] - pants[0]) + Math.abs(c[1] - pants[1]) + Math.abs(c[2] - pants[2]) : 999;
+        let out = null;
+        if (ds < 80){                                       // camiseta: roja (las sombras, negras)
+          const q = lum(c) / L0;
+          out = q < 0.78 ? [26, 18, 24] : q > 1.12 ? [255, 84, 72] : [216, 30, 40];
+        } else if (dp < 40 && y >= 30) out = [22, 18, 26];  // pantalón negro
+        if (out){ d[i] = out[0]; d[i + 1] = out[1]; d[i + 2] = out[2]; }
+      }
+      g.putImageData(D, 0, 0);
+    }
+  } catch (e) {}
+  return (RL_SHEETS[path] = { img: cv, ok: true });
+}
+/* equipo al azar para cada rival (no empieza por el Occult: sale cualquiera) */
+function rlRandomKit(){ const ks = Object.keys(KIT_SHEETS); return ks[Math.floor(Math.random() * ks.length)]; }
+
+/* barra de vida pixel con borde negro (RandomLocke) */
+function rlBar(x, y, w, h, pct, col){
+  x = Math.round(x); y = Math.round(y); pct = Math.max(0, Math.min(1, pct));
+  ctx.fillStyle = '#000'; ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
+  ctx.fillStyle = '#2a0a10'; ctx.fillRect(x, y, w, h);
+  const fw = Math.round(w * pct);
+  if (fw > 0){ ctx.fillStyle = col; ctx.fillRect(x, y, fw, h); ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.fillRect(x, y, fw, 1); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(x, y + h - 1, fw, 1); }
+}
+/* ---- campo con tonos rojizos ---- */
+function drawRlTint(){
+  ctx.save();
+  ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = '#ffd2ca'; ctx.fillRect(0, 0, W, H);   // rojizo suave (la barra de vida roja se sigue viendo)
+  ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = 'rgba(90,0,10,0.04)'; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+
+/* ---- mejoras y talentos ocultos: ??? y el sello RL ---- */
+/* tipo de carta: se ve si es mejora básica, supertécnica, cuaderno o talento, pero no cuál */
+const RL_KINDS = { basic:'Mejora básica', tech:'Supertécnica', book:'Cuaderno', talent:'Talento' };
+function rlKindOf(btn, forceTech){
+  if (btn.classList.contains('upgrade-talent')) return 'talent';
+  if (btn.dataset.el === 'book') return 'book';
+  if (forceTech || btn.classList.contains('upgrade-special')) return 'tech';
+  return 'basic';
+}
+function rlMask(box, forceTech, sel = '.upgrade-option'){
+  if (!rl() || !box) return;
+  box.querySelectorAll(sel).forEach(btn => {
+    if (btn.dataset.rlk) return;                                 // ya tapada
+    const kind = rlKindOf(btn, forceTech);
+    const b1 = btn.querySelector(':scope > b');
+    if (kind === 'talent' && (box.id === 'levelup-options' || (b1 && b1.textContent.includes('→')))){   // subir un talento que ya tienes: se ve (era obvio)
+      btn.dataset.rlk = 'talent';
+      if (b1 && !b1.querySelector('.rl-kind')) b1.insertAdjacentHTML('beforeend', `<em class="rl-kind">${RL_KINDS.talent}</em>`);
+      return;
+    }
+    if (kind === 'basic' && Math.random() < 0.5){                // la mitad de las mejoras básicas se ven (menos caos)
+      btn.dataset.rlk = 'basic'; const b0 = btn.querySelector(':scope > b');
+      if (b0 && !b0.querySelector('.rl-kind')) b0.insertAdjacentHTML('beforeend', `<em class="rl-kind">${RL_KINDS.basic}</em>`);
+      return;
+    }
+    const b = btn.querySelector(':scope > b'); if (!b) return;
+    const key = b.querySelector('.upgrade-key'), tags = [...b.querySelectorAll('.slot-key, .tag-new')].map(x => x.outerHTML).join(' ');
+    btn.dataset.rlk = kind;
+    b.innerHTML = `${key ? key.outerHTML : ''} <ins class="up-nm">${pxImg('rl', 28)} ???</ins><em class="rl-kind">${RL_KINDS[kind]}</em>${tags}`;
+    const s = btn.querySelector(':scope > span'); if (s) s.innerHTML = '???';
+  });
+}
+/* Hillman también con ??? (se vuelve a tapar cada vez que cambia la lista) */
+const _fillLevelupBase = fillLevelup;
+fillLevelup = function(...a){ const r = _fillLevelupBase.apply(this, a); rlMask(document.getElementById('levelup-options')); return r; };
+/* Hillman: tus técnicas se ven; las supertécnicas o cuadernos NUEVOS que ofrece salen ??? */
+try { new MutationObserver(() => rlMask(document.getElementById('hillman-options'), true, '.upgrade-option.hm-offer')).observe(document.getElementById('hillman-options'), { childList: true }); } catch (e) {}
+const _openNotebookBase = openNotebook;
+openNotebook = function(...a){ const r = _openNotebookBase.apply(this, a); rlMask(document.getElementById('talent-options')); return r; };   // talentos del boss: ???
+if (typeof rerollTalents === 'function'){ const _rt = rerollTalents; rerollTalents = function(...a){ const r = _rt.apply(this, a); rlMask(document.getElementById('talent-options')); return r; }; }
+const _rollUpRarityBase = rollUpRarity;
+rollUpRarity = function(...a){ return rl() ? UP_RARITY[UP_RARITY.length - 1] : _rollUpRarityBase.apply(this, a); };   // todas legendarias
+
+/* ---- RandomLocke empieza YA en el campo: eliges carta de jugador y luego carta de objeto ---- */
+const RL_POOL = () => CHARACTERS.filter(c => c.rarity === 'epic' || c.rarity === 'legendary');   // solo épicos y legendarios
+function rlPickOpen(){
+  if (RLK.cost && state.ticketsEpic < RLK.cost){ alert(`Necesitas ${RLK.cost} ticket${RLK.cost > 1 ? 's' : ''} morado${RLK.cost > 1 ? 's' : ''} para jugar a RandomLocke.`); return; }
+  if (playLock) return;
+  const pool = RL_POOL().sort(() => Math.random() - 0.5).slice(0, 3);
+  if (RLK.cost){ state.ticketsEpic -= RLK.cost; saveState(); refreshCoinBadges(); }
+  playLock = true; SFX.play('start');
+  lightningFlash(() => { playLock = false; RL_NEXT = true; startMatch(pool[0]); rlSetupStart(pool); });
+}
+function rlOverlay(){
+  let ov = document.getElementById('rl-pick');
+  if (!ov){ ov = document.createElement('div'); ov.id = 'rl-pick'; ov.className = 'rl-pick'; document.body.appendChild(ov); }
+  return ov;
+}
+/* 3 cartas boca abajo; al elegir una se gira (y luego las otras) */
+function rlCards(ov, title, sub, faces, onPick, goText){
+  ov.innerHTML = `<div class="rl-box">
+      <img class="rl-logo" src="assets/ui/randomlocke.png" alt="RandomLocke">
+      <h2>${title}</h2><p class="rl-sub">${sub}</p>
+      <div class="rl-cards">${faces.map((f, i) => `<button class="rl-card" data-i="${i}"><div class="rl-in"><div class="rl-back"><img src="assets/ui/randomlocke.png" alt=""><b>?</b></div><div class="rl-front">${f}</div></div></button>`).join('')}</div>
+      <div class="rl-actions"><button id="rl-go" class="shop-btn shop-btn-y hidden"></button></div>
+    </div>`;
+  ov.classList.remove('hidden');
+  let chosen = null;
+  ov.querySelectorAll('.rl-card').forEach(b => b.onclick = () => {
+    if (chosen != null) return;
+    chosen = Number(b.dataset.i);
+    b.classList.add('flip', 'chosen'); SFX.play('levelup');
+    setTimeout(() => ov.querySelectorAll('.rl-card:not(.chosen)').forEach(o => o.classList.add('flip', 'other')), 650);
+    setTimeout(() => { const go = document.getElementById('rl-go'); go.textContent = goText(chosen); go.classList.remove('hidden'); go.onclick = () => onPick(chosen); }, 900);
+  });
+}
+function rlSetupStart(pool){
+  match.rlSetup = true; match.paused = true; mCount('rlPlays');
+  const ov = rlOverlay(); SFX.play('menu_open');
+  rlCards(ov, 'RandomLocke', `Elige una carta: jugarás con el <b>épico o legendario</b> que te toque. ${RLK.cost ? `Entrada pagada: ${RLK.cost} ${pxImg('ticketP', 18)}` : '<b>¡Gratis por ahora!</b>'}`,
+    pool.map(c => packCardHtml(c, false, false, 0)),
+    i => {
+      const c = pool[i];
+      if (c.id !== match.charDef.id){                   // mismo campo de fondo: se conservan bosses, obstáculos, clima y rivales
+        const order = BOSSES.map(b => b.name), keep = { obstacles: match.obstacles, weather: match.weather, lastWeather: match.lastWeather, nextWeatherAt: match.nextWeatherAt, enemies: match.enemies, nextRefAt: match.nextRefAt };
+        RL_NEXT = true; startMatch(c); rlRestoreOrder(order);
+        for (const k in keep) if (keep[k] !== undefined) match[k] = keep[k];
+      }
+      match.rlSetup = true; match.paused = true;
+      rlItemPick();
+    },
+    i => `¡Jugar con ${pool[i].name}!`);
+}
+function rlRestoreOrder(names){ const list = names.map(n => BOSSES.find(b => b.name === n)).filter(Boolean); if (list.length === BOSSES.length){ list.forEach((b, i) => { b.minute = BOSSES_BASE[i].minute; }); BOSSES.splice(0, BOSSES.length, ...list); } }
+/* al empezar: 1 balón de poder de cada color, más radio de recogida y más velocidad */
+function rlStartBonus(){
+  const P = pbInit(); for (const k of PBALL.order) P.inv[k] = Math.max(P.inv[k] || 0, 1); renderPBallBar();
+  match.pickup *= 1.4; match.speed *= 1.15;
+  match.miniBossQueue = [30]; if ((match.nextRefAt || 0) > 100) match.miniBossQueue.push(30 + (match.nextRefAt - 50) * (0.5 + Math.random() * 0.3));   // mini bosses desde el segundo 30
+  if (match.base){ match.base.pickup = match.pickup; match.base.speed = match.speed; }
+}
+/* objeto inicial: 3 cartas de objeto boca abajo */
+function rlItemPick(){
+  const keys = Object.keys(RELICS).sort(() => Math.random() - 0.5).slice(0, 3);
+  const ov = rlOverlay();
+  rlCards(ov, 'Objeto inicial', 'Elige otra carta: empiezas el partido con el objeto que te toque.',
+    keys.map(k => `<div class="rl-item"><div class="rl-item-ico">${relicIcon(k, 64)}</div><b>${RELICS[k].name}</b><small>${RELICS[k].desc}</small></div>`),
+    i => { ov.classList.add('hidden'); match.rlSetup = false; match.paused = false; equipRelic(keys[i]); rlStartBonus(); lastTime = performance.now(); },
+    i => `¡A jugar con ${RELICS[keys[i]].name}!`);
+}
+
+/* ---- RandomLocke: curva (empieza jugable y se desmadra a los pocos minutos) ---- */
+function rlMin(){ return (typeof matchClock === 'function' ? matchClock() : 0) / 60; }
+function rlRamp(){ return Math.min(1, rlMin() / 6); }                     // 0 al principio → 1 en el minuto 6
+function rlSpawnK(){ return Math.min(2.9, 1.3 + 0.22 * rlMin()); }          // más rivales cada minuto (hasta ×2,1)
+
+/* ---- modificadores de boss ---- */
+const RL_MODS = {
+  furioso:   { name:'Furioso',   desc:'+30% de velocidad y ataca más a menudo', color:'#ff4a3c' },
+  blindado:  { name:'Blindado',  desc:'Lleva un escudo que hay que romper (y vuelve a la mitad de vida)', color:'#c3cbd6' },
+  gemelo:    { name:'Gemelo',    desc:'Sale dos veces, cada uno con la mitad de vida', color:'#ffd84a' },
+  invisible: { name:'Invisible', desc:'Desaparece a ratos', color:'#9fd2ff' },
+};
+function rlArmor(b){ b.shieldUntil = match.elapsed + 9999; b.shieldHp = b.maxHp * 0.3; b.shieldColor = '#c3cbd6'; }
+function rlApplyBossMod(){
+  const def = BOSSES[match.bossIdx]; if (!def) return;
+  const keys = Object.keys(RL_MODS).filter(k => !(k === 'gemelo' && (def.group || def.final)) && !(k === 'invisible' && def.final));
+  const key = keys[Math.floor(Math.random() * keys.length)], M = RL_MODS[key];
+  match.rlMod = key;
+  const group = (match.bossGroup || []).slice();
+  for (const b of group){
+    b.rlMod = key;
+    if (key === 'furioso'){ b.speed *= 1.3; b.attackEvery /= 1.3; }
+    if (key === 'blindado'){ rlArmor(b); b.rlRearm = true; }
+    if (key === 'invisible'){ b.rlInvisAt = match.elapsed + 4; }
+  }
+  if (key === 'gemelo' && group[0]){
+    const a = group[0];
+    a.hp /= 2; a.maxHp /= 2;
+    const t = Object.assign({}, a, { x: Math.min(ARENA_W - 80, a.x + 170), pending: [], hit: undefined, rlTwin: true, attackCd: (a.attackCd || 2) + 1 });
+    if (a.ultList) t.ultList = a.ultList.slice();
+    a.rlTwin = true;
+    match.enemies.push(t); match.bossGroup.push(t);
+    match.effects.push({ x: t.x, y: t.y, fixed: true, maxR: 120, life: 0.5, dur: 0.5, color: '#ffd84a' });
+  }
+  document.getElementById('boss-name').textContent = `${def.name} · ${M.name}`;
+  setTimeout(() => { if (match && match.inArena) showBanner(`⚠️ ¡${M.name}!`, M.desc, M.color, true); }, 1200);
+}
+const _spawnBossBase = spawnBoss;
+spawnBoss = function(...a){ const r = _spawnBossBase.apply(this, a); if (rl()) rlApplyBossMod(); return r; };
+
+/* ---- rivales élite: aura roja, el doble de vida y siempre sueltan algo bueno ---- */
+const _spawnEnemyBase = spawnEnemy;
+spawnEnemy = function(opts = {}){
+  const e = _spawnEnemyBase.call(this, opts);
+  if (e && rl() && !match.inArena && !e.special && !opts.noElite && Math.random() < Math.min(0.16, 0.04 + 0.008 * rlMin())){
+    e.rlElite = true; e.hp *= 3.5; e.maxHp *= 3.5; e.dmg *= 1.5; if (e.shotDmg) e.shotDmg *= 1.5; e.speed *= 1.12; e.xp = Math.round(e.xp * 2);   // élite: mucho más duro
+  }
+  if (e && rl() && !e.boss) e.speed *= 1.15 + 0.1 * rlRamp();   // rivales más rápidos
+  return e;
+};
+const _dropLootBase = dropLoot;
+dropLoot = function(e){
+  const r = _dropLootBase.call(this, e);
+  if (e && e.rlElite){
+    maybeDropItem(e, true);
+    match.gems.push({ x: e.x + 10, y: e.y, xp: 0, kind: 'bag', coin: 15 + Math.floor(Math.random() * 16) });
+    if (Math.random() < 0.2){ const P = pbInit(); P.ground.push({ k: PBALL.order[Math.floor(Math.random() * 4)], x: e.x - 12, y: e.y, t: 0, ph: Math.random() * 6 }); }
+    if (Math.random() < 0.02) dropTicket(e.x, e.y + 14, false);
+    MS.cnt.rlElites = (MS.cnt.rlElites || 0) + 1; missionEvalOne(MISSION_BY_ID.rlElite); saveMissions();
+  }
+  return r;
+};
+function rlEliteAura(x, feet){
+  const t = match.elapsed, fl = Math.floor(t * 10) % 2;
+  ctx.save(); ctx.globalAlpha = 0.45 + 0.1 * fl; ctx.fillStyle = '#ff1a10'; ctx.beginPath(); ctx.ellipse(x, feet - 2, 26, 9, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.globalAlpha = 0.18; ctx.beginPath(); ctx.ellipse(x, feet - 18, 24, 28, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  pxRing(x, feet - 16, 23 + fl, fl ? '#ff2a1a' : '#ff5a3c', '#3a0004', 16, 5, t * 2.5);
+}
+
+/* ---- eventos aleatorios cada 2-3 minutos ---- */
+const RL_EVENT_WARN = 5;   // segundos de aviso antes de cada evento
+const RL_EVENTS = {
+  balls:    { name:'¡Lluvia de balones!', desc:'Caen balones del cielo: esquiva las marcas del suelo', dur: 14, color:'#ff4a3c' },
+  stampede: { name:'¡Estampida!',          desc:'Llegan 20 rivales muy rápidos de golpe',            dur: 10, color:'#ff8a2a' },
+  dark:     { name:'¡Apagón!',             desc:'Se va la luz del estadio',                          dur: 22, color:'#9fa8ff' },
+};
+function rlStartEvent(key){
+  const E = RL_EVENTS[key];
+  match.rlEvent = { key, start: match.elapsed, until: match.elapsed + E.dur, next: 0 };
+  match.rlLastEvent = key;
+  showBanner(`⚠️ ${E.name}`, E.desc, E.color, true); SFX.play('whistle');
+  if (key === 'stampede'){
+    const a = Math.random() * Math.PI * 2, px = -Math.sin(a), py = Math.cos(a);
+    for (let i = 0; i < 20; i++){
+      const off = (i - 9.5) * 34, d = 620 + Math.random() * 80;
+      const x = Math.max(60, Math.min(fieldW() - 60, match.x + Math.cos(a) * d + px * off)), y = Math.max(60, Math.min(fieldH() - 60, match.y + Math.sin(a) * d + py * off));
+      const e = spawnEnemy({ x, y, ignoreCap: true, noElite: true });
+      if (e){ e.speed *= 2; e.rlFast = true; }
+    }
+  }
+}
+function rlTick(dt){
+  if (!rl() || match.rlSetup) return;
+  // bosses: invisibles a ratos y el blindaje vuelve a la mitad de vida
+  for (const b of match.bossGroup || []){
+    if (b.dead) continue;
+    if (b.rlMod === 'invisible' && match.elapsed >= (b.rlInvisAt || 0)){ b.invisUntil = match.elapsed + 2.2; b.rlInvisAt = match.elapsed + 6 + Math.random() * 2; }
+    if (b.rlRearm && b.hp < b.maxHp * 0.5 && !(b.shieldUntil > match.elapsed)){ b.rlRearm = false; rlArmor(b); addFloatText(b.x, b.y - 50, '🛡️ ¡Blindaje!', '#c3cbd6'); }
+  }
+  // eventos (solo en el campo; se hacen más frecuentes con el tiempo)
+  if (match.rlNextEvent == null) match.rlNextEvent = 120 + Math.random() * 60;
+  const ev = match.rlEvent; match.bossMarks = match.bossMarks || [];
+  if (ev){
+    if (ev.key === 'balls' && !match.inArena && match.elapsed >= ev.next){
+      ev.next = match.elapsed + 0.3;
+      const near = Math.random() < 0.3, a = Math.random() * Math.PI * 2, d = near ? 0 : 60 + Math.random() * 240;
+      const x = match.x + Math.cos(a) * d, y = match.y + Math.sin(a) * d;
+      bossMark(x, y, 1.15, 52, psEnemyStats(psTime()).shot * 1.4, 'lob', '#ff4a3c', { fromX: x + (Math.random() - 0.5) * 60, fromY: y - 260, rlRain: true });
+    }
+    if (match.elapsed >= ev.until){
+      match.rlEvent = null;
+      if (match.hp > 0 && !match.over){ mDone('rlEvents', ev.key); addPickText('¡Superado!', RL_EVENTS[ev.key].color, RL_EVENTS[ev.key].name.replace(/[¡!]/g, '')); }
+    }
+  } else if (!match.inArena && !match.boss && !match.referee && !match.rlPendingEvent && matchClock() >= match.rlNextEvent - RL_EVENT_WARN){
+    // aviso unos segundos antes: qué evento viene
+    const keys = Object.keys(RL_EVENTS).filter(k => k !== match.rlLastEvent);
+    const key = keys[Math.floor(Math.random() * keys.length)], E = RL_EVENTS[key];
+    match.rlPendingEvent = { key, at: Math.max(matchClock() + 1, match.rlNextEvent) };
+    SFX.play('step');   // aviso discreto (el texto sale encima de las supertécnicas)
+  } else if (match.rlPendingEvent && !match.inArena && !match.boss && !match.referee && matchClock() >= match.rlPendingEvent.at){
+    const key = match.rlPendingEvent.key; match.rlPendingEvent = null;
+    rlStartEvent(key);
+    const gap = rlMin() >= 8 ? [90, 140] : [120, 180];
+    match.rlNextEvent = matchClock() + gap[0] + Math.random() * (gap[1] - gap[0]);
+  }
+}
+/* aviso del próximo evento: textito justo encima del HUD de supertécnicas */
+function drawRlWarn(){
+  const P = match.rlPendingEvent; if (!P || match.inArena) return;
+  const E = RL_EVENTS[P.key], left = Math.max(0, Math.ceil(P.at - matchClock()));
+  const tb = document.getElementById('tech-bar'), cr = canvas.getBoundingClientRect();
+  const top = tb && !tb.classList.contains('hidden') ? tb.getBoundingClientRect().top : cr.bottom - 120;
+  const y = Math.round((top - cr.top) * (H / cr.height)) - 12;
+  const txt = `${E.name.replace(/[¡!]/g, '')} en ${left}…`;
+  const pulse = 1 + 0.06 * Math.max(0, Math.sin(match.elapsed * 10));
+  ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+  ctx.font = `${Math.round(17 * pulse)}px InazumaFont, Bangers, Teko, sans-serif`;
+  ctx.lineWidth = 4; ctx.strokeStyle = '#000'; ctx.strokeText(txt, W / 2, y);
+  ctx.shadowColor = E.color; ctx.shadowBlur = 6; ctx.fillStyle = '#fff'; ctx.fillText(txt, W / 2, y);
+  ctx.shadowBlur = 0;
+  // pequeño "!" a cada lado, del color del evento
+  const tw = ctx.measureText(txt).width / 2 + 14, blink = Math.floor(match.elapsed * 4) % 2;
+  if (blink){ ctx.font = '700 16px Inter, sans-serif'; ctx.lineWidth = 3; for (const sx of [-1, 1]){ ctx.strokeText('!', W / 2 + sx * tw, y); ctx.fillStyle = E.color; ctx.fillText('!', W / 2 + sx * tw, y); } }
+  ctx.restore();
+}
+/* apagón: oscuro alrededor, pero se ve más que con Talisman */
+function drawRlDark(){
+  const ev = match.rlEvent; if (!ev || ev.key !== 'dark') return;
+  const fin = Math.min(1, (match.elapsed - ev.start) / 1.2, (ev.until - match.elapsed) / 1.2);
+  if (fin <= 0) return;
+  const flick = Math.random() < 0.04 ? 0.7 : 1, R = 260;
+  const gr = ctx.createRadialGradient(W / 2, H / 2, R * 0.45, W / 2, H / 2, R);
+  gr.addColorStop(0, 'rgba(5,0,12,0)'); gr.addColorStop(1, `rgba(5,0,12,${0.86 * fin * flick})`);
+  ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+}
+
+/* ---- pantalla completa (botón de arriba a la derecha) ---- */
+(function setupFullscreen(){
+  const b = document.getElementById('btn-fullscreen'); if (!b) return;
+  const can = document.fullscreenEnabled || document.webkitFullscreenEnabled;
+  if (!can){ b.disabled = true; b.title = 'Tu navegador no permite pantalla completa'; }
+  b.innerHTML = `<img class="px-ico" src="${PX_ICON_URL.m_full}" alt="">`;
+  b.onclick = () => {
+    const el = document.documentElement, on = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+    } catch (e) {}
+    SFX.play('click');
+  };
+  const sync = () => { const on = !!(document.fullscreenElement || document.webkitFullscreenElement); b.classList.toggle('on', on); b.title = on ? 'Salir de pantalla completa' : 'Pantalla completa'; setTimeout(resizeCanvas, 60); };
+  document.addEventListener('fullscreenchange', sync); document.addEventListener('webkitfullscreenchange', sync); sync();
+})();
+(function setupRL(){
+  const b = document.getElementById('btn-rl'); if (!b) return;
+  b.onclick = rlPickOpen;
+  const sm = b.querySelector('small'); if (sm) sm.innerHTML = RLK.cost ? `Modo Caos · ${RLK.cost} ${pxImg('ticketP', 14)}` : 'Modo Caos · ¡Gratis por ahora!';
+})();
+
+/* ---- eventos del partido ---- */
+function missionMatchStart(){ match.pbUses = { red: 0, blue: 0, green: 0, yellow: 0 }; match.msT = 0; }
+function missionBossDefeated(b){
+  if (!match || !match.charDef) return;
+  const def = BOSSES[b.idx]; if (!def) return;
+  const me = match.charDef, name = def.name;
+  mDone('boss', name);
+  if (def.name !== 'Hermanos Murdock' && b.spawnAt != null && match.elapsed - b.spawnAt < 5) mDone('fast', name);
+  if ((BOSS_SELF[name] || []).includes(me.id)) mDone('mirror', name);
+  if (b.affEl && ELEMENTS[b.affEl] && ELEMENTS[b.affEl].beats.includes(match.element)) mDone('aff', 'x');
+  if (name === 'Talisman' && !(match.techs || []).length) mDone('notech', 'x');
+  if (match.rl){
+    mBest('rlBosses', (match.bossesBeaten || 0) + 1);
+    if (match.rlMod) mDone('rlMods', match.rlMod);
+    if (def.final){ mDone('rlWin', 'x'); if (me.rarity === 'legendary') mDone('rlLeg', 'x'); }
+  }
+  if (def.final){
+    if (ELEMENTS[me.element]) mDone('aphEl', me.element);
+    mDone('aphTeam', me.team);
+    if (me.id === 'ie01') mDone('markAph', 'x');
+  }
+}
+/* comprobaciones de estado cada medio segundo */
+function missionTick(dt){
+  match.msT = (match.msT || 0) + dt; if (match.msT < 0.5) return; match.msT = 0;
+  mBest('kills', match.kills || 0);
+  mBest('t25', Math.floor(matchClock()));
+  mBest('tkp', match.ticketsEpicEarned || 0);
+  if (match.rl){ mBest('rlKills', match.kills || 0); if (match.mark && match.mark.start != null) mBest('rlMark', Math.floor(match.elapsed - match.mark.start)); }
+  if (match.mark && match.mark.start != null) mBest('mark', Math.floor(match.elapsed - match.mark.start));
+  if (PBALL.order.every(k => pbActive(k))) mDone('pb4', 'x');
+  for (const t of match.techs || []){
+    const parts = [t].concat(t.fused ? [t.fused] : []);
+    if (parts.some(q => !isBuffKind(q.kind) && q.lvl >= TECH_MAX)) mDone('evo', 'x');
+    if (t.fused){
+      if (!isBuffKind(t.kind) && !isBuffKind(t.fused.kind) && (t.element || match.element) !== (t.fused.element || match.element)) mDone('mixEl', 'x');
+      if (isBuffKind(t.kind) && isBuffKind(t.fused.kind)) mDone('mixNb', 'x');
+      if (t.lvl >= TECH_MAX && t.fused.lvl >= TECH_MAX) mDone('evo2', 'x');
+    }
+  }
+  if (match.relic === 'manto' && match.charDef && match.charDef.team === 'zeus') mDone('zeus', 'x');
+}
+function missionPBall(k){
+  if (!match.pbUses) match.pbUses = { red: 0, blue: 0, green: 0, yellow: 0 };
+  match.pbUses[k] = (match.pbUses[k] || 0) + 1;
+  if (PBALL.order.every(c => match.pbUses[c] >= 3)) mDone('pb3', 'x');
+}
+
 /* ---- BIENVENIDA: los jugadores nuevos reciben 3 sobres de regalo (dorado, súper y épico) ---- */
 const WELCOME_KINDS = ['yellow', 'blue', 'purple'];
 let welcomeQueue = null;
@@ -3526,9 +4192,15 @@ function pxEnd(){
   ctx.imageSmoothingEnabled = true;
 }
 let W, H;
+const VIEW_H = 840, VIEW_MAX_ASPECT = 2.2;   // alto fijo de la vista (en píxeles del juego) y proporción máxima
 function resizeCanvas(){
-  W = canvas.width = canvas.clientWidth;
-  H = canvas.height = canvas.clientHeight;
+  // la vista del campo es SIEMPRE del mismo tamaño (VIEW_H de alto): el zoom del navegador o una pantalla
+  // más grande no dejan ver más campo (solo se ve más grande o más pequeño)
+  const cw = canvas.clientWidth, ch = canvas.clientHeight;
+  if (!cw || !ch){ W = canvas.width = cw; H = canvas.height = ch; return; }
+  H = VIEW_H; W = Math.round(VIEW_H * Math.min(VIEW_MAX_ASPECT, cw / ch));
+  if (canvas.width !== W) canvas.width = W;
+  if (canvas.height !== H) canvas.height = H;
 }
 window.addEventListener('resize', resizeCanvas);
 // El campo se reajusta cuando el panel de estadísticas se abre o se cierra
@@ -3538,6 +4210,7 @@ let match = null; // objeto con todo el estado de la partida activa
 let rafId = null;
 
 function startMatch(charDef){
+  const isRl = RL_NEXT; RL_NEXT = false; applyBossOrder(isRl);   // RandomLocke: bosses barajados
   { const ss = document.getElementById('stats-side'); if (ss) ss.classList.add('hidden'); }   // panel de estadísticas (Tab) cerrado al empezar
   canvas.classList.remove('dead-bw'); document.getElementById('screen-game').classList.remove('dead-bw');
   if (typeof hideVsIntro === 'function') hideVsIntro();
@@ -3612,8 +4285,10 @@ function startMatch(charDef){
     clockT: 0,                  // reloj de partido (se para con el árbitro y en los duelos)
     keys: {},
   };
-  applyMeta(match, charDef.id);
+  if (isRl){ match.rerolls = 0; match.veto = []; match.relicVeto = []; match.coinMult = 1; match.regen = 0; }   // RandomLocke: sin mejoras permanentes (ni cambios ni vetos)
+  else applyMeta(match, charDef.id);
   match.charDef = charDef;
+  match.rl = isRl; document.body.classList.toggle('rl-mode', isRl);
   // PokéSurvivor: los movimientos especiales pegan según el At. especial (los disparos básicos, según el daño)
   match.spRatio = Math.max(0.6, Math.min(1.6, ((charDef.spAtk || charDef.dmg * SP_AVG) / Math.max(1, charDef.dmg)) / SP_AVG));              // mejoras permanentes de este jugador
   match.base = { maxHp: match.maxHp, dmg: match.dmg, atkSpeed: match.atkSpeed, range: match.range,
@@ -3771,7 +4446,8 @@ function devGoBoss(i){
   showVsIntro(def);
 }
 function togglePause(){
-  if (match && match.vsActive) return;                 // durante la presentación VS no se pausa
+  if (match && match.vsActive) return;
+  if (match && match.rlSetup) return;                  // eligiendo cartas de RandomLocke                 // durante la presentación VS no se pausa
   if (!match || match.over || match.levelupChoices) return;
   match.menuOpen = !match.menuOpen;
   match.paused = match.menuOpen;
@@ -3926,14 +4602,14 @@ function dropLoot(e){
   } else if (e.miniBoss){
     match.gems.push({ x:e.x, y:e.y, xp:e.xp, coin:e.coin, big:true });
   } else if (e.xp > 0){
-    if (!match.inArena && !e.special && Math.random() < PBALL.dropChance){ const P = pbInit(); if (P.ground.length < PBALL.maxGround) P.ground.push({ k: PBALL.order[Math.floor(Math.random() * 4)], x: e.x, y: e.y, t: 0, ph: Math.random() * 6 }); }   // balón de poder
+    if (!match.inArena && !e.special && Math.random() < PBALL.dropChance * (rl() ? RLK.pball : 1)){ const P = pbInit(); if (P.ground.length < PBALL.maxGround) P.ground.push({ k: PBALL.order[Math.floor(Math.random() * 4)], x: e.x, y: e.y, t: 0, ph: Math.random() * 6 }); }   // balón de poder
     // menos gemas verdes: la mitad de las veces el rival medio suelta una azul pequeña
     let xp = e.xp;
     if ((match.bossesBeaten || 0) >= 1 && gemTier(xp) === 'm' && Math.random() < GREEN_GEM_DOWNGRADE) xp = ENEMY_KINDS[0].xp;   // hasta el 1º boss, todos sueltan su experiencia entera
     match.gems.push({ x:e.x, y:e.y, xp, coin:0 });
   }
   // no todos los rivales sueltan monedas: los normales solo a veces
-  if (e.coin > 0 && !e.miniBoss && (e.special || Math.random() < COIN_DROP_CHANCE)) match.gems.push({ x:e.x + jitter(), y:e.y + jitter(), xp:0, coin:e.coin, kind:'coin' });
+  if (e.coin > 0 && !e.miniBoss && (e.special || Math.random() < COIN_DROP_CHANCE * (rl() ? RLK.coinDrop : 1))) match.gems.push({ x:e.x + jitter(), y:e.y + jitter(), xp:0, coin:e.coin, kind:'coin' });
   if (e.miniBoss) rollTicket(e.x + jitter(), e.y + jitter(), TICKET_MINIBOSS);
   else if (!e.special) rollTicket(e.x + jitter(), e.y + jitter(), [TICKET_DROP, TICKET_DROP_EPIC]);
   if (e.special === 'kappah'){
@@ -3982,7 +4658,7 @@ function xpForLevel(prev, level){
 const EARLY_EASE = [0.65, 0.7, 0.75, 0.55];          // daño de los rivales antes del 1º / 2º / 3º / 4º boss (todo el camino hasta Jude, más suave)
 const MID_EASE = 0.5;                               // a partir de Jude: rivales un 22% más suaves (vida −11%)
 /* máximo de rivales a la vez en el campo: pocos al principio y más según avanza el partido (tope 400) */
-function maxEnemiesNow(){ return Math.round(PS.CAP * (match ? fieldCrowdMult() : 1)); }   // tope de PokéSurvivor (64), +15% por Torre Inazuma
+function maxEnemiesNow(){ return Math.round(PS.CAP * (match ? fieldCrowdMult() : 1) * (rl() ? Math.min(1.5, 1 + 0.06 * rlMin()) : 1)); }   // tope de PokéSurvivor (64), +15% por Torre Inazuma
 /* tras el 3º boss algo menos de rivales */
 const LATE_FIELD = { from: 3, crowd: 0.87, dmg: 1 };
 /* menos rivales en el campo pero más duros (menos lag y menos spam de definitivas):
@@ -4038,7 +4714,8 @@ function lateK(stat){ return match && (match.bossIdx || 0) >= LATE_DIFF.fromBoss
 /* stats de un rival normal en el segundo t (antes de su tipo y complexión) */
 function psEnemyStats(t){
   const tr = psTier(t), hs = 1 + t / PS.hpGrow, ds = 1 + t / PS.dmgGrow, kh = lateK('hp'), kd = lateK('dmg');
-  return { hp: tr.hp * hs * psHpK(t) * PS.kD * kh, dmg: tr.dmg * ds * PS.DMG_K * PS.kH * PS.nerf * kd, shot: tr.dmg * 0.8 * ds * PS.kH * PS.nerf * kd, xp: tr.xp * PS.XP_K };
+  const rh = rl() ? rlCurve(RLK.hp, RLK.hpMin) : 1, rd = rl() ? rlCurve(RLK.dmg, RLK.dmgMin) : 1;   // RandomLocke: curva más agresiva
+  return { hp: tr.hp * hs * psHpK(t) * PS.kD * kh * rh, dmg: tr.dmg * ds * PS.DMG_K * PS.kH * PS.nerf * kd * rd, shot: tr.dmg * 0.8 * ds * PS.kH * PS.nerf * kd * rd, xp: tr.xp * PS.XP_K };
 }
 /* jefes: vida y daño de su franja (interpolado en el tiempo; más allá del último, sigue creciendo) */
 function psBossStats(t){
@@ -4048,7 +4725,8 @@ function psBossStats(t){
   else { let i = 0; while (t > B[i + 1][0]) i++; const a = B[i], b = B[i + 1], q = (t - a[0]) / (b[0] - a[0]); hp = a[1] + (b[1] - a[1]) * q; dmg = a[2] + (b[2] - a[2]) * q; }
   const sc = 1 + t / 600, dsc = 1 + t / PS.bossDmgGrow;
   // (× bossK: nuestras supertécnicas suben bastante más que sus movimientos, así que con el tiempo los jefes aguantan algo más)
-  return { hp: hp * 1.35 * sc * PS.kD * (1 + Math.max(0, t - 300) / PS.bossK), dmg: dmg * 1.2 * dsc * PS.kH * PS.nerf, shot: dmg * 0.55 * dsc * PS.kH * PS.nerf };
+  const bh = rl() ? rlCurve(1.55, 0.05) : 1, bd = rl() ? rlCurve(1.4, 0.04) : 1;
+  return { hp: hp * 1.35 * sc * PS.kD * (1 + Math.max(0, t - 300) / PS.bossK) * bh, dmg: dmg * 1.2 * dsc * PS.kH * PS.nerf * bd, shot: dmg * 0.55 * dsc * PS.kH * PS.nerf * bd };
 }
 /* PokéSurvivor: experiencia para el siguiente nivel */
 function psXpFor(level){ return Math.floor((8 + level * 6 + Math.pow(level, 1.75) * 1.6) * 4 * XP_HARDER); }
@@ -4149,10 +4827,12 @@ function applyVariant(enemy, kind, waveBoost, forced){
   let pick = forced || null;
   if (!pick){
     for (const [key, V] of Object.entries(ENEMY_VARIANTS)){
-      if (matchClock() < V.from) continue;
+      const rlv = rl() && (key === 'shooter' || key === 'lobber');   // RandomLocke: muchos más rivales que disparan
+      const from = rlv ? V.from * 0.35 : V.from;
+      if (matchClock() < from) continue;
       if (match.inArena && key !== 'shooter') continue;          // en el duelo solo tiradores
-      if (V.max && match.enemies.filter(o => o.variant === key && !o.dead).length >= Math.round(scaleT(V.max, V.from))) continue;
-      if (Math.random() < scaleT(V.chance, V.from)){ pick = key; break; }
+      if (V.max && match.enemies.filter(o => o.variant === key && !o.dead).length >= Math.round(scaleT(V.max, V.from) * (rlv ? 1 + 1.2 * rlRamp() : 1))) continue;
+      if (Math.random() < scaleT(V.chance, V.from) * (rlv ? 1 + 0.9 * rlRamp() : 1)){ pick = key; break; }
     }
   }
   if (!pick) return;
@@ -4321,7 +5001,7 @@ function updateCoinFlip(dt){
     match.enemyShots = []; match.bossMarks = (match.bossMarks || []).filter(m => m.kind !== 'lob');
     for (const e of match.enemies){ if (e.dead || e.boss) continue; const dx = e.x - match.x, dy = e.y - match.y, d = Math.hypot(dx, dy) || 1; if (d < 260){ e.x += dx / d * (260 - d); e.y += dy / d * (260 - d); } }   // aparta a los de cerca
     match.effects.push({ x: match.x, y: match.y, fixed: true, maxR: 260, life: 0.6, dur: 0.6, color: '#ff6b8a', fill: true });
-    addPickText('¡Revives!', '#ff6b8a', 'Moneda del Árbitro');
+    addPickText('¡Revives!', '#ff6b8a', 'Moneda del Árbitro'); mDone('coin', 'x');
   } else startDeath();
 }
 /* sprite pixel de la moneda (cara corazón, cara calavera o canto oscuro) */
@@ -4452,7 +5132,7 @@ function update(dt){
     spawnTimer = spawnRate * SPAWN.arenaSlow;
   }
   if (!match.inArena){                              // campo: goteo de PokéSurvivor (rivales por segundo según el minuto)
-    match.psAcc = (match.psAcc || 0) + psRate(psTime()) * fieldCrowdMult() * (match.referee ? 0.6 : 1) * dt;
+    match.psAcc = (match.psAcc || 0) + psRate(psTime()) * fieldCrowdMult() * (rl() ? rlSpawnK() : 1) * (match.referee ? 0.6 : 1) * dt;
     let n = Math.floor(match.psAcc); match.psAcc -= n;
     while (n-- > 0 && match.enemies.filter(o => !o.dead).length < maxEnemiesNow()) spawnEnemy();
     updateSurge(dt);
@@ -4466,6 +5146,8 @@ function update(dt){
   updateHillman();
   updateRelics(dt);
   updateNotebook(dt);
+  missionTick(dt);
+  rlTick(dt);
   if (match.inArena && match.arenaExitAt && match.elapsed >= match.arenaExitAt){ exitArena(); }
 
   // enemigos: persiguen al jugador
@@ -4558,7 +5240,7 @@ function autoAttack(dt){
   else shooters.forEach((q, i) => fire(q, shooters.length > 1 ? (i - (shooters.length - 1) / 2) * 0.22 : 0));   // varias de tiro: una ráfaga cada una, algo abiertas
   SFX.play('shoot');
   match.kickT = KICK_TIME; match.kickFace = face8Of(Math.cos(ang), Math.sin(ang));   // pose de chutar hacia el rival
-  match.atkCooldown = cdMult() / (match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? PBALL.yellow.mult : 1));
+  match.atkCooldown = cdMult() / (match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? pbMult('yellow') : 1));
   if (hasRelic('nectarDioses')) match.hp = Math.max(1, match.hp - match.maxHp * 0.005);   // el néctar cuesta vida
 }
 
@@ -4698,7 +5380,7 @@ function bossGate(e){
 function damageEnemy(e, amount, opts = {}){
   if (e.dead) return;
   if (!opts.noProc) amount *= techDmgCorr(opts) * techHitK(opts);
-  if (pbActive('red')) amount *= PBALL.red.mult;                        // balón rojo: más ataque
+  if (pbActive('red')) amount *= pbMult('red');                        // balón rojo: más ataque
   if (e.boss){
     if (e.towerShield){ if (!(e.blockTxtAt > match.elapsed)){ e.blockTxtAt = match.elapsed + 0.5; addFloatText(e.x, e.y - 50, '¡Bloqueado!', '#ffd84a'); } return; }   // Aphrodite con torre activa
     if (e.shieldUntil > match.elapsed){                                 // escudo (Artist / Walters): aguanta hasta un umbral de daño
@@ -4742,7 +5424,7 @@ function damageEnemy(e, amount, opts = {}){
       const alive = (match.bossGroup || []).filter(o => !o.dead);
       if (alive.length){                                                 // quedan hermanos en pie: recuperan un 65% de su vida
         match.boss = alive[0];
-        for (const o of alive){ const h = o.maxHp * MURDOCK_REGEN; o.hp = Math.min(o.maxHp, o.hp + h); addFloatText(o.x, o.y - 50, `+${Math.round(h)}`, '#6fdc8c'); }
+        for (const o of alive){ if (o.rlTwin) continue; const h = o.maxHp * MURDOCK_REGEN; o.hp = Math.min(o.maxHp, o.hp + h); addFloatText(o.x, o.y - 50, `+${Math.round(h)}`, '#6fdc8c'); }
         showBanner(`¡${e.name} derrotado!`, `Queda${alive.length > 1 ? 'n' : ''} ${alive.length} y se cura${alive.length > 1 ? 'n' : ''} un ${Math.round(MURDOCK_REGEN * 100)}%`, getElement(e.element).color);
         return;
       }
@@ -4795,7 +5477,7 @@ function updateGems(dt){
 const WHISTLE_XP = 1.2;          // la experiencia atraída con el silbato vale +20%
 function collectPickup(g){
   match.xp += (g.xp || 0) * effXpMult() * (g.whistle ? WHISTLE_XP : 1);
-  match.coinsEarned += g.coin || 0;
+  match.coinsEarned += (g.coin || 0) * (rl() ? RLK.coin : 1);   // RandomLocke: monedas dobles
   if (g.kind === 'bag') addFloatText(match.x, match.y - 30, `+${g.coin} monedas`, '#f2b705');
   if (g.ticket){
     if (g.purple){ match.ticketsEpicEarned = (match.ticketsEpicEarned || 0) + g.ticket; addFloatText(match.x, match.y - 40, '¡Ticket morado!', '#c48bff'); }
@@ -4887,7 +5569,8 @@ function pbActive(k){ const P = match && match.pb; return !!P && P.until[k] > ma
 function pbLeft(k){ const P = match && match.pb; return P ? Math.max(0, (P.until[k] || 0) - match.elapsed) : 0; }
 function usePBall(i){
   const P = pbInit(), k = PBALL.order[i]; if (!k || P.inv[k] <= 0 || match.paused) return;
-  P.inv[k]--; P.until[k] = Math.max(P.until[k] || 0, match.elapsed) + PBALL[k].dur;   // si ya estaba, se alarga
+  P.inv[k]--; P.until[k] = Math.max(P.until[k] || 0, match.elapsed) + PBALL[k].dur * (rl() && k === 'green' ? RLK.pbPow : 1);   // si ya estaba, se alarga
+  missionPBall(k);
   addFloatText(match.x, match.y - 46, PBALL[k].desc, PBALL[k].color);
   match.effects.push({ x: match.x, y: match.y, fixed: true, maxR: 70, life: 0.35, dur: 0.35, color: PBALL[k].color });
   SFX.play('switch'); renderPBallBar();
@@ -4972,7 +5655,7 @@ function renderPBallBar(){
 }
 
 function maybeDropItem(e, force = false){
-  if (!force && Math.random() >= DROP_CHANCE) return;
+  if (!force && Math.random() >= DROP_CHANCE * (rl() ? RLK.drop : 1)) return;
   const total = Object.values(ITEMS).reduce((a, it) => a + it.weight, 0);
   let r = Math.random() * total;
   for (const [key, it] of Object.entries(ITEMS)){
@@ -5094,7 +5777,7 @@ function spawnBoss(x, y){   // (y puede cambiar para Aphrodite, que sale en el c
       shotDmg: PB.shot * lateK('dmg'),            // daño de cada proyectil
       attacks:p.attacks, attackIdx:k, special: def.special || null,
       attackCd: 2 + k * 0.7, attackEvery: def.attackEvery || Math.max(1.8, 3 - 0.12 * i) * (n > 1 ? 1.3 : 1),
-      pending: [], specialCd: 3,
+      pending: [], specialCd: 3, spawnAt: match.elapsed,
     };
     boss.affEl = ELEMENT_ORDER[Math.floor(Math.random() * ELEMENT_ORDER.length)];   // afinidad al azar en cada partido (su dibujo y sus ataques siguen igual)
     if (def.hpMult){ boss.hp *= def.hpMult; boss.maxHp *= def.hpMult; }
@@ -5797,6 +6480,7 @@ function updateEnemyShots(dt){
 }
 
 function onBossDefeated(b){
+  try { missionBossDefeated(b); } catch (e) { console.warn(e); }
   SFX.play('whistle_end');                             // pitido final del duelo
   if (match.obstacles && match.saved) match.obstacles = addFieldObstacles(match.obstacles, match.saved.x, match.saved.y);
   match.boss = null;
@@ -5998,9 +6682,9 @@ function miniBossCount(nextIdx){
 /* reparte los mini bosses entre ahora y la llegada del siguiente árbitro (o el final del partido) */
 function scheduleMiniBosses(){
   match.miniBossQueue = [];
-  if (match.bossesBeaten < MINI_BOSS.fromBeaten) return;
+  if (match.bossesBeaten < MINI_BOSS.fromBeaten && !rl()) return;   // RandomLocke: mini bosses desde el principio
   const now = matchClock(), end = match.bossIdx < BOSSES.length ? match.nextRefAt : MATCH_LENGTH - 30;
-  const n = miniBossCount(match.bossIdx), span = Math.max(MINI_BOSS.minDelay * n, end - now - MINI_BOSS.minDelay);
+  const n = miniBossCount(match.bossIdx) + (rl() ? 1 : 0), span = Math.max(MINI_BOSS.minDelay * n, end - now - MINI_BOSS.minDelay);
   for (let k = 0; k < n; k++) match.miniBossQueue.push(now + MINI_BOSS.minDelay + span * (k + 0.25 + Math.random() * 0.5) / n);
 }
 function updateMiniBoss(dt){
@@ -6009,7 +6693,8 @@ function updateMiniBoss(dt){
   if (match.inArena || match.boss || match.bossSpawn || match.referee || matchClock() < Q[0]) return;
   Q.shift();
   // uno de los bosses que ya has vencido (de los hermanos Murdock, uno de los tres)
-  const def = BOSSES[Math.floor(Math.random() * Math.min(match.bossesBeaten, BOSSES.length))];
+  const mbPool = rl() ? BOSSES.filter(b => !b.final) : BOSSES.slice(0, Math.max(1, Math.min(match.bossesBeaten, BOSSES.length)));   // RandomLocke: cualquiera
+  const def = mbPool[Math.floor(Math.random() * mbPool.length)];
   const p = def.group ? def.group[Math.floor(Math.random() * def.group.length)] : def;
   const i = match.bossIdx;
   const PB = psBossStats(psTime());
@@ -6024,7 +6709,9 @@ function updateMiniBoss(dt){
     attacks:p.attacks, attackIdx:0, special:null, attackCd: 3, attackEvery: Math.max(1.8, 3 - 0.12 * i) * MINI_BOSS.attackSlow,
     pending: [], specialCd: 99, basicCd: 2.5, xp: Math.round(match.xpNext * 0.35), coin: 10 + 3 * i,
   });
-  { const mb = match.enemies[match.enemies.length - 1]; mb.hp *= BOSS_BOOST; mb.maxHp *= BOSS_BOOST; mb.dmg *= BOSS_BOOST; mb.shotDmg *= BOSS_BOOST; mb.speed *= BOSS_BOOST; }
+  { const mb = match.enemies[match.enemies.length - 1]; mb.hp *= BOSS_BOOST; mb.maxHp *= BOSS_BOOST; mb.dmg *= BOSS_BOOST; mb.shotDmg *= BOSS_BOOST; mb.speed *= BOSS_BOOST;
+    if (rl()){ const k = Math.min(1, matchClock() / 360);       // RandomLocke: los primeros mini bosses pegan y aguantan bastante menos
+      mb.hp *= 0.45 + 0.55 * k; mb.maxHp = mb.hp; mb.dmg *= 0.35 + 0.65 * k; mb.shotDmg *= 0.35 + 0.65 * k; mb.attackEvery *= 1.6 - 0.6 * k; mb.speed *= 0.85 + 0.15 * k; } }
 }
 
 /* ======================================================================
@@ -6114,6 +6801,8 @@ function randomTechOffers(n, otherElement = false){
 }
 
 function openHillman(){
+  { const h3 = document.querySelector('#hillman-overlay h3'); if (h3) h3.innerHTML = `${hillHeadImg(36)} Hillman`; }
+  if (match.charDef && match.charDef.id === 'ie105') mDone('hill', 'x');   // Hillman habla con Hillman
   match.hillPrev = { t: activeTech(), i: match.activeTech };   // la supertécnica que llevabas: se mantiene tras la fusión
   match.paused = true;
   match.keys = {};
@@ -6130,7 +6819,7 @@ function openHillman(){
   };
   const fuseNew = (t, o) => () => { t.fused = { kind: o.kind, lvl: L, element: o.element }; match.activeTech = match.techs.indexOf(t); };
   const teach = o => () => { match.techs.push({ kind: o.kind, lvl: 1, charge: 0, element: o.element }); if (match.techs.length === 1) match.activeTech = 0; };
-  const offerCard = (o, extra) => ({ title: `${techLogo(o.kind, o.element)} ${techNameOf(o.kind, o.element, false)} · ${elTag(o.element)}`, desc: (extra ? extra + ' ' : '') + TECH_KINDS[o.kind].desc(1) });
+  const offerCard = (o, extra) => ({ isOffer: true, book: isBuffKind(o.kind), title: `${techLogo(o.kind, o.element)} ${techNameOf(o.kind, o.element, false)} · ${elTag(o.element)}`, desc: (extra ? extra + ' ' : '') + TECH_KINDS[o.kind].desc(1) });
   const free = match.techs.filter(t => !t.fused);
   if (readyToMix()){                               // MEZCLA DE 4: todo a la Q; la E queda bloqueada
     const all = match.techs.flatMap(t => techParts(t).map(q => ({ kind: q.kind, lvl: q.lvl, element: q.element || (isBuffKind(q.kind) ? null : match.element) })));
@@ -6155,6 +6844,7 @@ function openHillman(){
     list.forEach((o, i) => {
       const btn = document.createElement('button');
       btn.className = 'upgrade-option upgrade-special';
+      if (o.isOffer){ btn.classList.add('hm-offer'); if (o.book) btn.dataset.el = 'book'; }   // (RandomLocke: las nuevas salen ???)
       btn.innerHTML = `<b><kbd class="upgrade-key">${i + 1}</kbd> ${o.title}</b><span>${o.desc}</span>`;
       const choose = () => {
         if (!match.levelupChoices) return;
@@ -6210,6 +6900,7 @@ function openHillman(){
   opts.forEach((o, i) => {
     const btn = document.createElement('button');
     btn.className = 'upgrade-option upgrade-special';
+    if (o.isOffer){ btn.classList.add('hm-offer'); if (o.book) btn.dataset.el = 'book'; }
     btn.innerHTML = `<b><kbd class="upgrade-key">${i + 1}</kbd> ${o.title}</b><span>${o.desc}</span>`;
     const choose = () => {
       if (!match.levelupChoices) return;
@@ -6511,6 +7202,26 @@ function sheetHead(path){
   c.getContext('2d').drawImage(h.img, 16, 15, 16, 16, 0, 0, 16, 16);
   return (_headCache[path] = c);
 }
+/* escudo de la Cinta de Mark: burbuja hexagonal de bloques que late, con brillos */
+function drawMarkShield(){
+  const t = match.elapsed, q = Math.max(0.25, Math.min(1, match.shield / Math.max(1, match.maxHp * 0.15))), cx = W / 2, cy = H / 2 - 2;
+  const R = 27 + (Math.floor(t * 6) % 2), B = 4;
+  ctx.save();
+  ctx.globalAlpha = 0.16 + 0.14 * q; ctx.fillStyle = '#9ee6ff';
+  for (let y = -R; y <= R; y += B) for (let x = -R; x <= R; x += B){ if (Math.abs(x) * 0.87 + Math.abs(y) * 0.5 <= R * 0.87 && Math.abs(y) <= R) ctx.fillRect(Math.round(cx + x - B / 2), Math.round(cy + y - B / 2), B, B); }
+  ctx.globalAlpha = 0.95;
+  const pts = []; for (let k = 0; k < 6; k++){ const a = Math.PI / 6 + k * Math.PI / 3; pts.push([cx + Math.cos(a) * R, cy + Math.sin(a) * R]); }
+  for (let k = 0; k < 6; k++){ const [ax, ay] = pts[k], [bx, by] = pts[(k + 1) % 6], n = 7;
+    for (let i = 0; i < n; i++){ const f = i / n, x = ax + (bx - ax) * f, y = ay + (by - ay) * f, lit = ((i + k * 7 + Math.floor(t * 10)) % 9) < 2;
+      ctx.fillStyle = '#071233'; ctx.fillRect(Math.round(x) - 3, Math.round(y) - 3, 6, 6);
+      ctx.fillStyle = lit ? '#ffffff' : (q > 0.5 ? '#5ec8f2' : '#2f8fff'); ctx.fillRect(Math.round(x) - 2, Math.round(y) - 2, 4, 4); } }
+  ctx.fillStyle = '#ffffff'; ctx.globalAlpha = 0.85; ctx.fillRect(Math.round(cx - R * 0.45), Math.round(cy - R * 0.55), 4, 4); ctx.fillRect(Math.round(cx - R * 0.45) + 4, Math.round(cy - R * 0.55) - 4, 4, 4);
+  ctx.restore();
+}
+/* cabeza de Hillman sacada de su hoja de sprites (para el menú de Hillman, la guía y las misiones) */
+let HILL_HEAD_URL = null;
+function hillHeadURL(){ if (HILL_HEAD_URL) return HILL_HEAD_URL; const c = sheetHead(NPC_SHEETS.hillman); if (!c) return null; try { HILL_HEAD_URL = c.toDataURL(); } catch (e) {} return HILL_HEAD_URL; }
+function hillHeadImg(size){ const u = hillHeadURL(); return u ? `<img class="hill-head" src="${u}" width="${size}" height="${size}" alt="" style="width:${size}px;height:${size}px;image-rendering:pixelated;vertical-align:middle">` : pxImg('ms_hillman', size); }
 /* encima de un personaje: recuadro con su cabeza y una flechita que le señala */
 function drawHeadMarker(x, yTop, path, color){
   const head = sheetHead(path); if (!head) return;
@@ -6851,7 +7562,7 @@ function updateTechs(dt){
   if (ol){
     const boost = orbitBoosted();
     // la velocidad de ataque hace girar los balones más rápido (y golpean más a menudo)
-    const spin = Math.max(0.7, Math.min(3.5, match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? PBALL.yellow.mult : 1) / cdMult()));
+    const spin = Math.max(0.7, Math.min(3.5, match.atkSpeed * allK() * (buffActive('nectar') ? NECTAR_ATK : 1) * (pbActive('yellow') ? pbMult('yellow') : 1) / cdMult()));
     if (oi > 0) q._ang = (q._ang ?? 1.0) - dt * (3 + 0.3 * ol) * spin * (boost ? 2.2 : 1);   // la 2ª gira al revés
     else match.orbAngle += dt * (3 + 0.3 * ol) * spin * (boost ? 2.2 : 1);
     if (boost && oi === 0) match.orbAngle2 += dt * (3 + 0.3 * ol) * spin * 2.6;
@@ -7543,21 +8254,23 @@ function buildTechOptions(){
   // conseguir una nueva (máximo 2): la 1ª a partir de cierto nivel; la 2ª, solo cuando ya
   // llevas un rato de partido y has subido bastante la 1ª
   const W = levelupW();
-  const canFirst = !match.mixed && match.techs.length === 0 && match.level >= W.firstTechFromLevel;
+  const canFirst = !match.mixed && match.techs.length === 0 && (match.level >= W.firstTechFromLevel || rl());   // RandomLocke: desde el 1er nivel
   const canSecond = !match.mixed && match.techs.length === 1 && match.level >= W.secondTechFromLevel && match.techs[0].lvl >= W.secondTechNeedsLvl;
   if (canFirst || canSecond){
     const owned = match.techs.flatMap(t => techParts(t).map(q => q.kind));
     const slot = SLOT_KEYS[match.techs.length];
     TECH_ORDER.filter(k => !owned.includes(k) && !(match.veto || []).includes(k)).forEach(k => {
-      const name = techNames(k)[0];
+      // RandomLocke: la afinidad al azar se decide YA, para que el nombre de la carta, el aviso y la del HUD coincidan
+      const rEl = rl() && !isBuffKind(k) ? ELEMENT_ORDER[Math.floor(Math.random() * ELEMENT_ORDER.length)] : null;
+      const name = rEl ? techNameOf(k, rEl, false) : techNames(k)[0];
       opts.push({
         tech:true, kind:k, part:() => match.techs[match.techs.length - 1], isNew:true, slot, nextLvl:1,
-        emoji: techLogo(k), el: isBuffKind(k) ? 'book' : match.element, name,
+        emoji: rEl ? techLogo(k, rEl) : techLogo(k), el: isBuffKind(k) ? 'book' : (rEl || match.element), name,
         desc: TECH_KINDS[k].desc(1) + (isBuffKind(k) ? '' : advantageText()),
         apply: () => {
-          match.techs.push({ kind:k, lvl:1, charge:0 });
+          match.techs.push(rEl ? { kind:k, lvl:1, charge:0, element: rEl } : { kind:k, lvl:1, charge:0 });
           if (match.techs.length === 1) match.activeTech = 0;
-          showBanner(name, `Supertécnica en la tecla ${slot}`, getElement(match.element).color, true);
+          showBanner(name, `Supertécnica en la tecla ${slot}`, getElement(rEl || match.element).color, true);
         },
       });
     });
@@ -7765,16 +8478,20 @@ function rerollLevelup(){
 /* rellena las cartas de la subida de nivel (también al usar un cambio de cartas) */
 function fillLevelup(free, lucky){
   const base = UPGRADES
-    .filter(u => (match.upgrades[u.id] || 0) < u.max && !(match.veto || []).includes(u.id) && !(u.capped && u.capped(match)))   // al tope (p. ej. regate al 75 %): ya no sale
+    .filter(u => (match.upgrades[u.id] || 0) < u.max && !(rl() && (u.id === 'regen' || u.id === 'luck')) && !(match.veto || []).includes(u.id) && !(u.capped && u.capped(match)))   // al tope (p. ej. regate al 75 %): ya no sale
     .sort(() => Math.random() - 0.5).slice(0, LEVELUP_STATS_SHOWN)
     .map(u => ({ ...u, nextLvl: (match.upgrades[u.id] || 0) + 1 }));
   let options = pickOptions(base, buildTechOptions(), 3, buildTalentOptions());
+  if (rl() && !match.techs.length && !options.some(u => u.tech && u.isNew && !isBuffKind(u.kind))){   // RandomLocke: la 1ª subida asegura una supertécnica nueva al azar
+    const news = buildTechOptions().filter(u => u.isNew && !isBuffKind(u.kind));
+    if (news.length){ const pick = news[Math.floor(Math.random() * news.length)]; if (options.length) options[Math.min(options.length, 3) - 1] = pick; else options.push(pick); }
+  }
   for (const u of options){                                      // rareza de cada carta (los talentos no tienen)
     if (u.talent) continue;
     const R = rollUpRarity(); u.rar = R;
     if (u.tech){
       if (R.tdmg && !isBuffKind(u.kind || (typeof u.part === 'object' && u.part ? u.part.kind : ''))) u.desc = `<em class="rar-gain" style="--urc:${R.color}">+${Math.round(R.tdmg * 100)}% de daño a esta supertécnica</em> · ` + u.desc;
-      else if (R.tdmg) u.rar = UP_RARITY[0];       // los cuadernos no pegan: salen siempre comunes
+      else if (R.tdmg && !rl()) u.rar = UP_RARITY[0];       // los cuadernos no pegan: salen siempre comunes
     } else {
       u.k = R.mult; u.desc = u.id === 'heal' ? `Recupera el ${Math.min(100, Math.round(45 * R.mult))}% de tu vida ahora mismo` : descK(u.desc, R.mult);
     }
@@ -8085,7 +8802,23 @@ const fieldLogo = new Image();
 let fieldLogoReady = false;
 fieldLogo.onload = () => { fieldLogoReady = fieldLogo.naturalWidth > 0; pitchCanvas = null; };
 fieldLogo.src = 'assets/logo.png';
+/* RandomLocke: su logo en el centro del campo (pixelado, en sus colores) */
+const rlFieldLogo = new Image();
+let rlFieldLogoReady = false;
+rlFieldLogo.onload = () => { rlFieldLogoReady = rlFieldLogo.naturalWidth > 0; pitchCanvas = null; };
+rlFieldLogo.src = 'assets/ui/randomlocke.png';
+function drawRlFieldLogo(g, O){
+  const p = CAMPUS.pitch;
+  const x = O + Math.round(p.x / PX), y = O + Math.round(p.y / PX), w = Math.round(p.w / PX), h = Math.round(p.h / PX);
+  const cx = x + Math.floor(w / 2), cy = y + Math.floor(h / 2);
+  const lh = Math.round(h * 0.15), lw = Math.round(lh * rlFieldLogo.naturalWidth / rlFieldLogo.naturalHeight);
+  g.save(); g.imageSmoothingEnabled = false;
+  g.globalAlpha = 0.22; g.filter = 'brightness(0)'; g.drawImage(rlFieldLogo, Math.round(cx - lw / 2) + 3, Math.round(cy - lh / 2) + 3, lw, lh);   // sombra
+  g.filter = 'none'; g.globalAlpha = 0.55; g.drawImage(rlFieldLogo, Math.round(cx - lw / 2), Math.round(cy - lh / 2), lw, lh);
+  g.restore();
+}
 function drawFieldLogo(g, O){
+  if (rl()){ if (rlFieldLogoReady) drawRlFieldLogo(g, O); return; }
   if (!fieldLogoReady) return;
   const p = CAMPUS.pitch;
   const x = O + Math.round(p.x / PX), y = O + Math.round(p.y / PX), w = Math.round(p.w / PX), h = Math.round(p.h / PX);
@@ -9112,6 +9845,7 @@ function buildPitchCanvas(){
     catch (err){ console.warn('[campo] Error al dibujar con casillas; se usan formas de canvas.', err); g.clearRect(0, 0, cv.width, cv.height); }
   }
   if (!cv.tiles) paint(false);
+  cv.rl = rl();
   pitchCanvas = cv;
 }
 
@@ -9119,7 +9853,7 @@ function buildPitchCanvas(){
 function drawPitch(camX, camY){
   ctx.fillStyle = fieldTheme().outside || PAL.grassDark;
   ctx.fillRect(0, 0, W, H);
-  if (!pitchCanvas || pitchCanvas.tiles !== citySheetReady || pitchCanvas.obstacles !== match.obstacles || pitchCanvas.theme !== fieldThemeKey() + fieldGreen()) buildPitchCanvas();
+  if (!pitchCanvas || pitchCanvas.tiles !== citySheetReady || pitchCanvas.obstacles !== match.obstacles || pitchCanvas.theme !== fieldThemeKey() + fieldGreen() || pitchCanvas.rl !== rl()) buildPitchCanvas();
   const O = CAMPUS.border * TILE_SRC;
   const u0 = Math.max(0, Math.floor(O - camX / PX)), v0 = Math.max(0, Math.floor(O - camY / PX));
   const u1 = Math.min(pitchCanvas.width, Math.ceil(O + (W - camX) / PX)), v1 = Math.min(pitchCanvas.height, Math.ceil(O + (H - camY) / PX));
@@ -10064,7 +10798,10 @@ function pxRing(cx, cy, R, col, dark, n, s, rot){
   }
 }
 /* Flecha divina (rebote celestial evolucionado): un par de alas blancas y doradas que aletean a los lados del balón */
-function drawDivineWings(x, y, r, ang, ph){
+const WING_COLS = { celestial:['#ffffff', '#e6f4ff', '#ffe680'], fire:['#fff0d8', '#ffb02e', '#ff4a3c'], air:['#ffffff', '#bfe9ff', '#5ec8f2'],
+  forest:['#eaffd8', '#8be28f', '#3a9a3a'], mountain:['#fff3dc', '#e0b070', '#8a5a2b'], dragon:['#e6e8ff', '#9f8dff', '#3f5fd8'] };
+function drawDivineWings(x, y, r, ang, ph, el = 'celestial'){
+  const WC = WING_COLS[el] || WING_COLS.celestial;
   const flap = Math.sin(match.elapsed * 20 + ph);                 // aleteo: las alas suben y bajan
   ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
   const L = r * 3.3;
@@ -10078,7 +10815,7 @@ function drawDivineWings(x, y, r, ang, ph){
       ctx.beginPath(); ctx.ellipse(len * 0.1, 0, len * 0.55, Math.max(3, len * 0.16), 0, 0, Math.PI * 2);
       ctx.fillStyle = '#1b1d26'; ctx.fill();
       ctx.beginPath(); ctx.ellipse(len * 0.1, 0, len * 0.55 - 2, Math.max(2, len * 0.16 - 2), 0, 0, Math.PI * 2);
-      ctx.fillStyle = f === 0 ? '#ffffff' : f === 1 ? '#e6f4ff' : '#ffe680'; ctx.fill();
+      ctx.fillStyle = WC[f]; ctx.fill();
       ctx.restore();
     }
   }
@@ -10611,11 +11348,11 @@ function updateWeather(dt){
   const w = match.weather;
   if (w && !clockRunning()) w.until += dt;                 // el clima se congela con el reloj de partido
   if (w && match.elapsed >= w.until){ match.weather = null; }
-  if (!match.weather && !match.inArena && matchClock() >= match.nextWeatherAt){
+  if (!match.weather && (rl() || (!match.inArena && matchClock() >= match.nextWeatherAt))){   // RandomLocke: siempre hay un temporal
     const keys = Object.keys(WEATHER.types).filter(k => k !== match.lastWeather);
     const key = keys[Math.floor(Math.random() * keys.length)];
     match.lastWeather = key;
-    match.weather = { key, start: match.elapsed, until: match.elapsed + WEATHER.dur, parts: [], bolts: [], nextBolt: match.elapsed + 1.5 };
+    match.weather = { key, start: match.elapsed, until: match.elapsed + (rl() ? RLK.weatherDur : WEATHER.dur), parts: [], bolts: [], nextBolt: match.elapsed + 1.5 };
     match.nextWeatherAt += WEATHER.every;
     const T = WEATHER.types[key];
   }
@@ -10746,6 +11483,7 @@ function renderWorld(){
   const camX = W/2 - match.x, camY = H/2 - match.y;
   const elColor = getElement(match.element).color;
   if (match.inArena) drawArena(camX, camY); else { drawPitch(camX, camY); drawOutsideAmbient(camX, camY, 1 / 60); drawFieldAmbient(camX, camY); drawThemeAura(); }
+  if (rl()) drawRlTint();   // RandomLocke: campo rojizo
 
   // gemas
   ctx.font = '16px sans-serif';
@@ -10868,7 +11606,8 @@ function renderWorld(){
   pxBegin();
   for (const p of match.projectiles){
     const px = p.x+camX, py = p.y+camY;
-    if (p.ultBounce && isFireFx(p.fx)){ drawFireBird(p, camX, camY); if (p.fx === 'celestial') drawDivineWings(px, py, p.r * 1.2, Math.atan2(p.vy, p.vx), p.x * 0.05); continue; }
+    if (p.ultBounce && isFireFx(p.fx)){ drawFireBird(p, camX, camY); drawDivineWings(px, py, p.r * 1.2, Math.atan2(p.vy, p.vx), p.x * 0.05, p.fx || p.element); continue; }   // R de rebote: el balón con alas (de su afinidad)
+    if (p.ultBounce) drawDivineWings(px, py, p.r * 1.2, Math.atan2(p.vy, p.vx), p.x * 0.05, p.fx || p.element);
     if (p.style === 'breath' && isFireFx(p.fx)){                 // plumas del fénix
       drawFireBall(px, py, p.r * 0.9, p.vx, p.vy, 2.5, p.x);
       if (Math.random() < 0.15) emitEmber(p.x, p.y, { spread: 40 });
@@ -10876,7 +11615,6 @@ function renderWorld(){
     }
     if ((p.style === 'pierce' || p.style === 'bounce') && isFireFx(p.element)){   // Tornado de fuego / Ataque meteorito
       drawFireBall(px, py, p.crit ? p.r + 2 : p.r, p.vx, p.vy, p.style === 'pierce' ? 5 : 4, p.x * 0.1);
-      if (p.style === 'bounce' && p.element === 'celestial' && p.evo) drawDivineWings(px, py, Math.max(6, p.r), Math.atan2(p.vy, p.vx), p.x * 0.05);   // Flecha divina: alas que aletean
       if (Math.random() < 0.3) emitEmber(p.x, p.y, { spread: 25 });
       continue;
     }
@@ -11033,6 +11771,7 @@ function renderWorld(){
     }
     // rival con el cuerpo común y la equipación de su equipo (los grandes, a x3)
     const feet = ey + 14 + Math.max(0, e.size || 0) * 0.5;
+    if (e.rlElite) rlEliteAura(ex, feet);   // RandomLocke: élite con aura roja
     let top = drawEnemySheet(e, ex, feet, SHEET_BUILD_SCALE[e.build] || 1), bw = 30;
     if (top == null){                                     // sin hoja (o aún cargando): cuerpo común + cabeza
       const fr = enemyBodyFrame(e), sc = BODY_SCALE;
@@ -11045,9 +11784,10 @@ function renderWorld(){
     }
     drawElIcon(e.element, ex + bw * 0.42, top - 6, 16);
     if (e.lobber && !(e.lobT > 0)){ const ready = e.shotCd < 0.7; drawSoccerBall(ex, top - 16 - (ready ? 4 + Math.sin(match.elapsed * 20) * 2 : 0), 7, 0, '#ffffff', shadeHex(getElement(e.element).color, -0.45)); }   // el lanzador lleva el balón en alto
-    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    const hpCol = (e.poison || e.aPoison > 0) ? '#8be28f' : e.burn ? '#ff9a2a' : e.slowUntil > match.elapsed ? '#7fe3ff' : (rl() ? '#c8261c' : '#ff6b5e');   // veneno / quemado / ralentizado (RandomLocke: rojo más oscuro)
+    ctx.fillStyle = rl() ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.4)';
     ctx.fillRect(ex-14, top-8, 28, 4);
-    ctx.fillStyle = (e.poison || e.aPoison > 0) ? '#8be28f' : e.burn ? '#ff9a2a' : e.slowUntil > match.elapsed ? '#7fe3ff' : '#ff6b5e';   // veneno / quemado / ralentizado
+    ctx.fillStyle = hpCol;
     ctx.fillRect(ex-14, top-8, 28*Math.max(0, e.hp/e.maxHp), 4);
   }
 
@@ -11211,11 +11951,7 @@ function renderWorld(){
   }
 
   pxBegin(); drawNotebookRings(); pxEnd();                                  // círculos de los cuadernos
-  if (match.shield > 0.5){                              // escudo de la Cinta de Mark
-    ctx.beginPath(); ctx.arc(W/2, H/2, 24, 0, Math.PI*2);
-    ctx.globalAlpha = 0.2 + 0.25 * (match.shield / (match.maxHp * 0.15)); ctx.fillStyle = '#7fe3ff'; ctx.fill();
-    ctx.globalAlpha = 0.9; ctx.strokeStyle = '#7fe3ff'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
-  }
+  if (match.shield > 0.5){ pxBegin(); drawMarkShield(); pxEnd(); }   // escudo de la Cinta de Mark (pixel arcade)
   // agua isotónica / leche (Furia): auras estilo arcade, anillos de bloques pixel y chispas que suben
   if (buffActive('water')){
     const t = match.elapsed;
@@ -11297,6 +12033,7 @@ function renderWorld(){
     }
   }
 
+  if (rl()){ drawRlDark(); drawRlWarn(); }   // RandomLocke: apagón y aviso del próximo evento
   // jugador
   // cuerpo común (chándal con rayo) + cabeza, con los pies en H/2+14
   ctx.save();
@@ -11339,9 +12076,9 @@ function renderWorld(){
   ctx.imageSmoothingEnabled = true;
   // vida bajo el jugador
   const hpPct = Math.max(0, match.hp / match.maxHp);
-  ctx.fillStyle = 'rgba(0,0,0,0.55)';
+  ctx.fillStyle = rl() ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.55)';
   ctx.fillRect(W/2-16, H/2+17, 32, 4);
-  ctx.fillStyle = hpPct > 0.3 ? '#ff6b5e' : '#ff2d2d';
+  ctx.fillStyle = rl() ? (hpPct > 0.3 ? '#c8261c' : '#a01010') : (hpPct > 0.3 ? '#ff6b5e' : '#ff2d2d');   // RandomLocke: rojo más oscuro
   ctx.fillRect(W/2-16, H/2+17, 32 * hpPct, 4);
 
   // textos flotantes (críticos y regates)
@@ -11518,6 +12255,7 @@ function endMatch(won = false, reason = null){
   document.getElementById('gameover-stats').innerHTML =
     (reason === 'timeout' ? 'El árbitro ha pitado el final: no venciste al boss en 1:30<br>' : '') +
     (reason === 'referee' ? 'El árbitro ha pitado el final: no llegaste a tiempo al duelo<br>' : '') +
+    (match.rl ? '<b class="rl-tag">Modo RandomLocke</b><br>' : '') +
     `Aguantaste ${String(Math.floor(matchClock() / 60)).padStart(2, '0')}:${String(Math.floor(matchClock() % 60)).padStart(2, '0')} · Nivel ${match.level}<br>` +
     (reason === 'mark' && match.mark ? `Contra Mark Evans: ${Math.floor((match.elapsed - match.mark.start) / 60)}:${String(Math.floor((match.elapsed - match.mark.start) % 60)).padStart(2, '0')} (poder ×${markStats().dmg.toFixed(1)}) · +${markBonus} ${COIN_HTML}<br>` : '') +
     `Bosses vencidos: ${match.bossesBeaten} / ${BOSSES.length}<br>` +

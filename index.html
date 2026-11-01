@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=49">
+<link rel="stylesheet" href="style.css?v=70">
 </head>
 <body>
 
@@ -20,6 +20,7 @@
       <div class="topbar-right">
         <button class="icon-btn" disabled title="Próximamente">💾</button>
         <button class="icon-btn" disabled title="Próximamente">🔔</button>
+        <button id="btn-fullscreen" class="icon-btn" title="Pantalla completa"></button>
         <button id="btn-settings-top" class="icon-btn" title="Ajustes">⚙️</button>
       </div>
     </header>
@@ -48,6 +49,10 @@
         <span class="menu-ico">⚽</span>
         <span class="menu-text"><b>Jugar</b><small>Entra al partido</small></span>
       </button>
+      <button id="btn-rl" class="menu-item menu-rl">
+        <span class="menu-ico rl-ico"><img src="assets/ui/randomlocke.png" alt=""></span>
+        <span class="menu-text"><b>RandomLocke</b><small>Modo Caos</small></span>
+      </button>
       <button id="btn-roster" class="menu-item">
         <span class="menu-ico">👥</span>
         <span class="menu-text"><b>Jugadores</b><small id="roster-count">0 / 0</small></span>
@@ -68,9 +73,9 @@
         <span class="menu-ico">📖</span>
         <span class="menu-text"><b>Guía</b><small>Todo lo del juego explicado</small></span>
       </button>
-      <button id="btn-missions" class="menu-item menu-disabled" disabled>
+      <button id="btn-missions" class="menu-item">
         <span class="menu-ico">🏅</span>
-        <span class="menu-text"><b>Misiones</b><small>Próximamente</small></span>
+        <span class="menu-text"><b>Misiones</b><small>Retos con recompensa</small></span>
       </button>
       <button id="btn-settings" class="menu-item">
         <span class="menu-ico">⚙️</span>
@@ -128,6 +133,19 @@
     <div id="pack-msg" class="pack-msg hidden"></div>
     <button id="btn-back-title-2" class="btn btn-ghost">Volver</button>
     <div id="pack-open" class="pack-open hidden"></div>
+  </section>
+
+  <!-- ===================== PANTALLA DE MISIONES ===================== -->
+  <section id="screen-missions" class="screen hidden shop-screen ms-screen">
+    <header class="shop-head">
+      <div class="shop-sign ms-sign"><img class="ms-sign-ico" alt=""><h2>Misiones</h2><img class="ms-sign-ico" alt=""></div>
+      <div id="ms-wallet" class="shop-wallet ms-wallet"></div>
+    </header>
+    <p class="shop-sub">Completa retos para ganar monedas y tickets. Cuando completes uno, vuelve aquí para <b>recoger</b> la recompensa.</p>
+    <nav id="ms-tabs" class="tr-tabs ms-tabs"></nav>
+    <button id="btn-ms-all" class="shop-btn shop-btn-y ms-all">Recoger todo</button>
+    <div id="ms-grid" class="ms-grid"></div>
+    <button id="btn-back-title-ms" class="btn btn-ghost">Volver</button>
   </section>
 
   <!-- ===================== PANTALLA DE INTERCAMBIOS ===================== -->
@@ -463,6 +481,6 @@
   </div>
 
   <script src="players.js?v=14"></script>
-  <script src="game.js?v=49"></script>
+  <script src="game.js?v=70"></script>
 </body>
 </html>
