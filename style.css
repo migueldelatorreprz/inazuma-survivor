@@ -3172,3 +3172,44 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 .acc-run{ margin-top: 8px; }
 .acc-run small{ color: #bcd0f5; }
 .acc-run-btn{ margin-top: 4px; padding: 6px 12px; border: none; cursor: pointer; font-weight: 800; color: #2a1800; background: #ffe14a; clip-path: var(--px-cut-s); }
+
+/* =====================================================================
+   PAUSA COMPACTA: todo a la vista sin desplazar (3 columnas)
+   ===================================================================== */
+#pause-overlay .pause-box{ max-width: 1180px !important; width: 96vw; max-height: 96vh; overflow-y: auto; padding: 16px 18px 14px !important; }
+#pause-overlay .sp-head{ padding: 6px 12px; gap: 12px; }
+#pause-overlay .sp-portrait{ width: 52px !important; height: 52px !important; }
+#pause-overlay .sp-name{ font-size: 24px; line-height: 1.05; }
+#pause-overlay .sp-id{ flex: 1 1 auto; min-width: 0; }
+#pause-overlay .sp-head-el{ flex: 0 0 auto; margin-left: auto; }
+#pause-overlay .sp-head-el .sp-arch{ padding: 4px 12px; gap: 8px; background: #0b1a44; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px var(--c, #3f6fc8); }
+#pause-overlay .sp-head-el .sp-arch b{ font-size: 18px; color: #fff; }
+#pause-overlay .sp-head-el .sp-passive-tip{ left: auto; right: 0; }
+#pause-overlay .pause-cols.pause-3{ display: grid; grid-template-columns: 1fr 1.15fr 1.25fr; gap: 10px; margin-top: 10px; align-items: start; }
+#pause-overlay .pause-3 .sp-boxes{ margin-top: 0; gap: 10px; }
+#pause-overlay .sp-box{ padding: 0 0 4px; }
+#pause-overlay .sp-box .sp-title{ font-size: 16px; padding: 3px 10px 4px; margin-bottom: 2px; }
+#pause-overlay .sp-box .sp-list{ padding: 3px 6px; gap: 1px; }
+#pause-overlay .sp-list li{ padding: 3px 8px; min-height: 0; font-size: 13px; }
+#pause-overlay .sp-list li .sp-ico img{ max-width: 18px; max-height: 18px; }
+#pause-overlay .sp-lvl{ font-size: 11px; padding: 1px 7px; }
+/* mejoras en dos columnas */
+#pause-overlay .sp-mejoras .sp-list{ display: grid; grid-template-columns: 1fr 1fr; gap: 2px 6px; }
+#pause-overlay .sp-mejoras .sp-list li.sp-empty{ grid-column: 1 / -1; }
+/* objeto con su descripción */
+#pause-overlay .sp-relic-li{ align-items: center; gap: 8px; }
+#pause-overlay .sp-relic-li .sp-lbl{ display: flex; flex-direction: column; gap: 1px; }
+#pause-overlay .sp-relic-li .sp-lbl b{ color: #ffe14a; font-size: 13px; }
+#pause-overlay .sp-relic-li .sp-lbl small{ font-size: 11px; line-height: 1.3; color: #bcd0f5; }
+#pause-overlay .sp-relic-li .sp-ico img, #pause-overlay .sp-relic-li .sp-ico canvas{ max-width: 30px !important; max-height: 30px !important; }
+#pause-overlay .sp-empty{ font-size: 12px !important; color: #9fb3d6 !important; }
+#pause-overlay .pause-actions{ margin-top: 10px; }
+#pause-overlay .pause-actions .btn{ padding: 8px 22px; font-size: 18px; }
+@media (max-width: 900px){ #pause-overlay .pause-cols.pause-3{ grid-template-columns: 1fr 1fr; } #pause-overlay .sp-mejoras{ grid-column: 1 / -1; } }
+@media (max-width: 600px){ #pause-overlay .pause-cols.pause-3{ grid-template-columns: 1fr; } #pause-overlay .sp-mejoras .sp-list{ grid-template-columns: 1fr; } }
+#pause-overlay .pause-3 > .sp-box, #pause-overlay .pause-3 .sp-boxes .sp-box{ margin-top: 0 !important; }
+#pause-overlay .sp-head-el .sp-arch-tip{ border: none; }
+/* panel de pruebas (solo versión de pruebas) más compacto */
+#pause-overlay .sp-dev{ margin-top: 10px; }
+#pause-overlay .sp-dev .dev-row .dev-ult{ min-height: 30px; padding: 3px 4px; }
+#pause-overlay .sp-head-el{ border: none !important; box-shadow: none !important; background: none !important; padding: 0 !important; }

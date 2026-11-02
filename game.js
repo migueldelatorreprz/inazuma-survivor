@@ -550,6 +550,7 @@ const MENU_GEAR = () => outlinedSprite((x, y) => {
 });
 function pxIcon(rows){ return pixelSprite(16, (x, y) => { const ch = rows[y][x]; return ch === '.' ? null : PX_PAL[ch]; }); }
 PX_ART.m_book = PX_ART.sabiduria;   // icono de la Guía
+PX_ART.m_trophy = ["................", "..KKKKKKKKKKKK..", "KKKLLYYYYYYYyKKK", "KYKLYYYYYYYYyKyK", "KYKLYYYYYYYYyKyK", ".KKLYYYYYYYYyKK.", "..KKYYYYYYYyKK..", "...KKYYYYYyKK...", ".....KKYyKK.....", "......KYyK......", ".....KKYyKK.....", "....KLYYYYyK....", "...KKKKKKKKKK...", "...KNNNNNNNnK...", "...KKKKKKKKKK...", "................"];   // icono del Ranking (copa)
 /* iconos pixel de las Misiones */
 PX_ART.ms_swords = ["................", ".KK..........KK.", ".KWK........KWK.", "..KWK......KWK..", "...KWK....KWK...", "....KWK..KWK....", ".....KWKKWK.....", "......KWWK......", "......KWWK......", ".....KWKKWK.....", "...KKKK..KKKK...", "..KYYK....KYYK..", ".KYyK......KyYK.", ".KyK........KyK.", "..K..........K..", "................"];
 PX_ART.ms_mirror = ["................", ".....KKKKKK.....", "....KYYYYYYK....", "...KYCCWCCCYK...", "...KYCWCCCCYK...", "...KYCCCCCCYK...", "...KYCCCCCBYK...", "...KYCCCCBBYK...", "....KYYYYYYK....", ".....KKYYKK.....", ".......KYK......", ".......KYK......", ".......KyK......", "......KYYYK.....", "......KKKKK.....", "................"];
@@ -1361,7 +1362,7 @@ function iconifyText(node){
   par.replaceChild(frag, node);
 }
 /* iconos del menú principal y la barra de arriba: a 16x16 (píxel gordo, como los de Mejoras) */
-const MENU_ICON_DRAW = { '📖':'book', '🎴':'packs', '⚽':'ball', '👥':'team', '⬆️':'up', '🎰':'slot', '🏅':'medal', '⚙️':'gear', '💾':'save', '🔔':'bell' };
+const MENU_ICON_DRAW = { '📖':'book', '🎴':'packs', '⚽':'ball', '👥':'team', '⬆️':'up', '🎰':'slot', '🏅':'medal', '⚙️':'gear', '💾':'save', '🔔':'bell', '🏆':'trophy' };
 function menuIconURL(name){
   try {
     if (name === 'gear') return MENU_GEAR().toDataURL();
@@ -8827,8 +8828,7 @@ function renderElementBox(){
   const tl = document.getElementById('sp-talent-logo'); if (tl) tl.innerHTML = talentLogo(20);
   const el = getElement(match.element);
   document.getElementById('sp-element').innerHTML =
-    `<h4 class="sp-title">Afinidad</h4>` +
-    `<div class="sp-arch sp-arch-tip" style="--c:${el.color}">${elIcon(match.element, 34)}<b>${el.name}</b>` +
+    `<div class="sp-arch sp-arch-tip" style="--c:${el.color}">${elIcon(match.element, 28)}<b>${el.name}</b>` +
     (AFFINITY_PASSIVES[match.element] ? `<span class="sp-passive-tip"><b>Pasiva de afinidad:</b> ${AFFINITY_PASSIVES[match.element].desc}</span>` : '') +
     `</div>`;
 }
@@ -8876,11 +8876,12 @@ function renderStatsPanel(){
                    `<span class="sp-lvl${isMax ? ' max' : ''}">${isMax ? 'MAX' : 'Nv. ' + t.lvl}</span>`;
     tal.appendChild(li);
   });
-  if (match.relic){
-    const R = RELICS[match.relic], li = document.createElement('li');
-    li.title = R.desc;
-    li.innerHTML = `<span class="sp-ico">${relicIcon(match.relic, 26)}</span><span class="sp-lbl">${R.name}</span><span class="sp-lvl">Objeto</span>`;
-    tal.appendChild(li);
+  // objeto: apartado propio con su descripción
+  const rel = document.getElementById('sp-relic');
+  if (rel){
+    if (match.relic){ const R = RELICS[match.relic];
+      rel.innerHTML = `<li class="sp-relic-li"><span class="sp-ico">${relicIcon(match.relic, 30)}</span><span class="sp-lbl"><b>${R.name}</b><small>${R.desc}</small></span></li>`; }
+    else rel.innerHTML = '<li class="sp-empty">Sin objeto. Los sueltan los bosses y algunos rivales.</li>';
   }
 
   // mejoras activas (solo las que ya tienen nivel)

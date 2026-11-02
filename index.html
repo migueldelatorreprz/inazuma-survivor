@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=87">
+<link rel="stylesheet" href="style.css?v=88">
 </head>
 <body>
 
@@ -324,16 +324,14 @@
           <div id="sp-name" class="sp-name"></div>
           <div id="sp-role" class="sp-role"></div>
         </div>
+        <div id="sp-element" class="sp-element sp-head-el"></div>
         <div id="sp-level" class="sp-level">Nv. 1</div>
       </header>
-      <section id="sp-element" class="sp-element sp-box"></section>
-      <div class="pause-cols">
-        <div>
-          <section class="sp-box">
-            <h4 class="sp-title">Estadísticas</h4>
-            <ul id="sp-stats" class="sp-list"></ul>
-          </section>
-        </div>
+      <div class="pause-cols pause-3">
+        <section class="sp-box">
+          <h4 class="sp-title">Estadísticas</h4>
+          <ul id="sp-stats" class="sp-list"></ul>
+        </section>
         <div class="sp-boxes">
           <section class="sp-box">
             <h4 class="sp-title">Supertécnicas</h4>
@@ -344,10 +342,14 @@
             <ul id="sp-talents" class="sp-list sp-upgrades"></ul>
           </section>
           <section class="sp-box">
-            <h4 class="sp-title">Mejoras</h4>
-            <ul id="sp-upgrades" class="sp-list sp-upgrades"></ul>
+            <h4 class="sp-title">Objeto</h4>
+            <ul id="sp-relic" class="sp-list sp-upgrades"></ul>
           </section>
         </div>
+        <section class="sp-box sp-mejoras">
+          <h4 class="sp-title">Mejoras</h4>
+          <ul id="sp-upgrades" class="sp-list sp-upgrades"></ul>
+        </section>
       </div>
       <section id="sp-dev" class="sp-box sp-dev hidden">
         <h4 class="sp-title">Pruebas · supertécnicas evolucionadas (R)</h4>
@@ -516,7 +518,7 @@
   </div>
 
   <script src="players.js?v=15"></script>
-  <script src="game.js?v=88"></script>
+  <script src="game.js?v=90"></script>
   <script src="account.js?v=2"></script>
 </body>
 </html>
