@@ -3094,3 +3094,8 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 .cmp-ov .cmp-box, .cmp-ov .pk-card, .cmp-ov .pk-card *{ animation: none !important; transition: none !important; }
 .cmp-ov .cmp-card.best .pk-card{ animation: po-glow 1.2s ease-in-out infinite !important; }
 #settings-overlay .set-note{ margin: -2px 14px 6px 50px; font-size: 12px; line-height: 1.35; color: #9fb3d6; font-weight: 500; }
+/* cuenta atrás del árbitro / Hillman, pequeña bajo el temporal */
+.hud-timers{ display:block; margin-top: 3px; padding: 1px 8px; border-radius: 999px; font-family: var(--sub-font); font-size: 11px; color: #e6efff;
+  text-shadow: 0 1px 2px #000; background: rgba(8,20,40,0.6); white-space: nowrap; }
+.hud-timers b{ color: #ffe14a; }
+.hud-timers.hidden{ display:none; }

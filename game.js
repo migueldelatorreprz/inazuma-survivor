@@ -3537,6 +3537,8 @@ const MISSIONS = [
   { id:'evo', cat:'match', ico:'m_up', title:'Al máximo', desc:`Sube una supertécnica a Nv. ${TECH_MAX}.`, steps:[{ id:'x', label:`Supertécnica Nv. ${TECH_MAX}`, rw: RW(500) }] },
   { id:'evo2', cat:'match', ico:'ms_up2', title:'Fusión perfecta', desc:`Ten una supertécnica fusionada con sus dos partes a Nv. ${TECH_MAX}.`, steps:[{ id:'x', label:`Fusión Nv. ${TECH_MAX} + Nv. ${TECH_MAX}`, rw: RW(0, 2) }] },
   { id:'coin', cat:'match', ico:'r_monedaArbitro', title:'Cara o cruz', desc:'Revive gracias a la Moneda del Árbitro.', steps:[{ id:'x', label:'Revivir con la moneda', rw: RW(0, 1) }] },
+  { id:'tower', cat:'match', ico:'bolt', title:'Torre Inazuma', desc:'Activa Torres Inazuma en el campo.', val: () => MS.cnt.towers || 0,
+    steps:[{ id:'1', label:'1 torre', goal: 1, rw: RW(300) }, { id:'3', label:'3 torres', goal: 3, rw: RW(0, 1) }, { id:'5', label:'5 torres', goal: 5, rw: RW(0, 2) }] },
   { id:'tkp', cat:'match', ico:'ticketP', title:'Cazatickets', desc:'Consigue 3 tickets morados en un mismo partido.', best:true, steps:[{ id:'x', label:'3 tickets morados', goal: 3, rw: RW(1000) }] },
   { id:'hill', cat:'match', ico:'ms_hillman', title:'Hillman y Hillman', desc:'Juega con Seymour Hillman y habla con Hillman en el partido.', steps:[{ id:'x', label:'Hillman habla con Hillman', rw: RW(0, 2) }] },
   { id:'zeus', cat:'match', ico:'r_manto', title:'Manto divino', desc:'Consigue el Manto del Zeus jugando con un jugador del Zeus.', steps:[{ id:'x', label:'Manto con un jugador del Zeus', rw: RW(0, 2) }] },
@@ -4739,8 +4741,15 @@ function psTier(t){
   return PS.TIERS[0];
 }
 /* un pelín más difícil a partir de Jude (5º boss): rivales y bosses con algo más de vida y daño */
-const LATE_DIFF = { fromBoss: 4, hp: 1.12, dmg: 1.10 };
-function lateK(stat){ return match && (match.bossIdx || 0) >= LATE_DIFF.fromBoss ? LATE_DIFF[stat] : 1; }
+const LATE_DIFF = { fromBoss: 4, hp: 1.12, dmg: 1.10 };   // RandomLocke (ya tiene su curva)
+/* modo normal: desde Feldt sube bastante y desde Jude mucho más (rivales y bosses) */
+const LATE_TIERS = [ { from: 8, hp: 1.9, dmg: 1.55, spawn: 1.4 }, { from: 6, hp: 1.7, dmg: 1.45, spawn: 1.35 }, { from: 4, hp: 1.5, dmg: 1.3, spawn: 1.25 }, { from: 2, hp: 1.22, dmg: 1.12, spawn: 1.1 } ];
+function lateTier(){ const i = (match && match.bossIdx) || 0; return LATE_TIERS.find(T => i >= T.from) || null; }
+function lateK(stat){
+  if (!match) return 1;
+  if (rl()) return (match.bossIdx || 0) >= LATE_DIFF.fromBoss ? LATE_DIFF[stat] : 1;
+  const T = lateTier(); return T ? T[stat] : 1;
+}
 /* stats de un rival normal en el segundo t (antes de su tipo y complexión) */
 function psEnemyStats(t){
   const tr = psTier(t), hs = 1 + t / PS.hpGrow, ds = 1 + t / PS.dmgGrow, kh = lateK('hp'), kd = lateK('dmg');
@@ -5173,7 +5182,7 @@ function update(dt){
     spawnTimer = spawnRate * SPAWN.arenaSlow;
   }
   if (!match.inArena){                              // campo: goteo de PokéSurvivor (rivales por segundo según el minuto)
-    match.psAcc = (match.psAcc || 0) + psRate(psTime()) * fieldCrowdMult() * (rl() ? rlSpawnK() : 1) * (match.referee ? 0.6 : 1) * dt;
+    match.psAcc = (match.psAcc || 0) + psRate(psTime()) * fieldCrowdMult() * (rl() ? rlSpawnK() : lateK('spawn')) * (match.referee ? 0.6 : 1) * dt;
     let n = Math.floor(match.psAcc); match.psAcc -= n;
     while (n-- > 0 && match.enemies.filter(o => !o.dead).length < maxEnemiesNow()) spawnEnemy();
     updateSurge(dt);
@@ -5465,7 +5474,7 @@ function damageEnemy(e, amount, opts = {}){
     if (hasRelic('gafasRay') && !opts.colgante) colganteBoom(e);   // Gafas de Ray Dark: explota al caer
     if (e.boss){
       const alive = (match.bossGroup || []).filter(o => !o.dead);
-      if (alive.length){                                                 // quedan hermanos en pie: recuperan un 65% de su vida
+      if (alive.length){                                                 // quedan hermanos en pie: recuperan un 80% de su vida
         match.boss = alive[0];
         for (const o of alive){ if (o.rlTwin) continue; const h = o.maxHp * MURDOCK_REGEN; o.hp = Math.min(o.maxHp, o.hp + h); addFloatText(o.x, o.y - 50, `+${Math.round(h)}`, '#6fdc8c'); }
         showBanner(`¡${e.name} derrotado!`, `Queda${alive.length > 1 ? 'n' : ''} ${alive.length} y se cura${alive.length > 1 ? 'n' : ''} un ${Math.round(MURDOCK_REGEN * 100)}%`, getElement(e.element).color);
@@ -5860,7 +5869,7 @@ function talismanDarkK(){
 const BOSS_SHIELD = { dur: 5, every: 15, breakAt: 0.08, color: { shield:'#e45fa8', walters:'#7fd03a', royal:'#5f8cff', teleport:'#b0b6c8' } };
 const EXTRA_SHIELD = { royal: true, teleport: true };   // Jude y Cloak también se ponen escudo (aparte de su habilidad)   // breakAt = % de su vida que rompe el escudo
 const JUDE_DODGE = 0.38;                            // Jude esquiva ~35-40% de tus golpes
-const MURDOCK_REGEN = 0.65;                         // al caer un hermano, los otros recuperan un 65% (antes 30%)
+const MURDOCK_REGEN = 0.8;                          // al caer un hermano, los otros recuperan un 80% (antes 65%)
 /* zona marcada en el suelo que, al acabar el aviso, golpea (puños de Feldt, rocas de Walters, misiles) */
 function bossMark(x, y, dur, r, dmg, kind, color, extra = {}){
   match.bossMarks.push({ x, y, t: 0, dur, r, dmg, kind, color, ...extra });
@@ -6104,6 +6113,7 @@ function enterArena(){
   { const d = BOSSES[match.bossIdx], big = (d && d.special === 'byron') || match.bossIdx >= BOSSES.length;   // arena de Aphrodite (y Mark) un poco más grande
     ARENA_W = big ? 880 : 760; ARENA_H = big ? 1260 : 1100; }
   match.x = ARENA_W / 2; match.y = ARENA_H - 150;
+  match.slip = null; match.slipCdUntil = match.elapsed + 1;   // un resbalón del campo no sigue dentro del duelo
   buildArena();
   spawnTimer = 3;                // unos segundos de calma antes de que entren rivales
   match.fade = 0.7;
@@ -6142,6 +6152,8 @@ function buildArena(){
     const x = 70 + Math.random() * (ARENA_W - 140);
     const y = 300 + Math.random() * (ARENA_H - 560);   // ni en la salida del jugador ni en la del boss
     if (match.rocks.some(o => Math.hypot(o.x - x, o.y - y) < o.r + r + 70)) continue;
+    if (Math.abs(x - ARENA_W / 2) < r + 90 && y > ARENA_H - 520) continue;            // pasillo libre delante de donde apareces
+    if (Math.hypot(x - ARENA_W / 2, y - (ARENA_H - 150)) < r + 220) continue;
     const n = 7 + Math.floor(Math.random() * 3);
     const pts = [];
     for (let k = 0; k < n; k++){
@@ -7224,6 +7236,7 @@ function updateInazumaTower(dt){
   if (t.prog >= ITOWER.time){
     t.active = true; t.prog = 0; t.bolt = 0.6; t.seed = Math.random() * 1000; t.nextBolt = 1;
     match.itowerLvl = (match.itowerLvl || 0) + 1;
+    MS.cnt.towers = (MS.cnt.towers || 0) + 1; if (MISSION_BY_ID.tower) missionEvalOne(MISSION_BY_ID.tower); saveMissions();
     SFX.play('thunder');
     match.effects.push({ x:t.x, y:t.y, fixed:true, maxR:160, life:0.6, dur:0.6, color:'#ffe14a', fill:true });
     showBanner('¡Torre Inazuma activada!', `Más rivales en el campo · +${Math.round(ITOWER.perLvl * 100 * match.itowerLvl)}%`, '#ffe14a');
@@ -11505,7 +11518,16 @@ function updateWeather(dt){
       hud.innerHTML = `${T.emoji} ${T.name} <b>${Math.ceil(match.weather.until - match.elapsed)}s</b>`;
       hud.title = `${getElement(T.el).name} +25% · ${getElement(T.weak).name} −20%`;
     } else hud.classList.add('hidden');
-    const bb = document.getElementById('boss-bar'); if (bb) bb.classList.toggle('with-weather', !!match.weather);   // la barra del boss baja para no tapar el temporal
+    const bb = document.getElementById('boss-bar'); if (bb) bb.classList.toggle('with-weather', !!match.weather);
+    const ht = document.getElementById('hud-timers');
+    if (ht){
+      const parts = [];
+      if (!match.inArena && match.referee && match.referee.until) parts.push(`Árbitro <b>${Math.max(0, Math.ceil(match.referee.until - match.elapsed))}s</b>`);
+      if (!match.inArena && match.hillman && match.hillman.until) parts.push(`Hillman <b>${Math.max(0, Math.ceil(match.hillman.until - match.elapsed))}s</b>`);
+      const txt = parts.join(' · ');
+      if (ht.innerHTML !== txt) ht.innerHTML = txt;
+      ht.classList.toggle('hidden', !txt);
+    }   // la barra del boss baja para no tapar el temporal
   }
 }
 /* dibujo del temporal: tinte del mapa + partículas en píxeles (a pantalla completa) */
