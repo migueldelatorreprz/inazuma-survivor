@@ -2740,12 +2740,12 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .tr-mystery b{ color: var(--rar); }
 /* animación de la fusión: las 5 cartas se juntan en el centro */
 .tr-merge{ position: relative; width: 640px; max-width: 94vw; height: 230px; }
-.tr-merge-card{ position:absolute; left: 50%; top: 50%; transform: translate(calc(-50% + var(--i) * 128px), -50%);
+.tr-merge-card{ position:absolute; left: 50%; top: 50%; transform: translate(calc(-50% + var(--i) * var(--sp, 128px)), -50%);
   animation: tr-merge 1.05s cubic-bezier(.6,-0.25,.7,.4) .25s forwards; }
 .tr-merge-card .pk-card{ animation: back-shake .2s linear infinite; }
 @keyframes tr-merge{
-  0%{ transform: translate(calc(-50% + var(--i) * 128px), -50%) rotate(0); opacity: 1; }
-  70%{ transform: translate(-50%, -50%) rotate(calc(var(--i) * 8deg)) scale(.85); opacity: 1; filter: brightness(1.6); }
+  0%{ transform: translate(calc(-50% + var(--i) * var(--sp, 128px)), -50%) rotate(0); opacity: 1; }
+  70%{ transform: translate(-50%, -50%) rotate(calc(var(--i) * 6deg)) scale(.85); opacity: 1; filter: brightness(1.6); }
   100%{ transform: translate(-50%, -50%) scale(.3); opacity: 0; filter: brightness(4); }
 }
 .tr-reveal .po-flip.final .pk-card{ width: 270px; }
@@ -3099,3 +3099,9 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
   text-shadow: 0 1px 2px #000; background: rgba(8,20,40,0.6); white-space: nowrap; }
 .hud-timers b{ color: #ffe14a; }
 .hud-timers.hidden{ display:none; }
+
+/* 10 huecos de fusión: dos filas de 5 */
+.tr-slots{ flex-wrap: wrap; justify-content: center; max-width: 320px; }
+.tr-slots{ gap: 5px; max-width: 250px; }
+.tr-slots .tr-slot{ width: 44px; height: 56px; }
+.tr-slots .tr-slot.full .char-face{ width: 36px !important; height: 36px !important; }

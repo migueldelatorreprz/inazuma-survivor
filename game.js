@@ -3313,11 +3313,11 @@ function closePack(){
 }
 /* ======================================================================
    INTERCAMBIOS: los jugadores repetidos se guardan aquí.
-   - Fusión: entregas 5 repetidos de la MISMA rareza y recibes 1 jugador al azar de la rareza siguiente.
+   - Fusión: entregas 10 repetidos de la MISMA rareza y recibes 1 jugador al azar de la rareza siguiente.
    - Venta: cambias repetidos por monedas.
    Solo se entregan copias repetidas: el primero de cada jugador nunca se pierde.
    ====================================================================== */
-const TRADE_NEED = 5;
+const TRADE_NEED = 10;
 const TRADE_NEXT = { common:'uncommon', uncommon:'rare', rare:'epic', epic:'legendary' };
 const TRADE_SELL = { common:15, uncommon:30, rare:75, epic:200, legendary:500 };   // monedas por repetido
 const TRADE_TIERS = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
@@ -3409,7 +3409,7 @@ function tradeFuse(){
   showTradeReveal(c, dupe, given);
 }
 /* animación de la fusión, como la última carta de los sobres:
-   las 5 cartas se juntan → carta boca abajo que tiembla y brilla del color de su rareza → estalla y aparece el jugador */
+   las 10 cartas se juntan → carta boca abajo que tiembla y brilla del color de su rareza → estalla y aparece el jugador */
 let tradeView = null;
 function showTradeReveal(c, dupe, given){
   const ov = document.getElementById('tr-reveal');
@@ -3418,7 +3418,7 @@ function showTradeReveal(c, dupe, given){
   tradeView = { c, dupe, tense, stage: 'merge', timers: [] };
   ov.className = `pack-open tr-reveal pk-${kind}`;
   ov.innerHTML = `<div class="po-count">¡Fusión!</div>
-    <div class="tr-merge">${(given || []).map((g, i) => `<div class="tr-merge-card" style="--i:${i - 2}">${tradeCardHtml(g, 1).replace(/<div class="pk-tag[^]*?<\/div>/, '')}</div>`).join('')}</div>
+    <div class="tr-merge">${(given || []).map((g, i, A) => `<div class="tr-merge-card" style="--i:${i - (A.length - 1) / 2};--sp:${A.length > 5 ? 60 : 128}px">${tradeCardHtml(g, 1).replace(/<div class="pk-tag[^]*?<\/div>/, '')}</div>`).join('')}</div>
     <p class="po-hint">Juntando tus ${TRADE_NEED} repetidos…</p>`;
   SFX.play('switch');
   const T = tense ? [1100, 2000, 3100, 4300] : [1100, 1900, 2800, 3500];
