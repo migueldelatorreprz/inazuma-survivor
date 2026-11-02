@@ -3219,3 +3219,21 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
   clip-path: var(--px-cut-s); background: linear-gradient(180deg, #14307a 0 50%, #102766 50% 100%); box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8be28f; }
 .acc-name-pill:hover{ transform: translateY(-2px); }
 .acc-name-pill.hidden{ display: none; }
+
+/* =====================================================================
+   PAUSA VERTICAL (2 columnas en un panel estrecho y alto) + botón Reiniciar
+   ===================================================================== */
+#pause-overlay .pause-box{ max-width: 680px !important; width: 94vw; max-height: 96vh; overflow-y: auto; padding: 14px 16px 12px !important; }
+#pause-overlay .pause-cols.pause-v{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; align-items: start; }
+#pause-overlay .pause-v .sp-boxes{ margin-top: 0; gap: 10px; }
+#pause-overlay .pause-v .sp-box{ margin-top: 0 !important; }
+#pause-overlay .pause-v .sp-mejoras .sp-list{ display: flex; flex-direction: column; }
+#pause-overlay .pause-v .sp-list li{ font-size: 12.5px; padding: 3px 7px; }
+#pause-overlay .pause-v .sp-relic-li .sp-lbl small{ font-size: 10.5px; }
+#pause-overlay .sp-head-el .sp-arch b{ font-size: 15px; }
+#pause-overlay .sp-name{ font-size: 21px; }
+#pause-overlay .pause-actions{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+#pause-overlay .pause-actions .btn{ width: 100%; margin: 0; padding: 8px 10px; font-size: 17px; }
+#pause-overlay #btn-restart{ background: linear-gradient(180deg, #3fae4a 0 50%, #2b8a36 50% 100%) !important; color: #fff !important;
+  box-shadow: inset 0 0 0 3px #0c3311, inset 0 0 0 5px #a6e36e !important; border: none !important; border-radius: 0 !important; clip-path: var(--px-cut-s); font-family: var(--title-font); text-shadow: var(--outline-thin); }
+@media (max-width: 560px){ #pause-overlay .pause-cols.pause-v{ grid-template-columns: 1fr; } }

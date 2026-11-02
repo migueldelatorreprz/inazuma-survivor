@@ -4409,6 +4409,22 @@ document.getElementById('btn-tech-1').onclick = () => selectTech(1);
 document.getElementById('btn-ult').onclick = () => triggerUltimate();
 document.getElementById('btn-pause').onclick = () => togglePause();
 document.getElementById('btn-resume').onclick = () => togglePause();
+/* Reiniciar: se descarta el partido en curso (sin premios ni récord) y empieza otro igual */
+function restartMatch(){
+  if (!match || match.over || playLock) return;
+  const rlMode = !!match.rl, def = match.charDef;
+  if (rlMode && RLK.cost && state.ticketsEpic < RLK.cost){ alert(`Necesitas ${RLK.cost} ticket morado para empezar otro RandomLocke.`); return; }
+  if (!confirm(rlMode ? `¿Reiniciar? Se pierde lo de este partido y empiezas otro RandomLocke (cuesta ${RLK.cost} ticket morado).`
+                      : '¿Reiniciar el partido? Se pierde todo lo conseguido en este partido.')) return;
+  document.getElementById('pause-overlay').classList.add('hidden');
+  ['levelup-overlay', 'talent-overlay', 'relic-overlay', 'hillman-overlay', 'gameover-overlay'].forEach(id => { const o = document.getElementById(id); if (o) o.classList.add('hidden'); });
+  match.menuOpen = false; match.over = true; match.levelupChoices = null;
+  cancelAnimationFrame(rafId); window.onkeydown = null; window.onkeyup = null;
+  document.getElementById('boss-bar').classList.add('hidden');
+  if (rlMode) rlPickOpen();
+  else { playLock = true; SFX.play('start'); lightningFlash(() => { playLock = false; document.body.classList.remove('rl-mode'); startMatch(def); }); }
+}
+document.getElementById('btn-restart').onclick = restartMatch;
 document.getElementById('btn-quit').onclick = () => {
   document.getElementById('pause-overlay').classList.add('hidden');
   if (match && !match.over){ match.menuOpen = false; SFX.play('whistle_end'); endMatch(false); }
