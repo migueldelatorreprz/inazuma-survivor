@@ -33,8 +33,8 @@ const FIELD_H = CAMPUS.rows * TILE;   // 1920
 const FIELD_MARGIN = 24;
 
 /* Campo del duelo contra el boss: pequeño, en vertical y lleno de rocas rotas */
-const ARENA_W = 760;
-const ARENA_H = 1100;
+let ARENA_W = 760;      // (Aphrodite y Mark: algo más grande, ver enterArena)
+let ARENA_H = 1100;
 const ARENA_ROCKS = 8;          // cuántas rocas hay en el campo del duelo
 
 /* límites del campo en el que está el jugador ahora mismo */
@@ -5175,7 +5175,7 @@ function update(dt){
     const keepAway = dashing || (e.shooter && d < 240) || (e.lobber && d < 300) || (e.boss && (e.holdUntil > match.elapsed || e.dashT > 0 || e.warnT > 0 || e.tpAt));   // los tiradores no se acercan del todo; Chicken se frena
     if (!keepAway){
       const ts = terrainSlow(e.x, e.y) * (e.slowUntil > match.elapsed ? 0.6 : 1) * (e.airSlowUntil > match.elapsed ? AFF.airSlow : 1);   // Técnica secreta / pasiva de Aire
-      let [ux, uy] = match.inArena ? [ex / d, ey / d] : goalSteer(e, ex / d, ey / d);   // rodean las porterías en vez de quedarse pegados
+      let [ux, uy] = match.inArena ? rockSteer(e, ex / d, ey / d) : goalSteer(e, ex / d, ey / d);   // rodean las rocas (arena) y las porterías (campo)
       if (e.unstickUntil > match.elapsed){ ux = e.unstickX; uy = e.unstickY; }        // atascado: se aparta un momento
       e.x += ux * e.speed * ts * 60 * dt;
       e.y += uy * e.speed * ts * 60 * dt;
@@ -5184,7 +5184,7 @@ function update(dt){
     if (e.lobber) updateLobber(e, d, dt);
     if (match.inArena) pushOutOfRocks(e, 12 + (e.size || 0));
     else pushOutOfObstacles(e, 12 + (e.size || 0));
-    if (!keepAway && !e.boss) checkStuck(e, d, dt);
+    if (!keepAway && (!e.boss || match.inArena)) checkStuck(e, d, dt);   // también los bosses: si se atascan en una roca, se apartan
     // golpe de contacto cada 0.5 s, con regate (esquiva) y defensa
     e.hitCd = (e.hitCd || 0) - dt;
     if (e.boss || e.miniBoss) updateBoss(e, dt);
@@ -5859,7 +5859,8 @@ function setupByronTowers(){
     return { x: Math.max(70, Math.min(ARENA_W - 70, cx + Math.cos(a) * R)), y: cy + Math.sin(a) * R, active: false, done: false, prog: 0 }; });
   match.rocks = (match.rocks || []).filter(r => !match.towers.some(t => Math.hypot(r.x - t.x, r.y - t.y) < BYRON.towerR + r.r + 20) && Math.hypot(r.x - cx, r.y - cy) > 90);
 }
-function inHoraCelestial(){ const b = byronBoss(); if (b && Math.hypot(match.x - b.x, match.y - b.y) < BYRON.zoneR) return true;
+function byronTowerOn(){ return (match.towers || []).some(t => t.active); }
+function inHoraCelestial(){ const b = byronBoss(); if (b && !byronTowerOn() && Math.hypot(match.x - b.x, match.y - b.y) < BYRON.zoneR) return true;   // con una torre curándola, el círculo se apaga
   const m = match.mark; return !!m && !m.tpAt && Math.hypot(match.x - m.x, match.y - m.y) < MARK.orbitR + 30; }   // también el círculo de Mark
 function updateByron(b, dt){
   const frac = b.hp / b.maxHp, T = match.towers || [];
@@ -5890,6 +5891,34 @@ function updateByron(b, dt){
     if (b.burstCd <= 0 && !b.ult){ b.fistsLeft = 3 + Math.floor(Math.random() * 3); b.fistCd = 0; b.burstCd = 1.8 + 2.4 * frac; }
   }
 }
+/* sitio libre para un boss en la arena: a cierta distancia de ti, lejos de rocas, torres y paredes */
+function arenaFreeSpot(rMin, rMax){
+  let best = null, bestScore = -Infinity;
+  for (let k = 0; k < 16; k++){
+    const a = Math.random() * Math.PI * 2, r = rMin + Math.random() * (rMax - rMin);
+    const x = Math.max(70, Math.min(ARENA_W - 70, match.x + Math.cos(a) * r)), y = Math.max(70, Math.min(ARENA_H - 70, match.y + Math.sin(a) * r));
+    let score = 0;
+    for (const o of match.rocks || []){ const d = Math.hypot(x - o.x, y - o.y) - o.r; if (d < 45) score -= 1000; else score -= 60 / d; }
+    for (const t of match.towers || []) if (Math.hypot(x - t.x, y - t.y) < BYRON.towerR + 30) score -= 500;
+    const dp = Math.hypot(x - match.x, y - match.y); if (dp < rMin * 0.8) score -= 300;
+    if (score > bestScore){ bestScore = score; best = { x, y }; }
+  }
+  return best || { x: ARENA_W / 2, y: 200 };
+}
+/* para moverse por la arena: si hay una roca delante, la rodea por el lado más corto */
+function rockSteer(e, ux, uy){
+  const rad = 14 + (e.size || 0);
+  let sx = 0, sy = 0;
+  for (const o of match.rocks || []){
+    const dx = o.x - e.x, dy = o.y - e.y, dist = Math.hypot(dx, dy), reach = o.r + rad + 46;
+    if (dist > reach + 40) continue;
+    const ahead = (dx * ux + dy * uy) / (dist || 1); if (ahead < 0.2) continue;   // solo las que tiene delante
+    const side = (dx * uy - dy * ux) > 0 ? 1 : -1, w = Math.max(0, 1 - (dist - o.r - rad) / 86);
+    sx += -uy * side * w * 1.6; sy += ux * side * w * 1.6;   // empujón lateral, hacia el lado contrario de la roca
+  }
+  const nx = ux + sx, ny = uy + sy, n = Math.hypot(nx, ny) || 1;
+  return [nx / n, ny / n];
+}
 /* teletransporte: destello de aviso donde va a salir, desaparece y aparece cerca de ti y ataca */
 function bossTeleport(b, attack, every){
   if (b.tpAt){
@@ -5904,9 +5933,7 @@ function bossTeleport(b, attack, every){
   }
   if (b.specialCd <= 0){
     b.specialCd = every;
-    const a = Math.random() * Math.PI * 2, r = 170 + Math.random() * 90;
-    b.tpX = Math.max(40, Math.min(ARENA_W - 40, match.x + Math.cos(a) * r));
-    b.tpY = Math.max(40, Math.min(ARENA_H - 40, match.y + Math.sin(a) * r));
+    const sp = arenaFreeSpot(170, 260); b.tpX = sp.x; b.tpY = sp.y;
     b.tpAt = match.elapsed + 0.55;
     match.effects.push({ x:b.tpX, y:b.tpY, fixed:true, maxR:55, life:0.55, dur:0.55, color:'#d8dde8' });   // destello previo
   }
@@ -5921,6 +5948,7 @@ function updateBossSpecial(b, dt){
       if (b.dashT > 0){
         b.dashT -= dt; b.x += b.dashVx * dt; b.y += b.dashVy * dt;
         b.x = Math.max(30, Math.min(ARENA_W - 30, b.x)); b.y = Math.max(30, Math.min(ARENA_H - 30, b.y));
+        if ((match.rocks || []).some(o => Math.hypot(b.x - o.x, b.y - o.y) < o.r + 22)){ b.dashT = 0.0001; match.effects.push({ x: b.x, y: b.y, fixed: true, maxR: 50, life: 0.3, dur: 0.3, color: '#b07a3a', fill: true }); }   // choca con una roca: frena
         if (b.dashT <= 0){ b.holdUntil = match.elapsed + (b.chain > 0 ? 0.45 : 1.3); b.nextDashAt = b.holdUntil; }
         break;
       }
@@ -5997,8 +6025,7 @@ function updateBossSpecial(b, dt){
       if (b.specialCd <= 0){
         b.specialCd = 4;
         const a = Math.random() * Math.PI * 2, r = 170 + Math.random() * 90;
-        b.tpX = Math.max(40, Math.min(ARENA_W - 40, match.x + Math.cos(a) * r));
-        b.tpY = Math.max(40, Math.min(ARENA_H - 40, match.y + Math.sin(a) * r));
+        { const sp = arenaFreeSpot(Math.max(120, r - 40), r + 40); b.tpX = sp.x; b.tpY = sp.y; }
         b.tpAt = match.elapsed + 0.55;
         match.effects.push({ x:b.tpX, y:b.tpY, fixed:true, maxR:55, life:0.55, dur:0.55, color:'#d8dde8' });   // destello previo
       }
@@ -6051,6 +6078,8 @@ function enterArena(){
   match.projectiles = []; match.bombs = []; match.enemyShots = [];
   match.patches = []; match.triangles = []; match.towers = []; match.rainUlt = null; match.breath = null; match.meleeQueue = []; match.slashes = []; match.flurry = null; match.ultAnim = null;
   match.effects = []; match.bolts = []; match.texts = [];
+  { const d = BOSSES[match.bossIdx], big = (d && d.special === 'byron') || match.bossIdx >= BOSSES.length;   // arena de Aphrodite (y Mark) un poco más grande
+    ARENA_W = big ? 880 : 760; ARENA_H = big ? 1260 : 1100; }
   match.x = ARENA_W / 2; match.y = ARENA_H - 150;
   buildArena();
   spawnTimer = 3;                // unos segundos de calma antes de que entren rivales
@@ -6298,7 +6327,7 @@ function drawTimeCircle(zx, zy, R, alpha = 1){
 function drawByronArena(camX, camY){
   const b = byronBoss(); if (!b && !(match.towers || []).length) return;
   ctx.save();
-  if (b || !(match.towers || []).some(t => t.destroyAt)){ const b0 = b || { x: ARENA_W / 2, y: ARENA_H / 2 };   // el círculo del tiempo (no tras vencerla)                                                  // Hora celestial: zona dorada que late, con marcas de reloj
+  if ((b || !(match.towers || []).some(t => t.destroyAt)) && !byronTowerOn()){ const b0 = b || { x: ARENA_W / 2, y: ARENA_H / 2 };   // el círculo del tiempo (no tras vencerla)                                                  // Hora celestial: zona dorada que late, con marcas de reloj
     const zx = b0.x + camX, zy = b0.y + camY, R = BYRON.zoneR, pul = 0.5 + 0.5 * Math.sin(match.elapsed * 2.4);
     const g = ctx.createRadialGradient(zx, zy, R * 0.2, zx, zy, R);
     g.addColorStop(0, 'rgba(255,240,170,0.05)'); g.addColorStop(0.8, `rgba(255,220,110,${0.08 + 0.06 * pul})`); g.addColorStop(1, `rgba(255,210,80,${0.22 + 0.12 * pul})`);
@@ -10111,6 +10140,7 @@ function buildFieldObstacles(){
   const cx = FIELD_W / 2, cy = FIELD_H / 2;
   const free = (x, y, r) => x > r + 70 && x < FIELD_W - r - 70 && y > r + 70 && y < FIELD_H - r - 70
     && Math.hypot(x - cx, y - cy) > F.safeRadius + r
+    && !nearGoal(x, y, r + GOAL_FREE)                          // nada cerca de las porterías (los rivales se atascaban)
     && items.every(o => Math.hypot(o.x - x, o.y - y) > o.r + r + F.spacing);
   const place = (r, make, tries = 80) => {
     while (tries-- > 0){
@@ -10152,6 +10182,7 @@ function addFieldObstacles(ob, safeX, safeY){
   const free = (x, y, r) => x > r + 70 && x < FIELD_W - r - 70 && y > r + 70 && y < FIELD_H - r - 70
     && Math.hypot(x - cx, y - cy) > F.safeRadius + r
     && Math.hypot(x - safeX, y - safeY) > F.afterBoss.playerSafe + r
+    && !nearGoal(x, y, r + GOAL_FREE)
     && all.every(o => Math.hypot(o.x - x, o.y - y) > o.r + r + F.spacing);
   const kinds = ['rock', 'rock', 'tire', 'tire', 'mud', 'weeds', 'banana', 'cones'];
   for (let i = 0, n = randInt(F.afterBoss.count); i < n; i++){
@@ -10179,6 +10210,8 @@ function addFieldObstacles(ob, safeX, safeY){
 
 /* ---- efectos en el juego ---- */
 /* porterías: cajas sólidas (en mundo) calculadas igual que se dibujan en drawPitchLines */
+const GOAL_FREE = 170;   // margen libre de obstáculos alrededor de cada portería
+function nearGoal(x, y, pad){ return goalRects().some(g => x > g.x0 - pad && x < g.x1 + pad && y > g.y0 - pad && y < g.y1 + pad); }
 let _goalRects = null;
 function goalRects(){
   if (_goalRects) return _goalRects;
@@ -10694,7 +10727,7 @@ function drawLobZone(m, k, mx, my, camX, camY){
   ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI * 2); ctx.fill();
   ctx.globalAlpha = 1;
   pxRing(mx, my, m.r, col, dark, Math.max(14, Math.round(m.r / 5)), 5, match.elapsed * 0.8);
-  pxRing(mx, my, Math.max(6, m.r * steps), '#ffffff', dark, Math.max(6, Math.round(m.r * steps / 7)), 3, -match.elapsed * 1.5);
+  pxRing(mx, my, Math.max(6, m.r * steps), shadeHex(col, 0.35), dark, Math.max(6, Math.round(m.r * steps / 7)), 3, -match.elapsed * 1.5);
   // cruz central
   ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 7, Math.round(my) - 2, 14, 4); ctx.fillRect(Math.round(mx) - 2, Math.round(my - 5), 4, 10);
   ctx.fillStyle = col; ctx.fillRect(Math.round(mx) - 6, Math.round(my) - 1, 12, 2); ctx.fillRect(Math.round(mx) - 1, Math.round(my - 4), 2, 8);
@@ -10752,15 +10785,8 @@ function drawPxBooms(camX, camY){
       pxDisk(x, y, R + B, '#1b1d26', B, b.seed, B * 1.2);               // borde negro
       pxDisk(x, y, R, deep, B, b.seed, B * 1.2);
       pxDisk(x, y, R * 0.78, b.col, B, b.seed + 1, B);
-      pxDisk(x, y, R * 0.55, k < 0.3 ? '#ffffff' : '#ffe14a', B, b.seed + 2, B * 0.6);
-      if (k < 0.3) pxDisk(x, y, R * 0.32, '#ffffff', B, 0, 0);
+      pxDisk(x, y, R * 0.55, k < 0.3 ? '#fff2a8' : '#ffe14a', B, b.seed + 2, B * 0.6);   // centro caliente (sin cuadraditos blancos)
     }
-    // estrella de chispas (8 puntas) en el pico
-    if (k < 0.5){ const q = k / 0.5; ctx.globalAlpha = 1 - q;
-      for (let i = 0; i < 8; i++){ const a = b.seed * 0.3 + i * Math.PI / 4, L = b.r * (0.9 + q * 0.7) * (i % 2 ? 0.75 : 1);
-        for (let st = 0.55; st <= 1; st += 0.15){ const px = x + Math.cos(a) * L * st, py = y + Math.sin(a) * L * st, sz = Math.max(2, Math.round(B * (1.3 - st)));
-          ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(px) - sz - 1, Math.round(py) - sz - 1, sz * 2 + 2, sz * 2 + 2);
-          ctx.fillStyle = st > 0.8 ? hot : '#ffe14a'; ctx.fillRect(Math.round(px) - sz, Math.round(py) - sz, sz * 2, sz * 2); } } }
     ctx.restore();
   }
 }
