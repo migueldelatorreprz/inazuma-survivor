@@ -11,7 +11,7 @@ const ACC_KEY = 'is_auth';                      // sesión guardada (no empieza 
 /* email interno de las cuentas de usuario y contraseña: Supabase solo acepta dominios reales, así que se usa una
    subdirección del Gmail del proyecto (nunca se envía nada: la confirmación por email está desactivada) */
 const accMail = u => `migueldelatorreprz+is_${u.toLowerCase()}@gmail.com`;
-const ACC_VERSION = 'v87';
+const ACC_VERSION = 'v89';
 const ACC_DEV = (typeof DEV_ULTS !== 'undefined' && DEV_ULTS) || (typeof DEV_INFINITE !== 'undefined' && DEV_INFINITE) || (typeof DEV_UNLOCK !== 'undefined' && DEV_UNLOCK);
 const ACC_SLOT = ACC_DEV ? 'test' : 'main';     // hueco de la partida en la nube
 const ACC_SKIP = new Set(['ss_gfx']);           // ajustes que dependen del ordenador
@@ -76,9 +76,12 @@ async function accSignOut(){
   accStore(null); ACC.profile = null; ACC.cloud = null; accRender(); accBadge();
 }
 async function accDelete(){
-  if (!confirm('¿Seguro que quieres BORRAR tu cuenta? Se borran tu nombre, tu partida en la nube y tus récords del ranking. No se puede deshacer.\n\n(La partida de este navegador se queda.)')) return;
-  await accEnsure(); await sbRpc('delete_me'); accStore(null); ACC.profile = null; ACC.cloud = null; accRender(); accBadge();
-  accMsg('Cuenta borrada.');
+  if (!confirm('¿Seguro que quieres BORRAR tu cuenta?\n\nSe borra TODO: tu nombre, tu partida en la nube, tus récords del ranking y también la partida de este navegador (jugadores, monedas, tickets, mejoras y misiones). Empezarás desde cero. No se puede deshacer.')) return;
+  await accEnsure(); await sbRpc('delete_me');
+  clearTimeout(ACC.timer); ACC.dirty = false; ACC.applying = true; accStore(null); ACC.profile = null; ACC.cloud = null;
+  try { Object.keys(localStorage).filter(k => k.startsWith('ss_') || k.startsWith('is_')).forEach(k => localStorage.removeItem(k)); } catch (e) {}
+  alert('Cuenta borrada. El juego empieza de nuevo desde cero.');
+  location.reload();
 }
 async function accLoadProfile(){
   const uid = ACC.session && ACC.session.user && ACC.session.user.id; if (!uid) return;
