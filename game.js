@@ -41,6 +41,7 @@ const ARENA_ROCKS = 8;          // cuántas rocas hay en el campo del duelo
 function fieldW(){ return match.inArena ? ARENA_W : FIELD_W; }
 function fieldH(){ return match.inArena ? ARENA_H : FIELD_H; }
 
+const TECH_RANGE_K = 1.35;   // las supertécnicas de tiro y rebote disparan desde un 35 % más lejos que el disparo básico
 /* Alcance inicial del disparo (ya no hay mejora de alcance) */
 const START_RANGE_MULT = 1.0;   // (antes 0,9: un pelín más de alcance base)
 /* Radio inicial del imán que atrae las gemas de experiencia */
@@ -5267,7 +5268,8 @@ function autoAttack(dt){
   const target = nearestEnemy();
   if (!target) return;
   const d = Math.hypot(target.x-match.x, target.y-match.y);
-  if (d > match.range) return;
+  const techRange = at && techParts(at).some(q => q.kind === 'pierce' || q.kind === 'bounce') ? TECH_RANGE_K : 1;   // supertécnicas de distancia: más alcance
+  if (d > match.range * techRange) return;
 
   const ang = Math.atan2(target.y-match.y, target.x-match.x);
   const shooters = techParts(at).filter(q => q.kind === 'pierce' || q.kind === 'bounce');
