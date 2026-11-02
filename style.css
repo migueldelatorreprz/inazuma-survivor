@@ -3155,7 +3155,7 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 .acc-pick:hover{ box-shadow: inset 0 0 0 2px #050c26, inset 0 0 0 4px #ffe14a; }
 .acc-pick b{ display: block; font-size: 15px; color: #ffe14a; }
 .acc-pick small{ display: block; margin-top: 3px; font-size: 12px; color: #cfe0ff; }
-#btn-account.logged{ box-shadow: 0 0 0 2px #8be28f; }
+#btn-account.logged{ box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8be28f !important; }
 /* tabla del ranking */
 .rk-list{ max-height: 56vh; overflow-y: auto; background: rgba(4,10,34,.55); box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #3f6fc8; padding: 6px; }
 .rk-table{ width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 14px; color: #e6efff; }
@@ -3213,3 +3213,9 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 #pause-overlay .sp-dev{ margin-top: 10px; }
 #pause-overlay .sp-dev .dev-row .dev-ult{ min-height: 30px; padding: 3px 4px; }
 #pause-overlay .sp-head-el{ border: none !important; box-shadow: none !important; background: none !important; padding: 0 !important; }
+/* nombre de la cuenta en la barra de arriba */
+.acc-name-pill{ height: 38px; padding: 0 14px; border: none; cursor: pointer; display: inline-flex; align-items: center;
+  font-family: 'Inter', sans-serif; font-weight: 900; font-size: 14px; color: #ffe14a; text-shadow: 0 1px 0 #000; max-width: 220px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  clip-path: var(--px-cut-s); background: linear-gradient(180deg, #14307a 0 50%, #102766 50% 100%); box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8be28f; }
+.acc-name-pill:hover{ transform: translateY(-2px); }
+.acc-name-pill.hidden{ display: none; }

@@ -550,6 +550,7 @@ const MENU_GEAR = () => outlinedSprite((x, y) => {
 });
 function pxIcon(rows){ return pixelSprite(16, (x, y) => { const ch = rows[y][x]; return ch === '.' ? null : PX_PAL[ch]; }); }
 PX_ART.m_book = PX_ART.sabiduria;   // icono de la Guía
+PX_ART.m_user = ["................", ".....KKKKKK.....", "....KTTTTTTK....", "...KTTWTTTTnK...", "...KTTTTTTTnK...", "...KTTTTTTTnK...", "....KTTTTTnK....", ".....KKnnKK.....", "...KKBBBBBBKK...", "..KBBCBBBBBBbK..", ".KBBCBBBBBBBBbK.", ".KBBCBBBBBBBBbK.", ".KBBBBBBBBBBBbK.", ".KbbbbbbbbbbbbK.", ".KKKKKKKKKKKKKK.", "................"];   // icono de la Cuenta (jugador)
 PX_ART.m_trophy = ["................", "..KKKKKKKKKKKK..", "KKKLLYYYYYYYyKKK", "KYKLYYYYYYYYyKyK", "KYKLYYYYYYYYyKyK", ".KKLYYYYYYYYyKK.", "..KKYYYYYYYyKK..", "...KKYYYYYyKK...", ".....KKYyKK.....", "......KYyK......", ".....KKYyKK.....", "....KLYYYYyK....", "...KKKKKKKKKK...", "...KNNNNNNNnK...", "...KKKKKKKKKK...", "................"];   // icono del Ranking (copa)
 /* iconos pixel de las Misiones */
 PX_ART.ms_swords = ["................", ".KK..........KK.", ".KWK........KWK.", "..KWK......KWK..", "...KWK....KWK...", "....KWK..KWK....", ".....KWKKWK.....", "......KWWK......", "......KWWK......", ".....KWKKWK.....", "...KKKK..KKKK...", "..KYYK....KYYK..", ".KYyK......KyYK.", ".KyK........KyK.", "..K..........K..", "................"];
@@ -1362,7 +1363,7 @@ function iconifyText(node){
   par.replaceChild(frag, node);
 }
 /* iconos del menú principal y la barra de arriba: a 16x16 (píxel gordo, como los de Mejoras) */
-const MENU_ICON_DRAW = { '📖':'book', '🎴':'packs', '⚽':'ball', '👥':'team', '⬆️':'up', '🎰':'slot', '🏅':'medal', '⚙️':'gear', '💾':'save', '🔔':'bell', '🏆':'trophy' };
+const MENU_ICON_DRAW = { '📖':'book', '🎴':'packs', '⚽':'ball', '👥':'team', '⬆️':'up', '🎰':'slot', '🏅':'medal', '⚙️':'gear', '💾':'save', '🔔':'bell', '🏆':'trophy', '👤':'user' };
 function menuIconURL(name){
   try {
     if (name === 'gear') return MENU_GEAR().toDataURL();
@@ -1472,12 +1473,12 @@ const CHARGE_PER_HIT = { pierce:0.62, orbit:0.8, bounce:0.48, rain:1.0, melee:0.
 const DROP_CHANCE = 0.012;      // 1,2 % por rival eliminado (leche, agua, arroz...)
 const COIN_DROP_CHANCE = 0.18; // 18 % (antes 26 %) (hay menos rivales): probabilidad de que un rival normal suelte su moneda
 const TICKET_DROP = 0.0015;     // 0,15 %: ticket amarillo de un rival normal
-const TICKET_DROP_EPIC = 0.0001; // 0,01 %: ticket morado de un rival normal (rarísimo)
+const TICKET_DROP_EPIC = 0.00013; // 0,013 %: ticket morado de un rival normal (rarísimo)
 /* tickets que sueltan los bosses y mini bosses: [amarillo, morado] */
-const TICKET_BOSS = [0.25, 0.06], TICKET_MINIBOSS = [0.2, 0.02];
+const TICKET_BOSS = [0.25, 0.08], TICKET_MINIBOSS = [0.2, 0.03];   // morado: 8 % en bosses y 3 % en mini bosses
 const KAPPAH_EPIC = 0.10;         // si Kappah suelta ticket, un 10% es morado
 function dropTicket(x, y, purple){ match.gems.push({ x, y, xp:0, coin:0, ticket:1, purple: !!purple, kind:'ticket', pull:true }); }
-/* boss vencido: siempre 1 ticket amarillo y, encima, una tirada extra (25% otro amarillo · 6% uno morado) */
+/* boss vencido: siempre 1 ticket amarillo y, encima, una tirada extra (25% otro amarillo · 8% uno morado) */
 function bossTickets(x, y){
   dropTicket(x, y, false); rollTicket(x + 24, y + 10, TICKET_BOSS);
   if (rl()) rlBossTickets(x, y);
@@ -7055,7 +7056,7 @@ const CHESTS = {
   life: 75,            // segundos antes de desaparecer
   openTime: 3,         // segundos que tienes que quedarte al lado
   openRange: 60,
-  relicChance: 0.20, xpChance: 0.35, ticketChance: 0.15, purpleChance: 0.12,   // el resto, monedas (de los tickets, 12 % morados)
+  relicChance: 0.20, xpChance: 0.33, ticketChance: 0.20, purpleChance: 0.04,   // el resto, monedas · ticket 20 % (casi siempre amarillo: morado solo 1 de cada 25)
   coins:[15, 40],
 };
 const RELIC_FROM_BOSS = 2;           // a partir del 2º boss los bosses sueltan un objeto (menos el 3º, que da talento)

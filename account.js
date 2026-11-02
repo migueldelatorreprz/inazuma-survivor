@@ -237,6 +237,9 @@ function accBadge(){
   const b = document.getElementById('btn-account'); if (!b) return;
   b.title = ACC.session ? `Cuenta: ${ACC.profile ? ACC.profile.username : ''}` : 'Cuenta (iniciar sesión)';
   b.classList.toggle('logged', !!ACC.session);
+  const pill = document.getElementById('acc-name-pill');
+  if (pill){ const n = ACC.session && ACC.profile ? ACC.profile.username : '';
+    pill.textContent = n; pill.classList.toggle('hidden', !n); }
 }
 let accTab = 'in';
 function accRender(soft){
@@ -301,6 +304,7 @@ function accClose(){ const ov = document.getElementById('account-overlay'); if (
 /* ---------- arranque ---------- */
 (async function accInit(){
   const b = document.getElementById('btn-account'); if (b){ b.disabled = false; b.onclick = accOpen; }
+  const np = document.getElementById('acc-name-pill'); if (np) np.onclick = accOpen;
   const rb = document.getElementById('btn-ranking'); if (rb) rb.onclick = rankOpen;
   const c1 = document.getElementById('btn-account-close'); if (c1) c1.onclick = accClose;
   const c2 = document.getElementById('btn-ranking-close'); if (c2) c2.onclick = () => document.getElementById('ranking-overlay').classList.add('hidden');
