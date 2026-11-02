@@ -3966,7 +3966,7 @@ function rlEliteAura(x, feet){
 const RL_EVENT_WARN = 5;   // segundos de aviso antes de cada evento
 const RL_EVENTS = {
   balls:    { name:'¡Lluvia de balones!', desc:'Caen balones del cielo: esquiva las marcas del suelo', dur: 14, color:'#ff4a3c' },
-  stampede: { name:'¡Estampida!',          desc:'Llegan 20 rivales muy rápidos de golpe',            dur: 10, color:'#ff8a2a' },
+  stampede: { name:'¡Estampida!',          desc:'Llegan 10 rivales muy rápidos de golpe',            dur: 10, color:'#ff8a2a' },
   dark:     { name:'¡Apagón!',             desc:'Se va la luz del estadio',                          dur: 22, color:'#9fa8ff' },
 };
 function rlStartEvent(key){
@@ -3976,8 +3976,8 @@ function rlStartEvent(key){
   showBanner(`⚠️ ${E.name}`, E.desc, E.color, true); SFX.play('whistle');
   if (key === 'stampede'){
     const a = Math.random() * Math.PI * 2, px = -Math.sin(a), py = Math.cos(a);
-    for (let i = 0; i < 20; i++){
-      const off = (i - 9.5) * 34, d = 620 + Math.random() * 80;
+    for (let i = 0; i < 10; i++){
+      const off = (i - 4.5) * 40, d = 620 + Math.random() * 80;
       const x = Math.max(60, Math.min(fieldW() - 60, match.x + Math.cos(a) * d + px * off)), y = Math.max(60, Math.min(fieldH() - 60, match.y + Math.sin(a) * d + py * off));
       const e = spawnEnemy({ x, y, ignoreCap: true, noElite: true });
       if (e){ e.speed *= 2; e.rlFast = true; }
@@ -7355,7 +7355,7 @@ function updateChests(dt){
     if (match.chests.length < CHESTS.maxOnField && Math.random() < CHESTS.chance){
       let x, y, tries = 0;
       do { x = 150 + Math.random() * (FIELD_W - 300); y = 150 + Math.random() * (FIELD_H - 300); }
-      while ((Math.hypot(x - match.x, y - match.y) < 400 || obstacleAt(x, y, 60)) && ++tries < 40);
+      while ((Math.hypot(x - match.x, y - match.y) < 400 || obstacleAt(x, y, 60) || chestSpotBlocked(x, y)) && ++tries < 120);
       match.chests.push({ x, y, until: match.elapsed + CHESTS.life, prog: 0 });
       SFX.play('chest');                                  // aparece un cofre
     }
@@ -10281,6 +10281,12 @@ function pushOutOfObstacles(o, radius){
     const d = Math.hypot(dx, dy) || 0.01;
     if (d < min){ o.x = s.x + dx / d * min; o.y = s.y + dy / d * min; }
   }
+}
+/* un cofre no puede salir cerca de plátanos, barro o hierbajos (si no, no se puede abrir tranquilo) */
+function chestSpotBlocked(x, y){
+  const O = match.obstacles; if (!O) return false;
+  const pad = CHESTS.openRange + 60;
+  return (O.bananas || []).some(b => Math.hypot(x - b.x, y - b.y) < b.r + pad) || (O.zones || []).some(z => Math.hypot(x - z.x, y - z.y) < z.r + pad * 0.6);
 }
 function obstacleAt(x, y, pad){
   if (goalRects().some(r => x > r.x0 - pad && x < r.x1 + pad && y > r.y0 - pad && y < r.y1 + pad)) return true;
