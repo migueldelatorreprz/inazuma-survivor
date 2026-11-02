@@ -267,6 +267,9 @@ PX_ART.r_cintaMark = ["................", "................", "....KKKKKKK....."
 PX_ART.r_balonAlius = ["................", ".....KKKKKK.....", "...KKXXVVVVKK...", "..KXVVKKKVVVVK..", "..KVVKuuuKVVvK..", ".KVVVKuuuKVVVvK.", ".KKKVVKKKVVKKvK.", ".KuKVVVVVVVKuKK.", ".KuuKVVVVVKuuKK.", ".KKKVVVKVVVKKvK.", "..KVVVKuKVVVvK..", "..KvVVKKKVVvvK..", "...KKvvvvvvKK...", ".....KKKKKK.....", "................", "................"];
 PX_ART.r_guantes = ["................", "..KK.KK.........", ".KOKKOKKK.......", ".KOKKOKOK.KKKK..", ".KOOKOKOK.KOKOK.", ".KOOOOOOK.KOKOK.", "KKOOOOOOK.KOOOOK", "KOKOOOOOK.KOOOOK", "KOOOOOOOKKOOOOOK", ".KOOOOOOKKOOOOOK", "..KWWWWWK.KOOOK.", "..KWWWWWK.KWWWWK", "..KKKKKKK.KWWWWK", "..........KKKKKK", "................", "................"];
 PX_ART.r_camiseta = ["................", "...KKKK..KKKK...", "..KBBBKYYKBBBK..", ".KBBBBYYYYBBBBK.", "KBBBYYYYYYYYBBBK", "KBBKYYYYYYYYKBBK", ".KK.KYYYBYYK.KK.", "....KYYBBYYK....", "....KYYYBYYK....", "....KYYBYYYK....", "....KYYYYYYK....", "....KyYYYYyK....", "....KyyyyyyK....", "....KKKKKKKK....", "................", "................"];
+PX_ART.r_colgante = [".K............K.", "KSK..........KSK", ".KsK........KsK.", "..KSK......KSK..", "...KsK....KsK...", "....KSKKKKSK....", "....KKsYYsKK....", "...KRRRKKRRRK...", "..KRWPRRRPRRRK..", "..KRPRRRRRRRrK..", "..KRRRRRRRRrrK..", "...KRRRRRRrrK...", "....KRRRRrrK....", ".....KRRrrK.....", "......KrrK......", ".......KK......."];
+PX_ART.r_escaner = ["...........KK...", "......KKKKKBRK..", "....KKWWWWKBRK..", "...KWWKCKWWKBRK.", "..KWWWWKWWWWKBRK", "..KWKCKWWKCKWKRK", ".KWWWKWWWWKWWWKK", ".KWWWWWKCKWWWwK.", ".KWKCKWWKWWWwwK.", ".KWWKWWWWWKCKwK.", ".KWWWWWWWWWKwwK.", "KSSSSSSSSSSSSSSK", "KTTTTTTTTTTTTTTK", ".KKKKKKKKKKKKKK.", "................", "................"];
+PX_ART.r_gafasRay = ["................", "................", "................", "................", "..KKKK....KKKK..", ".KssssK..KssssK.", "KswKKKsssswKKKsK", "KsKKKKsKKsKKKKsK", "KsKKKKsKKsKKKKsK", "KsKKKssKKsKKKssK", ".KssssK..KssssK.", "..KKKK....KKKK..", "................", "................", "................", "................"];   // gafas de sol redondas negras
 PX_ART.r_manto = ["................", ".....KKKKKK.....", "....KYYLLYYK....", "...KWWKYYKWWK...", "..KWWWWKKWWWWK..", "..KWWWWWWWWWwK..", ".KWWWWWWWWWWwK..", ".KWWwWWWWWWWwwK.", ".KWWwWWWWWWWwwK.", "KWWWwWWWwWWWwwK.", "KWWWwWWWwWWWwwwK", "KWWwwWWWwWWwwwwK", "KYYYYYYYYYYYYYYK", ".KKKKKKKKKKKKKK.", "................", "................"];
 PX_ART.vetoObj = ["................", "................", "...KKKKKKKKKK...", "..KNYNNNNNNYNK..", "..KNYNNNNNNYNK..", ".KKKKKKKKKKKKKK.", ".KYYYYYKKYYYYYK.", ".KNNNNKSSKNNNNK.", ".KNYNNKsSKNNKKKK", ".KNYNNNKKNNKRRRK", ".KNYNNNNNNKRWRWK", ".KNYNNNNNNKRRWRK", ".KYYYYYYYYKRWRWK", ".KKKKKKKKKKKRRRK", "............KKKK", "................"];
 PX_ART.m_packs = ["................", ".KKKKKK.........", ".KXXVVK.........", ".KXVVVKKKKKKKKK.", ".KVVVKWWWWWWWWK.", ".KVVVKKKKKKKKKK.", ".KVVVKYYYYYRRYK.", ".KVVVKYYYYRRYYK.", ".KvVVKYYYRRYYYK.", ".KvVVKYYRRRRRYK.", ".KvvvKYYYYRRYYK.", ".KKKKKYYYRRYYYK.", ".....KYYRRYYYYK.", ".....KyyyyyyyyK.", ".....KKKKKKKKKK.", "................"];   // icono de la Tienda de sobres
@@ -463,7 +466,8 @@ PX_ART.bolt = ['................','.......KKKKK....','......KYYYYK....','.....KY
 PX_ART.boom = ['................','...K....K....K..','...KK..KOK..KK..','...KOK.KOK.KOK..','....KOKKYKKOK...','.KKKKOYYLYYOKKK.','..KOOYLLLLYOOK..','...KOYLWWLYOK...','..KOOYLLLLYOOK..','.KKKKOYYLYYOKKK.','....KOKKYKKOK...','...KOK.KOK.KOK..','...KK..KOK..KK..','...K....K....K..','................','................'];
 PX_ART.dash = ['................','................','....KKKKKKK.....','..KK.CCCCCCKK...','........WWWCCK..','..KKKKKKKKWWCK..','.KCCCCCCCCCWWK..','..KKKKKKKKWWCK..','........WWWCCK..','..KK.CCCCCCKK...','....KKKKKKK.....','................','.KKKK..KKK......','................','................','................'];
 PX_ART.range = ['................','.......KK.......','.....KKRRKK.....','....KR.KK.RK....','...KR..KK..RK...','..KR...KK...RK..','..KR........RK..','.KKKKK.RR.KKKKK.','.KKKKK.RR.KKKKK.','..KR........RK..','..KR...KK...RK..','...KR..KK..RK...','....KR.KK.RK....','.....KKRRKK.....','.......KK.......','................'];
-function pxImg(key, size = 18){ return PX_ICON_URL[key] ? `<img class="px-mini" src="${PX_ICON_URL[key]}" width="${size}" height="${size}" alt="">` : ''; }
+function pxImg(key, size = 18){ size = size < 24 ? 16 : Math.round(size / 16) * 16;   // múltiplos de 16: todos los píxeles (y el borde negro) del mismo grosor
+  return PX_ICON_URL[key] ? `<img class="px-mini" src="${PX_ICON_URL[key]}" width="${size}" height="${size}" alt="">` : ''; }
 /* logos de afinidad en versión arcade (16x16): hexágono con borde plateado y símbolo blanco */
 const EL_GLYPH = {
   air:      ['..WWWW..','.W....W.','......W.','WWWWW.W.','........','WWWWWWW.','......W.','..WWWW..'],
@@ -482,7 +486,7 @@ function elPxSprite(key){
   return pixelSprite(16, (x, y) => {
     const cx = x + 0.5, cy = y + 0.5;
     if (!pointInPoly(cx, cy, H1)) return null;
-    if (!pointInPoly(cx, cy, H2)) return '#141c2b';                     // contorno
+    if (!pointInPoly(cx, cy, H2)) return '#1b1d26';                     // contorno (mismo negro que el resto de iconos)
     if (!pointInPoly(cx, cy, H3)) return (x + y < 15) ? '#e6ebf2' : '#8d97a6';   // borde plateado
     if (!col) return '#eafff3';
     const gx = x - 4, gy = y - 4;
@@ -1259,7 +1263,7 @@ const EMO_MAP = {
   '🍙':'item:rice', '💧':'item:water', '🥛':'item:nectar', '📣':'item:whistle', '🧰':'chest:chest',
   // reliquias
   '🥾':'relic:botasInazuma', '📿':'relic:amuleto', '🔗':'relic:pulsera', '🎖️':'relic:chapa', '🥽':'relic:gafas', '🍢':'relic:pinchito', '🧪':'relic:nectarDioses',
-  '🪙':'relic:monedaArbitro', '🏺':'relic:artefacto', '📜':'relic:tecnica', '🦅':'relic:botasHalcon', '🎗️':'relic:cintaMark', '🧿':'relic:balonAlius', '🧤':'relic:guantes', '👕':'relic:camiseta',
+  '🪙':'relic:monedaArbitro', '🏺':'relic:artefacto', '📜':'relic:tecnica', '🦅':'relic:botasHalcon', '🎗️':'relic:cintaMark', '💝':'relic:colgante', '🕶️':'relic:gafasRay', '⛑️':'relic:escaner', '🧿':'relic:balonAlius', '🧤':'relic:guantes', '👕':'relic:camiseta',
 };
 const EMO_CANVAS = {}, EMO_URL = {};
 function emoKey(e){ return e.replace(/️/g, ''); }
@@ -5433,6 +5437,7 @@ function damageEnemy(e, amount, opts = {}){
   if (e.hp <= 0){
     e.dead = true;
     match.kills = (match.kills || 0) + 1;                // contador de rivales eliminados
+    if (hasRelic('gafasRay') && !opts.colgante) colganteBoom(e);   // Gafas de Ray Dark: explota al caer
     if (e.boss){
       const alive = (match.bossGroup || []).filter(o => !o.dead);
       if (alive.length){                                                 // quedan hermanos en pie: recuperan un 65% de su vida
@@ -6970,6 +6975,9 @@ const RELICS = {
   guantes:      { emoji:'🧤', name:'Guantes de portero',   desc:'15% de bloquear del todo un golpe (como mucho una vez cada 2 s)' },
   camiseta:     { emoji:'👕', name:'Camiseta del Raimon',  desc:`Con poca vida (menos del ${LOW_HP * 100}%): +25% de probabilidad de crítico` },
   monedaArbitro:{ emoji:'🪙', name:'Moneda del Árbitro',   desc:'Si te eliminan, el árbitro lanza la moneda: corazón, revives con media vida; calavera, se acaba. Se gasta al usarla' },
+  colgante:     { emoji:'💝', name:'Colgante corazón',     desc:'Cada 20 s atrae hacia ti toda la experiencia que haya cerca' },
+  gafasRay:     { emoji:'🕶️', name:'Gafas de Ray Dark',    desc:'Cada rival que eliminas explota y daña a los rivales que tenga cerca' },
+  escaner:      { emoji:'⛑️', name:'Escáner Ataque',       desc:'Cada 5 s cae un rayo sobre un rival cercano y lo fulmina (muchísimo daño)' },
   manto:        { emoji:'🧥', name:'Manto del Zeus',       desc:'Con menos del 20% de vida: +40% de probabilidad de crítico. Lo que pase del 100% se convierte en daño crítico' },
 };
 const CHESTS = {
@@ -7096,11 +7104,50 @@ function updateRelics(dt){
     e.poisonTick = (e.poisonTick || 0) + dt;
     if (e.poisonTick >= 0.5){ e.poisonTick -= 0.5; damageEnemy(e, e.poison.dps * 0.5, { noProc:true }); }
   }
+  if (hasRelic('colgante')){                                   // Colgante corazón: atrae la experiencia cercana cada 20 s
+    match.heartCd = (match.heartCd ?? 6) - dt;
+    if (match.heartCd <= 0){ match.heartCd = 20; let n = 0;
+      for (const g of match.gems){ if (g.xp > 0 && !g.pull && Math.hypot(g.x - match.x, g.y - match.y) < 900){ g.pull = true; n++; } }
+      if (n){ match.effects.push({ x: match.x, y: match.y, fixed: true, maxR: 140, life: 0.5, dur: 0.5, color: '#ff6b8a' }); SFX.play('levelup'); }
+    }
+  }
+  if (hasRelic('escaner')){                                    // Escáner Ataque: rayo cada 5 s
+    match.scanCd = (match.scanCd ?? 2) - dt;
+    if (match.scanCd <= 0){
+      let best = null, bd = 480;
+      for (const e of match.enemies){ if (e.dead || bossInvisible(e)) continue; const d = Math.hypot(e.x - match.x, e.y - match.y); if (d < bd){ bd = d; best = e; } }
+      if (best){ match.scanCd = ESCANER.every; escanerBonk(best); } else match.scanCd = 0.5;
+    }
+  }
   updateChests(dt);
   updateInazumaTower(dt);
   updateAffinityDots(dt);
 }
 
+/* Gafas de Ray Dark: pequeña explosión donde cae un rival */
+const COLGANTE = { r: 75, dmg: 1.1 };
+function colganteBoom(e){
+  const dmg = match.dmg * COLGANTE.dmg * (match.spRatio || 1);
+  (match.pxBooms = match.pxBooms || []).push({ x: e.x, y: e.y, r: COLGANTE.r * 0.8, col: '#ff4a6a', t: 0, seed: Math.random() * 6 });
+  for (const o of match.enemies){
+    if (o === e || o.dead || Math.hypot(o.x - e.x, o.y - e.y) > COLGANTE.r) continue;
+    damageEnemy(o, dmg * (o.boss ? 0.5 : 1), { noProc: true, colgante: true, element: match.element });
+  }
+}
+/* Escáner Ataque: rayo desde el cielo con un golpe enorme */
+const ESCANER = { every: 5, dmg: 20, bossK: 0.45 };
+function escanerBonk(t){
+  // rayo que cae del cielo sobre el rival (con una rama) y lo fulmina
+  const zig = (x0, y0, x1, y1, n, j) => { const pts = []; for (let i = 0; i <= n; i++){ const f = i / n; pts.push([x0 + (x1 - x0) * f + (i && i < n ? (Math.random() - 0.5) * j : 0), y0 + (y1 - y0) * f]); } return pts; };
+  const sx = t.x + (Math.random() - 0.5) * 60, main = zig(sx, t.y - 560, t.x, t.y, 10, 46);
+  match.bolts.push({ pts: main, life: 0.42, dur: 0.42, color: '#7fe3ff' });
+  const k = 4 + Math.floor(Math.random() * 3), [bx, by] = main[k];
+  match.bolts.push({ pts: zig(bx, by, bx + (Math.random() < 0.5 ? -1 : 1) * (50 + Math.random() * 40), by + 90 + Math.random() * 60, 4, 24), life: 0.3, dur: 0.3, color: '#bfefff' });
+  t.hurtFlash = match.elapsed + 0.25;
+  damageEnemy(t, match.dmg * ESCANER.dmg * (match.spRatio || 1) * (t.boss || t.miniBoss ? ESCANER.bossK : 1), { noProc: true, element: match.element });
+  SFX.play('thunder');
+}
+function addPickTextAt(t, txt){ match.texts.push({ x: t.x, y: t.y - 50, text: txt, color: '#ffe14a', life: 0.9, bonk: true }); }
 /* ---- TORRE INAZUMA ----
    Una por tramo entre bosses (desde el 1º). Sale sin avisar. Si te quedas a su lado (como al abrir
    un cofre) la activas: cae un trueno y a partir de ahí salen más rivales (+15% por cada torre
@@ -7682,8 +7729,7 @@ function updateTechs(dt){
       for (const e of match.enemies){
         if (!e.dead && Math.hypot(e.x-b.x, e.y-b.y) <= b.r + (e.size || 0)) damageEnemy(e, b.dmg, { chargeKind: b.ult ? null : 'rain', ult:b.ult, ultKind:'rain', element:b.element, part:b.part });
       }
-      match.effects.push({ x:b.x, y:b.y, fixed:true, maxR:b.r, life:0.4, dur:0.4,
-                           color: getElement(b.element).color, fill:true });
+      if ((match.pxBooms = match.pxBooms || []).length < 40) match.pxBooms.push({ x: b.x, y: b.y, r: Math.min(b.r * 0.75, 110), col: getElement(b.element).color, t: 0, seed: Math.random() * 6 });   // explosión arcade
     }
   }
   match.bombs = match.bombs.filter(b => !b.done);
@@ -10681,19 +10727,40 @@ function drawPxBall(x, y, s, fr, col){
   }
 }
 /* explosión arcade del balón del lanzador: destello blanco, anillo de bloques que se abre, cascotes y estrellitas */
-const PXBOOM_DUR = 0.55;
+const PXBOOM_DUR = 0.6;
+/* explosión arcade estilo Inazuma: destello, bola de fuego en bloques con borde negro, estrella de chispas y humo */
+function pxDisk(cx, cy, R, col, B, seed, rough){
+  ctx.fillStyle = col;
+  for (let y = -R; y <= R; y += B) for (let x = -R; x <= R; x += B){
+    const d = Math.hypot(x, y), n = rough ? Math.sin(seed * 7 + Math.atan2(y, x) * 5) * rough : 0;
+    if (d <= R + n) ctx.fillRect(Math.round(cx + x - B / 2), Math.round(cy + y - B / 2), B, B);
+  }
+}
 function drawPxBooms(camX, camY){
   for (const b of (match.pxBooms || [])){
-    const k = b.t / PXBOOM_DUR, x = Math.round(b.x + camX), y = Math.round(b.y + camY), dark = shadeHex(b.col, -0.55);
+    const k = b.t / PXBOOM_DUR, x = Math.round(b.x + camX), y = Math.round(b.y + camY), B = b.r > 60 ? 6 : 4;
+    const hot = shadeHex(b.col, 0.35), deep = shadeHex(b.col, -0.45);
     ctx.save();
-    if (k < 0.25){ const s = Math.round(b.r * (0.5 + k * 2)); ctx.globalAlpha = 1 - k * 2; ctx.fillStyle = '#ffffff'; ctx.fillRect(x - s, y - s * 0.7, s * 2, s * 1.4); }   // destello
-    ctx.globalAlpha = 1 - k;
-    pxRing(x, y, b.r * (0.4 + k * 0.8), k < 0.5 ? '#ffe14a' : b.col, dark, 20, 6, b.seed);
-    pxRing(x, y, b.r * (0.2 + k * 0.5), '#ffffff', dark, 12, 4, -b.seed);
-    for (let i = 0; i < 10; i++){                                                   // cascotes que salen volando
-      const a = b.seed + i * 0.63, d = b.r * (0.3 + k * 1.1), hh = Math.sin(Math.PI * k) * 26 * (0.5 + (i % 3) * 0.3);
-      pxBlock(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.7 - hh, 4 + (i % 2) * 2, i % 3 ? b.col : '#ffe14a');
+    // humo: bloques grises que suben y se deshacen
+    if (k > 0.35){ const q = (k - 0.35) / 0.65; ctx.globalAlpha = 0.55 * (1 - q);
+      for (let i = 0; i < 6; i++){ const a = b.seed + i * 1.05, d = b.r * (0.35 + q * 0.6); pxDisk(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.6 - q * 30, Math.max(B, b.r * 0.22 * (1 - q * 0.4)), i % 2 ? '#7d8794' : '#4a505a', B, 0, 0); } }
+    ctx.globalAlpha = 1;
+    // bola de fuego: crece rápido y se apaga
+    const grow = Math.min(1, k / 0.22), fade = k < 0.55 ? 1 : 1 - (k - 0.55) / 0.45, R = b.r * (0.45 + 0.55 * grow) * (0.85 + 0.15 * fade);
+    if (fade > 0.02){
+      ctx.globalAlpha = Math.min(1, fade * 1.3);
+      pxDisk(x, y, R + B, '#1b1d26', B, b.seed, B * 1.2);               // borde negro
+      pxDisk(x, y, R, deep, B, b.seed, B * 1.2);
+      pxDisk(x, y, R * 0.78, b.col, B, b.seed + 1, B);
+      pxDisk(x, y, R * 0.55, k < 0.3 ? '#ffffff' : '#ffe14a', B, b.seed + 2, B * 0.6);
+      if (k < 0.3) pxDisk(x, y, R * 0.32, '#ffffff', B, 0, 0);
     }
+    // estrella de chispas (8 puntas) en el pico
+    if (k < 0.5){ const q = k / 0.5; ctx.globalAlpha = 1 - q;
+      for (let i = 0; i < 8; i++){ const a = b.seed * 0.3 + i * Math.PI / 4, L = b.r * (0.9 + q * 0.7) * (i % 2 ? 0.75 : 1);
+        for (let st = 0.55; st <= 1; st += 0.15){ const px = x + Math.cos(a) * L * st, py = y + Math.sin(a) * L * st, sz = Math.max(2, Math.round(B * (1.3 - st)));
+          ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(px) - sz - 1, Math.round(py) - sz - 1, sz * 2 + 2, sz * 2 + 2);
+          ctx.fillStyle = st > 0.8 ? hot : '#ffe14a'; ctx.fillRect(Math.round(px) - sz, Math.round(py) - sz, sz * 2, sz * 2); } } }
     ctx.restore();
   }
 }
@@ -12116,6 +12183,14 @@ function renderWorld(){
   ctx.textAlign = 'center';
   for (const t of match.texts){
     ctx.globalAlpha = Math.min(1, t.life / 0.35);
+    if (t.bonk){                                        // ¡BONK! del Escáner Ataque: grande, sobre el rival
+      const pop = Math.min(1, (0.9 - t.life) / 0.1), sc = 0.7 + 0.5 * pop;
+      ctx.save(); ctx.translate(t.x + camX, t.y + camY); ctx.rotate(-0.12); ctx.scale(sc, sc);
+      ctx.font = '30px InazumaFont, Bangers, Teko, sans-serif'; ctx.textAlign = 'center'; ctx.lineJoin = 'round';
+      ctx.lineWidth = 7; ctx.strokeStyle = '#071233'; ctx.strokeText(t.text, 0, 0);
+      ctx.fillStyle = t.color; ctx.fillText(t.text, 0, 0);
+      ctx.restore(); continue;
+    }
     if (t.big){                                         // mejora elegida: cartel grande que sigue al jugador
       const tx = W / 2, ty = H / 2 - 64 - (1.9 - t.life) * 14, pop = Math.min(1, (1.9 - t.life) / 0.15);
       ctx.save(); ctx.translate(tx, ty); ctx.scale(0.6 + 0.4 * pop, 0.6 + 0.4 * pop);

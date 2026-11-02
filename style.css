@@ -1276,7 +1276,7 @@ h1, h2, h3, .logo, .showcase-name, .sp-name, .boss-head b, .meta-title b{
 }
 .mp-tile:hover{ filter: brightness(1.15); transform: translateY(-2px); }
 .mp-tile .mp-ico{ height: 42px; display:flex; align-items:center; justify-content:center; }
-.mp-tile .mp-ico .px-mini{ width: 40px; height: 40px; }
+.mp-tile .mp-ico .px-mini{ width: 48px; height: 48px; }
 .mp-tile b{ font-family: var(--title-font); font-weight: 400; font-size: 15px; line-height: 1.1; text-align:center; text-shadow: var(--outline-thin); }
 .mp-tile small{ font-family: var(--sub-font); font-size: 11px; color: #c9dbff; text-align:center; line-height: 1.2; }
 .mp-tile.is-tech[data-el="fire"]{ background: linear-gradient(180deg, #7a2214, #3d0c06); border-color:#ff6b5e; }
@@ -2301,7 +2301,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 /* botón de cambiar cartas: icono pixel + texto + tecla R en cuadrado amarillo */
 .overlay .reroll-btn{ display:flex !important; align-items:center; justify-content:center; gap: 10px; padding: 9px 14px !important;
   font-family: var(--title-font) !important; font-weight: 400 !important; font-size: 20px !important; letter-spacing: .03em; color: #fff !important; text-shadow: var(--outline-thin); }
-.overlay .reroll-btn .px-mini{ width: 26px; height: 26px; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.4)); }
+.overlay .reroll-btn .px-mini{ width: 32px; height: 32px; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.4)); }
 .overlay .reroll-btn .rr-left{ font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px; color: #d8ffd8; text-shadow: none;
   background: rgba(0,0,0,.28); padding: 2px 8px; clip-path: var(--px-cut-s); }
 .overlay .reroll-btn .rr-key{ display:inline-flex; align-items:center; justify-content:center; width: 26px; height: 26px;
@@ -2798,7 +2798,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 #levelup-overlay .upgrade-row{ gap: 14px; }
 #levelup-overlay .upgrade-option{ padding: 13px 18px !important; }
 #levelup-overlay .upgrade-option b{ font-size: 24px !important; display:flex !important; align-items:center; gap: 12px; }
-#levelup-overlay .upgrade-option b img, #levelup-overlay .upgrade-option b svg{ width: 44px !important; height: 44px !important; image-rendering: pixelated; flex-shrink: 0; }
+#levelup-overlay .upgrade-option b img, #levelup-overlay .upgrade-option b svg{ width: 48px !important; height: 48px !important; image-rendering: pixelated; flex-shrink: 0; }
 #levelup-overlay .upgrade-option > span{ font-size: 15px !important; margin-top: 4px; }
 #levelup-overlay .upgrade-key{ min-width: 34px !important; font-size: 20px !important; }
 #levelup-overlay .overlay-box{ display:flex !important; flex-direction:column !important; align-items:stretch; }
@@ -2958,7 +2958,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .ms-card.full{ --acc:#5fcf7a; }
 .ms-head{ display:flex; align-items:center; gap: 10px; padding: 4px 4px 2px; }
 .ms-ico{ font-size: 28px; width: 40px; height: 40px; display:flex; align-items:center; justify-content:center; flex: 0 0 40px; background:#071233; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px var(--acc); }
-.ms-ico img{ width: 28px !important; height: 28px !important; image-rendering: pixelated; }
+.ms-ico img{ width: 32px !important; height: 32px !important; image-rendering: pixelated; }
 .ms-ttl{ display:flex; flex-direction:column; flex: 1; min-width: 0; }
 .ms-ttl b{ font-family: var(--title-font); font-weight: 400; font-size: 21px; color:#fff; text-shadow: var(--outline-thin); letter-spacing:.03em; }
 .ms-ttl small{ font-size: 13px; color:#cfe2ff; line-height: 1.3; }
@@ -3059,7 +3059,7 @@ body.rl-mode #levelup-overlay .upgrade-option[data-rlk="basic"] .rl-kind{ backgr
   background: repeating-linear-gradient(180deg, #14307a 0 4px, #112a6c 4px 8px); clip-path: var(--px-cut);
   box-shadow: inset 0 0 0 4px #071233, inset 0 0 0 7px #ffd84a, inset 0 0 0 10px #071233; }
 .rl-item-ico{ width: 72px; height: 72px; display:flex; align-items:center; justify-content:center; background:#071233; clip-path: var(--px-cut-s); }
-.rl-item-ico img{ width: 60px !important; height: 60px !important; image-rendering: pixelated; }
+.rl-item-ico img{ width: 64px !important; height: 64px !important; image-rendering: pixelated; }
 .rl-item b{ font-family: var(--title-font); font-weight: 400; font-size: 19px; color:#fff; text-shadow: var(--outline-thin); line-height: 1.1; }
 .rl-item small{ font-size: 12px; color:#cfe2ff; line-height: 1.3; }
 body.rl-mode #levelup-overlay .upgrade-option{ box-shadow: inset 0 -4px 0 rgba(0,0,0,.25) !important; }
@@ -3087,3 +3087,9 @@ body.rl-mode #hillman-overlay .upgrade-option[data-rlk="book"]{ background: line
 body.rl-mode #hillman-overlay .upgrade-option[data-rlk="tech"] .rl-kind{ background:#ff4a3c; color:#1a0204; }
 body.rl-mode #hillman-overlay .upgrade-option[data-rlk="book"] .rl-kind{ background:#8fe0d8; color:#0a1f22; }
 body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a !important; color:#ffd9d4 !important; }
+
+/* iconos pixel: siempre nítidos (sin suavizado) */
+.px-mini, .px-ico{ image-rendering: pixelated; }
+/* comparar: sin animación de entrada de las cartas (aparece directamente) */
+.cmp-ov .cmp-box, .cmp-ov .pk-card, .cmp-ov .pk-card *{ animation: none !important; transition: none !important; }
+.cmp-ov .cmp-card.best .pk-card{ animation: po-glow 1.2s ease-in-out infinite !important; }
