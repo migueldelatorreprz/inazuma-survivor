@@ -6046,8 +6046,7 @@ function updateBossMarks(dt){
     m.t += dt;
     if (m.t >= m.dur){
       m.done = true;
-      if (m.kind === 'lob') (match.pxBooms = match.pxBooms || []).push({ x: m.x, y: m.y, r: m.r, col: m.color || '#ff4a3c', t: 0, seed: Math.random() * 6 });   // explosión arcade
-      else match.effects.push({ x:m.x, y:m.y, fixed:true, maxR:m.r, life:0.35, dur:0.35, color:m.color, fill:true });
+      match.effects.push({ x:m.x, y:m.y, fixed:true, maxR:m.r, life:0.35, dur:0.35, color:m.color || '#ff4a3c', fill:true });
       const dm = Math.hypot(m.x - match.x, m.y - match.y), red = 1 - Math.min(75, match.def) / 100;
       if (dm < m.r) hurtPlayer(m.dmg * ENEMY_PROJ_X3 * red, null);
       else if (m.wave && dm < m.wave){ hurtPlayer(m.dmg * 0.35 * ENEMY_PROJ_X3 * red, null);                  // onda expansiva pequeña
@@ -7157,7 +7156,7 @@ function updateRelics(dt){
 const COLGANTE = { r: 75, dmg: 1.1 };
 function colganteBoom(e){
   const dmg = match.dmg * COLGANTE.dmg * (match.spRatio || 1);
-  (match.pxBooms = match.pxBooms || []).push({ x: e.x, y: e.y, r: COLGANTE.r * 0.8, col: '#ff4a6a', t: 0, seed: Math.random() * 6 });
+  match.effects.push({ x:e.x, y:e.y, fixed:true, maxR:COLGANTE.r, life:0.4, dur:0.4, color:'#ff4a6a', fill:true });
   for (const o of match.enemies){
     if (o === e || o.dead || Math.hypot(o.x - e.x, o.y - e.y) > COLGANTE.r) continue;
     damageEnemy(o, dmg * (o.boss ? 0.5 : 1), { noProc: true, colgante: true, element: match.element });
@@ -7758,7 +7757,7 @@ function updateTechs(dt){
       for (const e of match.enemies){
         if (!e.dead && Math.hypot(e.x-b.x, e.y-b.y) <= b.r + (e.size || 0)) damageEnemy(e, b.dmg, { chargeKind: b.ult ? null : 'rain', ult:b.ult, ultKind:'rain', element:b.element, part:b.part });
       }
-      if ((match.pxBooms = match.pxBooms || []).length < 40) match.pxBooms.push({ x: b.x, y: b.y, r: Math.min(b.r * 0.75, 110), col: getElement(b.element).color, t: 0, seed: Math.random() * 6 });   // explosión arcade
+      match.effects.push({ x:b.x, y:b.y, fixed:true, maxR:b.r, life:0.4, dur:0.4, color: getElement(b.element).color, fill:true });
     }
   }
   match.bombs = match.bombs.filter(b => !b.done);
@@ -10725,31 +10724,20 @@ function drawNotebookRings(){
 
 /* granada del lanzador (estilo arcade): diana de bloques que se va llenando a saltos, aviso "!" que parpadea
    y balón-granada pixel que cae en parábola con su sombra */
-function drawLobZone(m, k, mx, my, camX, camY){
-  const col = m.color || '#ff4a3c', dark = shadeHex(col, -0.55), steps = Math.floor(k * 6) / 6;
+function drawLobZone(m, k, mx, my, camX, camY){   // mismo estilo que Chut granada: zona con borde discontinuo y balón que cae
+  const col = m.color || '#ff4a3c';
   ctx.save();
-  // suelo: rombo/círculo en bloques (perspectiva) y relleno a escalones
-  ctx.globalAlpha = 0.18 + 0.32 * steps; ctx.fillStyle = col;
-  ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI * 2); ctx.fill();
-  ctx.globalAlpha = 1;
-  pxRing(mx, my, m.r, col, dark, Math.max(14, Math.round(m.r / 5)), 5, match.elapsed * 0.8);
-  pxRing(mx, my, Math.max(6, m.r * steps), shadeHex(col, 0.35), dark, Math.max(6, Math.round(m.r * steps / 7)), 3, -match.elapsed * 1.5);
-  // cruz central
-  ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 7, Math.round(my) - 2, 14, 4); ctx.fillRect(Math.round(mx) - 2, Math.round(my - 5), 4, 10);
-  ctx.fillStyle = col; ctx.fillRect(Math.round(mx) - 6, Math.round(my) - 1, 12, 2); ctx.fillRect(Math.round(mx) - 1, Math.round(my - 4), 2, 8);
-  // aviso "!" que parpadea más rápido al final
-  if (Math.sin(match.elapsed * (8 + 24 * k)) > -0.1){
-    const ty = Math.round(my - m.r - 16);
-    ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 7, ty - 9, 14, 20);
-    ctx.fillStyle = '#ffd21e'; ctx.fillRect(Math.round(mx) - 5, ty - 7, 10, 16);
-    ctx.fillStyle = '#1b1d26'; ctx.fillRect(Math.round(mx) - 1, ty - 5, 3, 7); ctx.fillRect(Math.round(mx) - 1, ty + 4, 3, 3);
-  }
+  ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI * 2);
+  ctx.globalAlpha = 0.10 + 0.2 * k; ctx.fillStyle = col; ctx.fill();
+  ctx.globalAlpha = 0.9; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -match.elapsed * 30; ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(mx, my, Math.max(2, m.r * (1 - k)), 0, Math.PI * 2); ctx.strokeStyle = shadeHex(col, 0.35); ctx.lineWidth = 2; ctx.stroke();
   ctx.restore();
-  // el balón en el aire (parábola desde el lanzador), estilo pixel
+  // el balón en el aire (parábola desde el lanzador) con halo de su color
   const sx = (m.fromX ?? m.x) + camX, sy = (m.fromY ?? m.y) + camY;
   const bx = sx + (mx - sx) * k, gy = sy + (my - sy) * k, h = Math.sin(Math.PI * k) * 170 + (1 - k) * 20;
-  ctx.save(); ctx.globalAlpha = 0.4; ctx.fillStyle = '#000'; const sw = Math.round(9 * (0.6 + 0.4 * k)); ctx.fillRect(Math.round(bx) - sw, Math.round(gy) - 2, sw * 2, 4); ctx.restore();
-  drawPxBall(bx, gy - h, 3, Math.floor(match.elapsed * 10) % 4, col);
+  ctx.save(); ctx.globalAlpha = 0.3; ctx.fillStyle = '#000'; ctx.beginPath(); ctx.ellipse(bx, gy, 9 * (0.6 + 0.4 * k), 4, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  ctx.beginPath(); ctx.arc(bx, gy - h, 17, 0, Math.PI * 2); ctx.globalAlpha = 0.35; ctx.fillStyle = col; ctx.fill(); ctx.globalAlpha = 1;
+  drawSoccerBall(bx, gy - h, 11, match.elapsed * 10 + m.x);
 }
 /* balón de fútbol pixel (8x8 bloques), con 4 fotogramas de giro y una franja del color del rival */
 const PX_BALL_ROWS = ['..KKKK..', '.KWWKWK.', 'KWWKKKWK', 'KWWWKWWK', 'KKWWWWKK', 'KKKWWWKK', '.KWWWKK.', '..KKKK..'];
