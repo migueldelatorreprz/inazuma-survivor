@@ -1485,8 +1485,8 @@ function bossTickets(x, y){
 function rlBossTickets(x, y){
   const n = match.bossesBeaten || 0, fin = match.bossIdx >= BOSSES.length;
   if (fin){ dropTicket(x - 24, y + 10, true); dropTicket(x, y + 30, false); return; }   // Aphrodite: 1 morado + 1 amarillo
-  if (n === 1){ if (Math.random() < 0.1) dropTicket(x, y + 24, true); return; }
-  if (n === 2){ if (Math.random() < 0.2) dropTicket(x, y + 24, true); if (Math.random() < 0.5) dropTicket(x - 24, y + 10, false); return; }
+  if (n === 1){ if (Math.random() < 0.25) dropTicket(x, y + 24, true); if (Math.random() < 0.5) dropTicket(x - 24, y + 10, false); return; }
+  if (n === 2){ if (Math.random() < 0.45) dropTicket(x, y + 24, true); dropTicket(x - 24, y + 10, false); return; }
   dropTicket(x, y + 24, true);                                            // del 3º en adelante: 1 morado seguro
   dropTicket(x - 24, y + 10, false);
 }
@@ -3691,11 +3691,13 @@ function renderMissionBadge(){
    ====================================================================== */
 const RLK = {
   cost: 1,                 // tickets morados para jugar
-  hp: 1.35, hpMin: 0.21,   // vida de los rivales: +35 % al empezar y +21 % por minuto
-  dmg: 1.3, dmgMin: 0.13,  // daño de los rivales: +30 % al empezar y +13 % por minuto
-  bossHp: 1.3, bossDmg: 1.25, spawn: 1.6,
-  coin: 2, coinDrop: 1.8, ticket: 0.8, drop: 2.5, pball: 1.5, pbPow: 1.3,
-  hillFirst: 120, weatherDur: 50,
+  hp: 1.1, hpMin: 0.12,    // vida de los rivales: +10 % al empezar y +12 % por minuto (curva suave)
+  dmg: 1.05, dmgMin: 0.08, // daño de los rivales: +5 % al empezar y +8 % por minuto
+  bossHp: 1.15, bossHpMin: 0.03, bossDmg: 1.05, bossDmgMin: 0.03,
+  coin: 3, coinBoss: 0.45, coinDrop: 1.8, ticket: 1.4, drop: 2.5, pball: 1.5, pbPow: 1.3,   // monedas ×1,5 respecto a antes (×3 y +0,45 por boss)
+  hillFirst: 120,
+  weatherFirst: 15, weatherDur: 40, weatherRest: [25, 35],   // temporales desde el segundo 15, con descanso entre uno y otro
+  eliteFrom: 60,           // sin élites el primer minuto
 };
 var RL_NEXT = false;
 function rl(){ return !!(typeof match !== 'undefined' && match && match.rl); }
@@ -3806,9 +3808,9 @@ function rlMask(box, forceTech, sel = '.upgrade-option'){
       if (b1 && !b1.querySelector('.rl-kind')) b1.insertAdjacentHTML('beforeend', `<em class="rl-kind">${RL_KINDS.talent}</em>`);
       return;
     }
-    if (kind === 'basic' && Math.random() < 0.5){                // la mitad de las mejoras básicas se ven (menos caos)
-      btn.dataset.rlk = 'basic'; const b0 = btn.querySelector(':scope > b');
-      if (b0 && !b0.querySelector('.rl-kind')) b0.insertAdjacentHTML('beforeend', `<em class="rl-kind">${RL_KINDS.basic}</em>`);
+    if (kind !== 'talent' && !forceTech && Math.random() < 0.5){   // la mitad de las mejoras (básicas, supertécnicas y cuadernos) se ven
+      btn.dataset.rlk = kind; const b0 = btn.querySelector(':scope > b');
+      if (b0 && !b0.querySelector('.rl-kind')) b0.insertAdjacentHTML('beforeend', `<em class="rl-kind">${RL_KINDS[kind]}</em>`);
       return;
     }
     const b = btn.querySelector(':scope > b'); if (!b) return;
@@ -3884,7 +3886,7 @@ function rlRestoreOrder(names){ const list = names.map(n => BOSSES.find(b => b.n
 function rlStartBonus(){
   const P = pbInit(); for (const k of PBALL.order) P.inv[k] = Math.max(P.inv[k] || 0, 1); renderPBallBar();
   match.pickup *= 1.4; match.speed *= 1.15;
-  match.miniBossQueue = [30]; if ((match.nextRefAt || 0) > 100) match.miniBossQueue.push(30 + (match.nextRefAt - 50) * (0.5 + Math.random() * 0.3));   // mini bosses desde el segundo 30
+  match.miniBossQueue = [8]; if ((match.nextRefAt || 0) > 100) match.miniBossQueue.push(8 + (match.nextRefAt - 30) * (0.5 + Math.random() * 0.3));   // mini bosses desde el principio
   if (match.base){ match.base.pickup = match.pickup; match.base.speed = match.speed; }
 }
 /* objeto inicial: 3 cartas de objeto boca abajo */
@@ -3900,16 +3902,16 @@ function rlItemPick(){
 /* ---- RandomLocke: curva (empieza jugable y se desmadra a los pocos minutos) ---- */
 function rlMin(){ return (typeof matchClock === 'function' ? matchClock() : 0) / 60; }
 function rlRamp(){ return Math.min(1, rlMin() / 6); }                     // 0 al principio → 1 en el minuto 6
-function rlSpawnK(){ return Math.min(2.9, 1.3 + 0.22 * rlMin()); }          // más rivales cada minuto (hasta ×2,1)
+function rlSpawnK(){ return Math.min(2.1, 1.15 + 0.12 * rlMin()); }         // algo más de rivales cada minuto (hasta ×2,1)
 
 /* ---- modificadores de boss ---- */
 const RL_MODS = {
-  furioso:   { name:'Furioso',   desc:'+30% de velocidad y ataca más a menudo', color:'#ff4a3c' },
-  blindado:  { name:'Blindado',  desc:'Lleva un escudo que hay que romper (y vuelve a la mitad de vida)', color:'#c3cbd6' },
-  gemelo:    { name:'Gemelo',    desc:'Sale dos veces, cada uno con la mitad de vida', color:'#ffd84a' },
+  furioso:   { name:'Furioso',   desc:'Algo más rápido y ataca un poco más a menudo', color:'#ff4a3c' },
+  blindado:  { name:'Blindado',  desc:'Empieza con un escudo ligero que hay que romper', color:'#c3cbd6' },
+  gemelo:    { name:'Gemelo',    desc:'Sale dos veces, cada uno con menos vida y menos daño', color:'#ffd84a' },
   invisible: { name:'Invisible', desc:'Desaparece a ratos', color:'#9fd2ff' },
 };
-function rlArmor(b){ b.shieldUntil = match.elapsed + 9999; b.shieldHp = b.maxHp * 0.3; b.shieldColor = '#c3cbd6'; }
+function rlArmor(b){ b.shieldUntil = match.elapsed + 9999; b.shieldHp = b.maxHp * ((match.bossesBeaten || 0) < 2 ? 0.07 : 0.12); b.shieldColor = '#c3cbd6'; }   // escudo ligero (más aún en los dos primeros bosses)
 function rlApplyBossMod(){
   const def = BOSSES[match.bossIdx]; if (!def) return;
   const keys = Object.keys(RL_MODS).filter(k => !(k === 'gemelo' && (def.group || def.final)) && !(k === 'invisible' && def.final));
@@ -3918,13 +3920,13 @@ function rlApplyBossMod(){
   const group = (match.bossGroup || []).slice();
   for (const b of group){
     b.rlMod = key;
-    if (key === 'furioso'){ b.speed *= 1.3; b.attackEvery /= 1.3; }
-    if (key === 'blindado'){ rlArmor(b); b.rlRearm = true; }
+    if (key === 'furioso'){ b.speed *= 1.12; b.attackEvery /= 1.12; }
+    if (key === 'blindado'){ rlArmor(b); }                          // ya no se vuelve a blindar a mitad de vida
     if (key === 'invisible'){ b.rlInvisAt = match.elapsed + 4; }
   }
   if (key === 'gemelo' && group[0]){
     const a = group[0];
-    a.hp /= 2; a.maxHp /= 2;
+    a.hp *= 0.45; a.maxHp *= 0.45; a.dmg *= 0.75; if (a.shotDmg) a.shotDmg *= 0.75;
     const t = Object.assign({}, a, { x: Math.min(ARENA_W - 80, a.x + 170), pending: [], hit: undefined, rlTwin: true, attackCd: (a.attackCd || 2) + 1 });
     if (a.ultList) t.ultList = a.ultList.slice();
     a.rlTwin = true;
@@ -3941,10 +3943,10 @@ spawnBoss = function(...a){ const r = _spawnBossBase.apply(this, a); if (rl()) r
 const _spawnEnemyBase = spawnEnemy;
 spawnEnemy = function(opts = {}){
   const e = _spawnEnemyBase.call(this, opts);
-  if (e && rl() && !match.inArena && !e.special && !opts.noElite && Math.random() < Math.min(0.16, 0.04 + 0.008 * rlMin())){
-    e.rlElite = true; e.hp *= 3.5; e.maxHp *= 3.5; e.dmg *= 1.5; if (e.shotDmg) e.shotDmg *= 1.5; e.speed *= 1.12; e.xp = Math.round(e.xp * 2);   // élite: mucho más duro
+  if (e && rl() && !match.inArena && !e.special && !opts.noElite && matchClock() >= RLK.eliteFrom && Math.random() < Math.min(0.10, 0.006 * (rlMin() - 1) + 0.01)){   // pocos élites al principio
+    e.rlElite = true; e.hp *= 2.6; e.maxHp *= 2.6; e.dmg *= 1.3; if (e.shotDmg) e.shotDmg *= 1.3; e.speed *= 1.08; e.xp = Math.round(e.xp * 2);   // élite: más duro
   }
-  if (e && rl() && !e.boss) e.speed *= 1.15 + 0.1 * rlRamp();   // rivales más rápidos
+  if (e && rl() && !e.boss) e.speed *= 1.08 + 0.07 * rlRamp();   // rivales algo más rápidos
   return e;
 };
 const _dropLootBase = dropLoot;
@@ -3954,7 +3956,7 @@ dropLoot = function(e){
     maybeDropItem(e, true);
     match.gems.push({ x: e.x + 10, y: e.y, xp: 0, kind: 'bag', coin: 15 + Math.floor(Math.random() * 16) });
     if (Math.random() < 0.2){ const P = pbInit(); P.ground.push({ k: PBALL.order[Math.floor(Math.random() * 4)], x: e.x - 12, y: e.y, t: 0, ph: Math.random() * 6 }); }
-    if (Math.random() < 0.02) dropTicket(e.x, e.y + 14, false);
+    if (Math.random() < 0.05) dropTicket(e.x, e.y + 14, Math.random() < 0.15);
     MS.cnt.rlElites = (MS.cnt.rlElites || 0) + 1; missionEvalOne(MISSION_BY_ID.rlElite); saveMissions();
   }
   return r;
@@ -3993,7 +3995,7 @@ function rlTick(dt){
   // bosses: invisibles a ratos y el blindaje vuelve a la mitad de vida
   for (const b of match.bossGroup || []){
     if (b.dead) continue;
-    if (b.rlMod === 'invisible' && match.elapsed >= (b.rlInvisAt || 0)){ b.invisUntil = match.elapsed + 2.2; b.rlInvisAt = match.elapsed + 6 + Math.random() * 2; }
+    if (b.rlMod === 'invisible' && match.elapsed >= (b.rlInvisAt || 0)){ b.invisUntil = match.elapsed + 1.5; b.rlInvisAt = match.elapsed + 8 + Math.random() * 3; }
     if (b.rlRearm && b.hp < b.maxHp * 0.5 && !(b.shieldUntil > match.elapsed)){ b.rlRearm = false; rlArmor(b); addFloatText(b.x, b.y - 50, '🛡️ ¡Blindaje!', '#c3cbd6'); }
   }
   // eventos (solo en el campo; se hacen más frecuentes con el tiempo)
@@ -4753,7 +4755,7 @@ function psBossStats(t){
   else { let i = 0; while (t > B[i + 1][0]) i++; const a = B[i], b = B[i + 1], q = (t - a[0]) / (b[0] - a[0]); hp = a[1] + (b[1] - a[1]) * q; dmg = a[2] + (b[2] - a[2]) * q; }
   const sc = 1 + t / 600, dsc = 1 + t / PS.bossDmgGrow;
   // (× bossK: nuestras supertécnicas suben bastante más que sus movimientos, así que con el tiempo los jefes aguantan algo más)
-  const bh = rl() ? rlCurve(1.55, 0.05) : 1, bd = rl() ? rlCurve(1.4, 0.04) : 1;
+  const bh = rl() ? rlCurve(RLK.bossHp, RLK.bossHpMin) : 1, bd = rl() ? rlCurve(RLK.bossDmg, RLK.bossDmgMin) : 1;
   return { hp: hp * 1.35 * sc * PS.kD * (1 + Math.max(0, t - 300) / PS.bossK) * bh, dmg: dmg * 1.2 * dsc * PS.kH * PS.nerf * bd, shot: dmg * 0.55 * dsc * PS.kH * PS.nerf * bd };
 }
 /* PokéSurvivor: experiencia para el siguiente nivel */
@@ -4856,11 +4858,11 @@ function applyVariant(enemy, kind, waveBoost, forced){
   if (!pick){
     for (const [key, V] of Object.entries(ENEMY_VARIANTS)){
       const rlv = rl() && (key === 'shooter' || key === 'lobber');   // RandomLocke: muchos más rivales que disparan
-      const from = rlv ? V.from * 0.35 : V.from;
+      const from = rlv ? V.from * 0.6 : V.from;
       if (matchClock() < from) continue;
       if (match.inArena && key !== 'shooter') continue;          // en el duelo solo tiradores
-      if (V.max && match.enemies.filter(o => o.variant === key && !o.dead).length >= Math.round(scaleT(V.max, V.from) * (rlv ? 1 + 1.2 * rlRamp() : 1))) continue;
-      if (Math.random() < scaleT(V.chance, V.from) * (rlv ? 1 + 0.9 * rlRamp() : 1)){ pick = key; break; }
+      if (V.max && match.enemies.filter(o => o.variant === key && !o.dead).length >= Math.round(scaleT(V.max, V.from) * (rlv ? 1 + 0.6 * rlRamp() : 1))) continue;
+      if (Math.random() < scaleT(V.chance, V.from) * (rlv ? 1 + 0.5 * rlRamp() : 1)){ pick = key; break; }
     }
   }
   if (!pick) return;
@@ -5518,7 +5520,7 @@ function updateGems(dt){
 const WHISTLE_XP = 1.2;          // la experiencia atraída con el silbato vale +20%
 function collectPickup(g){
   match.xp += (g.xp || 0) * effXpMult() * (g.whistle ? WHISTLE_XP : 1);
-  match.coinsEarned += (g.coin || 0) * (rl() ? RLK.coin + 0.3 * (match.bossesBeaten || 0) : 1);   // RandomLocke: monedas dobles (y más con cada boss)
+  match.coinsEarned += (g.coin || 0) * (rl() ? RLK.coin + RLK.coinBoss * (match.bossesBeaten || 0) : 1);   // RandomLocke: monedas ×3 (y más con cada boss)
   if (g.kind === 'bag') addFloatText(match.x, match.y - 30, `+${g.coin} monedas`, '#f2b705');
   if (g.ticket){
     if (g.purple){ match.ticketsEpicEarned = (match.ticketsEpicEarned || 0) + g.ticket; addFloatText(match.x, match.y - 40, '¡Ticket morado!', '#c48bff'); }
@@ -11484,13 +11486,15 @@ function updateWeather(dt){
   if (match.nextWeatherAt === undefined) match.nextWeatherAt = WEATHER.firstAt;
   const w = match.weather;
   if (w && !clockRunning()) w.until += dt;                 // el clima se congela con el reloj de partido
-  if (w && match.elapsed >= w.until){ match.weather = null; }
-  if (!match.weather && (rl() || (!match.inArena && matchClock() >= match.nextWeatherAt))){   // RandomLocke: siempre hay un temporal
+  if (rl() && match.rlWeatherInit !== true){ match.rlWeatherInit = true; match.nextWeatherAt = RLK.weatherFirst; }
+  if (w && match.elapsed >= w.until){ match.weather = null;
+    if (rl()){ const [a, b] = RLK.weatherRest; match.nextWeatherAt = matchClock() + a + Math.random() * (b - a); } }   // RandomLocke: descanso entre temporales
+  if (!match.weather && (rl() ? matchClock() >= match.nextWeatherAt : (!match.inArena && matchClock() >= match.nextWeatherAt))){   // RandomLocke: desde el segundo 15 y muchos más
     const keys = Object.keys(WEATHER.types).filter(k => k !== match.lastWeather);
     const key = keys[Math.floor(Math.random() * keys.length)];
     match.lastWeather = key;
     match.weather = { key, start: match.elapsed, until: match.elapsed + (rl() ? RLK.weatherDur : WEATHER.dur), parts: [], bolts: [], nextBolt: match.elapsed + 1.5 };
-    match.nextWeatherAt += WEATHER.every;
+    if (!rl()) match.nextWeatherAt += WEATHER.every;
     const T = WEATHER.types[key];
   }
   const hud = document.getElementById('hud-weather');
