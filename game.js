@@ -2553,6 +2553,9 @@ const MUSIC = {
   B.boss.bpm = 160;
 })();
 MUSIC.loadFiles();
+/* con el volumen a 0 una rampa exponencial hacia 0 lanza un error y cortaba el botón Jugar: se fuerza un mínimo */
+try { if (window.AudioParam){ const _er = AudioParam.prototype.exponentialRampToValueAtTime;
+  AudioParam.prototype.exponentialRampToValueAtTime = function(v, t){ if (!(Math.abs(v) >= 1e-4)) v = 1e-4; return _er.call(this, v, t); }; } } catch (e) {}
 /* ---- ajustes de sonido (se guardan en el navegador) ---- */
 const AUDIO_KEY = 'ss_audio';
 try { const a = JSON.parse(localStorage.getItem(AUDIO_KEY) || '{}'); if (a.sfx !== undefined) SFX.vol = a.sfx; if (a.music !== undefined) MUSIC.level = a.music; if (a.muted) SFX.muted = true; } catch (e) {}
@@ -2613,7 +2616,7 @@ document.getElementById('btn-play').onclick = () => {
   const c = CHARACTERS.find(ch => ch.id === state.selected);
   if (!c || playLock) return;
   playLock = true;
-  SFX.play('start');                                   // fanfarria + relámpago al empezar
+  try { SFX.play('start'); } catch (e) { console.error(e); }   // fanfarria + relámpago al empezar (un fallo de sonido no bloquea el partido)
   lightningFlash(() => { playLock = false; startMatch(c); });
 };
 document.getElementById('btn-roster').onclick = () => { renderRoster(); showScreen('roster'); };

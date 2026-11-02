@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=86">
+<link rel="stylesheet" href="style.css?v=87">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <div class="topbar-pill coin-pill ticket-pill" title="Tickets amarillos (sobre normal)"><img class="px-mini tk-ico" id="tk-ico-y" alt=""> <span id="ticket-badge">0</span></div>
       <div class="topbar-pill coin-pill ticket-pill ticket-epic" title="Tickets morados (sobre épico)"><img class="px-mini tk-ico" id="tk-ico-p" alt=""> <span id="ticket-badge-epic">0</span></div>
       <div class="topbar-right">
-        <button class="icon-btn" disabled title="Próximamente">💾</button>
+        <button id="btn-account" class="icon-btn" title="Cuenta">👤</button>
         <button class="icon-btn" disabled title="Próximamente">🔔</button>
         <button id="btn-fullscreen" class="icon-btn" title="Pantalla completa"></button>
         <button id="btn-settings-top" class="icon-btn" title="Ajustes">⚙️</button>
@@ -73,6 +73,10 @@
       <button id="btn-docs" class="menu-item">
         <span class="menu-ico">📖</span>
         <span class="menu-text"><b>Guía</b><small>Todo lo del juego explicado</small></span>
+      </button>
+      <button id="btn-ranking" class="menu-item">
+        <span class="menu-ico">🏆</span>
+        <span class="menu-text"><b>Ranking</b><small>Los mejores del mundo</small></span>
       </button>
       <button id="btn-missions" class="menu-item">
         <span class="menu-ico">🏅</span>
@@ -435,6 +439,28 @@
       <div class="pause-actions"><button id="btn-settings-close" class="btn btn-primary">Cerrar</button></div>
     </div>
   </div>
+  <!-- ===================== CUENTA ===================== -->
+  <div id="account-overlay" class="overlay hidden px-ov">
+    <div class="overlay-box settings-box acc-box">
+      <h3>Cuenta</h3>
+      <div id="acc-body"></div>
+      <div class="pause-actions"><button id="btn-account-close" class="btn btn-primary px-close">Cerrar</button></div>
+    </div>
+  </div>
+  <!-- ===================== RANKING GLOBAL ===================== -->
+  <div id="ranking-overlay" class="overlay hidden px-ov">
+    <div class="overlay-box settings-box rk-box">
+      <h3>Ranking</h3>
+      <div class="rk-tabs">
+        <button data-rk-mode="normal" class="acc-tab on">Normal</button><button data-rk-mode="rl" class="acc-tab">RandomLocke</button>
+        <span class="rk-sep"></span>
+        <button data-rk-metric="time" class="acc-tab on">Tiempo</button><button data-rk-metric="kills" class="acc-tab">Eliminaciones</button>
+      </div>
+      <div id="rk-list" class="rk-list"></div>
+      <p id="rk-me" class="rk-me"></p>
+      <div class="pause-actions"><button id="btn-ranking-close" class="btn btn-primary px-close">Cerrar</button></div>
+    </div>
+  </div>
   <!-- ====== Aviso legal y privacidad ====== -->
   <div id="legal-overlay" class="overlay hidden">
     <div class="overlay-box legal-box">
@@ -454,7 +480,8 @@
         <h4>Licencia del código</h4>
         <p>El código propio del juego se publica bajo <b>PolyForm Noncommercial 1.0.0</b>: se puede usar, estudiar y modificar, pero no para ganar dinero. La licencia no cubre el material de <i>Inazuma Eleven</i> ni de terceros.</p>
         <h4>Privacidad</h4>
-        <p>El juego <b>no recoge ni envía datos personales</b>: no hay cuentas, analítica, publicidad ni seguimiento. Tu partida (monedas, tickets, jugadores desbloqueados, mejoras y volumen) se guarda <b>solo en tu navegador</b> (almacenamiento local) y no sale de tu dispositivo.</p>
+        <p>El juego no tiene analítica, publicidad ni seguimiento. <b>Sin cuenta</b>, tu partida (monedas, tickets, jugadores desbloqueados, mejoras y volumen) se guarda <b>solo en tu navegador</b> (almacenamiento local) y no sale de tu dispositivo.</p>
+        <p><b>Si creas una cuenta</b> (opcional), guardamos tu nombre de usuario, tu contraseña cifrada (o, si entras con Google, tu email de Google), una copia de tu partida y tus récords. Se guardan en Supabase, en servidores de la Unión Europea, y solo sirven para que recuperes tu partida en cualquier dispositivo y para el ranking. En el ranking global solo se muestra tu nombre de usuario, el jugador que usaste y tus marcas. Puedes borrar tu cuenta y todos sus datos cuando quieras desde Cuenta → Borrar cuenta.</p>
         <p>Al abrir el juego, tu navegador descarga las tipografías de Google Fonts, por lo que Google recibe datos técnicos como tu dirección IP, según su propia política de privacidad. Si juegas desde una web alojada (por ejemplo GitHub Pages), el alojamiento también puede registrar datos técnicos de acceso.</p>
         <p>Puedes borrar tu partida cuando quieras borrando los datos de este sitio en tu navegador, o con este botón:</p>
         <button id="btn-wipe-save" class="btn btn-ghost btn-red about-btn">Borrar mi partida guardada</button>
@@ -489,6 +516,7 @@
   </div>
 
   <script src="players.js?v=15"></script>
-  <script src="game.js?v=86"></script>
+  <script src="game.js?v=88"></script>
+  <script src="account.js?v=1"></script>
 </body>
 </html>
