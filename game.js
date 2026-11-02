@@ -2561,6 +2561,7 @@ function syncSettingsUI(){
   const m = document.getElementById('vol-music'), f = document.getElementById('vol-sfx'), mu = document.getElementById('vol-mute');
   if (!m) return;
   m.value = Math.round(MUSIC.level * 100); f.value = Math.round(SFX.vol * 100); mu.checked = SFX.muted;
+  const lo = document.getElementById('gfx-low'), fp = document.getElementById('gfx-fps'); if (lo) lo.checked = GFX.low; if (fp) fp.checked = GFX.fps;
   document.getElementById('vol-music-val').textContent = m.value + '%'; document.getElementById('vol-sfx-val').textContent = f.value + '%';
 }
 function openSettings(){
@@ -2576,6 +2577,9 @@ function closeSettings(){ document.getElementById('settings-overlay').classList.
   f.oninput = () => { SFX.vol = f.value / 100; syncSettingsUI(); saveAudio(); };
   f.onchange = () => SFX.play('select');                      // se oye cómo suena con el volumen nuevo
   mu.onchange = () => { SFX.muted = mu.checked; saveAudio(); };
+  const lo = document.getElementById('gfx-low'), fp = document.getElementById('gfx-fps');
+  if (lo){ lo.onchange = () => { GFX.low = lo.checked; saveGfx(); resizeCanvas(); if (GFX.low && typeof fxState !== 'undefined') fxState.embers.length = Math.min(fxState.embers.length, 120); }; }
+  if (fp){ fp.onchange = () => { GFX.fps = fp.checked; saveGfx(); }; }
   for (const id of ['btn-settings', 'btn-settings-top', 'btn-settings-pause']){ const b = document.getElementById(id); if (b) b.onclick = openSettings; }
   document.getElementById('btn-settings-close').onclick = closeSettings;
   const legal = document.getElementById('legal-overlay');
@@ -4208,6 +4212,12 @@ function pxEnd(){
   ctx.imageSmoothingEnabled = true;
 }
 let W, H;
+/* modo PC de bajo rendimiento: menos resolución interna, sin números de daño y menos partículas/animaciones decorativas */
+const GFX_KEY = 'ss_gfx';
+const GFX = { low: false, fps: false };
+try { Object.assign(GFX, JSON.parse(localStorage.getItem(GFX_KEY) || '{}')); } catch (e) {}
+function gfxRes(){ return GFX.low ? 0.67 : 1; }                    // escala de los píxeles reales del lienzo
+function saveGfx(){ try { localStorage.setItem(GFX_KEY, JSON.stringify({ low: GFX.low, fps: GFX.fps })); } catch (e) {} }
 const VIEW_H = 920, VIEW_MAX_ASPECT = 2.2;   // alto fijo de la vista (en píxeles del juego) y proporción máxima
 function resizeCanvas(){
   // la vista del campo es SIEMPRE del mismo tamaño (VIEW_H de alto): el zoom del navegador o una pantalla
@@ -4215,8 +4225,10 @@ function resizeCanvas(){
   const cw = canvas.clientWidth, ch = canvas.clientHeight;
   if (!cw || !ch){ W = canvas.width = cw; H = canvas.height = ch; return; }
   H = VIEW_H; W = Math.round(VIEW_H * Math.min(VIEW_MAX_ASPECT, cw / ch));
-  if (canvas.width !== W) canvas.width = W;
-  if (canvas.height !== H) canvas.height = H;
+  const R = gfxRes(), PW = Math.round(W * R), PH = Math.round(H * R);
+  if (canvas.width !== PW) canvas.width = PW;
+  if (canvas.height !== PH) canvas.height = PH;
+  ctxMain.setTransform(R, 0, 0, R, 0, 0);
 }
 window.addEventListener('resize', resizeCanvas);
 // El campo se reajusta cuando el panel de estadísticas se abre o se cierra
@@ -4973,10 +4985,21 @@ function loop(now){
   if (match.over) return;           // fin de partida: el bucle se detiene aquí
   try { render(); if (match.dying) drawDeathFx(); if (match.coinFlip) drawCoinFlip(); }
   catch (err){ console.error('[render]', err); }
-  finally { ctx = ctxMain; ctx.restore && ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
+  finally { ctx = ctxMain; const R = gfxRes(); ctx.restore && ctx.setTransform(R, 0, 0, R, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
+  if (GFX.fps) drawFpsCounter(dt);
   rafId = requestAnimationFrame(loop);
 }
 
+/* contador de FPS (opcional, en Ajustes) */
+const fpsMeter = { acc: 0, n: 0, val: 0 };
+function drawFpsCounter(dt){
+  fpsMeter.acc += dt; fpsMeter.n++;
+  if (fpsMeter.acc >= 0.5){ fpsMeter.val = Math.round(fpsMeter.n / fpsMeter.acc); fpsMeter.acc = 0; fpsMeter.n = 0; }
+  ctx.save(); ctx.font = 'bold 18px monospace'; ctx.textAlign = 'left';
+  const fx = W - 104, fy = H - 36; ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(fx, fy, 92, 26);
+  ctx.fillStyle = fpsMeter.val >= 50 ? '#8be28f' : fpsMeter.val >= 30 ? '#ffe14a' : '#ff6b5a'; ctx.fillText(fpsMeter.val + ' FPS', fx + 6, fy + 19);
+  ctx.restore();
+}
 /* ---- muerte: la pantalla pasa a blanco y negro, el jugador cae a cámara lenta y sale el fin del partido ---- */
 const DEATH_TIME = 1.6;
 function startDeath(){
@@ -6055,7 +6078,6 @@ function updateBossMarks(dt){
     }
   }
   match.bossMarks = match.bossMarks.filter(m => !m.done);
-  if (match.pxBooms){ for (const b of match.pxBooms) b.t += dt; match.pxBooms = match.pxBooms.filter(b => b.t < PXBOOM_DUR); }
 }
 function bossInvisible(b){ return b && b.invisUntil > match.elapsed; }
 
@@ -10010,9 +10032,9 @@ function drawFieldAmbient(camX, camY){
     if (wx < -500 || wx > W + 500 || wy < -300 || wy > H + 300) continue;
     const gr = ctx.createRadialGradient(wx, wy, 0, wx, wy, 420);
     gr.addColorStop(0, 'rgba(30,15,0,0.16)'); gr.addColorStop(0.6, 'rgba(30,15,0,0.09)'); gr.addColorStop(1, 'rgba(30,15,0,0)');
-    ctx.setTransform(1, 0, 0, 0.55, 0, wy * 0.45);                    // sombra achatada
+    const R = gfxRes(); ctx.setTransform(R, 0, 0, 0.55 * R, 0, wy * 0.45 * R);   // sombra achatada
     ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(wx, wy, 420, 0, Math.PI * 2); ctx.fill();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.setTransform(R, 0, 0, R, 0, 0);
   }
   ctx.restore();
   // matas de hierba seca que se mecen (solo las visibles)
@@ -10756,37 +10778,6 @@ function drawPxBall(x, y, s, fr, col){
     }
   }
 }
-/* explosión arcade del balón del lanzador: destello blanco, anillo de bloques que se abre, cascotes y estrellitas */
-const PXBOOM_DUR = 0.6;
-/* explosión arcade estilo Inazuma: destello, bola de fuego en bloques con borde negro, estrella de chispas y humo */
-function pxDisk(cx, cy, R, col, B, seed, rough){
-  ctx.fillStyle = col;
-  for (let y = -R; y <= R; y += B) for (let x = -R; x <= R; x += B){
-    const d = Math.hypot(x, y), n = rough ? Math.sin(seed * 7 + Math.atan2(y, x) * 5) * rough : 0;
-    if (d <= R + n) ctx.fillRect(Math.round(cx + x - B / 2), Math.round(cy + y - B / 2), B, B);
-  }
-}
-function drawPxBooms(camX, camY){
-  for (const b of (match.pxBooms || [])){
-    const k = b.t / PXBOOM_DUR, x = Math.round(b.x + camX), y = Math.round(b.y + camY), B = b.r > 60 ? 6 : 4;
-    const hot = shadeHex(b.col, 0.35), deep = shadeHex(b.col, -0.45);
-    ctx.save();
-    // humo: bloques grises que suben y se deshacen
-    if (k > 0.35){ const q = (k - 0.35) / 0.65; ctx.globalAlpha = 0.55 * (1 - q);
-      for (let i = 0; i < 6; i++){ const a = b.seed + i * 1.05, d = b.r * (0.35 + q * 0.6); pxDisk(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.6 - q * 30, Math.max(B, b.r * 0.22 * (1 - q * 0.4)), i % 2 ? '#7d8794' : '#4a505a', B, 0, 0); } }
-    ctx.globalAlpha = 1;
-    // bola de fuego: crece rápido y se apaga
-    const grow = Math.min(1, k / 0.22), fade = k < 0.55 ? 1 : 1 - (k - 0.55) / 0.45, R = b.r * (0.45 + 0.55 * grow) * (0.85 + 0.15 * fade);
-    if (fade > 0.02){
-      ctx.globalAlpha = Math.min(1, fade * 1.3);
-      pxDisk(x, y, R + B, '#1b1d26', B, b.seed, B * 1.2);               // borde negro
-      pxDisk(x, y, R, deep, B, b.seed, B * 1.2);
-      pxDisk(x, y, R * 0.78, b.col, B, b.seed + 1, B);
-      pxDisk(x, y, R * 0.55, k < 0.3 ? '#fff2a8' : '#ffe14a', B, b.seed + 2, B * 0.6);   // centro caliente (sin cuadraditos blancos)
-    }
-    ctx.restore();
-  }
-}
 /* balones de la órbita (los de una parte; con dos órbitas mezcladas se llama una vez por cada una) */
 function drawOrbitBalls(camX, camY, elColor){
   const orbs = orbPositions();
@@ -10965,7 +10956,8 @@ const fxState = { embers: [], lastT: 0 };
 function isFireFx(el){ const P = FX_PAL[el]; if (P) FIRE = P; return !!P; }
 /* brasas: partículas que suben y se apagan (aura que deja el fuego) */
 function emitEmber(x, y, o = {}){
-  if (fxState.embers.length > 500) return;
+  if (fxState.embers.length > (GFX.low ? 120 : 500)) return;
+  if (GFX.low){ if (Math.random() < 0.7) return; o = Object.assign({}, o, { noAccent: true }); }   // bajo rendimiento: 3 de cada 10 brasas
   fxState.embers.push({ x, y, vx: (o.vx || 0) + (Math.random() - 0.5) * (o.spread || 30), vy: (o.vy || 0) - 20 - Math.random() * 40,
     life: o.life || 0.5 + Math.random() * 0.4, dur: 0, r: o.r || 2 + Math.random() * 3, P: FIRE, rot: Math.random() * 6, spin: (Math.random() - 0.5) * 8 });
   const e = fxState.embers[fxState.embers.length - 1];
@@ -11075,7 +11067,7 @@ function drawFireBall(x, y, r, vx, vy, trail = 4, flick = 0){
   ctx.save(); ctx.globalCompositeOperation = FIRE.blend;
   // estela: círculos que se encogen hacia atrás, con parpadeo
   const L = sp * trail;
-  for (let i = 6; i >= 1; i--){
+  for (let i = 6; i >= 1; i -= GFX.low ? 2 : 1){
     const f = i / 6, wob = Math.sin(t + i * 1.7) * r * 0.25;
     const tx = x - ux * L * f - uy * wob, ty = y - uy * L * f + ux * wob;
     ctx.globalAlpha = 0.55 * (1 - f) + 0.1;
@@ -11083,8 +11075,10 @@ function drawFireBall(x, y, r, vx, vy, trail = 4, flick = 0){
     ctx.beginPath(); ctx.arc(tx, ty, r * (1.15 - f * 0.75), 0, Math.PI * 2); ctx.fill();
   }
   // halo
-  const gr = ctx.createRadialGradient(x, y, 0, x, y, r * 2.2);
-  gr.addColorStop(0, hexA(FIRE.mid, 0.9)); gr.addColorStop(0.5, hexA(FIRE.mix ? FIRE.accent : FIRE.hot, 0.45)); gr.addColorStop(1, hexA(FIRE.mix ? FIRE.accent2 : FIRE.deep, 0));
+  let gr;
+  if (GFX.low){ gr = hexA(FIRE.mix ? FIRE.accent : FIRE.hot, 0.3); }   // bajo rendimiento: halo plano
+  else { gr = ctx.createRadialGradient(x, y, 0, x, y, r * 2.2);
+    gr.addColorStop(0, hexA(FIRE.mid, 0.9)); gr.addColorStop(0.5, hexA(FIRE.mix ? FIRE.accent : FIRE.hot, 0.45)); gr.addColorStop(1, hexA(FIRE.mix ? FIRE.accent2 : FIRE.deep, 0)); }
   ctx.globalAlpha = 1; ctx.fillStyle = gr;
   ctx.beginPath(); ctx.arc(x, y, r * 2.2, 0, Math.PI * 2); ctx.fill();
   ctx.restore();
@@ -11451,8 +11445,8 @@ function drawBlastsGround(camX, camY){
     if (!(f.fill && f.fixed)) continue;
     const progress = 1 - f.life / f.dur, alpha = Math.max(0, f.life / f.dur);
     ctx.save(); ctx.beginPath(); ctx.arc(f.x + camX, f.y + camY, f.maxR * Math.min(1, progress * 2.5), 0, Math.PI*2);
-    ctx.fillStyle = f.color; ctx.globalAlpha = alpha * 0.45; ctx.fill();
-    ctx.globalAlpha = alpha; ctx.strokeStyle = f.color || '#f2b705'; ctx.lineWidth = 7; ctx.stroke(); ctx.restore();
+    ctx.fillStyle = f.color; ctx.globalAlpha = alpha * 0.22; ctx.fill();          // translúcida: los rivales se siguen viendo
+    ctx.globalAlpha = alpha * 0.6; ctx.strokeStyle = f.color || '#f2b705'; ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
   }
 }
 /* meteorito que cae (Chut granada / Triángulo Z de fuego) */
@@ -11517,12 +11511,12 @@ function drawWeather(){
   const t = match.elapsed, k = Math.min(1, (t - w.start) / 2, (w.until - t) / 2);   // entra y sale suave
   if (k <= 0) return;
   const P = w.parts, rnd = Math.random, S = FX_PIXEL;          // S: tamaño de un píxel de la capa arcade
-  const spawn = (n, f) => { while (P.length < n) P.push(f()); };
+  const spawn = (n, f) => { n = GFX.low ? Math.round(n * 0.35) : n; if (P.length > n) P.length = n; while (P.length < n) P.push(f()); };
   const dt = Math.max(0, Math.min(0.1, t - (w.lastT ?? t))); w.lastT = t;
   pxBegin();
   ctx.save();
   const tint = (col, a) => { ctx.globalAlpha = a * k; ctx.fillStyle = col; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; };
-  const vignette = (col, a) => { const g = ctx.createRadialGradient(W/2, H/2, Math.min(W, H) * 0.25, W/2, H/2, Math.max(W, H) * 0.7); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, col); ctx.globalAlpha = a * k; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; };
+  const vignette = (col, a) => { if (GFX.low) return; const g = ctx.createRadialGradient(W/2, H/2, Math.min(W, H) * 0.25, W/2, H/2, Math.max(W, H) * 0.7); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, col); ctx.globalAlpha = a * k; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; };
   switch (w.key){
     case 'heat': {                                                    // mapa rojizo, calima que sube y brasas
       tint('#ff3a10', 0.10 + 0.03 * Math.sin(t * 2));
@@ -11617,15 +11611,16 @@ const BODY_SCALE = 1.6;          // cuerpo nuevo (22x35): misma altura en pantal
 function render(){
   const RW = W, RH = H;
   W = RW / CAM_ZOOM; H = RH / CAM_ZOOM;
-  ctxMain.setTransform(CAM_ZOOM, 0, 0, CAM_ZOOM, 0, 0);
+  const R = gfxRes();
+  ctxMain.setTransform(CAM_ZOOM * R, 0, 0, CAM_ZOOM * R, 0, 0);
   try { renderWorld(); }
-  finally { W = RW; H = RH; ctxMain.setTransform(1, 0, 0, 1, 0, 0); }
+  finally { W = RW; H = RH; ctxMain.setTransform(R, 0, 0, R, 0, 0); }
 }
 function renderWorld(){
   ctx.clearRect(0,0,W,H);
   const camX = W/2 - match.x, camY = H/2 - match.y;
   const elColor = getElement(match.element).color;
-  if (match.inArena) drawArena(camX, camY); else { drawPitch(camX, camY); drawOutsideAmbient(camX, camY, 1 / 60); drawFieldAmbient(camX, camY); drawThemeAura(); }
+  if (match.inArena) drawArena(camX, camY); else { drawPitch(camX, camY); if (!GFX.low){ drawOutsideAmbient(camX, camY, 1 / 60); drawFieldAmbient(camX, camY); } drawThemeAura(); }
   if (rl()) drawRlTint();   // RandomLocke: campo rojizo
 
   // gemas
@@ -12146,7 +12141,6 @@ function renderWorld(){
     const ico = m.kind === 'fist' ? '👊' : m.kind === 'rock' ? '🪨' : '🚀', sz = m.big ? 34 : 26;
     ctx.font = `${sz}px sans-serif`; ctx.fillText(ico, mx - sz / 2, my - 30 - (1 - k) * 220);
   }
-  drawPxBooms(camX, camY);                               // explosiones arcade de los balones de los lanzadores
   drawBossKOs(camX, camY);                               // K.O. de los bosses
   // Talisman y Cloak oscurecen el mapa: solo ves un círculo alrededor de tu jugador
   // borde rojo de la pantalla cuando te quitan vida
@@ -12343,13 +12337,14 @@ function showBanner(text, sub, color, big = false, bottom = false){
 
 /* aviso breve "Ventaja / Resiste" sobre un enemigo (no más de uno cada 0.7 s por enemigo) */
 function showElementHint(e, mult){
-  if (mult === 1 || (e.hintCd || 0) > match.elapsed) return;
+  if (mult === 1 || GFX.low || (e.hintCd || 0) > match.elapsed) return;
   e.hintCd = match.elapsed + 0.7;
   if (mult > 1) addFloatText(e.x, e.y - 30, '▲ Ventaja', '#8be28f');
   else          addFloatText(e.x, e.y - 30, '▼ Resiste', '#9fc8ad');
 }
 /* número de daño pequeño (blanco) en cada golpe; se agrupan si golpeas muy seguido al mismo rival */
 function addDamageText(e, hit){
+  if (GFX.low) return;                                    // bajo rendimiento: sin números de daño
   const t = e._dmgText;
   if (t && t.life > 0.55 && match.texts.includes(t)){ t.sum += hit; t.text = String(Math.round(t.sum)); return; }
   if (match.texts.length > 90) return;

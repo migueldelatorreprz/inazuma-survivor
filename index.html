@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=81">
+<link rel="stylesheet" href="style.css?v=83">
 </head>
 <body>
 
@@ -403,6 +404,12 @@
         <label class="set-row set-check"><input id="vol-mute" type="checkbox"><span>Silenciar todo (tecla M)</span></label>
       </section>
       <section class="sp-box">
+        <h4 class="sp-title">Rendimiento</h4>
+        <label class="set-row set-check"><input id="gfx-low" type="checkbox"><span>Modo PC de bajo rendimiento</span></label>
+        <p class="set-note">Baja la resolución interna, quita los números de daño y reduce partículas, clima y decoración animada para que el juego vaya más fluido.</p>
+        <label class="set-row set-check"><input id="gfx-fps" type="checkbox"><span>Mostrar FPS</span></label>
+      </section>
+      <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
         <ul class="keys-list">
           <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span>Moverse (el disparo es automático)</li>
@@ -481,6 +488,6 @@
   </div>
 
   <script src="players.js?v=14"></script>
-  <script src="game.js?v=81"></script>
+  <script src="game.js?v=83"></script>
 </body>
 </html>
