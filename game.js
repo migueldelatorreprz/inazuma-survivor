@@ -10724,7 +10724,7 @@ function drawNotebookRings(){
 
 /* granada del lanzador (estilo arcade): diana de bloques que se va llenando a saltos, aviso "!" que parpadea
    y balón-granada pixel que cae en parábola con su sombra */
-function drawLobZone(m, k, mx, my, camX, camY){   // mismo estilo que Chut granada: zona con borde discontinuo y balón que cae
+function drawLobGround(m, k, mx, my){   // mismo estilo que Chut granada: zona con borde discontinuo
   const col = m.color || '#ff4a3c';
   ctx.save();
   ctx.beginPath(); ctx.arc(mx, my, m.r, 0, Math.PI * 2);
@@ -10732,6 +10732,9 @@ function drawLobZone(m, k, mx, my, camX, camY){   // mismo estilo que Chut grana
   ctx.globalAlpha = 0.9; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -match.elapsed * 30; ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
   ctx.beginPath(); ctx.arc(mx, my, Math.max(2, m.r * (1 - k)), 0, Math.PI * 2); ctx.strokeStyle = shadeHex(col, 0.35); ctx.lineWidth = 2; ctx.stroke();
   ctx.restore();
+}
+function drawLobZone(m, k, mx, my, camX, camY){
+  const col = m.color || '#ff4a3c';
   // el balón en el aire (parábola desde el lanzador) con halo de su color
   const sx = (m.fromX ?? m.x) + camX, sy = (m.fromY ?? m.y) + camY;
   const bx = sx + (mx - sx) * k, gy = sy + (my - sy) * k, h = Math.sin(Math.PI * k) * 170 + (1 - k) * 20;
@@ -11421,8 +11424,7 @@ function drawFireTriangle(tr, camX, camY){
   ctx.restore();
   if (Math.random() < 0.6){ const s = Math.floor(Math.random() * 3), f = Math.random(); const [ax, ay] = tr.pts[s], [bx, by] = tr.pts[(s + 1) % 3]; emitEmber(ax + (bx - ax) * f, ay + (by - ay) * f); }
 }
-/* meteorito que cae (Chut granada / Triángulo Z de fuego) */
-function drawFireMeteor(b, camX, camY){
+function drawFireMeteorGround(b, camX, camY){
   const k = Math.min(1, b.t / b.dur), bx = b.x + camX, by = b.y + camY;
   // zona de impacto: anillo de fuego que se cierra
   ctx.save();
@@ -11431,6 +11433,31 @@ function drawFireMeteor(b, camX, camY){
   ctx.globalAlpha = 0.9; ctx.lineWidth = 3; ctx.strokeStyle = FIRE.mix ? FIRE.accent : FIRE.hot; ctx.setLineDash([10, 6]); ctx.lineDashOffset = -match.elapsed * 40; ctx.stroke(); ctx.setLineDash([]);
   ctx.beginPath(); ctx.arc(bx, by, b.r * (1 - k), 0, Math.PI * 2); ctx.strokeStyle = FIRE.core; ctx.lineWidth = 2; ctx.stroke();
   ctx.restore();
+}
+/* capa de suelo: zonas de bombas (propias y de lanzadores) y sus explosiones, debajo de los rivales */
+function drawBlastsGround(camX, camY){
+  const elColor = getElement(match.element).color;
+  for (const b of match.bombs){
+    if (b.pal){ FIRE = b.pal; drawFireMeteorGround(b, camX, camY); continue; }
+    if (isFireFx(b.fx || b.element)){ drawFireMeteorGround(b, camX, camY); continue; }
+    const k = Math.min(1, b.t / b.dur), bx = b.x + camX, by = b.y + camY;
+    ctx.save(); ctx.beginPath(); ctx.arc(bx, by, b.r, 0, Math.PI*2);
+    ctx.globalAlpha = 0.08 + 0.14*k; ctx.fillStyle = elColor; ctx.fill();
+    ctx.globalAlpha = 0.85; ctx.setLineDash([8, 6]); ctx.strokeStyle = elColor; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+    ctx.restore();
+  }
+  for (const m of (match.bossMarks || [])) if (m.kind === 'lob') drawLobGround(m, m.t / m.dur, m.x + camX, m.y + camY);
+  for (const f of match.effects){
+    if (!(f.fill && f.fixed)) continue;
+    const progress = 1 - f.life / f.dur, alpha = Math.max(0, f.life / f.dur);
+    ctx.save(); ctx.beginPath(); ctx.arc(f.x + camX, f.y + camY, f.maxR * Math.min(1, progress * 2.5), 0, Math.PI*2);
+    ctx.fillStyle = f.color; ctx.globalAlpha = alpha * 0.45; ctx.fill();
+    ctx.globalAlpha = alpha; ctx.strokeStyle = f.color || '#f2b705'; ctx.lineWidth = 7; ctx.stroke(); ctx.restore();
+  }
+}
+/* meteorito que cae (Chut granada / Triángulo Z de fuego) */
+function drawFireMeteor(b, camX, camY){
+  const k = Math.min(1, b.t / b.dur), bx = b.x + camX, by = b.y + camY;
   // bola de fuego bajando en diagonal
   const h = (1 - k) * (1 - k) * 320, mx = bx - h * 0.35, my = by - h;
   drawFireBall(mx, my, b.big ? 18 : 13, 0.35, 1, 34, b.x);
@@ -11786,6 +11813,7 @@ function renderWorld(){
   if (match.inArena && (match.towers || []).length){ pxBegin(); drawByronArena(camX, camY); pxEnd(); }   // Aphrodite: Hora celestial y torres
   if (match.mark) drawMark(camX, camY);                                       // Mark Evans
   drawPBallsGround(camX, camY);                                               // balones de poder en el suelo
+  drawBlastsGround(camX, camY);                                               // zonas y explosiones de bombas: por debajo de los rivales
 
   // enemigos
   for (const e of match.enemies){
@@ -11915,18 +11943,6 @@ function renderWorld(){
     if (isFireFx(b.fx || b.element)){ drawFireMeteor(b, camX, camY); continue; }
     const k = Math.min(1, b.t / b.dur);
     const bx = b.x+camX, by = b.y+camY;
-    ctx.beginPath();
-    ctx.arc(bx, by, b.r, 0, Math.PI*2);
-    ctx.globalAlpha = 0.08 + 0.14*k;
-    ctx.fillStyle = elColor;
-    ctx.fill();
-    ctx.globalAlpha = 0.85;
-    ctx.setLineDash([8, 6]);
-    ctx.strokeStyle = elColor;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.globalAlpha = 1;
     const br = b.big ? 16 : 12, fy = by - (1-k)*(1-k)*320;
     ctx.beginPath(); ctx.arc(bx, fy, br + 6, 0, Math.PI*2); ctx.globalAlpha = 0.35; ctx.fillStyle = getElement(b.element).color; ctx.fill(); ctx.globalAlpha = 1;
     drawSoccerBall(bx, fy, br, match.elapsed * 10 + b.x);
@@ -12003,6 +12019,7 @@ function renderWorld(){
 
   // ondas y explosiones
   for (const f of match.effects){
+    if (f.fill && f.fixed) continue;                            // ya pintada debajo de los rivales
     const progress = 1 - f.life / f.dur;
     const alpha = f.life / f.dur;
     const cx = f.fixed ? f.x+camX : match.x+camX;
