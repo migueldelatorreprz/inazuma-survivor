@@ -11,7 +11,7 @@ const ACC_KEY = 'is_auth';                      // sesión guardada (no empieza 
 /* email interno de las cuentas de usuario y contraseña: Supabase solo acepta dominios reales, así que se usa una
    subdirección del Gmail del proyecto (nunca se envía nada: la confirmación por email está desactivada) */
 const accMail = u => `migueldelatorreprz+is_${u.toLowerCase()}@gmail.com`;
-const ACC_VERSION = 'v89';
+const ACC_VERSION = 'v94';
 const ACC_DEV = (typeof DEV_ULTS !== 'undefined' && DEV_ULTS) || (typeof DEV_INFINITE !== 'undefined' && DEV_INFINITE) || (typeof DEV_UNLOCK !== 'undefined' && DEV_UNLOCK);
 const ACC_SLOT = ACC_DEV ? 'test' : 'main';     // hueco de la partida en la nube
 const ACC_SKIP = new Set(['ss_gfx']);           // ajustes que dependen del ordenador
@@ -180,8 +180,10 @@ async function accSubmitRun(){
   if (!match || match.rlSetup || ACC_DEV) return null;
   if (!ACC.session) return null;
   if (matchClock() < 10) return null;                  // partidos de menos de 10 s no cuentan
+  const run = match.accRun ? await match.accRun.catch(() => null) : null;
+  if (!run) throw new Error('el partido empezó sin sesión iniciada');
   await accEnsure();
-  const res = await sbRpc('submit_run', { p_mode: match.rl ? 'rl' : 'normal', p_time: Math.max(0, Math.floor(matchClock())), p_kills: match.kills || 0,
+  const res = await sbRpc('submit_run', { p_run: run, p_mode: match.rl ? 'rl' : 'normal', p_time: Math.max(0, Math.floor(matchClock())), p_kills: match.kills || 0,
     p_bosses: match.bossesBeaten || 0, p_char: match.charDef ? match.charDef.id : null, p_version: ACC_VERSION });
   const rank = await sbRpc('my_rank', { p_mode: match.rl ? 'rl' : 'normal', p_metric: 'time' }).catch(() => null);
   return { res, rank };
@@ -203,6 +205,18 @@ if (typeof endMatch === 'function'){
       }).catch(e => { line.innerHTML = `<small>No se pudo subir al ranking (${e.message})</small>`; }); }
     box.appendChild(line);
     const b = line.querySelector('.acc-run-btn'); if (b) b.onclick = () => accOpen();
+    return r;
+  };
+}
+/* al empezar cada partido el servidor da un "ticket de partido" (con su hora real de inicio) */
+if (typeof startMatch === 'function'){
+  const _startMatchAcc = startMatch;
+  startMatch = function(...a){
+    const r = _startMatchAcc.apply(this, a);
+    if (match && ACC.session && !ACC_DEV){
+      const mode = match.rl ? 'rl' : 'normal';
+      match.accRun = accEnsure().then(() => sbRpc('start_run', { p_mode: mode })).catch(() => null);
+    }
     return r;
   };
 }
