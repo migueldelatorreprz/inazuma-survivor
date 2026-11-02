@@ -11,7 +11,7 @@ const ACC_KEY = 'is_auth';                      // sesión guardada (no empieza 
 /* email interno de las cuentas de usuario y contraseña: Supabase solo acepta dominios reales, así que se usa una
    subdirección del Gmail del proyecto (nunca se envía nada: la confirmación por email está desactivada) */
 const accMail = u => `migueldelatorreprz+is_${u.toLowerCase()}@gmail.com`;
-const ACC_VERSION = 'v94';
+const ACC_VERSION = 'v95';
 const ACC_DEV = (typeof DEV_ULTS !== 'undefined' && DEV_ULTS) || (typeof DEV_INFINITE !== 'undefined' && DEV_INFINITE) || (typeof DEV_UNLOCK !== 'undefined' && DEV_UNLOCK);
 const ACC_SLOT = ACC_DEV ? 'test' : 'main';     // hueco de la partida en la nube
 const ACC_SKIP = new Set(['ss_gfx']);           // ajustes que dependen del ordenador
@@ -317,6 +317,9 @@ function accClose(){ const ov = document.getElementById('account-overlay'); if (
 
 /* ---------- arranque ---------- */
 (async function accInit(){
+  if (typeof GUARD !== 'undefined' && GUARD.result !== 'ok') setTimeout(() => alert(GUARD.result === 'restored'
+    ? 'Se ha detectado que la partida guardada se modificó desde fuera del juego. Se ha recuperado la última copia válida.'
+    : 'Se ha detectado que la partida guardada se modificó desde fuera del juego y no había copia válida: la partida empieza de nuevo.'), 600);
   const b = document.getElementById('btn-account'); if (b){ b.disabled = false; b.onclick = accOpen; }
   const np = document.getElementById('acc-name-pill'); if (np) np.onclick = accOpen;
   const rb = document.getElementById('btn-ranking'); if (rb) rb.onclick = rankOpen;
