@@ -3242,3 +3242,7 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 .upgrade-option .rev-bonus{ display:flex; align-items:center; gap:6px; margin-top:6px; padding:4px 8px; border-radius:6px;
   background: rgba(63,143,224,.18); border:1px solid rgba(159,210,255,.45); color:#cfe8ff; font-size:12.5px; font-weight:600; text-align:left; }
 .upgrade-option .rev-bonus .px-mini{ flex:none; }
+/* RandomLocke bloqueado */
+.menu-item.menu-rl.rl-locked{ filter: grayscale(.85) brightness(.75); cursor: not-allowed; }
+.menu-item.menu-rl.rl-locked:hover{ filter: grayscale(.85) brightness(.8); }
+#btn-restart kbd{ font: inherit; font-size: .8em; padding: 0 5px; margin-left: 6px; border-radius: 4px; background: rgba(0,0,0,.25); }
