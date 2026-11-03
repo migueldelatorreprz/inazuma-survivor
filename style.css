@@ -3237,3 +3237,8 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 #pause-overlay #btn-restart{ background: linear-gradient(180deg, #3fae4a 0 50%, #2b8a36 50% 100%) !important; color: #fff !important;
   box-shadow: inset 0 0 0 3px #0c3311, inset 0 0 0 5px #a6e36e !important; border: none !important; border-radius: 0 !important; clip-path: var(--px-cut-s); font-family: var(--title-font); text-shadow: var(--outline-thin); }
 @media (max-width: 560px){ #pause-overlay .pause-cols.pause-v{ grid-template-columns: 1fr; } }
+.dev-relic.on{ box-shadow: inset 0 0 0 3px #ffe14a !important; }
+/* Revista de Fútbol: mejora extra que trae cada carta */
+.upgrade-option .rev-bonus{ display:flex; align-items:center; gap:6px; margin-top:6px; padding:4px 8px; border-radius:6px;
+  background: rgba(63,143,224,.18); border:1px solid rgba(159,210,255,.45); color:#cfe8ff; font-size:12.5px; font-weight:600; text-align:left; }
+.upgrade-option .rev-bonus .px-mini{ flex:none; }
