@@ -3298,3 +3298,19 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 #hud-relic2.hidden{ display:none !important; }
 #hud-relic.two::after{ content: none; }
 #hud-relic2::after{ content: 'OBJETOS'; }
+/* ---- novedades (campanita) ---- */
+#btn-news{ position: relative; }
+#btn-news.has-dot::after{ content:''; position:absolute; top:4px; right:4px; width:10px; height:10px; background:#ff3b30; box-shadow: 0 0 0 2px #071233; border-radius:50%; }
+.news-box{ text-align:left; }
+.news-box > h3{ display:table; margin:0 auto 12px; }
+.news-body{ max-height: min(62vh, 560px); overflow-y:auto; padding:4px 6px 4px 2px; }
+.news-ver .tut-t{ margin-top:4px; }
+.news-date{ color:#9fc0ff; font:600 13px Inter, sans-serif; margin:0 0 8px; }
+.news-g{ margin:0 0 12px; padding:10px 14px; background:#0b1a44; box-shadow: inset 0 0 0 2px #3f6fc8; clip-path: var(--px-cut-s); }
+.news-g ul{ margin:8px 0 0; padding-left:20px; color:#e6efff; font:14px/1.5 Inter, sans-serif; }
+.news-g li{ margin:3px 0; }
+.news-g li b{ color:#ffd84a; }
+.news-tag{ display:inline-block; padding:2px 12px 3px; font-family: var(--title-font); font-weight:400; font-size:18px; color:#fff; text-shadow: var(--outline-thin); clip-path: var(--px-cut-s); }
+.news-new{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50%); box-shadow: inset 0 0 0 2px #5a3200; }
+.news-chg{ background: linear-gradient(180deg, #3a78e8 0 50%, #2456b8 50%); box-shadow: inset 0 0 0 2px #071233; }
+.news-fix{ background: linear-gradient(180deg, #4fd05a 0 50%, #2f9a3a 50%); box-shadow: inset 0 0 0 2px #0a3a12; }
