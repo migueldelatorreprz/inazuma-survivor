@@ -3314,3 +3314,4 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 .news-new{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50%); box-shadow: inset 0 0 0 2px #5a3200; }
 .news-chg{ background: linear-gradient(180deg, #3a78e8 0 50%, #2456b8 50%); box-shadow: inset 0 0 0 2px #071233; }
 .news-fix{ background: linear-gradient(180deg, #4fd05a 0 50%, #2f9a3a 50%); box-shadow: inset 0 0 0 2px #0a3a12; }
+.rk-note{ margin: 6px 0 8px; font: 600 13px Inter, sans-serif; color: #9fc0ff; text-align: center; }
