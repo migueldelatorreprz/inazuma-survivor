@@ -5,7 +5,9 @@
   <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InazumaSurvivor</title>
-<link rel="stylesheet" href="style.css?v=93">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
+<link rel="stylesheet" href="style.css?v=100">
 </head>
 <body>
 
@@ -110,6 +112,7 @@
       </div>
     </header>
     <p class="shop-sub">Los tickets los sueltan los bosses y algunos rivales. Los jugadores repetidos van a Intercambios.</p>
+    <div id="shop-qty" class="shop-qty"></div>
     <div class="shop-shelf">
       <div class="shop-slot slot-yellow">
         <div class="shop-tag">Sobre dorado</div>
@@ -419,11 +422,14 @@
         <label class="set-row set-check"><input id="gfx-low" type="checkbox"><span>Modo PC de bajo rendimiento</span></label>
         <p class="set-note">Baja la resolución interna, quita los números de daño y reduce partículas, clima y decoración animada para que el juego vaya más fluido.</p>
         <label class="set-row set-check"><input id="gfx-fps" type="checkbox"><span>Mostrar FPS</span></label>
+        <label class="set-row set-check"><input id="set-fullscreen" type="checkbox"><span>Pantalla completa</span></label>
+        <label class="set-row set-check"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
         <ul class="keys-list">
           <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span>Moverse (el disparo es automático)</li>
+          <li><span>Clic</span>Con «Moverse con el ratón»: clic (o mantener pulsado) y tu jugador va hacia allí</li>
           <li><span><kbd>Q</kbd> <kbd>E</kbd></span>Usar la supertécnica 1 o 2</li>
           <li><span><kbd>Espacio</kbd></span>Cambiar entre tus dos supertécnicas</li>
           <li><span><kbd>R</kbd></span>Técnica definitiva (cuando está cargada)</li>
@@ -432,6 +438,7 @@
           <li><span><kbd>Esc</kbd></span>Rechazar / cerrar un menú de elección</li>
           <li><span><kbd>Esc</kbd> <kbd>Tab</kbd> <kbd>P</kbd></span>Pausa con estadísticas</li>
           <li><span><kbd>M</kbd></span>Silenciar / activar el sonido</li>
+          <li><span><kbd>L</kbd></span>Reiniciar el partido al momento</li>
         </ul>
       </section>
       <section class="sp-box">
@@ -520,6 +527,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=104"></script>
+  <script src="app.js?v=115"></script>
 </body>
 </html>

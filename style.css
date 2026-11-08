@@ -3246,3 +3246,55 @@ body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a
 .menu-item.menu-rl.rl-locked{ filter: grayscale(.85) brightness(.75); cursor: not-allowed; }
 .menu-item.menu-rl.rl-locked:hover{ filter: grayscale(.85) brightness(.8); }
 #btn-restart kbd{ font: inherit; font-size: .8em; padding: 0 5px; margin-left: 6px; border-radius: 4px; background: rgba(0,0,0,.25); }
+/* ---- tutorial (estilo arcade pixel) ---- */
+.tut-ov{ z-index:300; background: rgba(4,10,32,.82) !important; }
+.tut-box{ position:relative; max-width:800px !important; width:94vw; text-align:center; border-radius:0 !important; border:none !important;
+  clip-path: var(--px-cut); background: var(--px-panel) !important; image-rendering: pixelated; padding: 22px 26px 24px !important;
+  box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--px-light), inset 0 0 0 10px var(--px-dark) !important; }
+.tut-box h3{ display:inline-block; margin:0 0 12px; padding:4px 24px 6px; color:#fff; font-family: var(--title-font); font-weight:400; font-size:26px; letter-spacing:.04em;
+  background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #5a3200; text-shadow: var(--outline); }
+.tut-img{ padding:6px; background:#071233; clip-path: var(--px-cut); box-shadow: inset 0 0 0 3px #8cc4ff, inset 0 0 0 6px #071233; }
+.tut-img img{ width:100%; display:block; clip-path: var(--px-cut-s); image-rendering: auto; }
+.tut-t{ display:inline-block; margin:14px 0 6px; padding:3px 16px 5px; font-family: var(--title-font); font-weight:400; font-size:24px; letter-spacing:.03em; color:#fff;
+  text-shadow: var(--outline-thin); background: linear-gradient(180deg, #2b62c8 0 50%, #1d4aa0 50% 100%); clip-path: var(--px-cut-s);
+  box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8cc4ff; }
+.tut-d{ margin:0 auto 10px; max-width:680px; min-height:3.2em; padding:10px 14px; color:#e6efff; font:15px/1.45 Inter, sans-serif;
+  background:#0b1a44; box-shadow: inset 0 0 0 2px #3f6fc8; clip-path: var(--px-cut-s); }
+.tut-d b{ color:#ffd84a; }
+.tut-d kbd, .tut-doc kbd{ display:inline-block; min-width:18px; padding:0 5px; font:700 12px Inter, sans-serif; color:#0b1a44; background:linear-gradient(180deg,#fff 0 55%,#cfd8e6 55%);
+  box-shadow: inset 0 0 0 2px #071233; clip-path: var(--px-cut-s); }
+.tut-dots{ display:flex; gap:6px; justify-content:center; margin:8px 0 14px; }
+.tut-dots i{ width:12px; height:12px; background:#1d3f8f; box-shadow: inset 0 0 0 2px #071233; cursor:pointer; }
+.tut-dots i.on{ background:#ffd84a; box-shadow: inset 0 0 0 2px #5a3200; }
+.tut-nav{ display:flex; gap:10px; justify-content:center; }
+.tut-nav .btn{ min-width:150px; }
+.tut-nav button[disabled]{ opacity:.35; pointer-events:none; }
+.tut-doc{ display:flex; gap:12px; align-items:flex-start; margin:10px 0; padding:12px 14px; clip-path: var(--px-cut);
+  background: var(--px-panel); box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #4f7fd6, inset 0 0 0 7px var(--px-dark); }
+.tut-doc img{ width:220px; max-width:40%; cursor:pointer; flex-shrink:0; clip-path: var(--px-cut-s); box-shadow: 0 0 0 3px #8cc4ff; }
+.tut-doc b{ font-family: var(--title-font); font-weight:400; font-size:18px; color:#fff; text-shadow: var(--outline-thin); }
+.tut-doc p{ margin:4px 0 0; line-height:1.4; }
+.tut-open{ margin-left:8px; font-size:16px !important; padding:4px 14px !important; }
+/* ---- llave de evolución en las cartas de mejora ---- */
+.evo-key{ display:block; margin-top:6px; padding:3px 8px; font:700 11px Inter, sans-serif; color:#0b1a44; background:linear-gradient(180deg,#ffe27a 0 50%,#f2b705 50%); clip-path: var(--px-cut-s); }
+/* ---- tienda: abrir varios sobres ---- */
+.shop-qty{ display:flex; gap:6px; align-items:center; justify-content:center; margin:2px 0 8px; color:#cfe2ff; font:700 14px Inter, sans-serif; }
+.shop-qty-b{ border:none; cursor:pointer; padding:5px 12px; font-family: var(--title-font); font-size:18px; color:#fff; text-shadow: var(--outline-thin); clip-path: var(--px-cut-s);
+  background: linear-gradient(180deg, #1f4ba8 0 50%, #173d8c 50% 100%); box-shadow: inset 0 0 0 2px var(--px-dark); }
+.shop-qty-b.on{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); box-shadow: inset 0 0 0 2px #5a3200; }
+.pack-open.bulk{ overflow-y:auto; justify-content:flex-start; padding-top:24px; }
+.bk-grid{ max-width:min(1100px, 94vw); }
+.bk-reps{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center; }
+.bk-rep{ padding:2px 8px; color:#fff; background:#0b1a44; box-shadow: inset 0 0 0 2px var(--rar); clip-path: var(--px-cut-s); }
+/* ---- movimiento con ratón: cursor de balón ---- */
+/* cursor arcade: punta de flecha pixel (azul, borde dorado y contorno marino, como los paneles del juego) */
+html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="password"]):not(textarea){ cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABKklEQVR4nM3XvUrDUBjG8X9EaOeW4tSxq4NxqpdQOngJuknBS+igs4vQVbwDB3Fyz2S1dBBcnJzsB4LL6RSH9i0kbQ8pNnnfZ8k5IR/n+RFIQqkSxqVKGKOUPa0bryxAS0JdYF8GbvICQLl6HAPMpv2giAXYEZC46ACAcjMsRMKewM34CQAXtYD8JQwJfLQWg7nAyf0dAC46B/KTMCSwIXlL2BX4/hwk5o3uJQAuugV2J2FH4PfteT6o+08QiVGvDUCt8z8JdYFAvgFGvSEARw+P3hNeT9tr99c6h8D2EuoCq2/Dn6/E/P3sIjGXppsiolkl7AlIpHm68Wzav8547avFtus7yJ5AurmnsbdZ1tgT8DTfSeN01AWC9N9QUc0l6gLLZ6Do5hJ1gT+lFGyrkqHW1QAAAABJRU5ErkJggg==") 1 1, auto !important; }
+.bk-cell{ position:relative; }
+.bk-n{ position:absolute; top:-6px; right:-6px; z-index:2; padding:2px 7px; font-family: var(--title-font); font-weight:400; font-size:18px; color:#fff; text-shadow: var(--outline-thin);
+  background: linear-gradient(180deg, #ff6b5e 0 50%, #d8352a 50%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px #3a0a06; }
+/* 2º hueco de objeto (tras la mezcla de 4) */
+#hud-relic, #hud-relic2{ display:inline-flex; vertical-align: top; }
+#hud-relic2{ margin-left: 8px !important; }
+#hud-relic2.hidden{ display:none !important; }
+#hud-relic.two::after{ content: none; }
+#hud-relic2::after{ content: 'OBJETOS'; }
