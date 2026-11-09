@@ -7,7 +7,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=103">
+<link rel="stylesheet" href="style.css?v=109">
 </head>
 <body>
 
@@ -46,6 +46,7 @@
           <span id="showcase-rarity" class="char-rarity"></span>
         </div>
       </div>
+      <div id="bench" class="bench"></div>
     </div>
 
     <aside id="records-panel" class="records-panel"></aside>
@@ -353,6 +354,10 @@
             <h4 class="sp-title"><span id="sp-talent-logo"></span> Talentos</h4>
             <ul id="sp-talents" class="sp-list sp-upgrades"></ul>
           </section>
+          <section class="sp-box sp-syn-box">
+            <h4 class="sp-title">Banquillo</h4>
+            <ul id="sp-syn" class="sp-list sp-upgrades"></ul>
+          </section>
           <section class="sp-box sp-mejoras">
             <h4 class="sp-title">Mejoras</h4>
             <ul id="sp-upgrades" class="sp-list sp-upgrades"></ul>
@@ -389,7 +394,7 @@
   <!-- ===================== OBJETOS (solo uno por partido) ===================== -->
   <div id="relic-overlay" class="overlay hidden">
     <div class="overlay-box talent-box">
-      <h3>🎒 Nuevo objeto</h3>
+      <h3 id="relic-title">🎒 Nuevo objeto</h3>
       <p id="relic-sub"></p>
       <div id="relic-options" class="upgrade-row"></div>
     </div>
@@ -530,6 +535,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=132"></script>
+  <script src="app.js?v=138"></script>
 </body>
 </html>
