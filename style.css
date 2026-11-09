@@ -3470,3 +3470,51 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 .bench-slot:not(.full){ background: repeating-linear-gradient(45deg, #102a66 0 6px, #0e2459 6px 12px); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #2a4f9c; }
 .bench-slot:not(.full):hover .bench-ghost{ color:#8cc4ff; opacity:1; }
 .bench-slot:not(.full) em{ color:#8cc4ff; }
+/* =====================================================================
+   ANÁLISIS DEL PARTIDO (estadísticas al acabar)
+   ===================================================================== */
+#btn-gameover-stats{ border-radius: 0 !important; border: none !important; clip-path: var(--px-cut-s); margin-right: 8px;
+  background: linear-gradient(180deg, #2f6fd6 0 50%, #2456b8 50% 100%) !important; box-shadow: inset 0 0 0 3px #071233 !important;
+  color: #fff !important; font-family: var(--title-font); font-size: 22px; text-shadow: var(--outline-thin); padding: 10px 22px; }
+.st-ov{ z-index: 80; }
+.st-box{ max-width: 780px !important; width: 94vw; max-height: 92vh; overflow-y: auto; text-align: left;
+  border-radius: 0 !important; border: none !important; background: var(--px-panel) !important;
+  box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--px-light), inset 0 0 0 10px var(--px-dark), 8px 8px 0 rgba(0,0,0,.45) !important;
+  padding: 22px 24px !important; }
+.st-box h3{ text-align:center; }
+.st-tiles{ display:grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 8px; margin: 6px 0 10px; }
+.st-tile{ display:flex; flex-direction:column; gap: 2px; padding: 8px 10px; background:#0b1a44; box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #3f6fc8; clip-path: var(--px-cut-s); min-width:0; }
+.st-tile small{ font: 700 10px Inter, sans-serif; color:#8cc4ff; text-transform: uppercase; letter-spacing:.5px; }
+.st-tile b{ font-family: var(--title-font); font-weight:400; font-size: 18px; color:#ffe14a; text-shadow: var(--outline-thin); line-height:1.15; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient: vertical; overflow-wrap:anywhere; }
+.st-tile em{ font: 600 11px Inter, sans-serif; font-style: normal; color:#cfe0ff; }
+.st-h{ margin: 12px 0 6px; font-family: var(--title-font); font-weight:400; font-size: 18px; color:#ffd84a; text-shadow: var(--outline-thin); }
+.st-stack{ display:flex; height: 22px; background:#071233; box-shadow: inset 0 0 0 2px #071233; overflow:hidden; }
+.st-stack i{ display:block; height:100%; min-width: 2px; box-shadow: inset -2px 0 0 #071233; }
+.st-legend{ display:flex; flex-wrap:wrap; gap: 4px 14px; margin-top: 6px; font: 600 12px Inter, sans-serif; color:#e6efff; }
+.st-legend u{ display:inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; box-shadow: 0 0 0 1px #071233; }
+.st-legend b{ color:#ffe14a; }
+.st-table-wrap{ overflow-x:auto; background: rgba(4,10,34,.55); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #2a4f9c; padding: 4px; }
+.st-table{ width:100%; border-collapse: collapse; font: 600 12.5px Inter, sans-serif; color:#e6efff; }
+.st-table th{ text-align:right; padding: 5px 8px; font: 800 10.5px Inter, sans-serif; color:#8cc4ff; text-transform: uppercase; letter-spacing:.4px; border-bottom: 2px solid #2a4f9c; white-space: nowrap; }
+.st-table th:first-child, .st-table td:first-child{ text-align:left; }
+.st-table td{ text-align:right; padding: 5px 8px; border-bottom: 1px solid rgba(63,111,200,.35); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.st-table td:first-child{ white-space: normal; min-width: 170px; }
+.st-table tr:nth-child(2n) td{ background: rgba(63,111,200,.08); }
+.st-src{ display:flex; align-items:baseline; gap: 6px; flex-wrap: wrap; border-left: 4px solid var(--sc); padding-left: 6px; }
+.st-src b{ color:#fff; display:inline-flex; align-items:center; gap:4px; }
+.st-src small{ font: 600 10px Inter, sans-serif; color:#9fb4dc; }
+.st-bar{ display:block; height: 6px; margin: 3px 0 0 10px; background:#071233; }
+.st-bar i{ display:block; height:100%; }
+.st-note{ font: 500 11.5px Inter, sans-serif; color:#b9cbec; margin: 6px 2px 0; line-height: 1.45; }
+@media (max-width: 600px){
+  .st-box{ padding: 16px 12px !important; }
+  .st-tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-tile b{ font-size: 17px; }
+  .st-table{ font-size: 11.5px; }
+  .st-table th, .st-table td{ padding: 4px 5px; }
+  .st-table td:first-child{ min-width: 130px; }
+  #btn-gameover-stats, #btn-gameover-title{ font-size: 18px; padding: 8px 14px; margin: 4px; }
+}
+/* misiones semanales: cuánto falta para renovarse */
+.ms-week{ display:flex; justify-content:center; max-width: 1180px; margin: 0 auto 10px; width: calc(100% - 32px); box-sizing: border-box; align-items:center; gap: 8px; padding: 8px 12px; background:#0b1a44; box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #3f6fc8; clip-path: var(--px-cut-s); font: 600 13px Inter, sans-serif; color:#e6efff; }
+.ms-week b{ color:#ffe14a; }
