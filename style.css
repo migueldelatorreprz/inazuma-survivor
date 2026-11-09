@@ -3465,3 +3465,8 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 .sp-bench-p em{ font: 700 10px Inter, sans-serif; font-style:normal; color:#fff; max-width: 60px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .sp-bench-p.empty{ justify-content:center; min-height: 58px; opacity:.6; }
 .sp-bench-n{ display:block !important; text-align:center; font: 700 11px Inter, sans-serif; color:#ffd84a; padding: 1px 0 !important; background:none !important; box-shadow:none !important; }
+/* hueco vacío del banquillo: silueta en vez del "+" */
+.bench-ghost{ color:#3f6fc8; opacity:.75; line-height:0; margin-bottom: 6px; }
+.bench-slot:not(.full){ background: repeating-linear-gradient(45deg, #102a66 0 6px, #0e2459 6px 12px); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #2a4f9c; }
+.bench-slot:not(.full):hover .bench-ghost{ color:#8cc4ff; opacity:1; }
+.bench-slot:not(.full) em{ color:#8cc4ff; }
