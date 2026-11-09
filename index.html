@@ -7,7 +7,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=102">
+<link rel="stylesheet" href="style.css?v=103">
 </head>
 <body>
 
@@ -31,6 +31,7 @@
 
     <div class="title-logo">
       <h1 class="logo-img-wrap"><img src="assets/logo.png" alt="Inazuma Survivor" class="logo-img"></h1>
+      <div class="logo-ver">Beta 1.2</div>
     </div>
 
     <div class="showcase">
@@ -175,6 +176,7 @@
         <div id="tr-slots" class="tr-slots"></div>
         <div class="tr-arrow"></div>
         <div id="tr-result" class="tr-result"></div>
+        <button id="btn-tr-auto" class="shop-btn shop-btn-b">Elegir 10 automáticamente</button>
         <button id="btn-tr-fuse" class="shop-btn shop-btn-y">Fusionar</button>
         <div class="tr-sep"></div>
         <p id="tr-price" class="tr-price"></p>
@@ -423,10 +425,10 @@
         <p class="set-note">Baja la resolución interna, quita los números de daño y reduce partículas, clima y decoración animada para que el juego vaya más fluido.</p>
         <label class="set-row set-check"><input id="gfx-fps" type="checkbox"><span>Mostrar FPS</span></label>
         <label class="set-row set-check"><input id="set-fullscreen" type="checkbox"><span>Pantalla completa</span></label>
-        <label class="set-row set-check"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
+        <label class="set-row set-check"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
         <ul class="keys-list">
           <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span>Moverse (el disparo es automático)</li>
           <li><span>Clic</span>Con «Moverse con el ratón»: clic (o mantener pulsado) y tu jugador va hacia allí</li>
@@ -528,6 +530,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=130"></script>
+  <script src="app.js?v=131"></script>
 </body>
 </html>

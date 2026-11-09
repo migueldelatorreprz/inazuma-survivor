@@ -3315,3 +3315,9 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 .news-chg{ background: linear-gradient(180deg, #3a78e8 0 50%, #2456b8 50%); box-shadow: inset 0 0 0 2px #071233; }
 .news-fix{ background: linear-gradient(180deg, #4fd05a 0 50%, #2f9a3a 50%); box-shadow: inset 0 0 0 2px #0a3a12; }
 .rk-note{ margin: 6px 0 8px; font: 600 13px Inter, sans-serif; color: #9fc0ff; text-align: center; }
+/* versión debajo del logo */
+.logo-ver{ display:inline-block; margin: -6px 0 0 18px; padding: 3px 14px 4px; font-family: var(--title-font); font-size: 20px; letter-spacing: .06em; color:#fff;
+  text-shadow: var(--outline-thin); background: linear-gradient(180deg, #2b62c8 0 50%, #1d4aa0 50% 100%); clip-path: var(--px-cut-s);
+  box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #8cc4ff; }
+/* balones de poder: se pueden usar con clic */
+.pball-bar .pb-slot{ pointer-events: auto; }
