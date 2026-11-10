@@ -3787,3 +3787,21 @@ html.phone #screen-upgrades .mt-side{ width: 100% !important; max-height: 220px;
 html.phone .po-choose{ gap: 10px; flex-wrap: nowrap; max-width: 100vw; padding: 0 8px; }
 html.phone .po-pick .pk-pack{ width: min(150px, 28vw) !important; height: calc(min(150px, 28vw) * 1.39) !important; }
 html.phone .po-pick b{ font-size: 18px; }
+/* móvil: los paneles de cada menú no se encogen (antes la lista se salía del recuadro); la pantalla se desplaza entera */
+html.phone .screen:not(#screen-title):not(#screen-game) > *{ flex-shrink: 0; }
+/* móvil: la vida del boss va arriba, dentro del HUD (no abajo) */
+html.touch-ui .boss-bar{ bottom: auto !important; }
+html.touch-ui.landscape .boss-bar{ top: calc(70px + env(safe-area-inset-top, 0px)) !important; width: min(440px, 40%) !important; }
+html.touch-ui.portrait .boss-bar{ top: calc(112px + env(safe-area-inset-top, 0px)) !important; left: 136px; right: calc(214px + env(safe-area-inset-right, 0px)); transform: none;
+  width: auto !important; padding: 6px 8px 7px 6px; gap: 6px; }
+html.touch-ui.portrait .boss-crest{ width: 26px; height: 26px; }
+html.touch-ui.portrait .boss-head b{ font-size: 15px !important; }
+html.touch-ui.portrait .boss-head #boss-team, html.touch-ui.portrait .boss-head #boss-emoji{ display:none !important; }
+html.touch-ui.portrait .boss-hp{ height: 9px !important; }
+html.touch-ui .boss-bar.with-weather{ top: calc(150px + env(safe-area-inset-top, 0px)) !important; }
+html.touch-ui.landscape .boss-bar.with-weather{ top: calc(98px + env(safe-area-inset-top, 0px)) !important; }
+/* el titular de la portada se puede tocar: abre Jugadores */
+.showcase-box{ cursor: pointer; }
+/* MANDO: elemento seleccionado en los menús */
+.gp-focus{ outline: 4px solid #ffd84a !important; outline-offset: 2px; box-shadow: 0 0 0 7px rgba(255,216,74,.35) !important; filter: brightness(1.12); }
+#gp-ring{ position:fixed; z-index: 2147483000; pointer-events:none; display:none; box-shadow: 0 0 0 4px #ffd84a, 0 0 0 7px #071233, 0 0 16px 6px rgba(255,216,74,.55); transition: left .08s, top .08s, width .08s, height .08s; }
