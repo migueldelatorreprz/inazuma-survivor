@@ -26,17 +26,25 @@
   else if (ui) d.classList.add('tablet');
   window.MOBILE = { ui: ui, phone: phone, tablet: ui && !phone };
   try { if (ui && JSON.parse(localStorage.getItem('ss_gfx') || '{}').joyRight) d.classList.add('joy-right'); } catch (e) {}
-  if (!phone) return;
-  var TARGET_H = 520;
+  if (!ui) return;
+  /* VERTICAL (por defecto en el móvil) y HORIZONTAL: se adapta solo al girar, sin reiniciar nada.
+     Móvil en horizontal: la página se dibuja como si la pantalla tuviera ~520 px de alto.
+     Móvil en vertical: como si tuviera ~560 px de ancho. Así los menús caben sin rehacerlos. */
+  var TARGET_H = 520, TARGET_W = 560;
   function fit(){
-    var land = mm('(orientation: landscape)') || window.innerWidth > window.innerHeight;
+    var land = window.matchMedia ? mm('(orientation: landscape)') : window.innerWidth > window.innerHeight;
+    d.classList.toggle('portrait', !land); d.classList.toggle('landscape', land);
+    if (!phone) return;
     var m = document.getElementById('vp-meta');
-    d.classList.toggle('portrait', !land);
-    if (land){ var W = Math.round(lw * TARGET_H / sw); m.setAttribute('content', 'width=' + W + ', viewport-fit=cover, user-scalable=no'); }
-    else m.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no');
+    var W = land ? Math.round(lw * TARGET_H / sw) : Math.max(sw, TARGET_W);
+    var c = 'width=' + W + ', viewport-fit=cover, user-scalable=no';
+    if (m.getAttribute('content') === c) return;
+    var n = document.createElement('meta'); n.name = 'viewport'; n.id = 'vp-meta'; n.content = c;   // meta nueva: algunos navegadores no releen la que ya estaba
+    m.parentNode.replaceChild(n, m);
   }
   fit();
   window.addEventListener('orientationchange', function(){ setTimeout(fit, 60); setTimeout(fit, 400); });
+  window.addEventListener('resize', function(){ var land = mm('(orientation: landscape)'); if (land !== d.classList.contains('landscape')) fit(); });
   if (window.matchMedia) try { matchMedia('(orientation: landscape)').addEventListener('change', fit); } catch (e) {}
   window.MOBILE.fit = fit;
 })();
@@ -44,7 +52,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=115">
+<link rel="stylesheet" href="style.css?v=116">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small>Inazuma Survivor se juega en horizontal</small></div></div>
@@ -576,6 +584,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=145"></script>
+  <script src="app.js?v=146"></script>
 </body>
 </html>
