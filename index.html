@@ -3,13 +3,49 @@
 <head>
 <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" id="vp-meta" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#071233">
+<script>
+/* MÓVIL: se detecta por capacidades (pantalla táctil + puntero grueso + tamaño de pantalla), no por el navegador.
+   - touch-ui: cualquier dispositivo táctil sin ratón (móvil o tablet) → controles táctiles.
+   - phone: el lado corto de la pantalla es de móvil. En horizontal, la página se dibuja como si la pantalla tuviera
+     ~520 px de alto (se ajusta el viewport), así caben los menús del juego sin tener que rehacerlos y todo se ve
+     proporcionado. En vertical se pide girar el móvil. En PC no cambia nada. */
+(function(){
+  var d = document.documentElement, mm = function(q){ return window.matchMedia && matchMedia(q).matches; };
+  var touch = (navigator.maxTouchPoints || 0) > 0 || 'ontouchstart' in window;
+  var coarse = mm('(pointer: coarse)') && !mm('(any-pointer: fine)');
+  var sw = Math.min(screen.width, screen.height), lw = Math.max(screen.width, screen.height);
+  var ui = touch && coarse, phone = ui && sw <= 600;
+  if (ui) d.classList.add('touch-ui');
+  if (phone) d.classList.add('phone');
+  else if (ui) d.classList.add('tablet');
+  window.MOBILE = { ui: ui, phone: phone, tablet: ui && !phone };
+  if (!phone) return;
+  var TARGET_H = 520;
+  function fit(){
+    var land = mm('(orientation: landscape)') || window.innerWidth > window.innerHeight;
+    var m = document.getElementById('vp-meta');
+    d.classList.toggle('portrait', !land);
+    if (land){ var W = Math.round(lw * TARGET_H / sw); m.setAttribute('content', 'width=' + W + ', viewport-fit=cover, user-scalable=no'); }
+    else m.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no');
+  }
+  fit();
+  window.addEventListener('orientationchange', function(){ setTimeout(fit, 60); setTimeout(fit, 400); });
+  if (window.matchMedia) try { matchMedia('(orientation: landscape)').addEventListener('change', fit); } catch (e) {}
+  window.MOBILE.fit = fit;
+})();
+</script>
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=113">
+<link rel="stylesheet" href="style.css?v=114">
 </head>
 <body>
+  <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small>Inazuma Survivor se juega en horizontal</small></div></div>
 
   <!-- ===================== PANTALLA DE INICIO ===================== -->
   <section id="screen-title" class="screen title-screen">
@@ -300,7 +336,8 @@
         </div>
       </div>
       <canvas id="game-canvas"></canvas>
-      <div id="joystick-zone"></div>
+      <div id="joystick-zone"><div id="joy-base" class="joy-base"><div id="joy-knob" class="joy-knob"></div></div></div>
+      <button id="btn-swap" class="swap-btn" aria-label="Cambiar de supertécnica"><span class="swap-ico">⇄</span><small>Cambio</small></button>
       <!-- Supertécnicas: Q / E eligen cuál usas, R lanza su técnica definitiva -->
       <div id="pball-bar" class="pball-bar hidden"></div>
       <div id="tech-bar" class="tech-bar hidden">
@@ -536,6 +573,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=143"></script>
+  <script src="app.js?v=144"></script>
 </body>
 </html>

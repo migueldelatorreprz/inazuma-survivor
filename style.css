@@ -3518,3 +3518,109 @@ html, body, *:not(input[type="text"]):not(input[type="email"]):not(input[type="p
 /* misiones semanales: cuánto falta para renovarse */
 .ms-week{ display:flex; justify-content:center; max-width: 1180px; margin: 0 auto 10px; width: calc(100% - 32px); box-sizing: border-box; align-items:center; gap: 8px; padding: 8px 12px; background:#0b1a44; box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #3f6fc8; clip-path: var(--px-cut-s); font: 600 13px Inter, sans-serif; color:#e6efff; }
 .ms-week b{ color:#ffe14a; }
+
+/* =====================================================================
+   MÓVIL Y TABLET (html.touch-ui): controles táctiles e interfaz del partido.
+   En PC no se aplica nada de esto (la clase solo se pone en pantallas táctiles sin ratón).
+   ===================================================================== */
+#joystick-zone .joy-base, .swap-btn{ display:none; }
+.rotate-overlay{ display:none; }
+html.touch-ui, html.touch-ui body{ overscroll-behavior: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+html.touch-ui body{ -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+html.touch-ui input, html.touch-ui textarea{ -webkit-user-select: text; user-select: text; }
+html.touch-ui #screen-game, html.touch-ui #game-stage, html.touch-ui #game-canvas{ touch-action: none; }
+
+/* --- girar el móvil (solo móviles en vertical) --- */
+html.phone.portrait .rotate-overlay{ display:flex; position:fixed; inset:0; z-index: 9999; align-items:center; justify-content:center;
+  background: repeating-linear-gradient(0deg, #0b1f5c 0 4px, #0a1a4f 4px 8px); }
+.rot-box{ display:flex; flex-direction:column; align-items:center; gap: 14px; text-align:center; padding: 24px; }
+.rot-box b{ font-family: var(--title-font); font-weight:400; font-size: 34px; color:#ffe14a; text-shadow: var(--outline); }
+.rot-box small{ font: 600 15px Inter, sans-serif; color:#cfe0ff; }
+.rot-phone{ width: 70px; height: 120px; background:#0b1a44; box-shadow: inset 0 0 0 4px #071233, inset 0 0 0 8px #8cc4ff, inset 0 0 0 10px #071233; clip-path: var(--px-cut-s);
+  animation: rotPhone 2s steps(6) infinite; }
+@keyframes rotPhone{ 0%, 30%{ transform: rotate(0); } 60%, 100%{ transform: rotate(-90deg); } }
+
+/* --- joystick (abajo a la izquierda, fijo) --- */
+html.touch-ui #joystick-zone{ display:block; left: 0; bottom: 0; width: 36%; height: 74%; z-index: 7; touch-action: none; }
+html.touch-ui #joystick-zone .joy-base{ display:block; position:absolute; left: calc(26px + env(safe-area-inset-left, 0px)); bottom: 22px;
+  width: 188px; height: 188px; border-radius: 50%; pointer-events:none;
+  background: radial-gradient(circle, rgba(20,48,122,.30) 0 55%, rgba(20,48,122,.42) 56% 100%);
+  box-shadow: inset 0 0 0 4px rgba(7,18,51,.75), inset 0 0 0 8px rgba(140,196,255,.55), inset 0 0 0 11px rgba(7,18,51,.6);
+  opacity: .78; transition: opacity .12s; }
+html.touch-ui #joystick-zone .joy-base::before{ content:''; position:absolute; inset: 30%; border-radius:50%; border: 3px dashed rgba(140,196,255,.35); }
+html.touch-ui #joystick-zone .joy-base.on{ opacity: 1; }
+html.touch-ui .joy-knob{ position:absolute; left: 50%; top: 50%; width: 82px; height: 82px; margin: -41px 0 0 -41px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #fff2a8 0 18%, #ffd84a 19% 62%, #e09a00 63% 100%);
+  box-shadow: inset 0 0 0 4px #5a3200, 0 4px 0 rgba(0,0,0,.35); will-change: transform; }
+html.touch-ui .joy-base.on .joy-knob{ box-shadow: inset 0 0 0 4px #5a3200, 0 0 18px rgba(255,216,74,.7); }
+
+/* --- HUD de arriba --- */
+html.touch-ui #hud .hud-row{ padding: 6px calc(12px + env(safe-area-inset-right, 0px)) 0 calc(12px + env(safe-area-inset-left, 0px)); }
+html.touch-ui #hud-relic, html.touch-ui #hud-inventory, html.touch-ui #hud-buffs{ margin-left: calc(12px + env(safe-area-inset-left, 0px)); }
+html.touch-ui .pause-btn{ width: 54px !important; height: 54px !important; font-size: 22px !important; }
+html.touch-ui .hud-portrait{ width: 68px !important; height: 68px !important; }
+html.touch-ui .hud-portrait .char-face{ width: 64px !important; height: 64px !important; }
+
+/* --- botones del partido: abajo (balones y Q/E en el centro) y a la derecha (R y Cambio) --- */
+html.touch-ui .tech-bar{ left: 0; right: 0; top: 0; bottom: 0; transform: none; display:block; pointer-events:none; filter:none; z-index: 8; }
+html.touch-ui .tech-bar > *{ pointer-events:auto; }
+html.touch-ui .tech-slots{ position:absolute; left: 50%; bottom: 18px; transform: translateX(-50%); flex-direction: row; gap: 10px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.45)); }
+html.touch-ui .tech-btn{ width: 156px !important; min-height: 58px; padding: 6px 10px 6px 8px !important; gap: 8px !important; }
+html.touch-ui .tech-btn kbd{ display:none; }
+html.touch-ui .tech-name{ font-size: 16px !important; }
+html.touch-ui .tech-lvl{ display:block !important; font-size: 11px !important; }
+html.touch-ui .tech-btn.tap, html.touch-ui .ult-btn.tap, html.touch-ui .swap-btn.tap, html.touch-ui .pause-btn.tap{ filter: brightness(1.35); transform: scale(.94); }
+html.touch-ui .ult-btn{ position:absolute; right: calc(24px + env(safe-area-inset-right, 0px)); bottom: 20px; width: 124px !important; height: 124px !important; }
+html.touch-ui .ult-core kbd{ font-size: 46px !important; }
+html.touch-ui .ult-state{ font-size: 11px !important; }
+html.touch-ui .talent-slots{ position:absolute; right: calc(24px + 124px + 18px + env(safe-area-inset-right, 0px)); bottom: 20px; flex-direction: column; gap: 8px; }
+html.touch-ui .talent-slot{ width: 52px !important; height: 52px; padding: 0 !important; justify-content:center; pointer-events:none; }
+html.touch-ui .talent-slot .talent-info, html.touch-ui .talent-slot .talent-name, html.touch-ui .talent-slot .talent-lvl{ display:none !important; }
+html.touch-ui .swap-btn{ display:flex; position:absolute; z-index: 8; right: calc(24px + 26px + env(safe-area-inset-right, 0px)); bottom: calc(20px + 124px + 16px);
+  width: 76px; height: 76px; flex-direction:column; align-items:center; justify-content:center; gap: 0; border: none; padding: 0; cursor:pointer;
+  background: linear-gradient(180deg, #2f6fd6 0 50%, #2456b8 50% 100%); clip-path: var(--px-cut-s);
+  box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 6px #8cc4ff, inset 0 0 0 8px #071233; color:#fff; touch-action: none; }
+html.touch-ui .swap-btn .swap-ico{ font: 900 30px Inter, sans-serif; line-height: 1; text-shadow: var(--outline-thin); }
+html.touch-ui .swap-btn small{ font: 800 11px Inter, sans-serif; text-shadow: var(--outline-thin); }
+html.touch-ui #screen-game:not(.has-2techs) .swap-btn{ opacity: .45; }
+html.touch-ui .pball-bar{ left: 50%; bottom: calc(18px + 58px + 12px); transform: translateX(-50%); gap: 10px; }
+html.touch-ui .pb-slot{ width: 58px; height: 58px; touch-action: none; }
+html.touch-ui .pb-slot kbd{ display:none; }
+/* pantallas más estrechas (16:9): todo un poco más compacto */
+@media (max-width: 1000px){
+  html.touch-ui .tech-btn{ width: 136px !important; }
+  html.touch-ui #joystick-zone .joy-base{ width: 170px; height: 170px; }
+  html.touch-ui .ult-btn{ width: 112px !important; height: 112px !important; }
+  html.touch-ui .talent-slots{ right: calc(24px + 112px + 14px + env(safe-area-inset-right, 0px)); }
+  html.touch-ui .swap-btn{ bottom: calc(20px + 112px + 14px); right: calc(24px + 18px + env(safe-area-inset-right, 0px)); }
+}
+
+/* --- MÓVIL EN HORIZONTAL: menús (todo cabe o se puede desplazar; nada se corta) --- */
+html.phone .screen:not(#screen-title):not(#screen-game){ justify-content: flex-start; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch;
+  padding: 12px calc(14px + env(safe-area-inset-right, 0px)) 18px calc(14px + env(safe-area-inset-left, 0px)); }
+html.phone .overlay{ overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 8px 0; }
+html.phone .overlay > div, html.phone .overlay > .overlay-box{ max-height: calc(100% - 12px); overflow-y: auto; -webkit-overflow-scrolling: touch; margin: auto; }
+html.phone .overlay-box{ max-height: calc(100vh - 16px); }
+html.phone .btn, html.phone .menu-item, html.phone .upgrade-option, html.phone .shop-btn, html.phone .tr-tab{ min-height: 44px; }
+html.phone kbd.upgrade-key{ min-width: 28px; }
+/* inicio: logo arriba a la izquierda, titular a la izquierda del centro y el menú en dos columnas a la derecha (cabe entero) */
+html.phone .title-logo{ top: 56px; left: calc(18px + env(safe-area-inset-left, 0px)); transform: scale(.82); transform-origin: top left; }
+html.phone .records-panel{ display:none; }
+html.phone .showcase{ left: 38% !important; transform: translate(-50%, -50%) scale(.9) !important; top: 54% !important; }
+html.phone .side-menu{ top: 64px !important; bottom: 10px !important; right: calc(12px + env(safe-area-inset-right, 0px)) !important; width: 486px !important;
+  display:grid !important; grid-template-columns: 1fr 1fr; grid-auto-rows: minmax(0, 1fr); gap: 6px !important; padding: 12px !important; overflow-y: auto; }
+html.phone .side-menu .menu-item{ padding: 6px 10px !important; gap: 8px !important; min-height: 0; }
+html.phone .side-menu .menu-ico{ transform: scale(.82); }
+html.phone .side-menu .menu-text b{ font-size: 19px !important; }
+html.phone .side-menu .menu-text small{ font-size: 11.5px !important; }
+html.phone .topbar{ padding-left: calc(12px + env(safe-area-inset-left, 0px)) !important; padding-right: calc(12px + env(safe-area-inset-right, 0px)) !important; }
+html.phone .icon-btn{ min-width: 44px; min-height: 44px; }
+html.phone.portrait .rotate-overlay{ z-index: 2147483647; }
+@media (max-width: 1000px){
+  html.phone .side-menu{ width: 404px !important; }
+  html.phone .side-menu .menu-text b{ font-size: 17px !important; }
+  html.phone .side-menu .menu-text small{ font-size: 10.5px !important; }
+  html.phone .side-menu .menu-ico{ transform: scale(.7); margin: 0 -4px; }
+  html.phone .showcase{ left: 31% !important; transform: translate(-50%, -50%) scale(.8) !important; }
+  html.phone .title-logo{ transform: scale(.7); }
+}
