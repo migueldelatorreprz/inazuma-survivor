@@ -3751,3 +3751,39 @@ html.phone #levelup-overlay .upgrade-option b .up-nm{ display:inline !important;
 html.phone #levelup-overlay .upgrade-option b img, html.phone #levelup-overlay .upgrade-option b svg, html.phone #levelup-overlay .upgrade-option b .px-mini{ display:inline-block; vertical-align: middle !important; margin-right: 4px; }
 html.phone #levelup-overlay .overlay-box{ width: 96vw !important; max-width: 96vw !important; }
 html.touch-ui .upgrade-option.urar b{ padding-right: 58px; }
+
+/* =====================================================================
+   MÓVIL (2): cruceta, botones, menús
+   ===================================================================== */
+/* CRUCETA en vez de joystick: 8 flechas (arriba, abajo, lados y diagonales); siempre velocidad completa */
+html.touch-ui #joystick-zone .joy-base{ background: radial-gradient(circle, rgba(20,48,122,.38) 0 62%, rgba(20,48,122,.5) 63% 100%) !important; }
+html.touch-ui #joystick-zone .joy-base::before{ inset: 34%; border: none; border-radius: 50%; background: rgba(7,18,51,.45); }
+html.touch-ui .joy-base .dp{ position:absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events:none; }
+html.touch-ui .joy-base .dp::after{ content:''; position:absolute; left: -14px; top: -11px; width: 28px; height: 22px; background: rgba(234,244,255,.85);
+  clip-path: polygon(0 0, 100% 50%, 0 100%); transform: translateX(var(--r)); filter: drop-shadow(0 2px 0 rgba(0,0,0,.4)); }
+html.touch-ui .joy-base{ --r: 62px; }
+html.touch-ui .joy-base .dp1, html.touch-ui .joy-base .dp3, html.touch-ui .joy-base .dp5, html.touch-ui .joy-base .dp7{ --r: 58px; }
+html.touch-ui .joy-base .dp1::after, html.touch-ui .joy-base .dp3::after, html.touch-ui .joy-base .dp5::after, html.touch-ui .joy-base .dp7::after{ transform: translateX(var(--r)) scale(.78); }
+html.touch-ui .dp0{ transform: rotate(0deg); }   html.touch-ui .dp1{ transform: rotate(45deg); }
+html.touch-ui .dp2{ transform: rotate(90deg); }  html.touch-ui .dp3{ transform: rotate(135deg); }
+html.touch-ui .dp4{ transform: rotate(180deg); } html.touch-ui .dp5{ transform: rotate(225deg); }
+html.touch-ui .dp6{ transform: rotate(270deg); } html.touch-ui .dp7{ transform: rotate(315deg); }
+html.touch-ui .joy-base[data-dir="0"] .dp0::after, html.touch-ui .joy-base[data-dir="1"] .dp1::after, html.touch-ui .joy-base[data-dir="2"] .dp2::after, html.touch-ui .joy-base[data-dir="3"] .dp3::after,
+html.touch-ui .joy-base[data-dir="4"] .dp4::after, html.touch-ui .joy-base[data-dir="5"] .dp5::after, html.touch-ui .joy-base[data-dir="6"] .dp6::after, html.touch-ui .joy-base[data-dir="7"] .dp7::after{ background: #ffd84a; filter: drop-shadow(0 0 6px rgba(255,216,74,.9)); }
+html.touch-ui .joy-knob{ width: 58px !important; height: 58px !important; margin: -29px 0 0 -29px !important; transition: transform .05s linear; }
+@media (max-width: 1000px){ html.touch-ui .joy-base{ --r: 56px; } html.touch-ui .joy-base .dp1, html.touch-ui .joy-base .dp3, html.touch-ui .joy-base .dp5, html.touch-ui .joy-base .dp7{ --r: 52px; } }
+/* vertical: el botón de Cambio va encima de la R */
+html.touch-ui.portrait .swap-btn{ left: auto; right: calc(18px + 32px + env(safe-area-inset-right, 0px)); bottom: calc(18px + 56px + 16px + 140px + 14px + env(safe-area-inset-bottom, 0px)); }
+html.touch-ui.portrait.joy-right .swap-btn{ right: auto; left: calc(18px + 32px + env(safe-area-inset-left, 0px)); }
+/* subida de nivel: sin estrellas; barra lateral del color de la rareza */
+html.touch-ui .urar-corner{ display:none !important; }
+html.touch-ui .upgrade-option.urar{ box-shadow: inset 9px 0 0 var(--urc), inset 12px 0 0 var(--urd) !important; padding-left: 20px !important; }
+html.touch-ui .upgrade-option.urar b{ padding-right: 0 !important; }
+/* volver: arriba del todo en cada menú (no se pierde al final) */
+html.phone .screen:not(#screen-title):not(#screen-game) > .btn-ghost{ order: -1; align-self: flex-start; margin: 0 0 8px !important; min-width: 120px; }
+html.phone #screen-upgrades .mt-panel{ height: auto !important; min-height: 0 !important; flex-direction: column; width: 100% !important; }
+html.phone #screen-upgrades .mt-side{ width: 100% !important; max-height: 220px; }
+/* elegir sobre (Mark, Axel, Jude): caben los tres */
+html.phone .po-choose{ gap: 10px; flex-wrap: nowrap; max-width: 100vw; padding: 0 8px; }
+html.phone .po-pick .pk-pack{ width: min(150px, 28vw) !important; height: calc(min(150px, 28vw) * 1.39) !important; }
+html.phone .po-pick b{ font-size: 18px; }
