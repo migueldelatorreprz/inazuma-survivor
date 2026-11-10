@@ -3824,3 +3824,27 @@ html.gp-active .pb-slot kbd[data-gp]::after{ font-size: 9px; }
 html.gp-active .ult-core kbd[data-gp]{ min-width: 40px; height: 40px; border-radius: 50% !important; }
 html.gp-active .ult-core kbd[data-gp]::after{ font-size: 24px; }
 html.gp-active kbd.slot-key{ display:none !important; }
+
+/* ---- bienvenida: 5 sobres, legendario cedido y carta de bonificación ---- */
+.welcome-packs{ flex-wrap: wrap; }
+.welcome-packs .pk-pack{ transform: scale(.5); margin: 0 -40px -120px; }
+.loan-tag{ display:inline-block; padding: 2px 6px; background: linear-gradient(180deg, #ff9b3d 0 50%, #e2661a 50% 100%); color:#fff; font-size: 10px; font-weight: 900; letter-spacing: .5px;
+  text-shadow: 1px 1px 0 #5a2200; box-shadow: inset 0 0 0 2px #5a2200; clip-path: var(--px-cut-s); white-space: nowrap; vertical-align: middle; }
+.loan-tag.big{ font-size: 12px; padding: 3px 9px; }
+.rs-card .loan-tag{ position:absolute; left: 50%; bottom: 2px; transform: translateX(-50%); font-size: 8px; padding: 1px 4px; z-index: 2; }
+.boost-tag{ display:inline-flex; align-items:center; gap:3px; padding: 2px 8px; background: linear-gradient(180deg, #ffe066 0 50%, #f2b705 50% 100%); color:#4a2c00; font-size: 12px; font-weight: 900;
+  box-shadow: inset 0 0 0 2px #6b4200; clip-path: var(--px-cut-s); white-space: nowrap; vertical-align: middle; }
+.boost-tag .coin-ico{ width: 14px; height: 14px; }
+#showcase-loan{ display:inline-flex; gap: 6px; flex-wrap: wrap; justify-content:center; margin-left: 6px; vertical-align: middle; }
+.wg-cards{ display:flex; justify-content:center; gap: 16px; flex-wrap: wrap; margin: 10px 0; }
+.wg-card{ width: 210px; display:flex; flex-direction:column; align-items:center; gap: 6px; padding: 14px 10px; background: #0d1a3f; clip-path: var(--px-cut);
+  box-shadow: inset 0 0 0 4px var(--rar, #f2b705); animation: wgIn .5s ease-out both; }
+.wg-card b{ color:#fff; font-size: 16px; text-shadow: var(--outline); }
+.wg-card small{ color:#bcd0f5; font-size: 12px; line-height: 1.3; }
+.wg-boost{ --rar: #ffd84a; animation-delay: .25s; }
+.wg-face{ background: radial-gradient(circle, rgba(242,183,5,.45), transparent 70%); padding: 4px; }
+.wg-coin{ height: 128px; display:flex; align-items:center; justify-content:center; gap: 4px; }
+.wg-coin .coin-ico{ width: 72px !important; height: 72px !important; }
+.wg-coin em{ font-style: normal; font-size: 44px; font-weight: 900; color:#ffd84a; text-shadow: var(--outline); }
+@keyframes wgIn{ from{ transform: scale(.4) rotate(-6deg); opacity: 0; } to{ transform: none; opacity: 1; } }
+html.phone #showcase-loan{ display:flex; width:100%; margin: 4px 0 0; }
