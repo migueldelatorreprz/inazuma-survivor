@@ -3811,3 +3811,16 @@ html.touch-ui.landscape .boss-bar.with-weather{ top: calc(98px + env(safe-area-i
 html.touch-ui.choice-open #joystick-zone{ z-index: 30; pointer-events: none; }
 html.touch-ui.choice-open #joystick-zone .joy-base{ pointer-events: auto; opacity: .95; }
 @media (orientation: landscape){ html.phone.choice-open #levelup-overlay .overlay-box, html.phone.choice-open #talent-overlay .overlay-box, html.phone.choice-open #relic-overlay .overlay-box, html.phone.choice-open #hillman-overlay .overlay-box{ width: min(620px, 56vw) !important; max-width: min(620px, 56vw) !important; } }
+/* MANDO conectado y en uso: sin cursor del ratón y con los botones del mando en vez de las teclas */
+html.gp-active, html.gp-active body, html.gp-active body *:not(#gp-x){ cursor: none !important; }
+html.gp-active kbd[data-gp], html.gp-active .rr-key[data-gp]{ font-size: 0 !important; letter-spacing: 0 !important; display: inline-flex !important; align-items:center; justify-content:center;
+  min-width: 26px; height: 26px; padding: 0 5px !important; border-radius: 13px !important; background: #2b2f3a !important; color:#fff !important; border: 2px solid #0b0d12 !important; box-shadow: none !important; vertical-align: middle; }
+html.gp-active kbd[data-gp]::after, html.gp-active .rr-key[data-gp]::after{ content: attr(data-gp); font: 900 13px Inter, sans-serif; color: inherit; }
+html.gp-active kbd[data-gp="A"]{ background: #3fa34d !important; } html.gp-active kbd[data-gp="B"], html.gp-active .rr-key[data-gp="B"]{ background: #d6453d !important; }
+html.gp-active kbd[data-gp="Y"]{ background: #e0b520 !important; color:#2a1800 !important; } html.gp-active kbd[data-gp="X"]{ background: #2f6fd6 !important; }
+html.gp-active kbd[data-gp=""], html.gp-active kbd.upgrade-key, html.gp-active .hint-keys{ display: none !important; }
+html.gp-active .pb-slot kbd[data-gp]{ position:absolute; left: 2px; top: 2px; min-width: 22px; height: 16px; border-radius: 8px !important; padding: 0 3px !important; }
+html.gp-active .pb-slot kbd[data-gp]::after{ font-size: 9px; }
+html.gp-active .ult-core kbd[data-gp]{ min-width: 40px; height: 40px; border-radius: 50% !important; }
+html.gp-active .ult-core kbd[data-gp]::after{ font-size: 24px; }
+html.gp-active kbd.slot-key{ display:none !important; }
