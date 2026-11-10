@@ -3805,3 +3805,9 @@ html.touch-ui.landscape .boss-bar.with-weather{ top: calc(98px + env(safe-area-i
 /* MANDO: elemento seleccionado en los menús */
 .gp-focus{ outline: 4px solid #ffd84a !important; outline-offset: 2px; box-shadow: 0 0 0 7px rgba(255,216,74,.35) !important; filter: brightness(1.12); }
 #gp-ring{ position:fixed; z-index: 2147483000; pointer-events:none; display:none; box-shadow: 0 0 0 4px #ffd84a, 0 0 0 7px #071233, 0 0 16px 6px rgba(255,216,74,.55); transition: left .08s, top .08s, width .08s, height .08s; }
+/* mando: recuadro de selección más fino */
+#gp-ring{ box-shadow: 0 0 0 2px #ffd84a, 0 0 0 4px rgba(7,18,51,.85), 0 0 10px 2px rgba(255,216,74,.45) !important; transition: none !important; }
+/* móvil: con una elección abierta (subida de nivel, objeto, Hillman, talento) la cruceta queda por encima y se puede seguir usando */
+html.touch-ui.choice-open #joystick-zone{ z-index: 30; pointer-events: none; }
+html.touch-ui.choice-open #joystick-zone .joy-base{ pointer-events: auto; opacity: .95; }
+@media (orientation: landscape){ html.phone.choice-open #levelup-overlay .overlay-box, html.phone.choice-open #talent-overlay .overlay-box, html.phone.choice-open #relic-overlay .overlay-box, html.phone.choice-open #hillman-overlay .overlay-box{ width: min(620px, 56vw) !important; max-width: min(620px, 56vw) !important; } }
