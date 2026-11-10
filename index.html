@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#071233">
+<meta name="theme-color" content="#2456b8">
 <link rel="manifest" href="manifest.json">
 <script>
 /* MÓVIL: se detecta por capacidades (pantalla táctil + puntero grueso + tamaño de pantalla), no por el navegador.
@@ -34,17 +34,27 @@
   function fit(){
     var land = window.matchMedia ? mm('(orientation: landscape)') : window.innerWidth > window.innerHeight;
     d.classList.toggle('portrait', !land); d.classList.toggle('landscape', land);
+    /* orientación elegida en Ajustes: automática, siempre vertical o siempre horizontal (si el móvil está al revés se avisa) */
+    var pref = 'auto'; try { pref = JSON.parse(localStorage.getItem('ss_gfx') || '{}').orient || 'auto'; } catch (e) {}
+    var wrong = pref !== 'auto' && ((pref === 'portrait') === land);
+    d.classList.toggle('want-portrait', pref === 'portrait'); d.classList.toggle('want-landscape', pref === 'landscape');
+    if (wrong !== d.classList.contains('orient-wrong')){ d.classList.toggle('orient-wrong', wrong); if (wrong && window.onOrientWrong) try { window.onOrientWrong(); } catch (e) {} }
     if (!phone) return;
     var m = document.getElementById('vp-meta');
     var W = land ? Math.round(lw * TARGET_H / sw) : Math.max(sw, TARGET_W);
     var c = 'width=' + W + ', viewport-fit=cover, user-scalable=no';
-    if (m.getAttribute('content') === c) return;
+    if (m.getAttribute('content') === c && !fit.force){ fit.check && fit.check(); return; } fit.force = false;
     var n = document.createElement('meta'); n.name = 'viewport'; n.id = 'vp-meta'; n.content = c;   // meta nueva: algunos navegadores no releen la que ya estaba
     m.parentNode.replaceChild(n, m);
+    /* plan B: si el navegador no hace caso al ancho (pasa en algunos modos de pantalla completa), se escala con zoom */
+    setTimeout(function(){ var iw = window.innerWidth, need = land ? 0 : TARGET_W;
+      d.style.zoom = (need && iw < need - 20 && iw <= sw + 2) ? (iw / need).toFixed(4) : ''; }, 120);
   }
   fit();
   window.addEventListener('orientationchange', function(){ setTimeout(fit, 60); setTimeout(fit, 400); });
   window.addEventListener('resize', function(){ var land = mm('(orientation: landscape)'); if (land !== d.classList.contains('landscape')) fit(); });
+  /* al entrar o salir de pantalla completa algunos navegadores olvidan el ancho: se vuelve a poner */
+  ['fullscreenchange', 'webkitfullscreenchange'].forEach(function(ev){ document.addEventListener(ev, function(){ setTimeout(function(){ fit.force = true; fit(); }, 50); }); });
   if (window.matchMedia) try { matchMedia('(orientation: landscape)').addEventListener('change', fit); } catch (e) {}
   window.MOBILE.fit = fit;
 })();
@@ -52,10 +62,10 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=116">
+<link rel="stylesheet" href="style.css?v=118">
 </head>
 <body>
-  <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small>Inazuma Survivor se juega en horizontal</small></div></div>
+  <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small class="rot-want-p">Elegiste jugar en vertical</small><small class="rot-want-l">Elegiste jugar en horizontal</small><small>Puedes cambiarlo en Ajustes · Orientación</small></div></div>
 
   <!-- ===================== PANTALLA DE INICIO ===================== -->
   <section id="screen-title" class="screen title-screen">
@@ -70,7 +80,7 @@
         <button id="acc-name-pill" class="acc-name-pill hidden" title="Tu cuenta"></button>
         <button id="btn-account" class="icon-btn" title="Cuenta">👤</button>
         <button id="btn-news" class="icon-btn" title="Novedades">🔔</button>
-        <button id="btn-fullscreen" class="icon-btn" title="Pantalla completa"></button>
+        <button id="btn-fullscreen" class="icon-btn pc-only" title="Pantalla completa"></button>
         <button id="btn-settings-top" class="icon-btn" title="Ajustes">⚙️</button>
       </div>
     </header>
@@ -469,20 +479,22 @@
         <h4 class="sp-title">Sonido</h4>
         <label class="set-row"><span>Música</span><input id="vol-music" type="range" min="0" max="100" step="5"><b id="vol-music-val"></b></label>
         <label class="set-row"><span>Efectos</span><input id="vol-sfx" type="range" min="0" max="100" step="5"><b id="vol-sfx-val"></b></label>
-        <label class="set-row set-check"><input id="vol-mute" type="checkbox"><span>Silenciar todo (tecla M)</span></label>
+        <label class="set-row set-check"><input id="vol-mute" type="checkbox"><span>Silenciar todo<i class="pc-only"> (tecla M)</i></span></label>
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Rendimiento</h4>
-        <label class="set-row set-check"><input id="gfx-low" type="checkbox"><span>Modo PC de bajo rendimiento</span></label>
-        <p class="set-note">Baja la resolución interna, quita los números de daño y reduce partículas, clima y decoración animada para que el juego vaya más fluido.</p>
+        <label class="set-row set-check pc-only"><input id="gfx-low" type="checkbox"><span>Modo PC de bajo rendimiento</span></label>
+        <p class="set-note pc-only">Baja la resolución interna, quita los números de daño y reduce partículas, clima y decoración animada para que el juego vaya más fluido.</p>
         <label class="set-row set-check"><input id="gfx-fps" type="checkbox"><span>Mostrar FPS</span></label>
-        <label class="set-row set-check"><input id="set-fullscreen" type="checkbox"><span>Pantalla completa</span></label>
+        <label class="set-row set-check pc-only"><input id="set-fullscreen" type="checkbox"><span>Pantalla completa</span></label>
+        <p class="set-note touch-only-b">En el móvil el juego va siempre en modo rendimiento para que vaya más fluido.</p>
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
-        <label class="set-row set-check"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
-        <label class="set-row set-check touch-only"><input id="set-joyright" type="checkbox"><span>Móvil: joystick a la derecha (la R y el Cambio pasan a la izquierda)</span></label>
-        <ul class="keys-list">
+        <label class="set-row set-check pc-only"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
+        <label class="set-row set-sel touch-only"><span>Orientación</span><select id="set-orient"><option value="auto">Automática</option><option value="portrait">Vertical</option><option value="landscape">Horizontal</option></select></label>
+        <label class="set-row set-check touch-only"><input id="set-joyright" type="checkbox"><span>Joystick a la derecha</span></label>
+        <ul class="keys-list pc-only">
           <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span>Moverse (el disparo es automático)</li>
           <li><span>Clic</span>Con «Moverse con el ratón»: clic (o mantener pulsado) y tu jugador va hacia allí</li>
           <li><span><kbd>Q</kbd> <kbd>E</kbd></span>Usar la supertécnica 1 o 2</li>
@@ -584,6 +596,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=146"></script>
+  <script src="app.js?v=148"></script>
 </body>
 </html>

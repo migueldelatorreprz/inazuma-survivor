@@ -3680,3 +3680,74 @@ html.touch-ui.portrait.joy-right .pball-bar{ right: auto; left: calc(10px + env(
 html.phone.portrait .title-logo{ transform: scale(.82); transform-origin: top center; }
 html.phone.portrait .showcase{ top: 39% !important; transform: translate(-50%, -50%) scale(.8) !important; }
 html.phone.portrait .records-panel{ display:none; }
+
+/* =====================================================================
+   MÓVIL: menos texto, más visual (todo lo de aquí solo se aplica en pantallas táctiles)
+   ===================================================================== */
+html.touch-ui{ background:#2456b8; }                                   /* color de la barra del navegador (Safari la toma del fondo) */
+html.touch-ui .pc-only{ display:none !important; }
+.touch-only-b{ display:none; }
+html.touch-ui .touch-only-b{ display:block; }
+.set-sel{ grid-template-columns: 1fr auto !important; }
+.set-sel select{ font: 700 15px Inter, sans-serif; color:#fff; background:#0b1a44; border: none; padding: 8px 12px; min-height: 40px;
+  box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #8cc4ff; border-radius: 0; }
+/* aviso de girar: solo si en Ajustes elegiste una orientación y el móvil está en la otra */
+html.touch-ui.orient-wrong .rotate-overlay{ display:flex !important; position:fixed; inset:0; z-index: 2147483647; align-items:center; justify-content:center;
+  background: repeating-linear-gradient(0deg, #0b1f5c 0 4px, #0a1a4f 4px 8px); }
+.rot-want-p, .rot-want-l{ display:none; }
+html.want-portrait .rot-want-p, html.want-landscape .rot-want-l{ display:block; }
+html.want-portrait .rot-phone{ animation-direction: reverse; }
+/* textos de ayuda largos fuera (la información sigue en la Guía) */
+html.phone .shop-sub, html.phone .gacha-sub, html.phone .rk-note, html.phone .hint-keys, html.phone .bench-help, html.phone #rs-shown,
+html.phone .docs-body > .intro, html.phone .rs-nick{ display:none !important; }
+html.touch-ui kbd.upgrade-key, html.touch-ui .upgrade-option kbd.esc-key{ display:none !important; }
+html.phone .section-title, html.phone .rs-heading, html.phone .tr-title{ font-size: 28px !important; }
+/* subida de nivel: la etiqueta de rareza ya no tapa el nombre */
+html.touch-ui .urar-corner{ height: 26px; min-width: 0; padding: 0 8px 0 22px; top: -2px; right: -2px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 18px calc(100% - 6px), 12px calc(100% - 6px), 12px 6px, 0 6px); }
+html.touch-ui .urar-corner::before{ display:none; }
+html.touch-ui .urar-corner u{ width: 9px; height: 9px; }
+html.touch-ui .urar-stars{ gap: 3px; margin: 0; }
+html.touch-ui .upgrade-option.urar b{ padding-right: 74px; }
+html.phone .upgrade-option b{ font-size: 17px !important; line-height: 1.25 !important; }
+html.phone .upgrade-option > span{ font-size: 13.5px !important; }
+html.phone .upgrade-option{ padding: 10px 12px !important; }
+/* JUGADORES (móvil): ficha compacta arriba con los botones a mano, y la lista debajo; se desplaza la pantalla entera */
+html.phone #screen-roster .rs-panel{ height: auto !important; min-height: 100%; }
+html.phone #screen-roster .rs-body{ flex-direction: column; flex: none; }
+html.phone #screen-roster .rs-left{ flex: none; }
+html.phone #screen-roster .rs-grid{ overflow: visible; flex: none; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)) !important; }
+html.phone #screen-roster .rs-tab b{ display:none; }
+html.phone #screen-roster .rs-tab{ min-width: 52px; padding: 4px 6px !important; }
+html.phone #screen-roster .rs-detail{ order: -1; width: 100% !important; max-height: none !important; overflow: visible;
+  display: grid !important; grid-template-columns: 112px 1fr 1fr 1fr; column-gap: 8px; row-gap: 6px; align-items: center; justify-items: start; padding: 12px !important; }
+html.phone #screen-roster .rs-detail > *{ grid-column: 2 / -1; margin: 0 !important; }
+html.phone #screen-roster .rs-portrait{ grid-column: 1; grid-row: 1 / span 5; width: 108px !important; height: 108px !important; align-self: start; }
+html.phone #screen-roster .rs-portrait .rs-big{ width: 104px !important; height: 104px !important; margin-bottom: -4px !important; }
+html.phone #screen-roster .rs-title{ font-size: 24px !important; text-align: left; }
+html.phone #screen-roster .rs-sub{ font-size: 12px; }
+html.phone #screen-roster .rs-look{ display:flex; gap: 6px; }
+html.phone #screen-roster .rs-look-btn{ padding: 4px 10px !important; font-size: 12px !important; min-height: 32px; }
+html.phone #screen-roster .rs-tags{ gap: 4px; }
+html.phone #screen-roster .rs-action{ grid-column: auto / span 1; order: 5; width: 100% !important; min-height: 46px; padding: 6px 4px !important; font-size: 15px !important; justify-self: stretch; }
+html.phone #screen-roster .rs-action:first-of-type{ grid-column: 1 / span 2; }
+html.phone #screen-roster .rs-stats{ order: 6; grid-column: 1 / -1; width: 100%; display:grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+html.phone #screen-roster .rs-detail{ grid-template-columns: 108px repeat(3, minmax(0, 1fr)) !important; }
+html.phone #screen-roster .rs-detail > *{ min-width: 0; max-width: 100%; }
+html.phone #screen-roster .rs-look{ width: 100%; }
+html.phone #screen-roster .rs-look-btn{ flex: 1 1 0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html.phone #screen-roster .rs-stats{ grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+html.phone #screen-roster .rs-stat{ min-width: 0; }
+html.phone .upgrade-option b, html.phone .upgrade-option .up-nm{ white-space: normal !important; overflow: visible !important; text-overflow: clip !important; }
+html.phone .overlay-box > h3{ font-size: 30px !important; line-height: 1.1 !important; }
+html.phone #levelup-overlay .overlay-box, html.phone #talent-overlay .overlay-box, html.phone #relic-overlay .overlay-box, html.phone #hillman-overlay .overlay-box{ padding: 16px 14px !important; width: min(720px, 96vw); }
+html.phone #levelup-overlay .upgrade-option b{ font-size: 19px !important; gap: 8px; flex-wrap: wrap; }
+html.phone #levelup-overlay .upgrade-option b .up-nm{ white-space: normal !important; display: inline !important; flex: 1 1 0; min-width: 0; }
+html.phone #levelup-overlay .upgrade-option b img, html.phone #levelup-overlay .upgrade-option b svg{ width: 34px !important; height: 34px !important; vertical-align: middle; }
+html.phone #levelup-overlay .upgrade-option > span{ font-size: 14px !important; }
+html.phone .levelup-hint{ margin: 4px 0 8px !important; }
+html.phone #levelup-overlay .upgrade-option b{ display:block !important; }
+html.phone #levelup-overlay .upgrade-option b .up-nm{ display:inline !important; flex: none; }
+html.phone #levelup-overlay .upgrade-option b img, html.phone #levelup-overlay .upgrade-option b svg, html.phone #levelup-overlay .upgrade-option b .px-mini{ display:inline-block; vertical-align: middle !important; margin-right: 4px; }
+html.phone #levelup-overlay .overlay-box{ width: 96vw !important; max-width: 96vw !important; }
+html.touch-ui .upgrade-option.urar b{ padding-right: 58px; }
