@@ -67,8 +67,6 @@ El **código propio** de este proyecto (`game.js`, `style.css`, `index.html` y l
 - ✅ Puedes usarlo, estudiarlo, modificarlo y compartirlo **sin fines comerciales**, manteniendo los avisos de copyright (*Required Notice*).
 - ❌ No puedes venderlo, cobrar por jugarlo ni ponerle anuncios.
 
-Parte del sistema de oleadas, dificultad, jefes y subidas de nivel está **adaptado de [PokéSurvivor](https://github.com/JPTER78/pokesurvivor)** (Copyright 2026 JPTER78, PolyForm Noncommercial 1.0.0). Su aviso se mantiene en `LICENSE.md` y en el propio código.
-
 La licencia **no se aplica** a los personajes, nombres, sprites ni demás material de *Inazuma Eleven* ni de terceros, que siguen perteneciendo a sus titulares.
 
 ## 👥 Créditos
