@@ -3624,3 +3624,16 @@ html.phone.portrait .rotate-overlay{ z-index: 2147483647; }
   html.phone .showcase{ left: 31% !important; transform: translate(-50%, -50%) scale(.8) !important; }
   html.phone .title-logo{ transform: scale(.7); }
 }
+/* Ajustes: la opción del joystick solo sale en pantallas táctiles */
+.touch-only{ display:none !important; }
+html.touch-ui .touch-only{ display:grid !important; }
+/* MÓVIL: joystick a la derecha (opción de Ajustes); la R, el Cambio y los talentos pasan a la izquierda */
+html.touch-ui.joy-right #joystick-zone{ left: auto; right: 0; }
+html.touch-ui.joy-right #joystick-zone .joy-base{ left: auto; right: calc(26px + env(safe-area-inset-right, 0px)); }
+html.touch-ui.joy-right .ult-btn{ right: auto; left: calc(24px + env(safe-area-inset-left, 0px)); }
+html.touch-ui.joy-right .talent-slots{ right: auto; left: calc(24px + 124px + 18px + env(safe-area-inset-left, 0px)); }
+html.touch-ui.joy-right .swap-btn{ right: auto; left: calc(24px + 26px + env(safe-area-inset-left, 0px)); }
+@media (max-width: 1000px){
+  html.touch-ui.joy-right .talent-slots{ left: calc(24px + 112px + 14px + env(safe-area-inset-left, 0px)); }
+  html.touch-ui.joy-right .swap-btn{ left: calc(24px + 18px + env(safe-area-inset-left, 0px)); }
+}

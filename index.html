@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#071233">
+<link rel="manifest" href="manifest.json">
 <script>
 /* MÓVIL: se detecta por capacidades (pantalla táctil + puntero grueso + tamaño de pantalla), no por el navegador.
    - touch-ui: cualquier dispositivo táctil sin ratón (móvil o tablet) → controles táctiles.
@@ -24,6 +25,7 @@
   if (phone) d.classList.add('phone');
   else if (ui) d.classList.add('tablet');
   window.MOBILE = { ui: ui, phone: phone, tablet: ui && !phone };
+  try { if (ui && JSON.parse(localStorage.getItem('ss_gfx') || '{}').joyRight) d.classList.add('joy-right'); } catch (e) {}
   if (!phone) return;
   var TARGET_H = 520;
   function fit(){
@@ -42,7 +44,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=114">
+<link rel="stylesheet" href="style.css?v=115">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small>Inazuma Survivor se juega en horizontal</small></div></div>
@@ -471,6 +473,7 @@
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
         <label class="set-row set-check"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
+        <label class="set-row set-check touch-only"><input id="set-joyright" type="checkbox"><span>Móvil: joystick a la derecha (la R y el Cambio pasan a la izquierda)</span></label>
         <ul class="keys-list">
           <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span>Moverse (el disparo es automático)</li>
           <li><span>Clic</span>Con «Moverse con el ratón»: clic (o mantener pulsado) y tu jugador va hacia allí</li>
@@ -573,6 +576,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=144"></script>
+  <script src="app.js?v=145"></script>
 </body>
 </html>
