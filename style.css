@@ -3901,3 +3901,7 @@ html.phone.landscape .logo-social{ margin-left: 18px; }
 html.phone .kind-badge.kb-card img{ width: 24px !important; height: 24px !important; }
 html.phone .upgrade-option.has-kind, html .upgrade-option.has-kind{ padding-right: 44px !important; }
 html:not(.phone) .upgrade-option.has-kind{ padding-right: 58px !important; }
+
+/* panel de estadísticas (Tab) abajo a la derecha (en PC): así no tapa el objeto */
+html:not(.touch-ui) .stats-side{ left: auto; top: auto; right: 10px; bottom: 10px; animation-name: ss-in-r; }
+@keyframes ss-in-r{ from{ transform: translateX(110%); } to{ transform: none; } }
