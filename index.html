@@ -62,7 +62,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=131">
+<link rel="stylesheet" href="style.css?v=132">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small class="rot-want-p">Elegiste jugar en vertical</small><small class="rot-want-l">Elegiste jugar en horizontal</small><small>Puedes cambiarlo en Ajustes · Orientación</small></div></div>
@@ -492,6 +492,8 @@
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
+        <label class="set-row"><span>Altura de la cámara</span><input id="set-cam" type="range" min="-3" max="3" step="1"><b id="set-cam-val"></b></label>
+        <p class="set-note">Sube o baja un poco la cámara durante el partido (0 = normal).</p>
         <label class="set-row set-check pc-only"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
         <label class="set-row set-sel touch-only"><span>Orientación</span><select id="set-orient"><option value="auto">Automática</option><option value="portrait">Vertical</option><option value="landscape">Horizontal</option></select></label>
         <label class="set-row set-check touch-only"><input id="set-joyright" type="checkbox"><span>Joystick a la derecha</span></label>
@@ -570,6 +572,8 @@
         <p>Tipografías Teko, Inter, Bangers y Pixelify Sans (SIL Open Font License), servidas por Google Fonts. La música, los efectos de sonido y los iconos pixel se generan por código y son originales del proyecto.</p>
         <h4>Créditos</h4>
         <p>Creado por <b>ChinoziN</b> y <b>Hezy Panxito</b>.</p>
+        <h4>Agradecimientos</h4>
+        <p>Gracias a <b>Aquí Llego Tu Tiburón</b> por el apoyo y el testeo del juego.</p>
         <h4>Contacto y retirada de contenido</h4>
         <p>Si eres titular de derechos y quieres que retiremos algo, escríbenos y lo quitaremos lo antes posible: <b>migueldelatorreprz@gmail.com</b></p>
         <h4>Licencia del código</h4>
@@ -610,6 +614,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=171"></script>
+  <script src="app.js?v=172"></script>
 </body>
 </html>
