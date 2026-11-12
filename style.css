@@ -3908,3 +3908,27 @@ html:not(.touch-ui) .stats-side{ left: auto; top: auto; right: 10px; bottom: 10p
 
 /* ranking: el aviso de "solo los 25 primeros" también en el móvil (pequeño) */
 html.phone .rk-note{ font-size: 11px; margin: 4px 0 6px; }
+
+/* ===== idioma: bandera en el menú principal y desplegable ===== */
+.icon-btn.lang-btn{ cursor: pointer; }
+.icon-btn.lang-btn .lang-flag{ width: 24px; height: 17px; image-rendering: pixelated; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.5)); }
+.lang-menu{
+  position: fixed; z-index: 9000; display: flex; flex-direction: column; gap: 4px; padding: 8px;
+  clip-path: var(--px-cut-s);
+  background: linear-gradient(180deg, #14307a 0 50%, #102766 50% 100%);
+  box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #6fb0ff;
+}
+.lang-menu.hidden{ display: none; }
+.lang-opt{
+  display: flex; align-items: center; gap: 10px; min-width: 150px; padding: 8px 12px;
+  border: none; cursor: pointer; color: #fff; font-weight: 800; font-size: 14px; letter-spacing: .03em;
+  text-shadow: var(--outline-thin); background: transparent; clip-path: var(--px-cut-s);
+}
+.lang-opt:hover{ background: rgba(255,255,255,0.12); }
+.lang-opt.on{ background: rgba(255,225,74,0.22); box-shadow: inset 0 0 0 2px #ffe14a; }
+.lang-opt .lang-flag{ width: 27px; height: 19px; image-rendering: pixelated; }
+html.phone .lang-opt{ min-height: 44px; }
+html[lang="en"] .hud-relic::after{ content:'ITEM'; }
+html[lang="en"] #hud-relic2::after{ content:'ITEMS'; }
+html[lang="it"] .hud-relic::after{ content:'OGGETTO'; }
+html[lang="it"] #hud-relic2::after{ content:'OGGETTI'; }
