@@ -3698,7 +3698,7 @@ html.touch-ui.orient-wrong .rotate-overlay{ display:flex !important; position:fi
 html.want-portrait .rot-want-p, html.want-landscape .rot-want-l{ display:block; }
 html.want-portrait .rot-phone{ animation-direction: reverse; }
 /* textos de ayuda largos fuera (la información sigue en la Guía) */
-html.phone .shop-sub, html.phone .gacha-sub, html.phone .rk-note, html.phone .hint-keys, html.phone .bench-help, html.phone #rs-shown,
+html.phone .shop-sub, html.phone .gacha-sub, html.phone .hint-keys, html.phone .bench-help, html.phone #rs-shown,
 html.phone .docs-body > .intro, html.phone .rs-nick{ display:none !important; }
 html.touch-ui kbd.upgrade-key, html.touch-ui .upgrade-option kbd.esc-key{ display:none !important; }
 html.phone .section-title, html.phone .rs-heading, html.phone .tr-title{ font-size: 28px !important; }
@@ -3905,3 +3905,6 @@ html:not(.phone) .upgrade-option.has-kind{ padding-right: 58px !important; }
 /* panel de estadísticas (Tab) abajo a la derecha (en PC): así no tapa el objeto */
 html:not(.touch-ui) .stats-side{ left: auto; top: auto; right: 10px; bottom: 10px; animation-name: ss-in-r; }
 @keyframes ss-in-r{ from{ transform: translateX(110%); } to{ transform: none; } }
+
+/* ranking: el aviso de "solo los 25 primeros" también en el móvil (pequeño) */
+html.phone .rk-note{ font-size: 11px; margin: 4px 0 6px; }
