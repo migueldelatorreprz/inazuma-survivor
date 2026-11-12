@@ -3950,3 +3950,44 @@ html.phone .hud-aim::before{ left:5px; width:12px; height:12px; }
 
 /* el indicador de apuntado va en la pausa (Esc), no en el HUD */
 .pause-box .sp-head .sp-aim{ margin: 0 0 0 10px; flex: 0 0 auto; align-self: center; }
+
+/* ===== Cuadro de Afinidades (pausa) ===== */
+.aff-chart-btn{ margin-left: 8px; align-self: center; padding: 6px 10px; border: none; cursor: pointer; color: #fff; font-weight: 900; font-size: 12px; letter-spacing: .02em;
+  text-shadow: var(--outline-thin); clip-path: var(--px-cut-s); background: linear-gradient(180deg, #2456b8 0 50%, #1c469c 50% 100%);
+  box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8cc4ff; }
+.aff-chart-btn:hover{ box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #ffe14a; }
+#pause-overlay .sp-head-el{ display: flex; align-items: center; }
+.aff-ov{ z-index: 9500; }
+.aff-box{ width: min(760px, 94vw); max-height: 92vh; overflow-y: auto; }
+.ac-intro{ font-size: 13px; line-height: 1.45; margin: 4px 0 10px; color: #dbe6ff; }
+.ac-win-t{ color: #6fe38a; } .ac-lose-t{ color: #ff7a6e; }
+.ac-list{ display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 8px; }
+.ac-row{ padding: 8px 10px; background: #0b1a44; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px var(--c); }
+.ac-row.ac-me{ background: #17306e; box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #ffe14a; }
+.ac-who{ display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 16px; color: #fff; text-shadow: var(--outline-thin); }
+.ac-who em{ margin-left: auto; font-style: normal; font-size: 11px; font-weight: 900; color: #1b1d26; background: #ffe14a; padding: 1px 6px; }
+.ac-rel{ display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 3px 0; font-size: 12px; }
+.ac-lbl{ min-width: 78px; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; }
+.ac-lbl.ac-win{ color: #6fe38a; } .ac-lbl.ac-lose{ color: #ff7a6e; } .ac-lbl.ac-even{ color: #b8c4dc; }
+.ac-chip{ display: inline-flex; align-items: center; gap: 4px; padding: 1px 6px 1px 3px; background: rgba(0,0,0,.35); box-shadow: inset 0 0 0 1px var(--c); color: #fff; }
+.ac-h{ margin: 14px 0 6px; color: #ffe14a; }
+.ac-wrap{ overflow-x: auto; }
+.ac-table{ border-collapse: separate; border-spacing: 3px; margin: 0 auto; font-size: 13px; }
+.ac-table th{ padding: 4px 6px; color: #fff; font-weight: 800; text-align: center; background: #0b1a44; box-shadow: inset 0 0 0 2px var(--c, #3f6fc8); }
+.ac-table th small{ display: block; font-size: 10px; margin-top: 2px; }
+.ac-table th.ac-corner{ background: none; box-shadow: none; font-size: 10px; color: #b8c4dc; line-height: 1.3; }
+.ac-table th.ac-corner span{ display: block; }
+.ac-table td{ min-width: 54px; padding: 8px 4px; text-align: center; font-weight: 900; color: #fff; text-shadow: var(--outline-thin); }
+.ac-table td.ac-win{ background: #1f7a3a; } .ac-table td.ac-lose{ background: #8a2a24; } .ac-table td.ac-even{ background: #2a3550; color: #c9d3e8; }
+.ac-table tr.ac-me th{ box-shadow: inset 0 0 0 2px #ffe14a; }
+.ac-table tr.ac-me td{ outline: 2px solid #ffe14a; outline-offset: -2px; }
+html.phone .ac-list{ grid-template-columns: 1fr; }
+html.phone .aff-chart-btn{ font-size: 10px; padding: 5px 7px; }
+/* cuadro de afinidades: mismo marco pixel arcade que el tutorial y las novedades */
+.aff-box{ position:relative; text-align:center; border-radius:0 !important; border:none !important;
+  clip-path: var(--px-cut); background: var(--px-panel) !important; image-rendering: pixelated; padding: 22px 22px 22px !important;
+  box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--px-light), inset 0 0 0 10px var(--px-dark) !important; }
+.aff-box h3{ display:inline-block; margin:0 0 10px; padding:4px 24px 6px; color:#fff; font-family: var(--title-font); font-weight:400; font-size:26px; letter-spacing:.04em;
+  background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #5a3200; text-shadow: var(--outline); }
+.aff-box .ac-list, .aff-box .ac-h{ text-align:left; }
+.aff-box .ac-h{ display:inline-block; padding:2px 12px 3px; background: #0b1a44; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px #ffe14a; }
