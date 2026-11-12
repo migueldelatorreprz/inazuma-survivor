@@ -3932,3 +3932,7 @@ html[lang="en"] .hud-relic::after{ content:'ITEM'; }
 html[lang="en"] #hud-relic2::after{ content:'ITEMS'; }
 html[lang="it"] .hud-relic::after{ content:'OGGETTO'; }
 html[lang="it"] #hud-relic2::after{ content:'OGGETTI'; }
+
+/* ranking: contador de admin (solo versión de pruebas) */
+.rk-admin{ margin: 2px 0 8px; font-size: 13px; color: #ffe14a; text-shadow: 0 1px 0 rgba(0,0,0,.6); }
+.rk-admin b{ color: #fff; }
