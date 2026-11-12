@@ -3936,3 +3936,17 @@ html[lang="it"] #hud-relic2::after{ content:'OGGETTI'; }
 /* ranking: contador de admin (solo versión de pruebas) */
 .rk-admin{ margin: 2px 0 8px; font-size: 13px; color: #ffe14a; text-shadow: 0 1px 0 rgba(0,0,0,.6); }
 .rk-admin b{ color: #fff; }
+
+/* indicador del modo de apuntado (HUD, junto a las monedas) */
+.hud-aim{ display:inline-flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:1px; margin-right:6px; padding:4px 10px 5px 26px; position:relative;
+  border:none; cursor:pointer; color:#fff; font-family:'Inter',sans-serif; font-weight:900; font-size:12px; line-height:1.05; text-shadow: var(--outline-thin);
+  background: var(--px-panel); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #8cc4ff, inset 0 0 0 6px var(--px-dark); pointer-events:auto; }
+.hud-aim::before{ content:''; position:absolute; left:7px; top:50%; width:14px; height:14px; transform:translateY(-50%); background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 13' shape-rendering='crispEdges'%3E%3Cpath fill='%23111' d='M4 0h5v1h2v2h1v2h1v3h-1v2h-1v2H9v1H4v-1H2v-2H1V8H0V5h1V3h1V1h2z'/%3E%3Cpath fill='%23ff5a4a' d='M4 1h5v1h2v2h1v5h-1v2H9v1H4v-1H2V9H1V4h1V2h2z'/%3E%3Cpath fill='%23fff' d='M4 3h5v1h1v5H9v1H4V9H3V4h1z'/%3E%3Cpath fill='%23ff5a4a' d='M5 4h3v1h1v3H8v1H5V8H4V5h1z'/%3E%3Cpath fill='%23111' d='M6 0h1v13H6zM0 6h13v1H0z'/%3E%3C/svg%3E") center/contain no-repeat; image-rendering:pixelated; }
+.hud-aim.smart{ box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #ffe14a, inset 0 0 0 6px var(--px-dark); }
+.hud-aim small{ font-size:10px; font-weight:700; color:#ffe14a; }
+.hud-aim:hover{ filter: brightness(1.15); }
+html.phone .hud-aim{ font-size:10px; padding:3px 7px 4px 21px; }
+html.phone .hud-aim::before{ left:5px; width:12px; height:12px; }
+
+/* el indicador de apuntado va en la pausa (Esc), no en el HUD */
+.pause-box .sp-head .sp-aim{ margin: 0 0 0 10px; flex: 0 0 auto; align-self: center; }

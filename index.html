@@ -62,7 +62,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=133">
+<link rel="stylesheet" href="style.css?v=135">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small class="rot-want-p">Elegiste jugar en vertical</small><small class="rot-want-l">Elegiste jugar en horizontal</small><small>Puedes cambiarlo en Ajustes · Orientación</small></div></div>
@@ -391,6 +391,7 @@
         </div>
         <div id="sp-element" class="sp-element sp-head-el"></div>
         <div id="sp-level" class="sp-level">Nv. 1</div>
+        <button id="hud-aim" class="hud-aim sp-aim" type="button"></button>
       </header>
       <div class="pause-cols pause-v">
         <div class="sp-boxes">
@@ -492,6 +493,10 @@
       </section>
       <section class="sp-box">
         <h4 class="sp-title">Controles</h4>
+        <label class="set-row set-sel"><span>Apuntado</span><select id="set-aim"><option value="closest">Enemigo más cercano</option><option value="smart">Apuntado inteligente</option></select></label>
+        <p class="set-note">Más cercano: tus ataques automáticos van al rival más cercano. Inteligente: prioriza bosses, rivales especiales, élites y los que puedes rematar o te ganan por afinidad. Se cambia también en el partido con la tecla T o tocando el indicador de la pausa (Esc).</p>
+        <label class="set-row"><span>Objetivo aleatorio</span><input id="set-aimrand" type="range" min="0" max="100" step="5"><b id="set-aimrand-val"></b></label>
+        <p class="set-note">Porcentaje de ataques que van a otro rival al azar en vez de al objetivo principal.</p>
         <label class="set-row"><span>Altura de la cámara</span><input id="set-cam" type="range" min="-3" max="3" step="1"><b id="set-cam-val"></b></label>
         <p class="set-note">Sube o baja un poco la cámara durante el partido (0 = normal).</p>
         <label class="set-row set-check pc-only"><input id="set-mouse" type="checkbox"><span>Moverse con el ratón (clic y va hacia allí)</span></label>
@@ -509,6 +514,7 @@
           <li><span><kbd>Esc</kbd> <kbd>Tab</kbd> <kbd>P</kbd></span>Pausa con estadísticas</li>
           <li><span><kbd>M</kbd></span>Silenciar / activar el sonido</li>
           <li><span><kbd>L</kbd></span>Reiniciar el partido al momento</li>
+          <li><span><kbd>T</kbd></span>Cambiar el modo de apuntado (más cercano / inteligente)</li>
         </ul>
       </section>
       <section class="sp-box pc-only">
@@ -614,6 +620,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=175"></script>
+  <script src="app.js?v=177"></script>
 </body>
 </html>
