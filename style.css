@@ -3991,3 +3991,59 @@ html.phone .aff-chart-btn{ font-size: 10px; padding: 5px 7px; }
   background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #5a3200; text-shadow: var(--outline); }
 .aff-box .ac-list, .aff-box .ac-h{ text-align:left; }
 .aff-box .ac-h{ display:inline-block; padding:2px 12px 3px; background: #0b1a44; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px #ffe14a; }
+
+/* ===== pausa: cabecera ordenada en dos filas (nada se pisa) =====
+   fila 1: retrato · nombre y puesto · apuntado · nivel
+   fila 2: retrato · afinidad + Cuadro de Afinidades                              */
+#pause-overlay .sp-head{
+  display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "pic id aim lvl" "pic el el el";
+  align-items: center; column-gap: 12px; row-gap: 6px; padding: 8px 12px 8px 16px !important;
+}
+#pause-overlay .sp-portrait{ grid-area: pic; align-self: center; }
+#pause-overlay .sp-id{ grid-area: id; min-width: 0; }
+#pause-overlay .sp-name{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 22px; line-height: 1.05; }
+#pause-overlay .sp-role{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 1.2; }
+#pause-overlay .sp-head .sp-aim{ grid-area: aim; margin: 0 !important; justify-self: end; }
+#pause-overlay .sp-level{ grid-area: lvl; white-space: nowrap; font-size: 18px !important; line-height: 1 !important; padding: 7px 12px !important; justify-self: end; }
+#pause-overlay .sp-head-el{ grid-area: el; margin: 0 !important; justify-self: start; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#pause-overlay .sp-head-el .sp-arch{ white-space: nowrap; }
+#pause-overlay .sp-head-el .aff-chart-btn{ margin: 0; white-space: nowrap; }
+html.phone #pause-overlay .sp-head{ grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "pic id lvl" "pic el aim"; }
+/* indicador de apuntado en la pausa: más grande y con aire */
+#pause-overlay .sp-head .sp-aim{ min-width: 150px; min-height: 38px; padding: 7px 14px 8px 34px !important; font-size: 14px; gap: 2px; align-items: flex-start; }
+#pause-overlay .sp-head .sp-aim::before{ left: 11px; width: 16px; height: 16px; }
+#pause-overlay .sp-head .sp-aim small{ font-size: 11px; }
+html.phone #pause-overlay .sp-head .sp-aim{ min-width: 120px; min-height: 32px; font-size: 12px; padding: 5px 10px 6px 28px !important; }
+html.phone #pause-overlay .sp-head .sp-aim::before{ left: 8px; width: 13px; height: 13px; }
+/* ===== cuadro de afinidades simple (sin scroll) ===== */
+.aff-simple{ width: min(720px, 94vw) !important; max-width: 94vw !important; max-height: none !important; overflow: visible !important; padding: 18px 20px 18px !important; }
+.aff-simple h3{ margin-bottom: 8px; font-size: 24px; }
+.aff-simple .ac-legend{ display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 10px; font-size: 13px; font-weight: 900; }
+.aff-simple .ac-lg{ padding: 3px 10px; background: #0b1a44; clip-path: var(--px-cut-s); }
+.aff-simple .ac-win{ color: #6fe38a; } .aff-simple .ac-lose{ color: #ff7a6e; }
+.aff-simple .ac-lg.ac-win{ box-shadow: inset 0 0 0 2px #2f9a4c; } .aff-simple .ac-lg.ac-lose{ box-shadow: inset 0 0 0 2px #b0392e; }
+.aff-simple .ac-tab{ display: flex; flex-direction: column; gap: 4px; text-align: left; }
+.aff-simple .ac-r{ display: grid; grid-template-columns: 170px 1fr 1fr; align-items: center; gap: 8px; padding: 5px 10px; background: #0b1a44; clip-path: var(--px-cut-s);
+  box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px var(--c, #3f6fc8); }
+.aff-simple .ac-r.ac-hd{ background: none; box-shadow: none; padding: 0 10px; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+.aff-simple .ac-r.ac-me{ background: #17306e; box-shadow: inset 0 0 0 2px var(--px-dark), inset 0 0 0 4px #ffe14a; }
+.aff-simple .ac-who{ display: flex; align-items: center; gap: 7px; margin: 0; font-size: 15px; color: #fff; text-shadow: var(--outline-thin); white-space: nowrap; }
+.aff-simple .ac-who em{ margin-left: 4px; font-style: normal; font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.3; font-weight: 900; color: #1b1d26; background: #ffe14a; padding: 1px 6px; text-shadow: none; letter-spacing: .02em; clip-path: none; }
+.aff-simple .ac-cell{ display: flex; flex-wrap: wrap; gap: 5px; }
+.aff-simple .ac-chip{ display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px 2px 3px; font-size: 12px; font-weight: 800; color: #fff; background: rgba(0,0,0,.35); box-shadow: inset 0 0 0 1px var(--c); white-space: nowrap; }
+.aff-simple .ac-foot{ margin: 10px 0 4px; font-size: 12px; color: #c9d6f2; line-height: 1.4; }
+.aff-simple .tut-nav{ margin-top: 6px; }
+html.phone .aff-simple{ padding: 12px 12px 12px !important; }
+html.phone .aff-simple .ac-r{ grid-template-columns: 150px 1fr 1fr; padding: 4px 8px; gap: 6px; }
+html.phone .aff-simple .ac-chip{ font-size: 11px; padding: 1px 6px 1px 2px; }
+html.phone .aff-simple h3{ font-size: 20px; margin-bottom: 4px; }
+html.phone .aff-simple .ac-legend{ margin-bottom: 6px; font-size: 12px; }
+html.phone .aff-simple .ac-tab{ gap: 3px; }
+html.phone .aff-simple .ac-who{ font-size: 13px; }
+#pause-overlay .sp-head-el .aff-chart-btn{ font-size: 13px; padding: 9px 14px; }
+html.phone #pause-overlay .sp-head-el .aff-chart-btn{ font-size: 11px; padding: 7px 10px; }
+
+/* sangrado (Néctar de los dioses) en la barra del boss: rojo oscuro desde la izquierda */
+.boss-hp{ position: relative; }
+#boss-hp-bleed{ position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #5a0612; box-shadow: inset -2px 0 0 #ff2d3d; transition: width .1s linear; pointer-events: none; }
