@@ -4058,3 +4058,16 @@ html.phone #pause-overlay .sp-head-el .aff-chart-btn{ font-size: 11px; padding: 
 /* sangrado (Néctar de los dioses) en la barra del boss: rojo oscuro desde la izquierda */
 .boss-hp{ position: relative; }
 #boss-hp-bleed{ position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #5a0612; box-shadow: inset -2px 0 0 #ff2d3d; transition: width .1s linear; pointer-events: none; }
+
+/* ranking: botón y ventana de la build del top 10 */
+.rk-build-btn{ font: 700 11px 'Inter', sans-serif; color: #0b1a44; background: #ffd862; border: none; padding: 3px 8px; cursor: pointer; box-shadow: inset 0 -2px 0 rgba(0,0,0,.25); }
+.rk-build-btn:hover{ background: #fff0a0; }
+.rk-build{ width: min(520px, 94vw); max-height: 90vh; overflow-y: auto; text-align: left; font-family: 'Inter', sans-serif; color: #e6efff; }
+.rk-build h4{ margin: 12px 0 6px; color: #ffd862; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.rb-head{ display: flex; gap: 10px; align-items: center; }
+.rb-head b{ display: block; font-size: 16px; } .rb-head span{ font-size: 13px; opacity: .85; display: inline-flex; gap: 4px; align-items: center; }
+.rb-row{ display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
+.rb-tech, .rb-chip{ display: inline-flex; align-items: center; gap: 5px; background: rgba(111,176,255,.14); padding: 3px 7px; font-size: 13px; }
+.rb-tech em, .rb-chip em{ font-style: normal; color: #ffd862; font-weight: 700; }
+.rb-plus{ color: #ffd862; font-weight: 700; }
+.rb-chips{ display: flex; flex-wrap: wrap; gap: 5px; }
