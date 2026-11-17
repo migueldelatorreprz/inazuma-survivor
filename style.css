@@ -3034,30 +3034,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .rl-actions .shop-btn{ width: auto !important; padding: 10px 26px !important; font-size: 20px; }
 .rl-actions .hidden{ display:none; }
 .rl-tag{ color:#ff5a4a; }
-/* menús del partido en rojo */
-body.rl-mode #levelup-overlay .overlay-box, body.rl-mode #talent-overlay .overlay-box, body.rl-mode #relic-overlay .overlay-box{
-  background: repeating-linear-gradient(180deg, #7a0c14 0 4px, #6a0910 4px 8px) !important;
-  box-shadow: inset 0 0 0 4px #1a0204, inset 0 0 0 7px #ff5a4a, inset 0 0 0 10px #1a0204 !important; }
-body.rl-mode #levelup-overlay .overlay-box h3, body.rl-mode #talent-overlay .overlay-box h3, body.rl-mode #relic-overlay .overlay-box h3{
-  background: linear-gradient(180deg, #ff4a3c 0 50%, #c81e2a 50% 100%) !important; box-shadow: inset 0 0 0 3px #2a0306 !important; }
-body.rl-mode #levelup-overlay .overlay-box p, body.rl-mode #talent-overlay .overlay-box p{ color:#ffd9d4 !important; }
-body.rl-mode #levelup-overlay .upgrade-option{
-  background: linear-gradient(180deg, #a8121e 0%, #4a060c 100%) !important; border-color: #ff6b5e !important; }
-body.rl-mode #levelup-overlay .upgrade-option > span{ border-left-color: #ffd84a !important; color:#ffd9d4 !important; }
-body.rl-mode #levelup-overlay .upgrade-option.urar, body.rl-mode #levelup-overlay .upgrade-option{ border: 2px solid #ffd84a !important; }
-body.rl-mode .upgrade-option .up-nm{ letter-spacing: .12em; }
 
-/* RandomLocke: se distingue el tipo de carta (pero no cuál es) */
-.rl-kind{ font-style: normal; font-family:'Inter',sans-serif; font-weight: 900; font-size: 12px !important; letter-spacing: .06em; text-transform: uppercase;
-  padding: 3px 8px; color:#fff; background: rgba(0,0,0,.45); clip-path: var(--px-cut-s); text-shadow: none; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="tech"]{
-  background: linear-gradient(180deg, #3a060c 0%, #12020a 100%) !important; border-color: #ff6b5e !important; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="tech"] .rl-kind{ background:#ff4a3c; color:#1a0204; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="book"]{ background: linear-gradient(180deg, #1f4a4a 0%, #0a1f22 100%) !important; border-color: #8fe0d8 !important; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="book"] .rl-kind{ background:#8fe0d8; color:#0a1f22; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="talent"]{ background: linear-gradient(180deg, #5a2a9a 0%, #2c1356 100%) !important; border-color: #c48af0 !important; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="talent"] .rl-kind{ background:#c48af0; color:#2c1356; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="basic"] .rl-kind{ background:#ffd84a; color:#5a3200; }
 /* carta de objeto inicial */
 .rl-item{ width: 170px; height: 250px; box-sizing: border-box; padding: 18px 12px; display:flex; flex-direction:column; align-items:center; gap: 10px; text-align:center;
   background: repeating-linear-gradient(180deg, #14307a 0 4px, #112a6c 4px 8px); clip-path: var(--px-cut);
@@ -3066,31 +3043,16 @@ body.rl-mode #levelup-overlay .upgrade-option[data-rlk="basic"] .rl-kind{ backgr
 .rl-item-ico img{ width: 64px !important; height: 64px !important; image-rendering: pixelated; }
 .rl-item b{ font-family: var(--title-font); font-weight: 400; font-size: 19px; color:#fff; text-shadow: var(--outline-thin); line-height: 1.1; }
 .rl-item small{ font-size: 12px; color:#cfe2ff; line-height: 1.3; }
-body.rl-mode #levelup-overlay .upgrade-option{ box-shadow: inset 0 -4px 0 rgba(0,0,0,.25) !important; }
-.rl-kind{ margin-left: 10px; }
 
 /* RandomLocke: barra de vida verde arcade (el rojo no se veía sobre el campo rojizo) */
 .hill-head{ image-rendering: pixelated; }
 
 /* RandomLocke: la vida en un rojo algo más oscuro para que se distinga del campo */
 body.rl-mode .hp-bar .bar-fill{ background: #c8261c !important; }
-body.rl-mode #talent-overlay .rl-kind{ background:#c48af0; color:#2c1356; }
-body.rl-mode #levelup-overlay .upgrade-option[data-rlk="basic"] .rl-kind{ background:#ffd84a; color:#5a3200; }
 
 /* la vista del partido tiene tamaño fijo: el lienzo se escala para llenar su hueco sin deformarse */
 #game-canvas{ object-fit: contain; }
 #btn-fullscreen.on{ filter: brightness(1.3) drop-shadow(0 0 4px #ffd84a); }
-/* RandomLocke: menú de Hillman también rojo (sus técnicas se ven; las nuevas, ???) */
-body.rl-mode #hillman-overlay .overlay-box{ background: repeating-linear-gradient(180deg, #7a0c14 0 4px, #6a0910 4px 8px) !important;
-  box-shadow: inset 0 0 0 4px #1a0204, inset 0 0 0 7px #ff5a4a, inset 0 0 0 10px #1a0204 !important; }
-body.rl-mode #hillman-overlay .overlay-box h3{ background: linear-gradient(180deg, #ff4a3c 0 50%, #c81e2a 50% 100%) !important; box-shadow: inset 0 0 0 3px #2a0306 !important; }
-body.rl-mode #hillman-overlay .overlay-box p{ color:#ffd9d4 !important; }
-body.rl-mode #hillman-overlay .upgrade-option{ background: linear-gradient(180deg, #a8121e 0%, #4a060c 100%) !important; border: 2px solid #ffd84a !important; box-shadow: inset 0 -4px 0 rgba(0,0,0,.25) !important; }
-body.rl-mode #hillman-overlay .upgrade-option[data-rlk="tech"]{ background: linear-gradient(180deg, #3a060c 0%, #12020a 100%) !important; border-color: #ff6b5e !important; }
-body.rl-mode #hillman-overlay .upgrade-option[data-rlk="book"]{ background: linear-gradient(180deg, #1f4a4a 0%, #0a1f22 100%) !important; border-color: #8fe0d8 !important; }
-body.rl-mode #hillman-overlay .upgrade-option[data-rlk="tech"] .rl-kind{ background:#ff4a3c; color:#1a0204; }
-body.rl-mode #hillman-overlay .upgrade-option[data-rlk="book"] .rl-kind{ background:#8fe0d8; color:#0a1f22; }
-body.rl-mode #hillman-overlay .upgrade-option > span{ border-left-color: #ffd84a !important; color:#ffd9d4 !important; }
 
 /* iconos pixel: siempre nítidos (sin suavizado) */
 .px-mini, .px-ico{ image-rendering: pixelated; }
@@ -4240,3 +4202,118 @@ span.char-face.t2f{ display:block; background-repeat:no-repeat; image-rendering:
 
 .rb-spr{ width: 22px; height: 22px; image-rendering: pixelated; margin: -3px 0; }
 .rb-pball{ flex: none; width: 22px; height: 22px; margin: -3px 0; background: url('assets/ui/pballs.png') 0 0 / 88px 22px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 0 3px var(--c)); }
+
+/* ======================================================================
+   RANDOMLOCKE · REWORK EXPERIMENTAL
+   ====================================================================== */
+/* 3er hueco de objeto (solo RandomLocke) */
+#hud-relic3{ display:inline-flex; vertical-align: top; margin-left: 8px !important; }
+#hud-relic3.hidden{ display:none !important; }
+#hud-relic3::after{ content: none !important; }
+body.rl-mode #hud-relic::after{ content: none !important; }
+/* botón del menú */
+.menu-item.menu-rl.rl-exp small{ color: #ffd84a !important; font-weight: 900; letter-spacing: .04em; }
+/* resultados */
+.rl2-res{ margin-bottom: 10px; text-align: left; }
+.rl2-res-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+.rl2-res-grid div{ display: flex; flex-direction: column; align-items: center; padding: 6px 4px; background: rgba(0,0,0,.3); box-shadow: inset 0 0 0 2px rgba(255,120,110,.35); }
+.rl2-res-grid b{ font: 900 20px 'Inter', sans-serif; color: #fff; } .rl2-res-grid span{ font: 800 10px 'Inter', sans-serif; color: #ffcfc8; text-transform: uppercase; letter-spacing: .06em; text-align: center; }
+.rl2-res p{ margin: 4px 0; font-size: 13px; line-height: 1.35; }
+.rl2-res p img{ vertical-align: -4px; }
+
+
+/* RandomLocke: aviso experimental (en la presentación y el resumen) y tabla de rivales (TAB / pausa) */
+.rl-exp-note{ font-size: 12px; opacity: .92; }
+.rl-exp-note b{ color: #ffd84a; letter-spacing: .06em; }
+.rl-foe-title{ margin: 10px 0 4px; font-size: 13px; color: #ff8a7a; letter-spacing: .04em; }
+.rl-foe-h{ margin: 8px 0 3px; font-size: 11px; color: #ffcfc8; text-transform: uppercase; letter-spacing: .08em; }
+.rl-foe-list li b{ white-space: nowrap; }
+#sp-rl-foes .sp-list li{ font-size: 12px; }
+
+/* RandomLocke: los menús son iguales que en el modo normal; solo el recuadro del título va en rojo */
+body.rl-mode #levelup-overlay .overlay-box h3, body.rl-mode #talent-overlay .overlay-box h3, body.rl-mode #relic-overlay .overlay-box h3, body.rl-mode #hillman-overlay .overlay-box h3{
+  background: linear-gradient(180deg, #ff4a3c 0 50%, #c81e2a 50% 100%) !important; box-shadow: inset 0 0 0 3px #3a0408 !important; }
+/* aviso de la contrapartida en las cartas de subida de nivel (como la Revista, en rojo) */
+.upgrade-option .rl-foe-next{ display:flex; align-items:center; gap:6px; margin-top:6px; padding:4px 8px; border-radius:6px;
+  background: rgba(200,30,42,.22); border:1px solid rgba(255,106,94,.55); color:#ffd9d4; font-size:12.5px; font-weight:600; text-align:left; }
+.upgrade-option .rl-foe-next img{ flex:none; image-rendering: pixelated; }
+/* RandomLocke: las cartas iniciales se eligen encima del campo (se ve el mapa detrás; el HUD aparece al empezar) */
+.rl-pick.rl-onmap{ background: rgba(10,0,2,.38); }
+body.rl-picking #hud, body.rl-picking #tech-bar, body.rl-picking #pball-bar, body.rl-picking #btn-ult{ visibility: hidden; }
+/* RandomLocke · subida especial (cada 3 niveles): el menú en rojo */
+#levelup-overlay.rl-special .overlay-box{
+  background: repeating-linear-gradient(180deg, #7a0c14 0 4px, #6a0910 4px 8px) !important;
+  box-shadow: inset 0 0 0 4px #1a0204, inset 0 0 0 7px #ff5a4a, inset 0 0 0 10px #1a0204 !important; }
+#levelup-overlay.rl-special .overlay-box p, #levelup-overlay.rl-special .levelup-hint{ color:#ffd9d4 !important; }
+#levelup-overlay.rl-special .upgrade-option:not(.upgrade-special):not(.upgrade-talent):not(.reroll-btn){ background: linear-gradient(180deg, #4a0810 0%, #2a0308 100%) !important; }
+#levelup-overlay.rl-special .upgrade-option:not(.upgrade-special):not(.upgrade-talent):not(.reroll-btn) > span{ background: rgba(0,0,0,.25) !important; }
+#levelup-overlay.rl-special .upgrade-option:not(.upgrade-special):not(.upgrade-talent) > span{ border-left-color: #ffd84a !important; color:#ffd9d4 !important; }
+/* RandomLocke · TAB: panel de rivales, igual que el de estadísticas pero rojo (a su lado) */
+.rl-foe-side{ background: repeating-linear-gradient(180deg, #7a0c14 0 4px, #6a0910 4px 8px) !important;
+  box-shadow: inset 0 0 0 4px #1a0204, inset 0 0 0 7px #ff5a4a, inset 0 0 0 10px #1a0204 !important; }
+.rl-foe-side .ss-head{ background: linear-gradient(180deg, #ff4a3c 0 50%, #c81e2a 50% 100%); box-shadow: inset 0 0 0 3px #3a0408; }
+.rl-foe-side .ss-list li{ background: rgba(30,0,4,.6); color:#ffe4e0; }
+.rl-foe-side .ss-val{ color:#ffd84a; }
+.rl-foe-side .ss-foot{ color:#ffb0a6; }
+.rl-foe-side .ss-ico img{ width:18px; height:18px; }
+html:not(.touch-ui) .rl-foe-side{ right: 10px; }
+html.touch-ui .rl-foe-side{ left: 10px; }
+/* subida especial: el recuadro del título en amarillo (como siempre) */
+body.rl-mode #levelup-overlay.rl-special .overlay-box h3{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%) !important; box-shadow: inset 0 0 0 3px #5a3200 !important; }
+/* RandomLocke · lupa para revelar una carta ??? (chapita abajo a la derecha de la carta) */
+.upgrade-option{ position: relative; }
+.upgrade-option .rl-lupa{ position:absolute; right: 12px; bottom: 9px; z-index: 3; display:flex; align-items:center; gap: 5px; padding: 3px 9px 3px 5px; cursor: pointer;
+  width:auto !important; margin:0 !important; border:none !important; line-height: 1;
+  font-family:'Pixelify Sans', Inter, sans-serif; font-size: 13px !important; font-weight: 700; color:#3a2200 !important; text-shadow:none;
+  background: linear-gradient(180deg, #fff1a0 0 50%, #ffd84a 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px #5a3200;
+  animation: rl-lupa-bob 1.2s steps(2) infinite; }
+.upgrade-option .rl-lupa .n{ font-family:'Inter',sans-serif; font-weight: 900; color:#7a2a00; }
+.upgrade-option .rl-lupa:hover{ filter: brightness(1.12); }
+.upgrade-option .rl-lupa img{ width: 16px !important; height: 16px !important; image-rendering: pixelated; margin:0 !important; }
+@keyframes rl-lupa-bob{ 0%{ transform: translateY(0); } 50%{ transform: translateY(-2px); } }
+.upgrade-option.rl-revealed{ animation: rl-reveal .5s steps(5); }
+@keyframes rl-reveal{ 0%{ filter: brightness(2.2) saturate(0); transform: scale(.97); } 100%{ filter:none; transform:none; } }
+/* RandomLocke · botón Revelar al lado de Cambiar cartas */
+.rl-rr-row{ display:flex; gap: 10px; align-items: stretch; }
+.rl-rr-row > .reroll-btn{ flex: 1 1 0; min-width: 0; }
+.overlay .rl-reveal-btn{ background: linear-gradient(180deg, #e0a800 0 50%, #c48a00 50% 100%) !important; }
+.overlay .rl-reveal-btn img{ width: 26px !important; height: 26px !important; image-rendering: pixelated; }
+.overlay .rl-reveal-btn.on{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2b705 50% 100%) !important; color:#3a2200 !important; animation: rl-rev-pulse .6s steps(2) infinite; }
+.overlay .rl-reveal-btn.on .rr-txt, .overlay .rl-reveal-btn.on .rr-left{ color:#3a2200 !important; text-shadow:none !important; }
+.overlay .rl-reveal-btn.empty{ filter: grayscale(1) brightness(.7); cursor: not-allowed; }
+@keyframes rl-rev-pulse{ 50%{ filter: brightness(1.2); } }
+/* modo Revelar: las ??? brillan y el cursor es una lupa; las demás se apagan un poco */
+.overlay.rl-revealing .upgrade-option[data-rlh="1"]{ outline: 3px solid #ffd84a; outline-offset: -3px; cursor: zoom-in; animation: rl-rev-pulse .6s steps(2) infinite; }
+.overlay.rl-revealing .upgrade-option:not([data-rlh="1"]):not(.rl-reveal-btn):not(.reroll-btn){ filter: brightness(.55); }
+/* contador de lupas en el HUD */
+.rl-lupas{ display:inline-flex; align-items:center; justify-content:center; position: relative; vertical-align: top; width: 58px; height: 58px; margin: 6px 0 0 8px;
+  background: var(--px-panel, #14307a); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 5px #ffd84a; }
+.rl-lupas img{ width: 34px !important; height: 34px !important; image-rendering: pixelated; }
+.rl-lupas i{ position:absolute; right: 4px; bottom: 2px; font-style: normal; font-family:'Inter',sans-serif; font-weight: 900; font-size: 14px; color:#fff; text-shadow: 0 0 2px #000, 1px 1px 0 #000; }
+.rl-lupas.empty{ filter: grayscale(1) brightness(.6); }
+.rl-lupas.hidden{ display:none; }
+.upgrade-option .rl-lupa .t, .upgrade-option .rl-lupa span{ color:#3a2200 !important; opacity:1 !important; font-size: 14px !important; border:none !important; padding:0 !important; margin:0 !important; background:none !important; }
+.upgrade-option .rl-lupa .n{ color:#7a2a00 !important; }
+.upgrade-option .rl-lupa img{ width: 18px !important; height: 18px !important; }
+/* RandomLocke · Vetar (al lado de Revelar) */
+.overlay .rl-veto-btn{ background: linear-gradient(180deg, #c8261c 0 50%, #a01a14 50% 100%) !important; }
+.overlay .rl-veto-btn img{ width: 26px !important; height: 26px !important; image-rendering: pixelated; }
+.overlay .rl-veto-btn.on{ background: linear-gradient(180deg, #ff6a5a 0 50%, #e8463a 50% 100%) !important; animation: rl-rev-pulse .6s steps(2) infinite; }
+.overlay .rl-veto-btn.empty{ filter: grayscale(1) brightness(.7); cursor: not-allowed; }
+.rl-rr-row > .reroll-btn{ padding-left: 8px !important; padding-right: 8px !important; gap: 6px !important; }
+.overlay.rl-vetoing .upgrade-option[data-rlv="1"]{ outline: 3px solid #ff4a3c; outline-offset: -3px; cursor: not-allowed; animation: rl-rev-pulse .6s steps(2) infinite; }
+.overlay.rl-vetoing .upgrade-option:not([data-rlv="1"]):not(.reroll-btn){ filter: brightness(.55); }
+.upgrade-option.rl-vetoed{ cursor: not-allowed; }
+.upgrade-option.rl-vetoed > *:not(.rl-veto-stamp){ filter: grayscale(.85) brightness(.45); }
+.rl-veto-stamp{ position:absolute; inset: 0; display:flex; align-items:center; justify-content:center; gap: 10px; pointer-events:none; z-index: 4;
+  font-family: var(--title-font); font-size: 34px; color:#ff4a3c; text-shadow: var(--outline); transform: rotate(-6deg); }
+.rl-veto-stamp img{ width: 40px !important; height: 40px !important; image-rendering: pixelated; }
+
+.rl-rr-row .rr-txt{ white-space: nowrap; font-size: 18px !important; }
+.rl-rr-row .rr-left{ white-space: nowrap; }
+.rl-rr-row .rr-key{ display:none !important; }
+.upgrade-option.rl-vetoed, .upgrade-option.rl-vetoed:disabled{ opacity: 1 !important; filter: none !important; }
+.rl-veto-stamp b{ font-weight: 400; color:#ff4a3c; }
+.upgrade-option.rl-vetoed{ box-shadow: inset 0 0 0 999px rgba(10,4,8,.6) !important; }
+html body .overlay .upgrade-option.rl-vetoed[data-rlv="done"]{ background: linear-gradient(180deg, #34303c 0%, #1e1a24 100%) !important; border-color:#6a6070 !important; }
+html body .overlay .upgrade-option.rl-vetoed[data-rlv="done"] > span{ background: transparent !important; }
