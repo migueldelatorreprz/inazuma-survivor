@@ -62,7 +62,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=150">
+<link rel="stylesheet" href="style.css?v=167">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small class="rot-want-p">Elegiste jugar en vertical</small><small class="rot-want-l">Elegiste jugar en horizontal</small><small>Puedes cambiarlo en Ajustes · Orientación</small></div></div>
@@ -205,6 +205,7 @@
 
   <!-- ===================== PANTALLA DE MISIONES ===================== -->
   <section id="screen-missions" class="screen hidden shop-screen ms-screen">
+    <button id="btn-back-title-ms" class="btn btn-ghost ms-back">Volver</button>
     <header class="shop-head">
       <div class="shop-sign ms-sign"><img class="ms-sign-ico" alt=""><h2>Misiones</h2><img class="ms-sign-ico" alt=""></div>
       <div id="ms-wallet" class="shop-wallet ms-wallet"></div>
@@ -213,7 +214,6 @@
     <nav id="ms-tabs" class="tr-tabs ms-tabs"></nav>
     <button id="btn-ms-all" class="shop-btn shop-btn-y ms-all">Recoger todo</button>
     <div id="ms-grid" class="ms-grid"></div>
-    <button id="btn-back-title-ms" class="btn btn-ghost">Volver</button>
   </section>
 
   <!-- ===================== PANTALLA DE INTERCAMBIOS ===================== -->
@@ -280,12 +280,8 @@
       <h2 class="section-title">Mejoras</h2>
       <div class="shop-wallet"><span title="Monedas"><img class="shop-coin-ico" alt=""><b id="coin-badge-3">0</b></span></div>
     </header>
-    <p class="gacha-sub">Elige un jugador a la izquierda y pulsa «Mejorar» en lo que quieras subir.</p>
-    <div class="mt-panel">
-      <aside class="mt-side">
-        <input id="mt-search" class="mt-search" type="search" placeholder="Buscar jugador o equipo…" autocomplete="off">
-        <div id="meta-chars" class="mt-list"></div>
-      </aside>
+    <p class="gacha-sub">Pulsa «Mejorar» en lo que quieras subir. Para mejorar a otro, pulsa «Cambiar jugador».</p>
+    <div class="mt-panel mt-solo">
       <div class="mt-main">
         <div id="mt-head" class="mt-head"></div>
         <div id="meta-grid" class="mt-grid"></div>
@@ -619,6 +615,6 @@
       <button id="btn-gameover-title" class="btn btn-primary">Volver al menú</button>
     </div>
   </div>
-  <script src="app.js?v=194"></script>
+  <script src="app.js?v=318"></script>
 </body>
 </html>

@@ -1873,14 +1873,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .overlay .upgrade-option.upgrade-option[data-el="dragon"]{ background: linear-gradient(180deg, #1f3a9e 0 50%, #132a7a 50% 100%) !important;
   box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 5px #9fb8ff, inset 0 -8px 0 rgba(0,0,0,.18) !important; }
 .overlay .upgrade-option.upgrade-option[data-el="dragon"] > span{ border-left-color: #9fb8ff !important; color: #ffffff !important; }
-.overlay .upgrade-option.upgrade-option[data-el="galactic"]{   /* T2 · Galáctico: rosa cósmico con estrellas (distinto del morado de los talentos) */
-  background-color: #c43a9a !important;
-  background-image:
-    radial-gradient(circle at 8% 28%, #ffffff 0 1.5px, transparent 2.5px), radial-gradient(circle at 22% 72%, #fff2b0 0 1px, transparent 2px),
-    radial-gradient(circle at 41% 18%, #ffffff 0 1px, transparent 2px), radial-gradient(circle at 57% 64%, #ffffff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 73% 30%, #ffe0f6 0 1px, transparent 2px), radial-gradient(circle at 88% 70%, #ffffff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle at 95% 22%, #fff2b0 0 1px, transparent 2px), radial-gradient(circle at 33% 45%, #ffffff 0 1px, transparent 2px),
-    linear-gradient(180deg, #e2559e 0 50%, #c43a8a 50% 100%) !important;
+.overlay .upgrade-option.upgrade-option[data-el="galactic"]{ background: linear-gradient(180deg, #e2559e 0 50%, #c43a8a 50% 100%) !important;   /* T2 · Galáctico: rosa liso, como las demás afinidades (sin estrellas) */
   box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 5px #ffd0ec, inset 0 -8px 0 rgba(0,0,0,.18) !important; }
 .overlay .upgrade-option.upgrade-option[data-el="galactic"] > span{ border-left-color: #ffd0ec !important; color: #ffffff !important; }
 .upgrade-option.upgrade-special[data-el="galactic"], .mp-tile.is-tech[data-el="galactic"]{ background: linear-gradient(180deg, #d84a96 0%, #8a1f62 100%); border-color: #ffd0ec; }
@@ -2291,7 +2284,7 @@ img.px-emo{ width:1.15em; height:1.15em; vertical-align:-0.22em; image-rendering
 .pk-burst{ position: absolute; inset: -20% -10% 0; background: radial-gradient(circle at 50% 55%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%); }
 .pk-char-wrap .pk-char{ position: relative !important; right: auto !important; bottom: 0 !important; height: 96% !important; width: auto; max-width: 100%;
   object-fit: contain; filter: drop-shadow(0 3px 0 rgba(0,0,0,.35)) !important; }
-.pk-pack:has(.pk-char-wrap) .pk-title{ position: absolute; left: 7px; right: 7px; bottom: 30px; z-index: 3; margin: 0 !important; align-self: auto !important;
+.pk-pack:has(.pk-char-wrap) .pk-title{ position: absolute; left: 7px; right: 7px; bottom: 10px; z-index: 3; margin: 0 !important; align-self: auto !important;
   text-align: center; padding: 3px 0 4px; background: linear-gradient(180deg, rgba(7,18,51,.0), rgba(7,18,51,.85) 35%, rgba(7,18,51,.85)); }
 .pk-pack:has(.pk-char-wrap) .pk-count{ position: absolute; left: 50%; transform: translateX(-50%); bottom: 10px; z-index: 3; margin: 0 !important; align-self: auto !important; }
 .pk-pack:not(:has(.pk-char-wrap)) .pk-title, .pk-pack:not(:has(.pk-char-wrap)) .pk-count{ align-self: center !important; margin-left: 0 !important; }
@@ -4117,3 +4110,110 @@ html.phone #pause-overlay .sp-head-el .aff-chart-btn{ font-size: 11px; padding: 
 .rb-plus{ color: #ffc81e; font-weight: 800; }
 .rb-chips{ display: flex; flex-wrap: wrap; gap: 5px; }
 html.phone .rk-table td{ height: 26px; } html.phone .rk-champ-info b{ font-size: 17px; } html.phone .rk-champ-time b{ font-size: 20px; } html.phone .rk-champ-face{ width: 46px; height: 46px; }
+
+/* ======================================================================
+   TEMPORADA 2 (solo game-test): elegir temporada, menú por temporadas y versiones · estilo arcade Inazuma
+   ====================================================================== */
+.season-pick{ position:fixed; inset:0; z-index:300; display:grid; place-items:center; padding:16px; background: rgba(4,8,24,.86); }
+.season-pick.hidden{ display:none; }
+.sp2-box{ width:min(820px, 100%); display:flex; flex-direction:column; align-items:center; gap:14px; padding: 22px 24px 24px;
+  clip-path: var(--px-cut); background: var(--px-panel);
+  box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--px-light), inset 0 0 0 10px var(--px-dark); image-rendering: pixelated; }
+.sp2-title{ margin:0; padding: 4px 24px 6px; font-family: var(--title-font); font-weight:400; font-size: clamp(24px, 4.4vw, 34px); letter-spacing:.04em; color:#fff;
+  background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #5a3200; text-shadow: var(--outline); }
+.sp2-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; width:100%; }
+.sp2-card{ position:relative; display:flex; flex-direction:column; gap:0; padding: 8px; cursor:pointer; text-align:left; color:#fff; border:none;
+  clip-path: var(--px-cut); background: linear-gradient(180deg, var(--a2) 0 50%, var(--ad2) 50% 100%);
+  box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 6px var(--acc), inset 0 0 0 8px var(--px-dark);
+  transition: transform .08s steps(2), filter .08s; }
+.sp2-card.t1{ --acc:#ffd84a; --a1:#ffd84a; --a2:#f2a705; --ad:#5a3200; --ad2:#c98300; }
+.sp2-card.t2{ --acc:#d68cff; --a1:#d68cff; --a2:#9a3fe0; --ad:#2e0a52; --ad2:#7a2cc0; }
+.sp2-card:hover, .sp2-card:focus-visible{ transform: translateY(-5px); filter: brightness(1.08); outline:none;
+  box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 6px #ffffff, inset 0 0 0 8px var(--px-dark); }
+.sp2-img{ display:block; width:100%; aspect-ratio: 1 / 1; background-size: cover; background-position:center;
+  clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px var(--px-dark); }
+.sp2-img::after{ content:''; display:block; width:100%; height:100%; box-shadow: inset 0 0 0 3px var(--px-dark); }
+.sp2-txt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-top: 8px; padding: 6px 12px 9px;
+  clip-path: var(--px-cut-s); background: linear-gradient(180deg, var(--a1) 0 50%, var(--a2) 50% 100%); box-shadow: inset 0 0 0 3px var(--ad); }
+.sp2-txt b{ font-family: var(--title-font); font-weight:400; font-size: clamp(18px, 3vw, 26px); letter-spacing:.04em; color:#fff; text-shadow: var(--outline); line-height:1.05; }
+.sp2-txt small{ font: 900 11px Inter, sans-serif; color: var(--ad); letter-spacing:.02em; }
+.sp2-new{ position:absolute; top:16px; right:16px; padding: 3px 10px 4px; font: 900 11px Inter, sans-serif; font-style:normal; letter-spacing:.06em; color:#fff;
+  background: linear-gradient(180deg, #ff6a8a 0 50%, #e8204a 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 2px #4a0012;
+  animation: sp2blink 1s steps(2) infinite; }
+@keyframes sp2blink{ 50%{ filter: brightness(1.35); } }
+.sp2-back{ min-width: 150px; border-radius:0 !important; clip-path: var(--px-cut-s); color:#fff !important; text-shadow: var(--outline-thin);
+  background: linear-gradient(180deg, #2456b8 0 50%, #1c469c 50% 100%) !important; box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #6fa6ec !important; }
+.sp2-back:hover{ box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #ffe14a !important; }
+@media (max-width: 560px){ .sp2-box{ padding: 16px 12px 18px; } .sp2-row{ gap:8px; } .sp2-card{ padding:6px; } .sp2-txt{ padding: 5px 8px 7px; } .sp2-txt small{ font-size:9px; } .sp2-new{ top:12px; right:12px; font-size:9px; } }
+
+.rs-seasons{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px; flex-shrink:0; }
+.rs-season{ display:flex; align-items:center; justify-content:center; gap:10px; padding: 7px 12px 9px; cursor:pointer; color:#fff; border:none;
+  clip-path: var(--px-cut-s); background: linear-gradient(180deg, #2456b8 0 50%, #1c469c 50% 100%);
+  box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #6fa6ec; transition: transform .08s steps(2); }
+.rs-season:hover{ transform: translateY(-2px); box-shadow: inset 0 0 0 3px var(--px-dark), inset 0 0 0 5px #ffe14a; }
+.rs-season b{ font-family: var(--title-font); font-weight:400; font-size:19px; letter-spacing:.04em; text-shadow: var(--outline); }
+.rs-season small{ padding: 1px 7px 2px; font: 900 11px Inter, sans-serif; color:#fff; background: var(--px-dark); clip-path: var(--px-cut-s); }
+.rs-season.s1.active{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); box-shadow: inset 0 0 0 3px #5a3200; }
+.rs-season.s2.active{ background: linear-gradient(180deg, #d68cff 0 50%, #9a3fe0 50% 100%); box-shadow: inset 0 0 0 3px #2e0a52; }
+.rs-season.s1.active small{ background:#5a3200; } .rs-season.s2.active small{ background:#2e0a52; }
+.rs-ver{ margin-top: 4px; }
+.rs-ver-btn{ flex:1; padding: 6px 8px; border:none; cursor:pointer; color:#fff; font: 800 13px Inter, sans-serif;
+  clip-path: var(--px-cut-s); background:#1a3a8a; box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #4f7fd6; }
+.rs-ver-btn.on{ background: linear-gradient(180deg, #8fe3ff 0 50%, #3fb0e8 50% 100%); color:#06223a; box-shadow: inset 0 0 0 2px #0b3a66; }
+.rs-ver-btn:disabled{ opacity:.45; cursor:default; }
+span.char-face.t2f{ display:block; background-repeat:no-repeat; image-rendering: pixelated; flex-shrink:0; }
+.keep-emo span.char-face.t2f{ display:inline-block; }
+.boss-bar{ transition: opacity .2s; }
+.boss-bar.bb-fade{ opacity: .22; }
+
+/* Mejoras: sin lista lateral; botón arcade para cambiar de jugador (lleva a Jugadores) */
+.mt-panel.mt-solo{ width:min(980px, 96vw); }
+.mt-switch{ display:flex; align-items:center; gap:10px; flex-shrink:0; padding: 8px 16px 9px 10px; cursor:pointer; color:#fff; border:none; text-align:left;
+  clip-path: var(--px-cut-s); background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%);
+  box-shadow: inset 0 0 0 3px #5a3200, inset 0 -5px 0 rgba(0,0,0,.18); transition: transform .08s steps(2), filter .08s; }
+.mt-switch:hover, .mt-switch:focus-visible{ transform: translateY(-3px); filter: brightness(1.08); outline:none; box-shadow: inset 0 0 0 3px #5a3200, inset 0 0 0 5px #ffffff; }
+.mt-switch:active{ transform: translateY(1px); }
+.mt-sw-ico{ display:grid; place-items:center; width:38px; height:38px; font: 900 24px Inter, sans-serif; color:#fff; text-shadow: var(--outline-thin);
+  background: #1c469c; clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #0b1a3d; }
+.mt-switch b{ display:block; font-family: var(--title-font); font-weight:400; font-size: 20px; letter-spacing:.04em; color:#fff; text-shadow: var(--outline); line-height:1.05; }
+.mt-switch small{ display:block; font: 900 10px Inter, sans-serif; color:#5a3200; margin-top:2px; }
+.rs-upg-glow{ animation: rsUpgGlow 0.9s steps(2) infinite; }
+@keyframes rsUpgGlow{ 0%,100%{ box-shadow: 0 0 0 3px #ffd84a; } 50%{ box-shadow: 0 0 0 3px #ffffff, 0 0 14px #ffd84a; } }
+@media (max-width: 640px){ .mt-head{ flex-wrap: wrap; } .mt-switch{ width:100%; } }
+
+/* Mejoras: el recuadro de todas las mejoras con marco arcade Inazuma (como Elegir temporada) */
+.mt-panel.mt-solo{ padding: 16px 18px 18px; clip-path: var(--px-cut); background: var(--px-panel);
+  box-shadow: inset 0 0 0 4px var(--px-dark), inset 0 0 0 7px var(--px-light), inset 0 0 0 10px var(--px-dark); image-rendering: pixelated; }
+.mt-panel.mt-solo .mt-head{ border-radius: 0; clip-path: var(--px-cut-s); }
+.mt-panel.mt-solo .mt-grid{ padding: 2px 4px 4px 2px; }
+/* Misiones: Volver arriba a la izquierda */
+#screen-missions{ position: relative; }
+.ms-back{ position:absolute; top: 14px; left: 14px; z-index: 5; margin:0 !important; min-width: 120px; border-radius:0 !important; clip-path: var(--px-cut-s); }
+
+/* sobres con dibujos anchos (Xene, Shawn, Janus): llenan el hueco y se recortan por los lados */
+.pk-char-wrap .pk-char.pk-wide{ max-width: none; flex-shrink: 0; }
+
+/* Ranking T2: Campeón de Alius en morado (como el del Frontier en amarillo) */
+.rk-champ.alius{ background: linear-gradient(180deg, #2a0a4a 0%, #0f1640 100%); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #b56ae6, inset 0 0 24px rgba(181,106,230,.3); }
+.rk-champ.alius.me{ box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #ffffff, inset 0 0 24px rgba(255,255,255,.25); }
+.rk-champ.alius .rk-champ-face{ background: linear-gradient(180deg, #d68cff 0 50%, #9a3fe0 50% 100%); }
+.rk-champ.alius .rk-champ-info em{ color: #d68cff; }
+.rk-champ.alius .rk-champ-time b{ color: #e6b8ff; }
+.rk-table.rk-t2 tr.top1 td:first-child{ color: #d68cff; }
+.rk-table.rk-t2 tbody tr.top10 td:first-child{ background: linear-gradient(90deg, rgba(181,106,230,.35), #13235a) !important; box-shadow: inset 3px 0 0 #b56ae6; }
+.rk-table.rk-t2 tbody tr.top10 td:nth-child(2){ color: #ecd0ff; }
+.rk-table.rk-t2 tbody tr.top10 .rk-pos{ color: #ffffff; background: #9a3fe0; }
+/* build del ranking: estadísticas de la partida */
+.rb-stats{ display:grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px; }
+.rb-stat{ display:flex; flex-direction:column; align-items:center; padding: 6px 4px; background: rgba(0,0,0,.25); box-shadow: inset 0 0 0 2px rgba(120,170,255,.25); }
+.rb-stat b{ font: 900 16px Inter, sans-serif; color:#fff; } .rb-stat span{ font: 700 10px Inter, sans-serif; color:#b8c9e6; text-align:center; }
+.rk-champ.alius .rk-build-btn{ background: #9a3fe0 !important; color: #ffffff !important; }
+#btn-play .menu-text small.play-t2{ color: #e6b8ff; font-weight: 800; }
+/* enfriamiento del objeto: apagado (gris) y se va coloreando de abajo arriba, fila a fila (estilo arcade pixel) */
+.hud-relic.oncd > img, .hud-relic.oncd > .px-mini{ filter: grayscale(1) brightness(.45) contrast(1.1) !important; }
+.relic-cd{ position:absolute; inset: 0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.relic-cd .relic-col{ clip-path: inset(calc(var(--p, 0) * 100%) 0 0 0); }
+.hud-relic:not(.oncd) .relic-cd .relic-col{ display:none; }
+.relic-cd b{ position:absolute; right: 3px; bottom: 1px; font: 900 12px Inter, sans-serif; color:#ffe14a; line-height:1;
+  text-shadow: 1px 0 0 #071233, -1px 0 0 #071233, 0 1px 0 #071233, 0 -1px 0 #071233, 1px 1px 0 #071233; }
+.hud-relic.oncd{ box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #7d8794, inset 0 0 0 5px #071233, 3px 3px 0 rgba(0,0,0,.4) !important; }
