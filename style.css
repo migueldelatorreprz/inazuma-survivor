@@ -4100,15 +4100,6 @@ html.phone #pause-overlay .sp-head-el .aff-chart-btn{ font-size: 11px; padding: 
 .rk-me{ margin: 8px 0 0; font: 800 13px 'Inter', sans-serif; color: #ffe14a; }
 .rk-note{ margin: 4px 0 6px; }
 /* ventana de la build */
-.rk-build{ width: min(520px, 94vw); max-height: 90vh; overflow-y: auto; text-align: left; font-family: 'Inter', sans-serif; color: #e6efff; }
-.rk-build h4{ margin: 12px 0 6px; color: #ffc81e; font: 900 11px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .1em; }
-.rb-head{ display: flex; gap: 10px; align-items: center; }
-.rb-head b{ display: block; font: 800 17px 'Inter', sans-serif; } .rb-head span{ font-size: 13px; opacity: .85; display: inline-flex; gap: 4px; align-items: center; }
-.rb-row{ display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
-.rb-tech, .rb-chip{ display: inline-flex; align-items: center; gap: 5px; background: rgba(63,111,200,.22); box-shadow: inset 0 0 0 1px rgba(143,176,232,.25); padding: 3px 7px; font-size: 13px; }
-.rb-tech em, .rb-chip em{ font-style: normal; color: #ffc81e; font-weight: 800; }
-.rb-plus{ color: #ffc81e; font-weight: 800; }
-.rb-chips{ display: flex; flex-wrap: wrap; gap: 5px; }
 html.phone .rk-table td{ height: 26px; } html.phone .rk-champ-info b{ font-size: 17px; } html.phone .rk-champ-time b{ font-size: 20px; } html.phone .rk-champ-face{ width: 46px; height: 46px; }
 
 /* ======================================================================
@@ -4204,9 +4195,6 @@ span.char-face.t2f{ display:block; background-repeat:no-repeat; image-rendering:
 .rk-table.rk-t2 tbody tr.top10 td:nth-child(2){ color: #ecd0ff; }
 .rk-table.rk-t2 tbody tr.top10 .rk-pos{ color: #ffffff; background: #9a3fe0; }
 /* build del ranking: estadísticas de la partida */
-.rb-stats{ display:grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px; }
-.rb-stat{ display:flex; flex-direction:column; align-items:center; padding: 6px 4px; background: rgba(0,0,0,.25); box-shadow: inset 0 0 0 2px rgba(120,170,255,.25); }
-.rb-stat b{ font: 900 16px Inter, sans-serif; color:#fff; } .rb-stat span{ font: 700 10px Inter, sans-serif; color:#b8c9e6; text-align:center; }
 .rk-champ.alius .rk-build-btn{ background: #9a3fe0 !important; color: #ffffff !important; }
 #btn-play .menu-text small.play-t2{ color: #e6b8ff; font-weight: 800; }
 /* enfriamiento del objeto: apagado (gris) y se va coloreando de abajo arriba, fila a fila (estilo arcade pixel) */
@@ -4217,3 +4205,38 @@ span.char-face.t2f{ display:block; background-repeat:no-repeat; image-rendering:
 .relic-cd b{ position:absolute; right: 3px; bottom: 1px; font: 900 12px Inter, sans-serif; color:#ffe14a; line-height:1;
   text-shadow: 1px 0 0 #071233, -1px 0 0 #071233, 0 1px 0 #071233, 0 -1px 0 #071233, 1px 1px 0 #071233; }
 .hud-relic.oncd{ box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #7d8794, inset 0 0 0 5px #071233, 3px 3px 0 rgba(0,0,0,.4) !important; }
+
+/* ---------- ranking · ficha de la build (rediseño) ---------- */
+.rk-build{ width: min(540px, 94vw); max-height: 90vh; overflow-y: auto; text-align: left; font-family: 'Inter', sans-serif; color: #e6efff; padding-top: 16px; }
+.rb-head{ --m: #8fb0e8; display: flex; gap: 12px; align-items: center; padding: 10px 12px; background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,.12)); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px var(--m); }
+.rb-head.r1{ --m: #ffc81e; } .rb-head.r2{ --m: #cfd8e6; } .rb-head.r3{ --m: #d9894a; }
+.rb-rank{ flex: none; min-width: 44px; text-align: center; font: 900 20px 'Inter', sans-serif; color: #071233; background: var(--m); padding: 6px 6px; box-shadow: inset 0 -3px 0 rgba(0,0,0,.25), 0 0 0 2px #071233; }
+.rb-face{ flex: none; display: inline-flex; padding: 2px; background: rgba(0,0,0,.35); box-shadow: inset 0 0 0 2px var(--m); }
+.rk-build .rb-who{ min-width: 0; flex: 1; text-align: left; }
+.rb-who b{ display: block; font: 900 19px 'Inter', sans-serif; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 2px 0 #071233; }
+.rb-who span{ font: 600 13px 'Inter', sans-serif; color: #c4d4f0; display: inline-flex; gap: 5px; align-items: center; }
+.rb-stats{ display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 10px; }
+.rb-stat{ display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 6px 7px; background: rgba(0,0,0,.3); box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px rgba(120,170,255,.3); }
+.rb-stat b{ font: 900 24px 'Inter', sans-serif; color: #fff; line-height: 1.05; font-variant-numeric: tabular-nums; text-shadow: 0 2px 0 #071233; }
+.rb-stat span{ margin-top: 3px; font: 800 10px 'Inter', sans-serif; color: #b8c9e6; text-transform: uppercase; letter-spacing: .08em; }
+.rb-stat.rb-time{ box-shadow: inset 0 0 0 2px #071233, inset 0 0 0 4px #ffc81e; background: linear-gradient(180deg, rgba(255,200,30,.16), rgba(0,0,0,.3)); }
+.rb-stat.rb-time b{ color: #ffd84a; font-size: 28px; }
+.rb-sec{ margin-top: 10px; padding: 8px 10px 10px; background: rgba(0,0,0,.18); box-shadow: inset 0 0 0 2px rgba(143,176,232,.16); }
+.rk-build .rb-sec h4{ margin: 0 0 8px; display: flex; align-items: center; gap: 8px; color: #ffc81e; font: 900 11px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .12em; }
+.rk-build .rb-sec h4::after{ content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(255,200,30,.5), rgba(255,200,30,0)); }
+.rb-row{ display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; } .rb-row:last-child{ margin-bottom: 0; }
+.rb-tech, .rb-chip{ display: inline-flex; align-items: center; gap: 6px; background: rgba(63,111,200,.26); box-shadow: inset 0 0 0 1px rgba(143,176,232,.3), inset 0 -2px 0 rgba(0,0,0,.2); padding: 4px 9px; font: 600 13px 'Inter', sans-serif; color: #eaf1ff; }
+.rb-tech{ padding: 5px 10px 5px 6px; } .rb-tech b{ font-weight: 800; }
+.rb-tech.evo{ background: linear-gradient(90deg, rgba(255,200,30,.2), rgba(63,111,200,.26)); box-shadow: inset 0 0 0 1px rgba(255,200,30,.55), inset 0 -2px 0 rgba(0,0,0,.2); }
+.rb-tech em, .rb-chip em{ font-style: normal; color: #ffc81e; font-weight: 900; }
+.rb-tech em{ background: rgba(0,0,0,.3); padding: 1px 5px; font-size: 11px; }
+.rb-plus{ color: #ffc81e; font: 900 16px 'Inter', sans-serif; }
+.rb-chips{ display: flex; flex-wrap: wrap; gap: 6px; }
+.rb-relic{ padding-left: 5px; }
+.rb-emo{ font-style: normal; font-size: 14px; line-height: 1; }
+.rb-dot{ width: 10px; height: 10px; background: var(--c); box-shadow: 0 0 0 2px #071233; }
+.rb-none{ margin: 0; color: #8fa4c8; }
+@media (max-width: 480px){ .rb-who b{ font-size: 16px; } .rb-stat b{ font-size: 20px; } .rb-stat.rb-time b{ font-size: 23px; } }
+
+.rb-spr{ width: 22px; height: 22px; image-rendering: pixelated; margin: -3px 0; }
+.rb-pball{ flex: none; width: 22px; height: 22px; margin: -3px 0; background: url('assets/ui/pballs.png') 0 0 / 88px 22px no-repeat; image-rendering: pixelated; filter: drop-shadow(0 0 3px var(--c)); }
