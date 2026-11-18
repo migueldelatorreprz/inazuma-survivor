@@ -62,7 +62,7 @@
 <title>InazumaSurvivor</title>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
   <link rel="apple-touch-icon" href="assets/icon-192.png?v=1">
-<link rel="stylesheet" href="style.css?v=184">
+<link rel="stylesheet" href="style.css?v=185">
 </head>
 <body>
   <div id="rotate-overlay" class="rotate-overlay"><div class="rot-box"><div class="rot-phone"></div><b>Gira el móvil</b><small class="rot-want-p">Elegiste jugar en vertical</small><small class="rot-want-l">Elegiste jugar en horizontal</small><small>Puedes cambiarlo en Ajustes · Orientación</small></div></div>
@@ -453,12 +453,30 @@
   <!-- ===================== HILLMAN (fusión de supertécnicas) ===================== -->
   <div id="hillman-overlay" class="overlay hidden">
     <div class="overlay-box talent-box">
-      <h3>👴 Hillman</h3>
-      <p id="hillman-sub"></p>
+      <div class="npc-hdr">
+        <div class="npc-portrait npc-hill" id="hillman-portrait"></div>
+        <div class="npc-hdr-txt"><h3>Hillman</h3><p id="hillman-sub"></p></div>
+      </div>
       <div id="hillman-options" class="upgrade-row"></div>
       <button id="btn-hillman-reject" class="talent-reject">
         <span class="reject-ico">✕</span>
         <span class="reject-text"><b>Ahora no</b><small>Se va; puede volver tras otro boss</small></span>
+        <kbd data-gp="B">Esc</kbd>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== PACTO CON RAY DARK ===================== -->
+  <div id="raydark-overlay" class="overlay hidden">
+    <div class="overlay-box talent-box rd-box">
+      <div class="npc-hdr">
+        <div class="npc-portrait npc-rd" id="raydark-portrait"></div>
+        <div class="npc-hdr-txt"><h3>Pacto con Ray Dark</h3><p id="raydark-sub"></p><div id="raydark-rule" class="rd-rule"></div></div>
+      </div>
+      <div id="raydark-options" class="upgrade-row rd-row"></div>
+      <button id="btn-raydark-reject" class="talent-reject">
+        <span class="reject-ico">✕</span>
+        <span class="reject-text"><b>Rechazar</b><small>No cuesta nada: Ray Dark se va</small></span>
         <kbd data-gp="B">Esc</kbd>
       </button>
     </div>
@@ -610,6 +628,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=334"></script>
+  <script src="app.js?v=335"></script>
 </body>
 </html>
