@@ -4317,3 +4317,48 @@ body.rl-mode #levelup-overlay.rl-special .overlay-box h3{ background: linear-gra
 .upgrade-option.rl-vetoed{ box-shadow: inset 0 0 0 999px rgba(10,4,8,.6) !important; }
 html body .overlay .upgrade-option.rl-vetoed[data-rlv="done"]{ background: linear-gradient(180deg, #34303c 0%, #1e1a24 100%) !important; border-color:#6a6070 !important; }
 html body .overlay .upgrade-option.rl-vetoed[data-rlv="done"] > span{ background: transparent !important; }
+
+/* RandomLocke: Cambio / Revelar / Vetar como mini-cartas del mismo ancho y estilo que las de la subida de nivel */
+.overlay .rl-rr-row{ gap: 12px !important; margin-top: 6px; }
+.overlay .rl-rr-row > .reroll-btn{ position: relative; display: grid !important; grid-template-columns: auto auto; grid-template-rows: auto auto;
+  justify-content: center; align-content: center; column-gap: 10px !important; row-gap: 3px; min-height: 68px; padding: 8px 10px 13px !important;
+  box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 5px #8cc4ff, inset 0 -7px 0 rgba(0,0,0,.22) !important; }
+.overlay .rl-rr-row > .reroll-btn > img{ grid-row: 1 / span 2; align-self: center; width: 38px !important; height: 38px !important; image-rendering: pixelated; filter: drop-shadow(0 2px 0 rgba(0,0,0,.45)); }
+.overlay .rl-rr-row > .reroll-btn .rr-txt{ grid-column: 2; align-self: end; justify-self: start; font-size: 22px; line-height: 1; white-space: nowrap; }
+.overlay .rl-rr-row > .reroll-btn .rr-left{ grid-column: 2; align-self: start; justify-self: start; font-size: 11px !important; line-height: 1; padding: 3px 7px !important;
+  background: rgba(0,0,0,.3) !important; border-radius: 0 !important; color: #fff !important; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+.overlay .rl-rr-row > .reroll-btn .rr-key{ position: absolute; top: 7px; right: 8px; width: 20px !important; height: 20px !important; font-size: 12px !important; }
+.overlay .rl-rr-row > .rl-reveal-btn.on .rr-left{ background: rgba(58,34,0,.18) !important; color: #3a2200 !important; }
+@media (max-height: 520px){
+  .overlay .rl-rr-row > .reroll-btn{ min-height: 54px; padding: 6px 8px 10px !important; }
+  .overlay .rl-rr-row > .reroll-btn > img{ width: 30px !important; height: 30px !important; }
+  .overlay .rl-rr-row > .reroll-btn .rr-txt{ font-size: 18px; }
+}
+
+/* RandomLocke: pasiva del boss en la pantalla VS (mismo estilo que las placas de nombre: corte pixel, dos tonos, fuente del juego) */
+.vs-rlmod{ position:absolute; left:50%; bottom: 8%; transform: translateX(-50%); z-index: 4; display:flex; flex-direction:column; align-items:center; gap: 2px;
+  padding: 8px 26px 10px; max-width: 86vw; text-align:center; white-space: nowrap;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 78%, #fff) 0 50%, var(--c) 50% 100%); clip-path: var(--px-cut-s); box-shadow: inset 0 0 0 3px #0b1430, inset 0 -6px 0 rgba(0,0,0,.22);
+  animation: vsRlMod .35s steps(4) .55s both; }
+.vs-rlmod i{ font-style: normal; font-family: var(--title-font); font-size: 16px; line-height: 1; color: #ffe14a; text-shadow: var(--outline); letter-spacing: .06em; }
+.vs-rlmod b{ display:flex; align-items:center; gap: 8px; font-family: var(--title-font); font-weight: 400; font-size: 34px; line-height: 1; color: #fff; text-shadow: var(--outline); letter-spacing: .03em; }
+.vs-rlmod b img{ width: 26px; height: 26px; image-rendering: pixelated; }
+.vs-rlmod span{ font-family: var(--title-font); font-size: 18px; line-height: 1.05; color: #fff; text-shadow: var(--outline); letter-spacing: .03em; }
+@keyframes vsRlMod{ from{ opacity:0; transform: translate(-50%, 18px); } to{ opacity:1; transform: translate(-50%, 0); } }
+@media (max-height: 520px){ .vs-rlmod{ bottom: 4%; padding: 5px 16px 7px; } .vs-rlmod b{ font-size: 24px; } .vs-rlmod span{ font-size: 14px; } .vs-rlmod i{ font-size: 12px; } }
+
+/* RandomLocke · cartas de jugador: oscurecido sin filter (el filter rompía el giro 3D y dejaba brillos raros) */
+.rl-card.other{ filter: none !important; }
+.rl-card .rl-front::after{ content:''; position:absolute; inset:0; background: rgba(8,4,14,.6); opacity: 0; transition: opacity .2s; pointer-events:none; z-index: 5; clip-path: var(--px-cut); }
+.rl-card.other .rl-front::after{ opacity: 1; }
+.rl-card.flipping .rl-front::after{ opacity: 0 !important; }
+.rl-card.chosen .rl-front{ filter: drop-shadow(0 0 0 #ffd84a) drop-shadow(0 0 10px rgba(255,216,74,.65)); }
+.rl-card.flip:hover .rl-in{ transform: rotateY(180deg) translateY(-6px); }
+.rl-card.chosen:hover .rl-in, .rl-card.chosen .rl-in{ transform: rotateY(180deg) scale(1.06); }
+.rl-actions .rl-revall{ background: linear-gradient(180deg, #e8463a 0 50%, #b8261c 50% 100%) !important; color:#fff; }
+
+/* comparar: botones de versión (Shawn, Dvalin, Scott) debajo de cada carta */
+.cmp-ver{ display:flex; gap: 6px; justify-content:center; margin: 0 0 8px; }
+.cmp-ver-btn{ font-family: var(--title-font); font-size: 14px; color:#fff; text-shadow: var(--outline); padding: 4px 10px; border: none; cursor: pointer;
+  background: linear-gradient(180deg, #3a5cc8 0 50%, #2a46a0 50% 100%); box-shadow: inset 0 0 0 2px #0b1430; }
+.cmp-ver-btn.on{ background: linear-gradient(180deg, #ffd84a 0 50%, #f2a705 50% 100%); box-shadow: inset 0 0 0 2px #5a3200; }
