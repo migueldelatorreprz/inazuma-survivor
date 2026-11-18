@@ -4458,3 +4458,9 @@ html.phone .npc-portrait img, .npc-portrait.npc-sm img{ width: 64px; height: 64p
 .talent-reject:hover .reject-ico.px-x img, .talent-reject:focus-visible .reject-ico.px-x img{ transform: translateY(-2px); }
 #raydark-overlay .rd-price li b{ display: inline !important; font-size: 14px !important; line-height: 1.3; }
 #raydark-overlay .rd-price li span{ line-height: 1.3; }
+/* fusión cromática en Intercambios */
+.tr-mystery.tr-shiny{ background: linear-gradient(135deg, #ffd84a, #ff7ac8 35%, #7ad8ff 65%, #b6ff7a) !important; animation: shop-float 2.4s steps(6) infinite, trShiny 1.2s steps(4) infinite; }
+.tr-mystery.tr-shiny.pending{ filter: grayscale(.55) brightness(.85); animation: none; }
+.tr-mystery.tr-shiny .char-face{ image-rendering: pixelated; }
+.tr-shiny-t{ background: linear-gradient(90deg, #ffd84a, #ff7ac8, #7ad8ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@keyframes trShiny{ 0%,100%{ box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 6px rgba(255,255,255,.35); } 50%{ box-shadow: inset 0 0 0 3px #071233, inset 0 0 0 6px #fff; } }
